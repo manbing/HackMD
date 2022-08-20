@@ -1,5 +1,58 @@
 # Data Structures and Algorithms
+
+[![hackmd-github-sync-badge](https://hackmd.io/Q_2yAYg7SDOIBdxc7hFbDQ/badge)](https://hackmd.io/Q_2yAYg7SDOIBdxc7hFbDQ)
+
 [visualising alorighm](https://visualgo.net/en/sorting)
+
+
+## Data structure
+### Array
+### Linking list
+### Stak
+### Queue
+### [Priority Queue](https://ithelp.ithome.com.tw/articles/10269601)
+### Hash table
+hash set
+hash map
+### Tree
+Tree traversal: DFS, BFS
+
+#### Binary tree
+Depth First Traversals:
+1. Inorder (Left, Root, Right)
+2. Preorder (Root, Left, Right)
+3. Postorder (Left, Right, Root)
+
+#### Binary search tree
+Left < Root < Right
+
+
+#### Tree time analysis
+
+* Worst case
+
+| Algorithms | Search | Insert | Delete |
+| -------- | -------- | -------- | -------- |
+| [Red-black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) |  O(log$n$)  | O(log$n$) | O(log$n$)|
+| [AVL tree](https://en.wikipedia.org/wiki/AVL_tree) |  O(log$n$) |  O(log$n$) | O(log$n$) |
+| [Binary serach tree](https://en.wikipedia.org/wiki/Binary_search_tree) |  O($n$) | O($n$)  | O($n$) |
+| Binary Heap tree |  1 (*max/min*) | O(log$n$)  | 1 (*max/min*) |
+| [Binary tree](https://en.wikipedia.org/wiki/Binary_tree) | O($n$)  | O($n$)  | O($n$) |
+
+
+* Average case
+
+| Algorithms | Search | Insert | Delete |
+| -------- | -------- | -------- | -------- |
+| Red-black tree |  O(log$n$) |  O(log$n$) | O(log$n$)|
+| AVL tree | O(log$n$)  |  O(log$n$)  | O(log$n$) |
+| Binary serach tree |  O(log$n$) | O(log$n$)  |O(log$n$) |
+| Binary Heap tree |   1 (*max/min*) |  O(log$n$) |  1 (*max/min*) |
+| Binary tree |  O($n$) | O($n$)  | O($n$) |
+
+
+
+
 
 ## Algorithms
 ### Sort
@@ -44,23 +97,6 @@ Kahn's algorithm
 | 8     | Exit.     |
 
 
-## Data structure
-### Array
-### Linking list
-### Stak
-### Queue
-### Hsh table
-### Tree
-**Binary tree**
-**Binary serach tree**
-**Red black tree**
-**AVL tree**
-**Heap tree**
-
-
-
-
-
 ## Runtime analysis
 
 X is NP-complete if only if X $\in$ NP $\&$ X is NP-hard.
@@ -82,4 +118,5 @@ How to prove X is NP-complete?
 [asymptotic-notation](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
 [Big-O cheat sheet](https://www.bigocheatsheet.com/)
 [16. Complexity: P, NP, NP-completeness, Reductions](https://www.youtube.com/watch?v=eHZifpgyH_4)
+
 
