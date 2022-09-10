@@ -32,6 +32,7 @@
 /proc/<pid>/oom_score
 /proc/<pid>/oom_adj
 /proc/<pid>/stat
+/proc/<pid>/stack
 ```
   ```  
 /proc/net/arp
@@ -74,6 +75,7 @@ echo "value" > /proc/sysrq-trigger
 /sys/kernel/kexec_crash_loaded
 /sys/kernel/kexec_crash_size
 /sys/class/net/br3/brif/<if name>/multicast_router
+/sys/class/net/br0/brif/eth0.3/port_no
 ``` 
     
 ## debugfs
