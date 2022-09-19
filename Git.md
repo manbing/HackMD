@@ -66,6 +66,8 @@ git config --global gc.reflogExpireUnreachable "7 days"
 git config --global pack.windowMemory "100m"
 git config --global pack.packSizeLimit "100m"
 git config --global pack.threads "1"
+
+git config --global log.decorate auto
 ```
     
 ### local
@@ -130,7 +132,8 @@ git log --follow
     
 git log <hash>
 git log <hash>..
-git log <hash>..<hash2>
+git log <old hash>..<new hash2>
+git log <hash>...<hash2>
 ```
 
 ## git-reflog
