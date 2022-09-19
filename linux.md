@@ -1,7 +1,8 @@
 # Linux
 ###### tags: `Linux`
 
-## manual page/man page
+## Documentation
+### [man page](https://man7.org/linux/man-pages/)(manual page)
 (1) General commands
 (2) System calls
 (3) Library functions, covering in particular the C standard library
@@ -10,6 +11,13 @@
 (6) Games and screensavers
 (7) Miscellaneous
 (8) System administration commands and daemons
+
+### API
+[The Linux Kernel API](https://www.kernel.org/doc/htmldocs/kernel-api/)
+
+[Core api](https://github.com/torvalds/linux/tree/master/Documentation/core-api)
+
+
 
 ## image
 **Image**: the generic Linux kernel binary image file.
