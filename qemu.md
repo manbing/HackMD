@@ -1,6 +1,6 @@
 ---
 title: QEMU
-tags: [Application]
+tags: [Linux]
 
 ---
 
