@@ -55,13 +55,24 @@ tags: [Computer science]
 
 [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
 
+## CPU
+### Register file
+Swtch (kernel/swtch.S:3) saves only callee-saved registers; caller-saved registers are saved on the stack (if needed) by the calling C code.
 
-## Context Switch
+#### Context Switch
 CPU context switching has at least three different types
 * Multitasking
 
 * Iinterrupt(exception) handling
 * User and kernel mode switching
+
+#### Calling convention
+
+### CPU mode
+Intel: ring0, ring1 and ring3
+
+RISC-V: Machine mode, kernel mode, and user mode
+
 
 ## Virtualization
 ### Containers V.S. Virtual Machines
@@ -74,6 +85,13 @@ CPU context switching has at least three different types
 
 ## Physical Addresses (Memory Map)
 Real hardware places ==RAM== and devices at unpredictable ==physical addresses==.
+
+## [Coroutine](https://en.wikipedia.org/wiki/Coroutine)
+Coroutines are computer program components that allow execution to be suspended and resumed, generalizing subroutines for cooperative multitasking. Coroutines are well-suited for implementing familiar program components such as cooperative tasks, exceptions, event loops, iterators, infinite lists and pipes.
+
+They have been described as "functions whose execution you can pause".[1]
+
+Melvin Conway coined the term coroutine in 1958 when he applied it to the construction of an assembly program.[2] The first published explanation of the coroutine appeared later, in 1963.[3]
 # Computer science introduction
 
 ## Memory hierarchy
@@ -125,13 +143,24 @@ Real hardware places ==RAM== and devices at unpredictable ==physical addresses==
 
 [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
 
+## CPU
+### Register file
+Swtch (kernel/swtch.S:3) saves only callee-saved registers; caller-saved registers are saved on the stack (if needed) by the calling C code.
 
-## Context Switch
+#### Context Switch
 CPU context switching has at least three different types
 * Multitasking
 
 * Iinterrupt(exception) handling
 * User and kernel mode switching
+
+#### Calling convention
+
+### CPU mode
+Intel: ring0, ring1 and ring3
+
+RISC-V: Machine mode, kernel mode, and user mode
+
 
 ## Virtualization
 ### Containers V.S. Virtual Machines
@@ -144,3 +173,10 @@ CPU context switching has at least three different types
 
 ## Physical Addresses (Memory Map)
 Real hardware places ==RAM== and devices at unpredictable ==physical addresses==.
+
+## [Coroutine](https://en.wikipedia.org/wiki/Coroutine)
+Coroutines are computer program components that allow execution to be suspended and resumed, generalizing subroutines for cooperative multitasking. Coroutines are well-suited for implementing familiar program components such as cooperative tasks, exceptions, event loops, iterators, infinite lists and pipes.
+
+They have been described as "functions whose execution you can pause".[1]
+
+Melvin Conway coined the term coroutine in 1958 when he applied it to the construction of an assembly program.[2] The first published explanation of the coroutine appeared later, in 1963.[3]
