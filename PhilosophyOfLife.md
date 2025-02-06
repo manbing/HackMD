@@ -4,9 +4,8 @@ title: Philosophy of life
 ---
 
 > "Good Heart"
-> 「心」
-> 「適可而止、中庸」
-> 「平靜、明鏡止水、無我」
+> 「心、平靜、明鏡止水、無我」
+> 「適可而止、中庸、中間」
 
 > 「心存善念，盡力而為」("good heart, do hard")
 ― 柯文哲
@@ -30,7 +29,10 @@ title: Philosophy of life
 > ― 進撃の巨人S1 第06話 米卡莎·阿卡曼
 
 >「記憶體不足」
-> ― HUNTER×HUNTER
+> ― HUNTER×HUNTER 第032話【驚奇x的x勝利】西索·莫羅
+
+>「感謝的正拳」
+> ― HUNTER×HUNTER 第111話【攻堅×後×入侵】艾薩克·尼特羅
 
 ---
 
@@ -39,9 +41,8 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 
 * Intensive Reading (academic reading)
 > "Good Heart"
-> 「心」
-> 「適可而止、中庸」
-> 「平靜、明鏡止水、無我」
+> 「心、平靜、明鏡止水、無我」
+> 「適可而止、中庸、中間」
 
 > 「心存善念，盡力而為」("good heart, do hard")
 ― 柯文哲
@@ -65,7 +66,10 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 > ― 進撃の巨人S1 第06話 米卡莎·阿卡曼
 
 >「記憶體不足」
-> ― HUNTER×HUNTER
+> ― HUNTER×HUNTER 第032話【驚奇x的x勝利】西索·莫羅
+
+>「感謝的正拳」
+> ― HUNTER×HUNTER 第111話【攻堅×後×入侵】艾薩克·尼特羅
 
 ---
 
