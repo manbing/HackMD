@@ -1,6 +1,6 @@
 ---
 title: Linux command
-tags: [Command, Linux]
+tags: [Linux]
 
 ---
 
@@ -26,7 +26,7 @@ apt-get source linux-image-unsigned-$(uname -r)
 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 
-## brctl (deprecated)
+## brctl (DEPRECATED)
 >brctl snoopdbg br3 on
 
 ## iw
@@ -59,17 +59,23 @@ ip link set <old if name> name <new if name>
 Show running interface only
 > ip link show up
 
-Show bridge
-> ip link show type bridge
+Show bridge:
+```
+$ ip link show type bridge
+```
 
 To create a bridge named `br0`, that have `eth0` and `eth1` as members:
-> ip link add name br0 type bridge
-ip link set dev br0 up
-ip link set dev eth0 master br0
-ip link set dev eth1 master br0
+```
+$ ip link add name br0 type bridge
+$ ip link set dev br0 up
+$ ip link set dev eth0 master br0
+$ ip link set dev eth1 master br0
+```
 
 To remove an interface from the bridge:
-> ip link set dev eth0 nomaster
+```
+$ ip link set dev eth0 nomaster
+```
 
 destroy a bridge after no interface is member:
 > ip link del br0
@@ -78,7 +84,9 @@ To add an interface to the bridge:
 > ip link set <eth0> master <bridge>
 
 Check member of the bridge
-> ip link show master <bridge>
+```
+$ ip link show master <bridge>
+```
 
 ### ip-route
 ip route flush cache
@@ -111,7 +119,7 @@ ip neigh flush all dev br-lan
 
 > ip stats set dev *DEV* l3_stats \{ on | off \}
 
-## iptables (obsolete)
+## iptables (OBSOLETE)
 -j MARK --set-mark <marknumber in decimal form>
 iptables -t mangle -A PREROUTING -i br-br1 -j MARK --set-mark 1014
 iptables -S
@@ -177,48 +185,83 @@ runc spec
 sudo runc kill cindy KILL
     
 ## docker
-docker container create -t -i -v /home/manbing/GitHub/RaspberryPi/docker/work:/root/work ubuntu bash
+    
+```
+$ docker container create -t -i -v /home/manbing/GitHub/RaspberryPi/docker/work:/root/work ubuntu bash
 
-docker cp /path/to/file1 DOCKER_ID:/path/to/file2
-docker export ubuntu > ubuntu_export.tar
-docker save ubuntu > ubuntu_save.tar
-docker search IMAGE
-docker pull IMAGE
-
-### docker-image
-docker image ls
-docker image prune
-docker save {image-name} {image-name}.tar
-docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
+$ docker cp /path/to/file1 DOCKER_ID:/path/to/file2
+$ docker export ubuntu > ubuntu_export.tar
+$ docker save ubuntu > ubuntu_save.tar
+$ docker search <IMAGE>
+$ docker pull <IMAGE>
+$ docker run -it --init --net=host ubuntu:latest bash
+```
+### /etc/docker/daemon.json
+[--data-root](https://docs.docker.com/engine/deprecated/#-g-and---graph-flags-on-dockerd)
+    
+### [docker-image](https://docs.docker.com/reference/cli/docker/image/)
+$ docker image ls
+$ docker image prune
+$ docker save {image-name} {image-name}.tar
+$ docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
 > docker import http://downloads.openwrt.org/attitude_adjustment/12.09/x86/generic/openwrt-x86-generic-rootfs.tar.gz openwrt-x86-generic-rootfs
 
+
+Create image with `Dockerfile` file:
+```
+$ docker build -t dockerenv . --no-cache
+```
+
+    
 ### docker-container
-docker create [OPTIONS] IMAGE [COMMAND] [ARG..]
->  docker container create -t -i openwrt-x86-generic-rootfs sh
+$ docker create [OPTIONS] IMAGE [COMMAND] [ARG..]
+```
+$ docker container create -t -i openwrt-x86-generic-rootfs sh
+```
 
-docker container start  [OPTIONS] CONTAINER ID [COMMAND] [ARG..]
-> docker container start -i 123
+$ docker container start  [OPTIONS] CONTAINER ID [COMMAND] [ARG..]
+```
+$ docker container start -i 123
+```
 
-docker attach `CONTAINER ID`
-docker container ls -a
-docker container prune
-docker exec -it {container ID} bash
-docker exec -ti --user $USER oss-dbg /bin/bash
-docker container rm {container ID}
-docker container kill {container ID}
+```
+$ docker attach `CONTAINER ID`
+```
+    
+list all container:
+```
+$ docker container ls -a
+```
+$ docker container prune
+$ docker exec -it {container ID} bash
+$ docker exec -ti --user $USER oss-dbg /bin/bash
+$ docker container rm {container ID}
+$ docker container kill {container ID}
 
-docker run -d --name [NAME] IMAGE [COMMAND] [ARG..]
-> docker-create and docker-start
+`docker-run` is `docker-create` and `docker-start`
+```
+$ docker run -d --name [NAME] IMAGE [COMMAND] [ARG..]
+$ docker run -t -i --net=host --mount type=bind,src=./dockerenv_data,dst=/data busybox sh
+```
 
 docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]
 
+* [docker container cp](https://docs.docker.com/reference/cli/docker/container/cp/)
+Copy files/folders between a container and the local filesystem:
+```
+$ docker cp ./some_file CONTAINER:/work
+```
 ### docker-volume
-docker volume ls
-docker volume prune
+```
+$ docker volume ls
+$ docker volume prune
+```
 
 ### docker-network
-docker network ls
-docker network prune
+```
+$ docker network ls
+$ docker network prune
+```
 
 ### docker-compose
 
@@ -245,14 +288,15 @@ networks:
   openwrt-lan:
     external: true
 ```
-
-
-
-
-
 > docker-compose up -d && docker-compose logs -f
 
 
+### docker-build (DEPRECATED)
+Docker Build is one of Docker Engine's most used features. Whenever you are creating an image you are using Docker Build. Build is a key part of your software development life cycle allowing you to package and bundle your code and ship it anywhere.
+
+create image with Dockerfile
+> docker build -t <tag> .
+    
 ## samba
 sudo smbpasswd -a {UserName} {password}
 sudo apt install samba
@@ -266,13 +310,19 @@ bridge mdb
 The `vlan` object from the bridge command will allow you to create ingress/egress filters on bridges.
 
 To show if there is any vlan ingress/egress filters:
-> bridge vlan show
+```
+$ bridge vlan show
+```
 
 To add rules to a given interface:
-> bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
+```
+$ bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
+```
 
 To remove rules. Use the same parameters as vlan add at the end of the command to delete a specific rule.
-> bridge vlan delete dev eth1
+```
+$ bridge vlan delete dev eth1
+```
     
 ## diff
 diff -u -p
@@ -298,13 +348,6 @@ $ command > file 2>&1
 Let us redirect both stderr and stdout (standard output):
 > $ command &> /dev/console
 
-## [repo](https://zh.wikipedia.org/zh-tw/Android)
-repo forall -vc "git stash"
-
-[Repo command reference](https://source.android.com/docs/setup/reference/repo?hl=zh-tw)
-
-[repo-init](https://manpages.ubuntu.com/manpages/noble/man1/repo-init.1.html)
-
 ## [scp](https://man7.org/linux/man-pages/man1/scp.1.html)
 scp <span class="green"> *source ... target* </span>
 
@@ -314,7 +357,18 @@ Copy file from local to remote
 Copy file from remote to local
 > scp myuser@192.168.0.1:/path/file2 /path/file1
 
+## [su](https://www.man7.org/linux/man-pages/man1/su.1.html)
 
+```
+$ sudo -i <Command>
+```
+
+Keep user environment variable:
+```
+$ sudo -E Command>
+```
+
+    
 ## else
 lsblk -o NAME,FSTYPE,UUI
 groups <userName-Here>
@@ -326,6 +380,25 @@ scp -P [port] [user@]192.168.1.10:~/kernel-new.img ./
     
 find -iname "*.lua" | xargs grep -n --color=auto "luci"
 
+# Function
+## Install transformers
+
+[Install transformers](https://huggingface.co/transformers/v3.5.1/installation.html)
+
+```
+# Create Virtual Environment
+$ python3 -m venv </path/to/directory>
+$ virtualenv -p </path/to/python3> <venv_name>
+    
+# Activate Virtual Environment
+$ source </path/to/directory>/bin/activate
+
+# Deactive
+$ deactivate
+```
+
+[venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
+[使用 pip 安裝 TensorFlow](https://www.tensorflow.org/install/pip?hl=zh-tw#virtual-environment-install)
 
 
 <style>
@@ -354,7 +427,7 @@ apt-get source linux-image-unsigned-$(uname -r)
 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 
-## brctl (deprecated)
+## brctl (DEPRECATED)
 >brctl snoopdbg br3 on
 
 ## iw
@@ -387,17 +460,23 @@ ip link set <old if name> name <new if name>
 Show running interface only
 > ip link show up
 
-Show bridge
-> ip link show type bridge
+Show bridge:
+```
+$ ip link show type bridge
+```
 
 To create a bridge named `br0`, that have `eth0` and `eth1` as members:
-> ip link add name br0 type bridge
-ip link set dev br0 up
-ip link set dev eth0 master br0
-ip link set dev eth1 master br0
+```
+$ ip link add name br0 type bridge
+$ ip link set dev br0 up
+$ ip link set dev eth0 master br0
+$ ip link set dev eth1 master br0
+```
 
 To remove an interface from the bridge:
-> ip link set dev eth0 nomaster
+```
+$ ip link set dev eth0 nomaster
+```
 
 destroy a bridge after no interface is member:
 > ip link del br0
@@ -406,7 +485,9 @@ To add an interface to the bridge:
 > ip link set <eth0> master <bridge>
 
 Check member of the bridge
-> ip link show master <bridge>
+```
+$ ip link show master <bridge>
+```
 
 ### ip-route
 ip route flush cache
@@ -439,7 +520,7 @@ ip neigh flush all dev br-lan
 
 > ip stats set dev *DEV* l3_stats \{ on | off \}
 
-## iptables (obsolete)
+## iptables (OBSOLETE)
 -j MARK --set-mark <marknumber in decimal form>
 iptables -t mangle -A PREROUTING -i br-br1 -j MARK --set-mark 1014
 iptables -S
@@ -505,48 +586,83 @@ runc spec
 sudo runc kill cindy KILL
     
 ## docker
-docker container create -t -i -v /home/manbing/GitHub/RaspberryPi/docker/work:/root/work ubuntu bash
+    
+```
+$ docker container create -t -i -v /home/manbing/GitHub/RaspberryPi/docker/work:/root/work ubuntu bash
 
-docker cp /path/to/file1 DOCKER_ID:/path/to/file2
-docker export ubuntu > ubuntu_export.tar
-docker save ubuntu > ubuntu_save.tar
-docker search IMAGE
-docker pull IMAGE
-
-### docker-image
-docker image ls
-docker image prune
-docker save {image-name} {image-name}.tar
-docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
+$ docker cp /path/to/file1 DOCKER_ID:/path/to/file2
+$ docker export ubuntu > ubuntu_export.tar
+$ docker save ubuntu > ubuntu_save.tar
+$ docker search <IMAGE>
+$ docker pull <IMAGE>
+$ docker run -it --init --net=host ubuntu:latest bash
+```
+### /etc/docker/daemon.json
+[--data-root](https://docs.docker.com/engine/deprecated/#-g-and---graph-flags-on-dockerd)
+    
+### [docker-image](https://docs.docker.com/reference/cli/docker/image/)
+$ docker image ls
+$ docker image prune
+$ docker save {image-name} {image-name}.tar
+$ docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
 > docker import http://downloads.openwrt.org/attitude_adjustment/12.09/x86/generic/openwrt-x86-generic-rootfs.tar.gz openwrt-x86-generic-rootfs
 
+
+Create image with `Dockerfile` file:
+```
+$ docker build -t dockerenv . --no-cache
+```
+
+    
 ### docker-container
-docker create [OPTIONS] IMAGE [COMMAND] [ARG..]
->  docker container create -t -i openwrt-x86-generic-rootfs sh
+$ docker create [OPTIONS] IMAGE [COMMAND] [ARG..]
+```
+$ docker container create -t -i openwrt-x86-generic-rootfs sh
+```
 
-docker container start  [OPTIONS] CONTAINER ID [COMMAND] [ARG..]
-> docker container start -i 123
+$ docker container start  [OPTIONS] CONTAINER ID [COMMAND] [ARG..]
+```
+$ docker container start -i 123
+```
 
-docker attach `CONTAINER ID`
-docker container ls -a
-docker container prune
-docker exec -it {container ID} bash
-docker exec -ti --user $USER oss-dbg /bin/bash
-docker container rm {container ID}
-docker container kill {container ID}
+```
+$ docker attach `CONTAINER ID`
+```
+    
+list all container:
+```
+$ docker container ls -a
+```
+$ docker container prune
+$ docker exec -it {container ID} bash
+$ docker exec -ti --user $USER oss-dbg /bin/bash
+$ docker container rm {container ID}
+$ docker container kill {container ID}
 
-docker run -d --name [NAME] IMAGE [COMMAND] [ARG..]
-> docker-create and docker-start
+`docker-run` is `docker-create` and `docker-start`
+```
+$ docker run -d --name [NAME] IMAGE [COMMAND] [ARG..]
+$ docker run -t -i --net=host --mount type=bind,src=./dockerenv_data,dst=/data busybox sh
+```
 
 docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]
 
+* [docker container cp](https://docs.docker.com/reference/cli/docker/container/cp/)
+Copy files/folders between a container and the local filesystem:
+```
+$ docker cp ./some_file CONTAINER:/work
+```
 ### docker-volume
-docker volume ls
-docker volume prune
+```
+$ docker volume ls
+$ docker volume prune
+```
 
 ### docker-network
-docker network ls
-docker network prune
+```
+$ docker network ls
+$ docker network prune
+```
 
 ### docker-compose
 
@@ -573,14 +689,15 @@ networks:
   openwrt-lan:
     external: true
 ```
-
-
-
-
-
 > docker-compose up -d && docker-compose logs -f
 
 
+### docker-build (DEPRECATED)
+Docker Build is one of Docker Engine's most used features. Whenever you are creating an image you are using Docker Build. Build is a key part of your software development life cycle allowing you to package and bundle your code and ship it anywhere.
+
+create image with Dockerfile
+> docker build -t <tag> .
+    
 ## samba
 sudo smbpasswd -a {UserName} {password}
 sudo apt install samba
@@ -594,13 +711,19 @@ bridge mdb
 The `vlan` object from the bridge command will allow you to create ingress/egress filters on bridges.
 
 To show if there is any vlan ingress/egress filters:
-> bridge vlan show
+```
+$ bridge vlan show
+```
 
 To add rules to a given interface:
-> bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
+```
+$ bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
+```
 
 To remove rules. Use the same parameters as vlan add at the end of the command to delete a specific rule.
-> bridge vlan delete dev eth1
+```
+$ bridge vlan delete dev eth1
+```
     
 ## diff
 diff -u -p
@@ -626,13 +749,6 @@ $ command > file 2>&1
 Let us redirect both stderr and stdout (standard output):
 > $ command &> /dev/console
 
-## [repo](https://zh.wikipedia.org/zh-tw/Android)
-repo forall -vc "git stash"
-
-[Repo command reference](https://source.android.com/docs/setup/reference/repo?hl=zh-tw)
-
-[repo-init](https://manpages.ubuntu.com/manpages/noble/man1/repo-init.1.html)
-
 ## [scp](https://man7.org/linux/man-pages/man1/scp.1.html)
 scp <span class="green"> *source ... target* </span>
 
@@ -642,7 +758,18 @@ Copy file from local to remote
 Copy file from remote to local
 > scp myuser@192.168.0.1:/path/file2 /path/file1
 
+## [su](https://www.man7.org/linux/man-pages/man1/su.1.html)
 
+```
+$ sudo -i <Command>
+```
+
+Keep user environment variable:
+```
+$ sudo -E Command>
+```
+
+    
 ## else
 lsblk -o NAME,FSTYPE,UUI
 groups <userName-Here>
@@ -654,6 +781,25 @@ scp -P [port] [user@]192.168.1.10:~/kernel-new.img ./
     
 find -iname "*.lua" | xargs grep -n --color=auto "luci"
 
+# Function
+## Install transformers
+
+[Install transformers](https://huggingface.co/transformers/v3.5.1/installation.html)
+
+```
+# Create Virtual Environment
+$ python3 -m venv </path/to/directory>
+$ virtualenv -p </path/to/python3> <venv_name>
+    
+# Activate Virtual Environment
+$ source </path/to/directory>/bin/activate
+
+# Deactive
+$ deactivate
+```
+
+[venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
+[使用 pip 安裝 TensorFlow](https://www.tensorflow.org/install/pip?hl=zh-tw#virtual-environment-install)
 
 
 <style>
