@@ -69,26 +69,27 @@ git blame --ignore-rev commit-hash
     
 ## [git-config](https://man7.org/linux/man-pages/man1/git-config.1.html)
 ```
-git config blame.ignoreRevsFile .git-blame-ignore-revs
-git config rebase.updateRefs true
+$ git config blame.ignoreRevsFile .git-blame-ignore-revs
+$ git config rebase.updateRefs true
+$ git config --list
 ```
 
 
 
 ### global (~/.gitconfig)
 ```
-git config --global core.editor "vim"
-git config --global user.email "manbing3@gmail.com"
-git config --global user.name "Manbing"
+$ git config --global core.editor "vim"
+$ git config --global user.email "manbing3@gmail.com"
+$ git config --global user.name "Manbing"
 
-git config --global gc.reflogExpire "7 days"
-git config --global gc.reflogExpireUnreachable "7 days"
+$ git config --global gc.reflogExpire "7 days"
+$ git config --global gc.reflogExpireUnreachable "7 days"
     
-git config --global pack.windowMemory "100m"
-git config --global pack.packSizeLimit "100m"
-git config --global pack.threads "1"
+$ git config --global pack.windowMemory "100m"
+$ git config --global pack.packSizeLimit "100m"
+$ git config --global pack.threads "1"
 
-git config --global log.decorate auto
+$ git config --global log.decorate auto
 ```
     
 ### local
@@ -201,15 +202,18 @@ git remote set-url <name> <url>
 ```
 git rebase --update-refs
 ```
-    
+
+## git-switch
+```
+```
     
 ## git-stash
 ```
 git stash list
-git stash pop {stash@{0}}
-git stash drop {stash@{0}}
+git stash pop <stash@{0}>
+git stash drop <stash@{0}>
 git stash clear
-git stash save {name}
+git stash save <name>
 ```
     
 ## git-tagging
@@ -320,26 +324,27 @@ git blame --ignore-rev commit-hash
     
 ## [git-config](https://man7.org/linux/man-pages/man1/git-config.1.html)
 ```
-git config blame.ignoreRevsFile .git-blame-ignore-revs
-git config rebase.updateRefs true
+$ git config blame.ignoreRevsFile .git-blame-ignore-revs
+$ git config rebase.updateRefs true
+$ git config --list
 ```
 
 
 
 ### global (~/.gitconfig)
 ```
-git config --global core.editor "vim"
-git config --global user.email "manbing3@gmail.com"
-git config --global user.name "Manbing"
+$ git config --global core.editor "vim"
+$ git config --global user.email "manbing3@gmail.com"
+$ git config --global user.name "Manbing"
 
-git config --global gc.reflogExpire "7 days"
-git config --global gc.reflogExpireUnreachable "7 days"
+$ git config --global gc.reflogExpire "7 days"
+$ git config --global gc.reflogExpireUnreachable "7 days"
     
-git config --global pack.windowMemory "100m"
-git config --global pack.packSizeLimit "100m"
-git config --global pack.threads "1"
+$ git config --global pack.windowMemory "100m"
+$ git config --global pack.packSizeLimit "100m"
+$ git config --global pack.threads "1"
 
-git config --global log.decorate auto
+$ git config --global log.decorate auto
 ```
     
 ### local
@@ -452,15 +457,18 @@ git remote set-url <name> <url>
 ```
 git rebase --update-refs
 ```
-    
+
+## git-switch
+```
+```
     
 ## git-stash
 ```
 git stash list
-git stash pop {stash@{0}}
-git stash drop {stash@{0}}
+git stash pop <stash@{0}>
+git stash drop <stash@{0}>
 git stash clear
-git stash save {name}
+git stash save <name>
 ```
     
 ## git-tagging
