@@ -25,20 +25,11 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/uptime
 /proc/modules
 
-
 /proc/cmdline
 > kernel command line
 
 /proc/iomem
 ```
-
-```
-/proc/sysvipc/msg
-/proc/sys/fs/mqueue/queues_max
-/proc/sys/kernel/msgmax
-/proc/sys/kernel/msgmnb
-```
-
 
 ```
 /proc/<pid>/cmdline
@@ -50,7 +41,15 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/<pid>/stat
 /proc/<pid>/stack
 ```
-  ```  
+
+```
+echo "value" > /proc/sysrq-trigger
+/proc/sys/kernel/sysrq
+```
+
+
+### Netwrok
+```  
 /proc/net/arp
 /proc/net/vlan/config
 /proc/net/vlan/<interface>
@@ -61,10 +60,6 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/net/nf_conntrack
 /proc/net/tcp
 /proc/net/unix
-```
-```
-/proc/sys/kernel/core_pattern
-/proc/sys/kernel/printk
 /proc/sys/net/core/rmem_max(SO_RCVBUF)
 /proc/sys/net/core/wmem_max(SO_SNDBUF)
 /proc/sys/net/ipv4/ip_forward
@@ -72,25 +67,31 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/sys/net/ipv4/route/flush
 /proc/sys/net/ipv4/tcp_tw_reuse
 /proc/sys/net/ipv4/neigh/<dev>/gc_stale_time
-/proc/sys/vm/oom_dump_tasks
-/proc/sys/vm/drop_caches
 /proc/sys/net/unix/max_dgram_qlen
 /proc/sys/net/netfilter/nf_conntrack_max
 /proc/sys/net/netfilter/nf_conntrack_count
 ```
+
+### Kernel
 ```
-echo "value" > /proc/sysrq-trigger
-/proc/sys/kernel/sysrq
+/proc/sys/kernel/core_pattern
+/proc/sys/kernel/printk
+/proc/sys/vm/oom_dump_tasks
+/proc/sys/vm/drop_caches
 ```
 
-[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
+### [msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
 ```
 $ /proc/sys/kernel/msgmnb
 $ /proc/sys/kernel/msgmax
+$ /proc/sys/fs/mqueue/queues_max
+$ /proc/sysvipc/msg
 ```
     
 ### memory manage
->cat /proc/meminfo
+```
+$ cat /proc/meminfo
+```
     
 #### overcommit & oom killer
 ```
@@ -121,6 +122,7 @@ $ /proc/sys/kernel/msgmax
 ``` 
     
 ## debugfs
+```
 mount -t debugfs debugfs /sys/kernel/debug
 
 /sys/kernel/debug/kmemleak
@@ -131,6 +133,7 @@ echo scan=off > /sys/kernel/debug/kmemleak
 echo off > /sys/kernel/debug/kmemleak
 
 /sys/kernel/debug/slab/<cache>/ 
+```
 
 ### ftrace
 ```
@@ -149,11 +152,15 @@ echo off > /sys/kernel/debug/kmemleak
 ## bpf
     
 ## dev
-> /dev/watchdog
+```
+/dev/watchdog
+```
 
 ## else
-cat /etc/shells
-/dev/random# File System Hierarchy Standard
+```
+$ cat /etc/shells
+$ /dev/random
+```# File System Hierarchy Standard
 The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS) is a reference describing the conventions used for the layout of Unix-like systems. It has been made popular by its use in Linux distributions, but it is used by other Unix-like systems as well. It is maintained by the Linux Foundation. The latest version is 3.0, released on 3 June 2015.
 
 
@@ -174,20 +181,11 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/uptime
 /proc/modules
 
-
 /proc/cmdline
 > kernel command line
 
 /proc/iomem
 ```
-
-```
-/proc/sysvipc/msg
-/proc/sys/fs/mqueue/queues_max
-/proc/sys/kernel/msgmax
-/proc/sys/kernel/msgmnb
-```
-
 
 ```
 /proc/<pid>/cmdline
@@ -199,7 +197,15 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/<pid>/stat
 /proc/<pid>/stack
 ```
-  ```  
+
+```
+echo "value" > /proc/sysrq-trigger
+/proc/sys/kernel/sysrq
+```
+
+
+### Netwrok
+```  
 /proc/net/arp
 /proc/net/vlan/config
 /proc/net/vlan/<interface>
@@ -210,10 +216,6 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/net/nf_conntrack
 /proc/net/tcp
 /proc/net/unix
-```
-```
-/proc/sys/kernel/core_pattern
-/proc/sys/kernel/printk
 /proc/sys/net/core/rmem_max(SO_RCVBUF)
 /proc/sys/net/core/wmem_max(SO_SNDBUF)
 /proc/sys/net/ipv4/ip_forward
@@ -221,25 +223,31 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 /proc/sys/net/ipv4/route/flush
 /proc/sys/net/ipv4/tcp_tw_reuse
 /proc/sys/net/ipv4/neigh/<dev>/gc_stale_time
-/proc/sys/vm/oom_dump_tasks
-/proc/sys/vm/drop_caches
 /proc/sys/net/unix/max_dgram_qlen
 /proc/sys/net/netfilter/nf_conntrack_max
 /proc/sys/net/netfilter/nf_conntrack_count
 ```
+
+### Kernel
 ```
-echo "value" > /proc/sysrq-trigger
-/proc/sys/kernel/sysrq
+/proc/sys/kernel/core_pattern
+/proc/sys/kernel/printk
+/proc/sys/vm/oom_dump_tasks
+/proc/sys/vm/drop_caches
 ```
 
-[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
+### [msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
 ```
 $ /proc/sys/kernel/msgmnb
 $ /proc/sys/kernel/msgmax
+$ /proc/sys/fs/mqueue/queues_max
+$ /proc/sysvipc/msg
 ```
     
 ### memory manage
->cat /proc/meminfo
+```
+$ cat /proc/meminfo
+```
     
 #### overcommit & oom killer
 ```
@@ -270,6 +278,7 @@ $ /proc/sys/kernel/msgmax
 ``` 
     
 ## debugfs
+```
 mount -t debugfs debugfs /sys/kernel/debug
 
 /sys/kernel/debug/kmemleak
@@ -280,6 +289,7 @@ echo scan=off > /sys/kernel/debug/kmemleak
 echo off > /sys/kernel/debug/kmemleak
 
 /sys/kernel/debug/slab/<cache>/ 
+```
 
 ### ftrace
 ```
@@ -298,8 +308,12 @@ echo off > /sys/kernel/debug/kmemleak
 ## bpf
     
 ## dev
-> /dev/watchdog
+```
+/dev/watchdog
+```
 
 ## else
-cat /etc/shells
-/dev/random
+```
+$ cat /etc/shells
+$ /dev/random
+```
