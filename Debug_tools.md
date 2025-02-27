@@ -19,6 +19,8 @@ tags: [Linux]
 ### [crash](https://man7.org/linux/man-pages/man8/crash.8.html)
 > Analyze Linux crash dump data or a live system
 
+[Linux 核心設計: Kernel Debugging(1): Kdump](https://hackmd.io/@RinHizakura/HkHacces6)
+
 ### [\(c\)BPF/eBPF](https://hackmd.io/MoIbUgwzRbe-TSQ6NllufA)
 
 ### [kdump](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
@@ -43,6 +45,8 @@ tags: [Linux]
 
 ### [crash](https://man7.org/linux/man-pages/man8/crash.8.html)
 > Analyze Linux crash dump data or a live system
+
+[Linux 核心設計: Kernel Debugging(1): Kdump](https://hackmd.io/@RinHizakura/HkHacces6)
 
 ### [\(c\)BPF/eBPF](https://hackmd.io/MoIbUgwzRbe-TSQ6NllufA)
 
