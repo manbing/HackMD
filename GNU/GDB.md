@@ -71,7 +71,7 @@ print &((struct irene *)0x7ab2d8)->irene
 
 ### Examining Memory
 ```
-$ x/nfu $\lt$addr>
+$ x/nfu <addr>
 $ x/i $pc
 $ set *0xff800000=0x87
 $ x/b 0xff800000
@@ -83,7 +83,9 @@ $ dump memory <file name> <start address> <end address>
 $ set $sstatus = 0xFFFFFFFF
 
 ### Variabler
-set var value = 2148294706
+```
+$ set var value = 2148294706
+```
 
 ### frame
 ```
@@ -98,6 +100,14 @@ $ frame <id>
 ```
 $ info thread
 $ thread <id>
+```
+
+### Share library
+```
+info sharedlibrary
+set solib-absolute-prefix <Path>
+set solib-search-path <Path>
+add-symbol-file <File> <Memmory address>
 ```
 
 ### Reference
@@ -172,7 +182,7 @@ print &((struct irene *)0x7ab2d8)->irene
 
 ### Examining Memory
 ```
-$ x/nfu $\lt$addr>
+$ x/nfu <addr>
 $ x/i $pc
 $ set *0xff800000=0x87
 $ x/b 0xff800000
@@ -184,7 +194,9 @@ $ dump memory <file name> <start address> <end address>
 $ set $sstatus = 0xFFFFFFFF
 
 ### Variabler
-set var value = 2148294706
+```
+$ set var value = 2148294706
+```
 
 ### frame
 ```
@@ -199,6 +211,14 @@ $ frame <id>
 ```
 $ info thread
 $ thread <id>
+```
+
+### Share library
+```
+info sharedlibrary
+set solib-absolute-prefix <Path>
+set solib-search-path <Path>
+add-symbol-file <File> <Memmory address>
 ```
 
 ### Reference
