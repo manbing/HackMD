@@ -41,9 +41,16 @@ git ls-files
 
 ## git-archive
 ```
-git archive --format=tar --prefix="cindy/" <ref> > ../cindy.tar
+$ git archive --format=tar --prefix="cindy/" <ref> > ../cindy.tar
 ```
-    
+
+## git-apply
+```
+$ git apply --stat a_file.patch
+$ git apply --check a_file.patch
+
+```
+
 ## [git-am](https://man7.org/linux/man-pages/man1/git-am.1.html)
 > Apply a series of patches from a mailbox
 
@@ -90,6 +97,7 @@ $ git config --global pack.packSizeLimit "100m"
 $ git config --global pack.threads "1"
 
 $ git config --global log.decorate auto
+$ git config --global init.defaultBranch master
 ```
     
 ### local
@@ -235,11 +243,11 @@ git push <remote> --delete <tagname>
 
 ## Aliases
 ```
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-git config --global alias.visual '!gitk'
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.visual '!gitk'
 ```
 
 ## git hooks
@@ -251,10 +259,21 @@ git commit --no-verify
 ### Case: fix or improve a previous commit
 ```
 # Create a fixup commit targeting a specific commit
-git commit --fixup=<commit-hash>
+$ git commit --fixup=<commit-hash>
 
 # Later, during an interactive rebase, automatically squash fixup commits
-git rebase -i --autosquash <base-branch>
+$ git rebase -i --autosquash <base-branch>
+```
+
+### Case: patch commit to specific file
+```
+# Commit modification on GIT
+
+# Generate patch files
+$ git format-patch HEAD^ -o patchs/
+    
+# Patch to specific file
+$ patch -i patchs/001-test.patch
 ```
     
 ## Reference
@@ -296,9 +315,16 @@ git ls-files
 
 ## git-archive
 ```
-git archive --format=tar --prefix="cindy/" <ref> > ../cindy.tar
+$ git archive --format=tar --prefix="cindy/" <ref> > ../cindy.tar
 ```
-    
+
+## git-apply
+```
+$ git apply --stat a_file.patch
+$ git apply --check a_file.patch
+
+```
+
 ## [git-am](https://man7.org/linux/man-pages/man1/git-am.1.html)
 > Apply a series of patches from a mailbox
 
@@ -345,6 +371,7 @@ $ git config --global pack.packSizeLimit "100m"
 $ git config --global pack.threads "1"
 
 $ git config --global log.decorate auto
+$ git config --global init.defaultBranch master
 ```
     
 ### local
@@ -490,11 +517,11 @@ git push <remote> --delete <tagname>
 
 ## Aliases
 ```
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-git config --global alias.visual '!gitk'
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.visual '!gitk'
 ```
 
 ## git hooks
@@ -506,10 +533,21 @@ git commit --no-verify
 ### Case: fix or improve a previous commit
 ```
 # Create a fixup commit targeting a specific commit
-git commit --fixup=<commit-hash>
+$ git commit --fixup=<commit-hash>
 
 # Later, during an interactive rebase, automatically squash fixup commits
-git rebase -i --autosquash <base-branch>
+$ git rebase -i --autosquash <base-branch>
+```
+
+### Case: patch commit to specific file
+```
+# Commit modification on GIT
+
+# Generate patch files
+$ git format-patch HEAD^ -o patchs/
+    
+# Patch to specific file
+$ patch -i patchs/001-test.patch
 ```
     
 ## Reference
