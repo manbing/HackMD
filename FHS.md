@@ -10,36 +10,35 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 
 ## procfs [(5)](https://man7.org/linux/man-pages/man5/proc.5.html)
 ```
-/proc/cpuinfo
-/proc/kmsg
-/proc/interrupts
-/proc/mounts
-/proc/timer_stats
-/proc/sched_debug
-/proc/timer_list
-/proc/diskdump
-/proc/slabinfo
-/proc/kallsyms
-/proc/partitions
-/proc/kcore
-/proc/uptime
-/proc/modules
+$ /proc/cpuinfo
+$ /proc/kmsg
+$ /proc/mounts
+$ /proc/timer_stats
+$ /proc/sched_debug
+$ /proc/timer_list
+$ /proc/diskdump
+$ /proc/slabinfo
+$ /proc/kallsyms
+$ /proc/partitions
+$ /proc/kcore
+$ /proc/uptime
+$ /proc/modules
 
-/proc/cmdline
+$ /proc/cmdline
 > kernel command line
 
-/proc/iomem
+$ /proc/iomem
 ```
 
 ```
-/proc/<pid>/cmdline
-/proc/<pid>/status
-/proc/<pid>/maps
-/proc/<pid>/coredump_filter
-/proc/<pid>/oom_score
-/proc/<pid>/oom_adj
-/proc/<pid>/stat
-/proc/<pid>/stack
+$ /proc/<pid>/cmdline
+$ /proc/<pid>/status
+$ /proc/<pid>/maps
+$ /proc/<pid>/coredump_filter
+$ /proc/<pid>/oom_score
+$ /proc/<pid>/oom_adj
+$ /proc/<pid>/stat
+$ /proc/<pid>/stack
 ```
 
 ```
@@ -50,34 +49,40 @@ echo "value" > /proc/sysrq-trigger
 
 ### Netwrok
 ```  
-/proc/net/arp
-/proc/net/vlan/config
-/proc/net/vlan/<interface>
-/proc/net/bonding/config
-/proc/net/igmp
-/proc/net/snmp
-/proc/net/ip_tables_names
-/proc/net/nf_conntrack
-/proc/net/tcp
-/proc/net/unix
-/proc/sys/net/core/rmem_max(SO_RCVBUF)
-/proc/sys/net/core/wmem_max(SO_SNDBUF)
-/proc/sys/net/ipv4/ip_forward
-/proc/sys/net/ipv4/tcp_tw_recycle
-/proc/sys/net/ipv4/route/flush
-/proc/sys/net/ipv4/tcp_tw_reuse
-/proc/sys/net/ipv4/neigh/<dev>/gc_stale_time
-/proc/sys/net/unix/max_dgram_qlen
-/proc/sys/net/netfilter/nf_conntrack_max
-/proc/sys/net/netfilter/nf_conntrack_count
+$ /proc/net/arp
+$ /proc/net/vlan/config
+$ /proc/net/vlan/<interface>
+$ /proc/net/bonding/config
+$ /proc/net/igmp
+$ /proc/net/snmp
+$ /proc/net/ip_tables_names
+$ /proc/net/nf_conntrack
+$ /proc/net/tcp
+$ /proc/net/unix
+$ /proc/sys/net/core/rmem_max(SO_RCVBUF)
+$ /proc/sys/net/core/wmem_max(SO_SNDBUF)
+$ /proc/sys/net/ipv4/ip_forward
+$ /proc/sys/net/ipv4/tcp_tw_recycle
+$ /proc/sys/net/ipv4/route/flush
+$ /proc/sys/net/ipv4/tcp_tw_reuse
+$ /proc/sys/net/ipv4/neigh/<dev>/gc_stale_time
+$ /proc/sys/net/unix/max_dgram_qlen
+$ /proc/sys/net/netfilter/nf_conntrack_max
+$ /proc/sys/net/netfilter/nf_conntrack_count
+```
+
+### Interrupt
+```
+$ /proc/interrupts
+$ /proc/irq/<IRQ_NUMBER>/smp_affinity
 ```
 
 ### Kernel
 ```
-/proc/sys/kernel/core_pattern
-/proc/sys/kernel/printk
-/proc/sys/vm/oom_dump_tasks
-/proc/sys/vm/drop_caches
+$ /proc/sys/kernel/core_pattern
+$ /proc/sys/kernel/printk
+$ /proc/sys/vm/oom_dump_tasks
+$ /proc/sys/vm/drop_caches
 ```
 
 ### [msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
@@ -166,36 +171,35 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 
 ## procfs [(5)](https://man7.org/linux/man-pages/man5/proc.5.html)
 ```
-/proc/cpuinfo
-/proc/kmsg
-/proc/interrupts
-/proc/mounts
-/proc/timer_stats
-/proc/sched_debug
-/proc/timer_list
-/proc/diskdump
-/proc/slabinfo
-/proc/kallsyms
-/proc/partitions
-/proc/kcore
-/proc/uptime
-/proc/modules
+$ /proc/cpuinfo
+$ /proc/kmsg
+$ /proc/mounts
+$ /proc/timer_stats
+$ /proc/sched_debug
+$ /proc/timer_list
+$ /proc/diskdump
+$ /proc/slabinfo
+$ /proc/kallsyms
+$ /proc/partitions
+$ /proc/kcore
+$ /proc/uptime
+$ /proc/modules
 
-/proc/cmdline
+$ /proc/cmdline
 > kernel command line
 
-/proc/iomem
+$ /proc/iomem
 ```
 
 ```
-/proc/<pid>/cmdline
-/proc/<pid>/status
-/proc/<pid>/maps
-/proc/<pid>/coredump_filter
-/proc/<pid>/oom_score
-/proc/<pid>/oom_adj
-/proc/<pid>/stat
-/proc/<pid>/stack
+$ /proc/<pid>/cmdline
+$ /proc/<pid>/status
+$ /proc/<pid>/maps
+$ /proc/<pid>/coredump_filter
+$ /proc/<pid>/oom_score
+$ /proc/<pid>/oom_adj
+$ /proc/<pid>/stat
+$ /proc/<pid>/stack
 ```
 
 ```
@@ -206,34 +210,40 @@ echo "value" > /proc/sysrq-trigger
 
 ### Netwrok
 ```  
-/proc/net/arp
-/proc/net/vlan/config
-/proc/net/vlan/<interface>
-/proc/net/bonding/config
-/proc/net/igmp
-/proc/net/snmp
-/proc/net/ip_tables_names
-/proc/net/nf_conntrack
-/proc/net/tcp
-/proc/net/unix
-/proc/sys/net/core/rmem_max(SO_RCVBUF)
-/proc/sys/net/core/wmem_max(SO_SNDBUF)
-/proc/sys/net/ipv4/ip_forward
-/proc/sys/net/ipv4/tcp_tw_recycle
-/proc/sys/net/ipv4/route/flush
-/proc/sys/net/ipv4/tcp_tw_reuse
-/proc/sys/net/ipv4/neigh/<dev>/gc_stale_time
-/proc/sys/net/unix/max_dgram_qlen
-/proc/sys/net/netfilter/nf_conntrack_max
-/proc/sys/net/netfilter/nf_conntrack_count
+$ /proc/net/arp
+$ /proc/net/vlan/config
+$ /proc/net/vlan/<interface>
+$ /proc/net/bonding/config
+$ /proc/net/igmp
+$ /proc/net/snmp
+$ /proc/net/ip_tables_names
+$ /proc/net/nf_conntrack
+$ /proc/net/tcp
+$ /proc/net/unix
+$ /proc/sys/net/core/rmem_max(SO_RCVBUF)
+$ /proc/sys/net/core/wmem_max(SO_SNDBUF)
+$ /proc/sys/net/ipv4/ip_forward
+$ /proc/sys/net/ipv4/tcp_tw_recycle
+$ /proc/sys/net/ipv4/route/flush
+$ /proc/sys/net/ipv4/tcp_tw_reuse
+$ /proc/sys/net/ipv4/neigh/<dev>/gc_stale_time
+$ /proc/sys/net/unix/max_dgram_qlen
+$ /proc/sys/net/netfilter/nf_conntrack_max
+$ /proc/sys/net/netfilter/nf_conntrack_count
+```
+
+### Interrupt
+```
+$ /proc/interrupts
+$ /proc/irq/<IRQ_NUMBER>/smp_affinity
 ```
 
 ### Kernel
 ```
-/proc/sys/kernel/core_pattern
-/proc/sys/kernel/printk
-/proc/sys/vm/oom_dump_tasks
-/proc/sys/vm/drop_caches
+$ /proc/sys/kernel/core_pattern
+$ /proc/sys/kernel/printk
+$ /proc/sys/vm/oom_dump_tasks
+$ /proc/sys/vm/drop_caches
 ```
 
 ### [msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
