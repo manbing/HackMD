@@ -10,33 +10,33 @@ tags: [GNU]
 
 ## GDBserver
 ```
-gdbserver <ip>:<port> --attach <pid>
-gdbserver <ip>:<port> <program>
+$ gdbserver <ip>:<port> --attach <pid>
+$ gdbserver <ip>:<port> <program>
 ```
 
 ## GDB
 ```
-si (execute single instruction)
-stepi
-next
-step
-list <line|function>
-disas <function>
+(gdb) si (execute single instruction)
+(gdb) stepi
+(gdb) next
+(gdb) step
+(gdb) list <line|function>
+(gdb) disas <function>
 
-generate-core-file [file]
-set sysroot <system root path>
-info proc mapings
+(gdb) generate-core-file [file]
+(gdb) set sysroot <system root path>
+(gdb) info proc mapings
 
-print <variable>
-info sources
-info functions
-info sharedlibrary
-set solib-search-path <path>
-target remote <ip>:<port>
-target remote :1234
+(gdb) print <variable>
+(gdb) info sources
+(gdb) info functions
+(gdb) info sharedlibrary
+(gdb) set solib-search-path <path>
+(gdb) target remote <ip>:<port>
+(gdb) target remote :1234
 
-add-symbol-file
-core-file <file name>
+(gdb) add-symbol-file
+(gdb) core-file <file name>
 ```
 
 ### shortcuts
@@ -47,12 +47,12 @@ core-file <file name>
     
 ### break
 ```
-$ info breakpoints
-$ delete breakpoints
-$ disable <index>
-$ enable <index>
-$ break <address>
-$ break iter.c:6 if i == 5
+(gdb) info breakpoints
+(gdb) delete breakpoints
+(gdb) disable <index>
+(gdb) enable <index>
+(gdb) break <address>
+(gdb) break iter.c:6 if i == 5
 ```
 
 break x:20 if strcmp(y, "hello") == 0
@@ -60,54 +60,60 @@ break x:20 if strcmp(y, "hello") == 0
 
 ### info
 ```
-$ info line [File]:[Line]
-$ info line [Function]
-$ info line [File]:[Function]
-$ info line *[Address]
+(gdb) info line [File]:[Line]
+(gdb) info line [Function]
+(gdb) info line [File]:[Function]
+(gdb) info line *[Address]
 ```
 
 ### Print
-print &((struct irene *)0x7ab2d8)->irene
+```
+(gdb) print &((struct irene *)0x7ab2d8)->irene
+```
 
 ### Examining Memory
 ```
-$ x/nfu <addr>
-$ x/i $pc
-$ set *0xff800000=0x87
-$ x/b 0xff800000
-$ dump memory <file name> <start address> <end address>
+(gdb) x/nfu <addr>
+(gdb) x/i $pc
+(gdb) set *0xff800000=0x87
+(gdb) x/b 0xff800000
+(gdb) dump memory <file name> <start address> <end address>
 ```
 
 ### Register
-> $ info registers <span class="green">*<register name>*</span>
-$ set $sstatus = 0xFFFFFFFF
+```
+(gdb) info registers <register name>
+(gdb) set $sstatus = 0xFFFFFFFF
+(gdb) info registers
+(gdb) info all-registers
+```
 
 ### Variabler
 ```
-$ set var value = 2148294706
+(gdb) set var value = 2148294706
 ```
 
-### frame
+### stack frame
 ```
-$ info frame
-$ frame
-$ backtrace
-$ backtrace full
-$ frame <id>
+(gdb) info frame
+(gdb) frame
+(gdb) backtrace
+(gdb) backtrace full
+(gdb) frame <id>
 ```
 
 ### thread
 ```
-$ info thread
-$ thread <id>
+(gdb) info thread
+(gdb) thread <id>
 ```
 
 ### Share library
 ```
-info sharedlibrary
-set solib-absolute-prefix <Path>
-set solib-search-path <Path>
-add-symbol-file <File> <Memmory address>
+(gdb) info sharedlibrary
+(gdb) set solib-absolute-prefix <Path>
+(gdb) set solib-search-path <Path>
+(gdb) add-symbol-file <File> <Memmory address>
 ```
 
 ### Reference
@@ -115,10 +121,121 @@ add-symbol-file <File> <Memmory address>
 .green {
   color: #7FFF00;
 }
-</style>B (GNU DeBug)
+</style># GDB (GNU DeBug)
+###### tags: `GNU`
 
 
-## gdbserver
-set sysroot <system root path>
-info proc mapings
-
+## GDBserver
+```
+$ gdbserver <ip>:<port> --attach <pid>
+$ gdbserver <ip>:<port> <program>
+```
+
+## GDB
+```
+(gdb) si (execute single instruction)
+(gdb) stepi
+(gdb) next
+(gdb) step
+(gdb) list <line|function>
+(gdb) disas <function>
+
+(gdb) generate-core-file [file]
+(gdb) set sysroot <system root path>
+(gdb) info proc mapings
+
+(gdb) print <variable>
+(gdb) info sources
+(gdb) info functions
+(gdb) info sharedlibrary
+(gdb) set solib-search-path <path>
+(gdb) target remote <ip>:<port>
+(gdb) target remote :1234
+
+(gdb) add-symbol-file
+(gdb) core-file <file name>
+```
+
+### shortcuts
+* typing `Ctrl-C` will stop the program, and continue will resume it without sending any signal to it.
+
+* typing `Ctrl-Z` will stop the program, and continue will resume it accompanied by a SIGTSTP signal, so it will immediately stop again. If you type continue again, it should resume.
+
+    
+### break
+```
+(gdb) info breakpoints
+(gdb) delete breakpoints
+(gdb) disable <index>
+(gdb) enable <index>
+(gdb) break <address>
+(gdb) break iter.c:6 if i == 5
+```
+
+break x:20 if strcmp(y, "hello") == 0
+> 20 is line number, `x` can be any filename and `y` can be any variable.
+
+### info
+```
+(gdb) info line [File]:[Line]
+(gdb) info line [Function]
+(gdb) info line [File]:[Function]
+(gdb) info line *[Address]
+```
+
+### Print
+```
+(gdb) print &((struct irene *)0x7ab2d8)->irene
+```
+
+### Examining Memory
+```
+(gdb) x/nfu <addr>
+(gdb) x/i $pc
+(gdb) set *0xff800000=0x87
+(gdb) x/b 0xff800000
+(gdb) dump memory <file name> <start address> <end address>
+```
+
+### Register
+```
+(gdb) info registers <register name>
+(gdb) set $sstatus = 0xFFFFFFFF
+(gdb) info registers
+(gdb) info all-registers
+```
+
+### Variabler
+```
+(gdb) set var value = 2148294706
+```
+
+### stack frame
+```
+(gdb) info frame
+(gdb) frame
+(gdb) backtrace
+(gdb) backtrace full
+(gdb) frame <id>
+```
+
+### thread
+```
+(gdb) info thread
+(gdb) thread <id>
+```
+
+### Share library
+```
+(gdb) info sharedlibrary
+(gdb) set solib-absolute-prefix <Path>
+(gdb) set solib-search-path <Path>
+(gdb) add-symbol-file <File> <Memmory address>
+```
+
+### Reference
+<style>
+.green {
+  color: #7FFF00;
+}
+</style>
