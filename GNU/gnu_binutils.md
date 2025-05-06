@@ -13,6 +13,7 @@ addr2line -e <span class="green">*filename*</span> [addr addr ...]
 ## objcopy
 ## objdump
 ```
+# the compile flag be placed in the section, .debug_str.
 $ objdump -s --section .debug_str path/to/file.o
 ```
 ## readelf
@@ -44,6 +45,7 @@ addr2line -e <span class="green">*filename*</span> [addr addr ...]
 ## objcopy
 ## objdump
 ```
+# the compile flag be placed in the section, .debug_str.
 $ objdump -s --section .debug_str path/to/file.o
 ```
 ## readelf
