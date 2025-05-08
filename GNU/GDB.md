@@ -94,6 +94,8 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### stack frame
+the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not trace able sometime, depend on microarchitecture.
+
 ```
 (gdb) info frame
 (gdb) frame
@@ -211,6 +213,8 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### stack frame
+the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not trace able sometime, depend on microarchitecture.
+
 ```
 (gdb) info frame
 (gdb) frame
