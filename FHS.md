@@ -41,6 +41,11 @@ $ /proc/<pid>/stat
 $ /proc/<pid>/stack
 ```
 
+`$  /proc/<pid>/task`
+
+> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/<pid>/task directory.
+
+
 ```
 echo "value" > /proc/sysrq-trigger
 /proc/sys/kernel/sysrq
@@ -201,6 +206,11 @@ $ /proc/<pid>/oom_adj
 $ /proc/<pid>/stat
 $ /proc/<pid>/stack
 ```
+
+`$  /proc/<pid>/task`
+
+> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/<pid>/task directory.
+
 
 ```
 echo "value" > /proc/sysrq-trigger
