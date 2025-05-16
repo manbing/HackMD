@@ -6,6 +6,14 @@ title: Philosophy of life
 > "Good Heart"
 > 「心、平靜、明鏡止水、無我」
 > 「適可而止、中庸、中間」
+> 「方向比努力重要」
+> 「冥想」
+> 「論述」
+> 「量才是最重要的」
+> 「控制自己」
+> 「不求成功，不求失敗，只求無悔」
+> 「無悔、沒有遺憾」
+― 
 
 > 「心存善念，盡力而為」("good heart, do hard")
 ― 柯文哲
@@ -43,6 +51,14 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 > "Good Heart"
 > 「心、平靜、明鏡止水、無我」
 > 「適可而止、中庸、中間」
+> 「方向比努力重要」
+> 「冥想」
+> 「論述」
+> 「量才是最重要的」
+> 「控制自己」
+> 「不求成功，不求失敗，只求無悔」
+> 「無悔、沒有遺憾」
+― 
 
 > 「心存善念，盡力而為」("good heart, do hard")
 ― 柯文哲
