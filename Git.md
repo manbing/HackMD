@@ -9,9 +9,10 @@ tags: [Linux]
 
 ## relativing file/directory
 ```
-repository/.git/
-.gitignore
-~/.gitconfig
+$ repository/.git/
+$ .gitignore
+$ ~/.gitconfig
+$ source /usr/share/bash-completion/completions/git
 ```
 
 
@@ -133,6 +134,7 @@ git checkout c5f567 -- file1/to/restore file2/to/restore
 ```
 git commit --amend --date="$(date -R)"
 git commit --signoff
+git commit --amend --author="Author Name <email@address.com>"
 ```
 
 ## git-format-patch
@@ -200,15 +202,15 @@ git am <*.patch>
 
 ## git-remote
 ```
-git remote add <name> <URL>
-git remote show <name>
-git remote update --prune
-git remote set-url <name> <url>
+$ git remote add <name> <URL>
+$ git remote show <name>
+$ git remote update --prune
+$ git remote set-url <name> <url>
 ```
 
 ## git-rebase
 ```
-git rebase --update-refs
+$ git rebase --update-refs
 ```
 
 ## git-switch
@@ -217,28 +219,28 @@ git rebase --update-refs
     
 ## git-stash
 ```
-git stash list
-git stash pop <stash@{0}>
-git stash drop <stash@{0}>
-git stash clear
-git stash save <name>
+$ git stash list
+$ git stash pop <stash@{0}>
+$ git stash drop <stash@{0}>
+$ git stash clear
+$ git stash save <name>
 ```
     
 ## git-tagging
 ```
-git tag
+$ git tag
 (Annotated)
-git tag -a <tagname> -m "my version 1.4"
+$ git tag -a <tagname> -m "my version 1.4"
 (Lightweight)
-git tag -l
-git tag <tagname>
-git tag -a <tagname> 9fceb02
-git show <tagname>
-git tag -d <tagname>
-git push <remote> <tagname>
-git push <remote> --tags
-git push <remote> :refs/tags/<tagname>
-git push <remote> --delete <tagname>
+$ git tag -l
+$ git tag <tagname>
+$ git tag -a <tagname> 9fceb02
+$ git show <tagname>
+$ git tag -d <tagname>
+$ git push <remote> <tagname>
+$ git push <remote> --tags
+$ git push <remote> :refs/tags/<tagname>
+$ git push <remote> --delete <tagname>
 ```
 
 ## Aliases
@@ -283,9 +285,10 @@ $ patch -i patchs/001-test.patch
 
 ## relativing file/directory
 ```
-repository/.git/
-.gitignore
-~/.gitconfig
+$ repository/.git/
+$ .gitignore
+$ ~/.gitconfig
+$ source /usr/share/bash-completion/completions/git
 ```
 
 
@@ -407,6 +410,7 @@ git checkout c5f567 -- file1/to/restore file2/to/restore
 ```
 git commit --amend --date="$(date -R)"
 git commit --signoff
+git commit --amend --author="Author Name <email@address.com>"
 ```
 
 ## git-format-patch
@@ -474,15 +478,15 @@ git am <*.patch>
 
 ## git-remote
 ```
-git remote add <name> <URL>
-git remote show <name>
-git remote update --prune
-git remote set-url <name> <url>
+$ git remote add <name> <URL>
+$ git remote show <name>
+$ git remote update --prune
+$ git remote set-url <name> <url>
 ```
 
 ## git-rebase
 ```
-git rebase --update-refs
+$ git rebase --update-refs
 ```
 
 ## git-switch
@@ -491,28 +495,28 @@ git rebase --update-refs
     
 ## git-stash
 ```
-git stash list
-git stash pop <stash@{0}>
-git stash drop <stash@{0}>
-git stash clear
-git stash save <name>
+$ git stash list
+$ git stash pop <stash@{0}>
+$ git stash drop <stash@{0}>
+$ git stash clear
+$ git stash save <name>
 ```
     
 ## git-tagging
 ```
-git tag
+$ git tag
 (Annotated)
-git tag -a <tagname> -m "my version 1.4"
+$ git tag -a <tagname> -m "my version 1.4"
 (Lightweight)
-git tag -l
-git tag <tagname>
-git tag -a <tagname> 9fceb02
-git show <tagname>
-git tag -d <tagname>
-git push <remote> <tagname>
-git push <remote> --tags
-git push <remote> :refs/tags/<tagname>
-git push <remote> --delete <tagname>
+$ git tag -l
+$ git tag <tagname>
+$ git tag -a <tagname> 9fceb02
+$ git show <tagname>
+$ git tag -d <tagname>
+$ git push <remote> <tagname>
+$ git push <remote> --tags
+$ git push <remote> :refs/tags/<tagname>
+$ git push <remote> --delete <tagname>
 ```
 
 ## Aliases
