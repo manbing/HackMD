@@ -77,7 +77,7 @@ $ gcc -M
 -fomit-frame-pointer
 > Omit the frame pointer in functions that don’t need one. This avoids the instructions to save, set up and restore the frame pointer; on many targets it also makes an extra register available.
 > 
-> This flag is working on AArch32. It can see in core dump, the stack frame will be not trace able. That is, the GDB command, backtrace, can not provide useful information.
+> This flag is working on AArch32. It can see in core dump, **the stack frame will be not trace able**. That is, the GDB command, backtrace, can not provide useful information.
 > 
 > On some targets this flag has no effect because the standard calling sequence always uses a frame pointer, so it cannot be omitted.
 > 
@@ -129,6 +129,19 @@ unsigned int __attribute__((aligned(0x1000))) page_table_root [256][1024] = {0};
 
 __attribute__((section(".isr_vector"))) uint32_t *isr_vectors[] = {...};
 ```
+
+## Memory ordering
+
+* Memory barrier
+
+`asm volatile("": : :"memory")` 
+
+Inline asm. actually does nothing at runtime, there's no command performed there and the CPU doesn't know about it. it only serves at compile time, to tell the compiler not to move loads or stores beyond this point (in any direction) as part of its optimizations. It's called a **SW barrier**.
+
+
+`__sync_synchronize()`
+
+Builtin sync. would simply translate into a **HW barrier**, probably a fence (mfence/sfence) operations if you're on x86, or its equivalents in other architectures. The CPU may also do various optimizations at runtime, the most important one is actually performing operations out-of-order - this instruction tells it to make sure that loads or stores can't pass this point and must be observed in the correct side of the sync point.
 
 ## Reference
 [How A Compiler Works: GNU Toolchain](https://www.slideshare.net/jserv/how-a-compiler-works-gnu-toolchain)# GCC (GNU Compiler Collection)
@@ -204,7 +217,7 @@ $ gcc -M
 -fomit-frame-pointer
 > Omit the frame pointer in functions that don’t need one. This avoids the instructions to save, set up and restore the frame pointer; on many targets it also makes an extra register available.
 > 
-> This flag is working on AArch32. It can see in core dump, the stack frame will be not trace able. That is, the GDB command, backtrace, can not provide useful information.
+> This flag is working on AArch32. It can see in core dump, **the stack frame will be not trace able**. That is, the GDB command, backtrace, can not provide useful information.
 > 
 > On some targets this flag has no effect because the standard calling sequence always uses a frame pointer, so it cannot be omitted.
 > 
@@ -256,6 +269,19 @@ unsigned int __attribute__((aligned(0x1000))) page_table_root [256][1024] = {0};
 
 __attribute__((section(".isr_vector"))) uint32_t *isr_vectors[] = {...};
 ```
+
+## Memory ordering
+
+* Memory barrier
+
+`asm volatile("": : :"memory")` 
+
+Inline asm. actually does nothing at runtime, there's no command performed there and the CPU doesn't know about it. it only serves at compile time, to tell the compiler not to move loads or stores beyond this point (in any direction) as part of its optimizations. It's called a **SW barrier**.
+
+
+`__sync_synchronize()`
+
+Builtin sync. would simply translate into a **HW barrier**, probably a fence (mfence/sfence) operations if you're on x86, or its equivalents in other architectures. The CPU may also do various optimizations at runtime, the most important one is actually performing operations out-of-order - this instruction tells it to make sure that loads or stores can't pass this point and must be observed in the correct side of the sync point.
 
 ## Reference
 [How A Compiler Works: GNU Toolchain](https://www.slideshare.net/jserv/how-a-compiler-works-gnu-toolchain)
