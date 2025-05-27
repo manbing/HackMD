@@ -18,21 +18,6 @@ last in, first out
 ### Queues
 first in, first out
 
-
-## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
-### Array
-### Linked list
-
-### Heap
-Max heap
-Min heap
-
-### Hash tables
-hash set
->stores unique elements without any associated values
-
-hash map
->stores key-value pairs where the keys are unique identifiers and the values are associated data
 ### Trees
 Tree traversal: DFS, BFS
 
@@ -70,6 +55,21 @@ Left < Root < Right
 | Binary tree |  O($n$) | O($n$)  | O($n$) |
 
 
+## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
+### Array
+### Linked list
+
+### Heap
+Max heap
+Min heap
+
+### Hash tables
+hash set
+>stores unique elements without any associated values
+
+hash map
+>stores key-value pairs where the keys are unique identifiers and the values are associated data
+
 ## [Data type](https://en.wikipedia.org/wiki/Data_type)
 basic data types of integer numbers, floating-point numbers, characters and Booleans.
 
@@ -99,7 +99,10 @@ basic data types of integer numbers, floating-point numbers, characters and Bool
 
 ### Shortest paths
 [Dijkstra's algorithm](https://ithelp.ithome.com.tw/articles/10209593)
+
 A\* algorithm
+
+[Prim's algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
 
 ### [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting)
 a directed graph
@@ -161,21 +164,6 @@ last in, first out
 ### Queues
 first in, first out
 
-
-## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
-### Array
-### Linked list
-
-### Heap
-Max heap
-Min heap
-
-### Hash tables
-hash set
->stores unique elements without any associated values
-
-hash map
->stores key-value pairs where the keys are unique identifiers and the values are associated data
 ### Trees
 Tree traversal: DFS, BFS
 
@@ -213,6 +201,21 @@ Left < Root < Right
 | Binary tree |  O($n$) | O($n$)  | O($n$) |
 
 
+## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
+### Array
+### Linked list
+
+### Heap
+Max heap
+Min heap
+
+### Hash tables
+hash set
+>stores unique elements without any associated values
+
+hash map
+>stores key-value pairs where the keys are unique identifiers and the values are associated data
+
 ## [Data type](https://en.wikipedia.org/wiki/Data_type)
 basic data types of integer numbers, floating-point numbers, characters and Booleans.
 
@@ -242,7 +245,10 @@ basic data types of integer numbers, floating-point numbers, characters and Bool
 
 ### Shortest paths
 [Dijkstra's algorithm](https://ithelp.ithome.com.tw/articles/10209593)
+
 A\* algorithm
+
+[Prim's algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
 
 ### [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting)
 a directed graph
