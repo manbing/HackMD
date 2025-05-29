@@ -1,3 +1,27 @@
+---
+title: Programming Language C
+tags: [Programming Language]
+
+---
+
 # Programming Language C
 
+# Data type
+
+## Character
 Strings are arrays of char(ASCII) whose last element is a null character '\0' with an ASCII value of 0. C has no native string data type, so strings must always be treated as character(ASCII) arrays.
+
+# Memory
+
+## Dereference `*`
+`[]` is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.# Programming Language C
+
+# Data type
+
+## Character
+Strings are arrays of char(ASCII) whose last element is a null character '\0' with an ASCII value of 0. C has no native string data type, so strings must always be treated as character(ASCII) arrays.
+
+# Memory
+
+## Dereference `*`
+`[]` is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
