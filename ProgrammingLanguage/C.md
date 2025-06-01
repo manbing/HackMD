@@ -14,7 +14,10 @@ Strings are arrays of char(ASCII) whose last element is a null character '\0' wi
 # Memory
 
 ## Dereference `*`
-`[]` is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.# Programming Language C
+`[]`(Array subscripting) is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
+
+# [Operators in C](https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B)
+During expression evaluation, the order in which sub-expressions are evaluated is determined by **recedence** and **associativity**. An operator with higher precedence is evaluated before a operator of lower precedence and the operands of an operator are evaluated based on associativity. # Programming Language C
 
 # Data type
 
@@ -24,4 +27,7 @@ Strings are arrays of char(ASCII) whose last element is a null character '\0' wi
 # Memory
 
 ## Dereference `*`
-`[]` is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
+`[]`(Array subscripting) is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
+
+# [Operators in C](https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B)
+During expression evaluation, the order in which sub-expressions are evaluated is determined by **recedence** and **associativity**. An operator with higher precedence is evaluated before a operator of lower precedence and the operands of an operator are evaluated based on associativity. 
