@@ -54,6 +54,9 @@ Left < Root < Right
 | Binary Heap tree |   1 (*max/min*) |  O(log$n$) |  1 (*max/min*) |
 | Binary tree |  O($n$) | O($n$)  | O($n$) |
 
+#### [Trie](https://en.wikipedia.org/wiki/Trie)
+* Dictionary tree
+In computer science, a trie, also known as a digital tree or prefix tree, is a specialized search tree data structure used to store and retrieve strings from a dictionary or set. 
 
 ## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
 ### Array
@@ -91,7 +94,7 @@ basic data types of integer numbers, floating-point numbers, characters and Bool
 | Algorithms | Worst case | Best case | Average case |
 | -------- | -------- | -------- | -------- |
 | [Binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm)    | O(log$n$)     | 1   | O(log$n$)|
-
+| [Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)    | O(log$n$)     | 1   | O(log$n$)|
 
 ## Graph Theory
 ### DFS/BFS
@@ -200,6 +203,9 @@ Left < Root < Right
 | Binary Heap tree |   1 (*max/min*) |  O(log$n$) |  1 (*max/min*) |
 | Binary tree |  O($n$) | O($n$)  | O($n$) |
 
+#### [Trie](https://en.wikipedia.org/wiki/Trie)
+* Dictionary tree
+In computer science, a trie, also known as a digital tree or prefix tree, is a specialized search tree data structure used to store and retrieve strings from a dictionary or set. 
 
 ## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
 ### Array
@@ -237,7 +243,7 @@ basic data types of integer numbers, floating-point numbers, characters and Bool
 | Algorithms | Worst case | Best case | Average case |
 | -------- | -------- | -------- | -------- |
 | [Binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm)    | O(log$n$)     | 1   | O(log$n$)|
-
+| [Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)    | O(log$n$)     | 1   | O(log$n$)|
 
 ## Graph Theory
 ### DFS/BFS
