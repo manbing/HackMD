@@ -5,7 +5,7 @@ title: Philosophy of life
 
 > "Good Heart"
 > 「心、平靜、明鏡止水、無我」
-> 「適可而止、中庸、中間」
+> 「適可而止、中庸、適當、適量」
 > 「方向比努力重要」
 > 「冥想」
 > 「論述、表達方式」
@@ -13,8 +13,8 @@ title: Philosophy of life
 > 「控制自己」
 > 「不求成功，不求失敗，只求無悔」
 > 「無悔、沒有遺憾」
-> 「情緒與解決問題」
-> 「盡人事，聽天命」
+> 「情緒」
+> 「運氣比較好而已」
 ― Eren
 
 > 心存善念，盡力而為」("good heart, do hard")
@@ -52,7 +52,7 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 * Intensive Reading (academic reading)
 > "Good Heart"
 > 「心、平靜、明鏡止水、無我」
-> 「適可而止、中庸、中間」
+> 「適可而止、中庸、適當、適量」
 > 「方向比努力重要」
 > 「冥想」
 > 「論述、表達方式」
@@ -60,8 +60,8 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 > 「控制自己」
 > 「不求成功，不求失敗，只求無悔」
 > 「無悔、沒有遺憾」
-> 「情緒與解決問題」
-> 「盡人事，聽天命」
+> 「情緒」
+> 「運氣比較好而已」
 ― Eren
 
 > 心存善念，盡力而為」("good heart, do hard")
