@@ -66,7 +66,7 @@ In computer science, a trie, also known as a digital tree or prefix tree, is a s
 Max heap
 Min heap
 
-### Hash tables
+### [Hash tables](https://en.wikipedia.org/wiki/Hash_table)
 hash set
 >stores unique elements without any associated values
 
@@ -127,6 +127,16 @@ Kahn's algorithm
 
 
 [visualising alorighm](https://visualgo.net/en/sorting)
+
+## Greedy algorithm V.S. Dynamic programming
+Greedy
+> Make the choice **before** solving the subproblem, Top-Down
+
+
+Dynamic programming
+> Make the choice **after** solving the subproblem, Down-Top
+
+
 
 # Runtime analysis
 
@@ -215,7 +225,7 @@ In computer science, a trie, also known as a digital tree or prefix tree, is a s
 Max heap
 Min heap
 
-### Hash tables
+### [Hash tables](https://en.wikipedia.org/wiki/Hash_table)
 hash set
 >stores unique elements without any associated values
 
@@ -276,6 +286,16 @@ Kahn's algorithm
 
 
 [visualising alorighm](https://visualgo.net/en/sorting)
+
+## Greedy algorithm V.S. Dynamic programming
+Greedy
+> Make the choice **before** solving the subproblem, Top-Down
+
+
+Dynamic programming
+> Make the choice **after** solving the subproblem, Down-Top
+
+
 
 # Runtime analysis
 
