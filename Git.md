@@ -136,7 +136,13 @@ git commit --amend --date="$(date -R)"
 git commit --signoff
 git commit --amend --author="Author Name <email@address.com>"
 ```
+## [git-describe](https://git-scm.com/docs/git-describe)
+The command finds the most recent tag that is reachable from a commit. 
+```
+git describe --contains <commit-ish>
+```
 
+    
 ## git-format-patch
 ```
 git format-patch <start SHA>..<end SHA> -o <dir>
@@ -412,7 +418,13 @@ git commit --amend --date="$(date -R)"
 git commit --signoff
 git commit --amend --author="Author Name <email@address.com>"
 ```
+## [git-describe](https://git-scm.com/docs/git-describe)
+The command finds the most recent tag that is reachable from a commit. 
+```
+git describe --contains <commit-ish>
+```
 
+    
 ## git-format-patch
 ```
 git format-patch <start SHA>..<end SHA> -o <dir>
