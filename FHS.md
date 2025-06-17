@@ -26,9 +26,10 @@ $ /proc/modules
 
 $ /proc/cmdline
 > kernel command line
-
-$ /proc/iomem
 ```
+[/proc/iomem](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
+
+> I/O memory map in Linux 2.4.
 
 ```
 $ /proc/<pid>/cmdline
@@ -192,9 +193,10 @@ $ /proc/modules
 
 $ /proc/cmdline
 > kernel command line
-
-$ /proc/iomem
 ```
+[/proc/iomem](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
+
+> I/O memory map in Linux 2.4.
 
 ```
 $ /proc/<pid>/cmdline
