@@ -1,95 +1,150 @@
 ---
 title: UCI(Unified Configuration Interface)
-tags: [OpenWrt]
+tags: [OpenWRT]
 
 ---
 
 # UCI(Unified Configuration Interface)
 ###### tags: `OpenWRT`
+UCI is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
+Package is saved in configuration directory (locate in flash), `/etc/config`;
+Change delta is saved in save directory (locate in RAM), `/tmp/.uci`.
+
+UCI system provide a lot of shell command and API to manipulate configuration. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
+
+UCI is system-level program. Many process will call it simultaneously. It is important to guarantee the synchronization of configuration files; It involves synchronization problem here. However, synchronization is speed's opposite. it needs do some trade-off on that.
+
+In UCI design concept, it provides two save mechanism. one, change delta, is synchronization, it be protected by `flock()` fine-grained; the other one, package, is not synchornization, it has readers-writers problems. Therefore, developer should use the commit function very carefully. If the request is changing setting and take effect, the save function is enough.
+
+## Manual Page
+### API
+`uci_set()`
+Modify UCI setting. Changing configuration setting in process memory.
+
+`uci_save()`
+Save configuration from <mark>process memory</mark> to <mark>change delta</mark>.
+
+`uci_commit()`
+Save configuration from <mark>process memory</mark> and <mark>change delta</mark>, to <mark>package</mark>.
+
+`uci_load()`
+Import configuration from package.
+
+### Shell Command
+`uci show`, `uci get`
+Display UCI setting. This command includes below flow:
+1. Loading configuration file from package to process memory.
+2. Loading configruation file from cahnge delta to process memory.
+3. Showing complete configration.
+
+`uci set`
+Change UCI and save to change delta.
+
+`uci changes`
+Show change delta.
+
+`uci revert`
+Remove change delta.
+
+### Examples
+```
+$ uci get prplmesh.config.enable
+$ uci show netwok
+$ uci export netwok
+
+#Find corrupted configs
+$ uci validate
+
+#Showing the not-yet-saved modified values
+$ uci changes
 
 
-Different presentation
-- Human-friendly: as presented in the config files or with the command “uci export <config>”
-- Programmable: as presented with the command “uci show <config>”
+$ uci set network.lan.ipaddr=192.168.2.2
+$ uci commit network
 
-#### Configuration files
-[Configuration example](https://hackmd.io/ya8BeBw2Qgy_YslcLUl-Jg)
+#Change wireless confiuration
+$ uci set wireless.wifinet1.disabled=0
 
-#### C API
->uci_set
-uci_commit()
-uci_unload()
-uci_free_context()
-uci_lookup_option()
-uci_foreach_element()
-load_config()
-uci_load()
-uci_lookup_option_string()
+#Save wireless configuration to flash
+$ uci commit wireless
 
-#### shell
-uci get prplmesh.config.enable
-uci show $\lt$SUBSYSTEM_NAME$\gt$
-uci export $\lt$SUBSYSTEM_NAME$\gt$
+#Issue wireless new setting
+$ /sbin/wifi down
+$ /sbin/wifi up
+```
 
-uci validate
-> find corrupted configs
 
-uci changes
-> Showing the not-yet-saved modified values
-
-uci set network.lan.ipaddr=192.168.2.2
-uci commit $\lt$config$\gt$
-
-uci set wireless.wifinet1.disabled=0
-> change wireless confiuration
-
-uci commit wireless
-> save wireless configuration
-
-/sbin/wifi down
-/sbin/wifi up
-> issue wireless new setting# UCI(Unified Configuration Interface)
+## Reference
+[Different presentation](https://openwrt.org/docs/guide-user/base-system/uci#different_presentation)
+# UCI(Unified Configuration Interface)
 ###### tags: `OpenWRT`
+UCI is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
+Package is saved in configuration directory (locate in flash), `/etc/config`;
+Change delta is saved in save directory (locate in RAM), `/tmp/.uci`.
+
+UCI system provide a lot of shell command and API to manipulate configuration. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
+
+UCI is system-level program. Many process will call it simultaneously. It is important to guarantee the synchronization of configuration files; It involves synchronization problem here. However, synchronization is speed's opposite. it needs do some trade-off on that.
+
+In UCI design concept, it provides two save mechanism. one, change delta, is synchronization, it be protected by `flock()` fine-grained; the other one, package, is not synchornization, it has readers-writers problems. Therefore, developer should use the commit function very carefully. If the request is changing setting and take effect, the save function is enough.
+
+## Manual Page
+### API
+`uci_set()`
+Modify UCI setting. Changing configuration setting in process memory.
+
+`uci_save()`
+Save configuration from <mark>process memory</mark> to <mark>change delta</mark>.
+
+`uci_commit()`
+Save configuration from <mark>process memory</mark> and <mark>change delta</mark>, to <mark>package</mark>.
+
+`uci_load()`
+Import configuration from package.
+
+### Shell Command
+`uci show`, `uci get`
+Display UCI setting. This command includes below flow:
+1. Loading configuration file from package to process memory.
+2. Loading configruation file from cahnge delta to process memory.
+3. Showing complete configration.
+
+`uci set`
+Change UCI and save to change delta.
+
+`uci changes`
+Show change delta.
+
+`uci revert`
+Remove change delta.
+
+### Examples
+```
+$ uci get prplmesh.config.enable
+$ uci show netwok
+$ uci export netwok
+
+#Find corrupted configs
+$ uci validate
+
+#Showing the not-yet-saved modified values
+$ uci changes
 
 
-Different presentation
-- Human-friendly: as presented in the config files or with the command “uci export <config>”
-- Programmable: as presented with the command “uci show <config>”
+$ uci set network.lan.ipaddr=192.168.2.2
+$ uci commit network
 
-#### Configuration files
-[Configuration example](https://hackmd.io/ya8BeBw2Qgy_YslcLUl-Jg)
+#Change wireless confiuration
+$ uci set wireless.wifinet1.disabled=0
 
-#### C API
->uci_set
-uci_commit()
-uci_unload()
-uci_free_context()
-uci_lookup_option()
-uci_foreach_element()
-load_config()
-uci_load()
-uci_lookup_option_string()
+#Save wireless configuration to flash
+$ uci commit wireless
 
-#### shell
-uci get prplmesh.config.enable
-uci show $\lt$SUBSYSTEM_NAME$\gt$
-uci export $\lt$SUBSYSTEM_NAME$\gt$
+#Issue wireless new setting
+$ /sbin/wifi down
+$ /sbin/wifi up
+```
 
-uci validate
-> find corrupted configs
 
-uci changes
-> Showing the not-yet-saved modified values
-
-uci set network.lan.ipaddr=192.168.2.2
-uci commit $\lt$config$\gt$
-
-uci set wireless.wifinet1.disabled=0
-> change wireless confiuration
-
-uci commit wireless
-> save wireless configuration
-
-/sbin/wifi down
-/sbin/wifi up
-> issue wireless new setting
+## Reference
+[Different presentation](https://openwrt.org/docs/guide-user/base-system/uci#different_presentation)
