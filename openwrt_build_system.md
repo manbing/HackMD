@@ -118,27 +118,39 @@ mv aaa.ipk aaa.tgz
 tar zxvf aaa.tgz
 
 ## quilt
-quilt series: 查詢目前有哪些 patch
-quilt applied: 查詢已經 apply 的 patch
-quilt unapplied: 查詢還沒 apply 的 patch
-quilt next:
-quilt top:
-quilt refresh:
-quilt push
-quilt pop
-quilt new 115-new-test.patch
-quilt add quilt_add_01.c
-quilt edit quilt_add_02.c
-quilt remove quilt_add_01.c
-quilt refresh
-quilt files
-> Print the list of files that the topmost or specified patch changes.
+```
+#查詢目前有哪些 patch
+$ quilt series
+
+#查詢已經 apply 的 patch
+$ quilt applied
+
+#查詢還沒 apply 的 patch
+$ quilt unapplied
+$ quilt next
+$ quilt top
+$ quilt refresh
+$ quilt push -a
+$ quilt pop
+$ quilt new 115-new-test.patch
+$ quilt add quilt_add_01.c
+$ quilt edit quilt_add_02.c
+$ quilt remove quilt_add_01.c
+$ quilt refresh
+
+#Print the list of files that the topmost or specified patch changes.
+$ quilt files
+```
     
 ### create patch
->quilt new 001-main_test.patch
-quilt edit tftp/main.c
-quilt diff
-quilt refresh
+```
+$ make path/to/package/{clean,prepare} V=s QUILT=1
+$ quilt new 001-main_test.patch
+$ quilt edit path/to/file.c
+$ quilt diff
+$ quilt refresh
+$ make path/to/package/update V=s -j1
+```
 
 [Linux - 管理 patch 的工具 : quilt](http://kaiyhsu.blogspot.com/2018/01/quilt-patch.html)
     
@@ -264,27 +276,39 @@ mv aaa.ipk aaa.tgz
 tar zxvf aaa.tgz
 
 ## quilt
-quilt series: 查詢目前有哪些 patch
-quilt applied: 查詢已經 apply 的 patch
-quilt unapplied: 查詢還沒 apply 的 patch
-quilt next:
-quilt top:
-quilt refresh:
-quilt push
-quilt pop
-quilt new 115-new-test.patch
-quilt add quilt_add_01.c
-quilt edit quilt_add_02.c
-quilt remove quilt_add_01.c
-quilt refresh
-quilt files
-> Print the list of files that the topmost or specified patch changes.
+```
+#查詢目前有哪些 patch
+$ quilt series
+
+#查詢已經 apply 的 patch
+$ quilt applied
+
+#查詢還沒 apply 的 patch
+$ quilt unapplied
+$ quilt next
+$ quilt top
+$ quilt refresh
+$ quilt push -a
+$ quilt pop
+$ quilt new 115-new-test.patch
+$ quilt add quilt_add_01.c
+$ quilt edit quilt_add_02.c
+$ quilt remove quilt_add_01.c
+$ quilt refresh
+
+#Print the list of files that the topmost or specified patch changes.
+$ quilt files
+```
     
 ### create patch
->quilt new 001-main_test.patch
-quilt edit tftp/main.c
-quilt diff
-quilt refresh
+```
+$ make path/to/package/{clean,prepare} V=s QUILT=1
+$ quilt new 001-main_test.patch
+$ quilt edit path/to/file.c
+$ quilt diff
+$ quilt refresh
+$ make path/to/package/update V=s -j1
+```
 
 [Linux - 管理 patch 的工具 : quilt](http://kaiyhsu.blogspot.com/2018/01/quilt-patch.html)
     
