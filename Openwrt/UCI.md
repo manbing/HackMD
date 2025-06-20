@@ -1,20 +1,22 @@
 ---
 title: UCI(Unified Configuration Interface)
-tags: [OpenWRT]
+tags: [OpenWrt]
 
 ---
 
 # UCI(Unified Configuration Interface)
 ###### tags: `OpenWRT`
 UCI is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
-Package is saved in configuration directory (locate in flash), `/etc/config`;
-Change delta is saved in save directory (locate in RAM), `/tmp/.uci`.
+Package file is saved in configuration directory (locate in flash), `/etc/config`;
+Change delta file is saved in save directory (locate in RAM), `/tmp/.uci`.
 
-UCI system provide a lot of shell command and API to manipulate configuration. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
+UCI system provide a lot of shell command and API to manipulate configuration files. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
 
 UCI is system-level program. Many process will call it simultaneously. It is important to guarantee the synchronization of configuration files; It involves synchronization problem here. However, synchronization is speed's opposite. it needs do some trade-off on that.
 
-In UCI design concept, it provides two save mechanism. one, change delta, is synchronization, it be protected by `flock()` fine-grained; the other one, package, is not synchornization, it has readers-writers problems. Therefore, developer should use the commit function very carefully. If the request is changing setting and take effect, the save function is enough.
+`uci_save()` has charge of the chagne delta file. `uci_save()` protect the chagne delta file with `flock()` fine-grained. Therefore, it is synchronization. `uci_commit()` is reponsible for the package file. However, `uci_commit()` has readers-writers problems. It is not synchornization. Therefore, developer should use UCI commit very carefully. If the request is changing setting and take effect, UCI save is enough.
+
+Maybe you have a question for UCI commit. Is it bug? In my opinion, it is design, not bug. OpenWrt is GUI-drive system. After system bootup and initialize, `rpcd` process is the only place does UCI commit. When user does some setting in GUI and click apply button, `rpcd` process will receives notification and does UCI commit. Under this situation, the readers-writers issue will not happen on the package file, because only one process does.
 
 ## Manual Page
 ### API
@@ -79,14 +81,16 @@ $ /sbin/wifi up
 # UCI(Unified Configuration Interface)
 ###### tags: `OpenWRT`
 UCI is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
-Package is saved in configuration directory (locate in flash), `/etc/config`;
-Change delta is saved in save directory (locate in RAM), `/tmp/.uci`.
+Package file is saved in configuration directory (locate in flash), `/etc/config`;
+Change delta file is saved in save directory (locate in RAM), `/tmp/.uci`.
 
-UCI system provide a lot of shell command and API to manipulate configuration. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
+UCI system provide a lot of shell command and API to manipulate configuration files. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
 
 UCI is system-level program. Many process will call it simultaneously. It is important to guarantee the synchronization of configuration files; It involves synchronization problem here. However, synchronization is speed's opposite. it needs do some trade-off on that.
 
-In UCI design concept, it provides two save mechanism. one, change delta, is synchronization, it be protected by `flock()` fine-grained; the other one, package, is not synchornization, it has readers-writers problems. Therefore, developer should use the commit function very carefully. If the request is changing setting and take effect, the save function is enough.
+`uci_save()` has charge of the chagne delta file. `uci_save()` protect the chagne delta file with `flock()` fine-grained. Therefore, it is synchronization. `uci_commit()` is reponsible for the package file. However, `uci_commit()` has readers-writers problems. It is not synchornization. Therefore, developer should use UCI commit very carefully. If the request is changing setting and take effect, UCI save is enough.
+
+Maybe you have a question for UCI commit. Is it bug? In my opinion, it is design, not bug. OpenWrt is GUI-drive system. After system bootup and initialize, `rpcd` process is the only place does UCI commit. When user does some setting in GUI and click apply button, `rpcd` process will receives notification and does UCI commit. Under this situation, the readers-writers issue will not happen on the package file, because only one process does.
 
 ## Manual Page
 ### API
