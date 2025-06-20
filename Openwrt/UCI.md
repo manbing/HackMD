@@ -18,6 +18,8 @@ UCI is system-level program. Many process will call it simultaneously. It is imp
 
 Maybe you have a question for UCI commit. Is it bug? In my opinion, it is design, not bug. OpenWrt is GUI-drive system. After system bootup and initialize, `rpcd` process is the only place does UCI commit. When user does some setting in GUI and click apply button, `rpcd` process will receives notification and does UCI commit. Under this situation, the readers-writers issue will not happen on the package file, because only one process does.
 
+Okay, now we have further question. Why do developers do it? What is the adventage it bring?
+
 ## Manual Page
 ### API
 `uci_set()`
@@ -91,6 +93,8 @@ UCI is system-level program. Many process will call it simultaneously. It is imp
 `uci_save()` has charge of the chagne delta file. `uci_save()` protect the chagne delta file with `flock()` fine-grained. Therefore, it is synchronization. `uci_commit()` is reponsible for the package file. However, `uci_commit()` has readers-writers problems. It is not synchornization. Therefore, developer should use UCI commit very carefully. If the request is changing setting and take effect, UCI save is enough.
 
 Maybe you have a question for UCI commit. Is it bug? In my opinion, it is design, not bug. OpenWrt is GUI-drive system. After system bootup and initialize, `rpcd` process is the only place does UCI commit. When user does some setting in GUI and click apply button, `rpcd` process will receives notification and does UCI commit. Under this situation, the readers-writers issue will not happen on the package file, because only one process does.
+
+Okay, now we have further question. Why do developers do it? What is the adventage it bring?
 
 ## Manual Page
 ### API
