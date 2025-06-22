@@ -9,13 +9,13 @@ tags: [GNU]
 
 
 ## GDBserver
-```
+``` shell
 $ gdbserver <ip>:<port> --attach <pid>
 $ gdbserver <ip>:<port> <program>
 ```
 
 ## GDB
-```
+``` shell
 (gdb) si (execute single instruction)
 (gdb) stepi
 (gdb) next
@@ -46,20 +46,20 @@ $ gdbserver <ip>:<port> <program>
 
     
 ### break
-```
+``` shell
 (gdb) info breakpoints
 (gdb) delete breakpoints
 (gdb) disable <index>
 (gdb) enable <index>
-(gdb) break <address>
+(gdb) break *<address>
 (gdb) break iter.c:6 if i == 5
 ```
 
-break x:20 if strcmp(y, "hello") == 0
+`(gdb) break x:20 if strcmp(y, "hello") == 0`
 > 20 is line number, `x` can be any filename and `y` can be any variable.
 
 ### info
-```
+``` shell
 (gdb) info line [File]:[Line]
 (gdb) info line [Function]
 (gdb) info line [File]:[Function]
@@ -67,12 +67,12 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### Print
-```
+``` shell
 (gdb) print &((struct irene *)0x7ab2d8)->irene
 ```
 
 ### Examining Memory
-```
+``` shell
 (gdb) x/nfu <addr>
 (gdb) x/i $pc
 (gdb) set *0xff800000=0x87
@@ -81,7 +81,7 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### Register
-```
+``` shell
 (gdb) info registers <register name>
 (gdb) set $sstatus = 0xFFFFFFFF
 (gdb) info registers
@@ -89,14 +89,14 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### Variabler
-```
+``` shell
 (gdb) set var value = 2148294706
 ```
 
 ### stack frame
 the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not trace able sometime, depend on microarchitecture.
 
-```
+``` shell
 (gdb) info frame
 (gdb) frame
 (gdb) backtrace
@@ -105,13 +105,13 @@ the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not 
 ```
 
 ### thread
-```
+``` shell
 (gdb) info thread
 (gdb) thread <id>
 ```
 
 ### Share library
-```
+``` shell
 (gdb) info sharedlibrary
 (gdb) set solib-absolute-prefix <Path>
 (gdb) set solib-search-path <Path>
@@ -128,13 +128,13 @@ the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not 
 
 
 ## GDBserver
-```
+``` shell
 $ gdbserver <ip>:<port> --attach <pid>
 $ gdbserver <ip>:<port> <program>
 ```
 
 ## GDB
-```
+``` shell
 (gdb) si (execute single instruction)
 (gdb) stepi
 (gdb) next
@@ -165,20 +165,20 @@ $ gdbserver <ip>:<port> <program>
 
     
 ### break
-```
+``` shell
 (gdb) info breakpoints
 (gdb) delete breakpoints
 (gdb) disable <index>
 (gdb) enable <index>
-(gdb) break <address>
+(gdb) break *<address>
 (gdb) break iter.c:6 if i == 5
 ```
 
-break x:20 if strcmp(y, "hello") == 0
+`(gdb) break x:20 if strcmp(y, "hello") == 0`
 > 20 is line number, `x` can be any filename and `y` can be any variable.
 
 ### info
-```
+``` shell
 (gdb) info line [File]:[Line]
 (gdb) info line [Function]
 (gdb) info line [File]:[Function]
@@ -186,12 +186,12 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### Print
-```
+``` shell
 (gdb) print &((struct irene *)0x7ab2d8)->irene
 ```
 
 ### Examining Memory
-```
+``` shell
 (gdb) x/nfu <addr>
 (gdb) x/i $pc
 (gdb) set *0xff800000=0x87
@@ -200,7 +200,7 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### Register
-```
+``` shell
 (gdb) info registers <register name>
 (gdb) set $sstatus = 0xFFFFFFFF
 (gdb) info registers
@@ -208,14 +208,14 @@ break x:20 if strcmp(y, "hello") == 0
 ```
 
 ### Variabler
-```
+``` shell
 (gdb) set var value = 2148294706
 ```
 
 ### stack frame
 the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not trace able sometime, depend on microarchitecture.
 
-```
+``` shell
 (gdb) info frame
 (gdb) frame
 (gdb) backtrace
@@ -224,13 +224,13 @@ the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not 
 ```
 
 ### thread
-```
+``` shell
 (gdb) info thread
 (gdb) thread <id>
 ```
 
 ### Share library
-```
+``` shell
 (gdb) info sharedlibrary
 (gdb) set solib-absolute-prefix <Path>
 (gdb) set solib-search-path <Path>
