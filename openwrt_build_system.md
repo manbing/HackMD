@@ -6,16 +6,25 @@ tags: [OpenWrt]
 
 # OpenWrt build system
 
+## Quick Start
+``` shell
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+$ make menuconfig
+$ make kernel_menuconfig
+$ make V=s -j$(nproc)
 ```
-& mkdir -p files/etc/config
-& scp root@192.168.1.1:/etc/config/network files/etc/config/
-& scp root@192.168.1.1:/etc/config/wireless files/etc/config/
-& scp root@192.168.1.1:/etc/config/firewall files/etc/config/
-& make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES="files"
+
+``` shell
+$ mkdir -p files/etc/config
+$ scp root@192.168.1.1:/etc/config/network files/etc/config/
+$ scp root@192.168.1.1:/etc/config/wireless files/etc/config/
+$ scp root@192.168.1.1:/etc/config/firewall files/etc/config/
+$ make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES="files"
 ```
 
 ## Make
-```
+```  shell
 $ make package/network/utils/$\lt$pkg$\gt$/compile V=s
 $ make package/luci/{clean,prepare,compile}
 
@@ -30,39 +39,49 @@ $ make package/feeds/toolbox/kexec-tools/configure
 $ make package/feeds/toolbox/kexec-tools/compile
 ```
 
-```
+```  shell
 $ make target/linux/refresh V=s
 $ make target/linux/update V=s
 $ make target/linux/{clean,compile}
 ```
 
-```
+```  shell
 $ make toolchain/install
 $ make toolchain/{clean,prepare}
 $ make toolchain/{clean,compile}
 ```
 
 
-re-generate .config:
+### [Cleaning up](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem#cleaning_up)
+```  shell
+make dirclean
+make clean
+make targetclean
 ```
+
+## scripts
+``` shell
+$ ./scripts/diffconfig.sh > diffconfig
+$ ./scripts/feeds search cgi-io
+$ ./scripts/feeds install bluez-libs bluez-utils
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+```
+
+## config
+$ CONFIG_NO_STRIP=y
+> Select the binary stripping method you wish to use.
+Prompt: Binary stripping method
+Location:
+-> Global build settings                                             
+
+re-generate .config:
+```  shell
 $ rm -rf tmp/
 $ make menuconfig
 $ make kernel_menuconfig
 $ make prereq
 ```
-
-
-### [Cleaning up](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem#cleaning_up)
-make dirclean
-make clean
-make targetclean
-
-## scripts
-./scripts/diffconfig.sh > diffconfig
-./scripts/feeds search cgi-io
-./scripts/feeds install bluez-libs bluez-utils
-
-## config
 
     
 ## patch
@@ -118,7 +137,7 @@ mv aaa.ipk aaa.tgz
 tar zxvf aaa.tgz
 
 ## quilt
-```
+``` shell
 #查詢目前有哪些 patch
 $ quilt series
 
@@ -143,7 +162,7 @@ $ quilt files
 ```
     
 ### create patch
-```
+``` shell
 $ make path/to/package/{clean,prepare} V=s QUILT=1
 $ quilt new 001-main_test.patch
 $ quilt edit path/to/file.c
@@ -164,16 +183,25 @@ Themes
 [Using the Image Builder](https://openwrt.org/docs/guide-user/additional-software/imagebuilder)
   # OpenWrt build system
 
+## Quick Start
+``` shell
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+$ make menuconfig
+$ make kernel_menuconfig
+$ make V=s -j$(nproc)
 ```
-& mkdir -p files/etc/config
-& scp root@192.168.1.1:/etc/config/network files/etc/config/
-& scp root@192.168.1.1:/etc/config/wireless files/etc/config/
-& scp root@192.168.1.1:/etc/config/firewall files/etc/config/
-& make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES="files"
+
+``` shell
+$ mkdir -p files/etc/config
+$ scp root@192.168.1.1:/etc/config/network files/etc/config/
+$ scp root@192.168.1.1:/etc/config/wireless files/etc/config/
+$ scp root@192.168.1.1:/etc/config/firewall files/etc/config/
+$ make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES="files"
 ```
 
 ## Make
-```
+```  shell
 $ make package/network/utils/$\lt$pkg$\gt$/compile V=s
 $ make package/luci/{clean,prepare,compile}
 
@@ -188,39 +216,49 @@ $ make package/feeds/toolbox/kexec-tools/configure
 $ make package/feeds/toolbox/kexec-tools/compile
 ```
 
-```
+```  shell
 $ make target/linux/refresh V=s
 $ make target/linux/update V=s
 $ make target/linux/{clean,compile}
 ```
 
-```
+```  shell
 $ make toolchain/install
 $ make toolchain/{clean,prepare}
 $ make toolchain/{clean,compile}
 ```
 
 
-re-generate .config:
+### [Cleaning up](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem#cleaning_up)
+```  shell
+make dirclean
+make clean
+make targetclean
 ```
+
+## scripts
+``` shell
+$ ./scripts/diffconfig.sh > diffconfig
+$ ./scripts/feeds search cgi-io
+$ ./scripts/feeds install bluez-libs bluez-utils
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+```
+
+## config
+$ CONFIG_NO_STRIP=y
+> Select the binary stripping method you wish to use.
+Prompt: Binary stripping method
+Location:
+-> Global build settings                                             
+
+re-generate .config:
+```  shell
 $ rm -rf tmp/
 $ make menuconfig
 $ make kernel_menuconfig
 $ make prereq
 ```
-
-
-### [Cleaning up](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem#cleaning_up)
-make dirclean
-make clean
-make targetclean
-
-## scripts
-./scripts/diffconfig.sh > diffconfig
-./scripts/feeds search cgi-io
-./scripts/feeds install bluez-libs bluez-utils
-
-## config
 
     
 ## patch
@@ -276,7 +314,7 @@ mv aaa.ipk aaa.tgz
 tar zxvf aaa.tgz
 
 ## quilt
-```
+``` shell
 #查詢目前有哪些 patch
 $ quilt series
 
@@ -301,7 +339,7 @@ $ quilt files
 ```
     
 ### create patch
-```
+``` shell
 $ make path/to/package/{clean,prepare} V=s QUILT=1
 $ quilt new 001-main_test.patch
 $ quilt edit path/to/file.c
