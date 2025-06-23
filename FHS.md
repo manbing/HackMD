@@ -8,7 +8,7 @@ tags: [Linux]
 The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS) is a reference describing the conventions used for the layout of Unix-like systems. It has been made popular by its use in Linux distributions, but it is used by other Unix-like systems as well. It is maintained by the Linux Foundation. The latest version is 3.0, released on 3 June 2015.
 
 
-## procfs [(5)](https://man7.org/linux/man-pages/man5/proc.5.html)
+## [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
 ```
 $ /proc/cpuinfo
 $ /proc/kmsg
@@ -27,9 +27,10 @@ $ /proc/modules
 $ /proc/cmdline
 > kernel command line
 ```
-[/proc/iomem](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
+    $ /proc/iomem
+I/O memory map in Linux 2.4.
 
-> I/O memory map in Linux 2.4.
+[proc_iomem(5)](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
 
 ```
 $ /proc/<pid>/cmdline
@@ -42,10 +43,13 @@ $ /proc/<pid>/stat
 $ /proc/<pid>/stack
 ```
 
-`$  /proc/<pid>/task`
+    $ /proc/<pid>/task
+> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/\<pid>/task directory.
 
-> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/<pid>/task directory.
+    $ /poc/<pid>/limits
+> This file displays the soft limit, hard limit, and units of measurement for each of the process's resource limits
 
+[proc_pid_limits(5)](https://man7.org/linux/man-pages/man5/proc_pid_limits.5.html)
 
 ```
 echo "value" > /proc/sysrq-trigger
@@ -166,16 +170,24 @@ echo off > /sys/kernel/debug/kmemleak
 ```
 /dev/watchdog
 ```
+[/dev/mem](https://man7.org/linux/man-pages/man4/mem.4.html)
+> /dev/mem is a character device file that is an image of the main
+memory of the computer.  It may be used, for example, to examine
+(and even patch) the system.
+>
+>Byte addresses in /dev/mem are interpreted as physical memory
+addresses.  References to nonexistent locations cause errors to be
+returned.
 
 ## else
 ```
-$ cat /etc/shells
-$ /dev/random
+cat /etc/shells
+/dev/random
 ```# File System Hierarchy Standard
 The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS) is a reference describing the conventions used for the layout of Unix-like systems. It has been made popular by its use in Linux distributions, but it is used by other Unix-like systems as well. It is maintained by the Linux Foundation. The latest version is 3.0, released on 3 June 2015.
 
 
-## procfs [(5)](https://man7.org/linux/man-pages/man5/proc.5.html)
+## [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
 ```
 $ /proc/cpuinfo
 $ /proc/kmsg
@@ -194,9 +206,10 @@ $ /proc/modules
 $ /proc/cmdline
 > kernel command line
 ```
-[/proc/iomem](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
+    $ /proc/iomem
+I/O memory map in Linux 2.4.
 
-> I/O memory map in Linux 2.4.
+[proc_iomem(5)](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
 
 ```
 $ /proc/<pid>/cmdline
@@ -209,10 +222,13 @@ $ /proc/<pid>/stat
 $ /proc/<pid>/stack
 ```
 
-`$  /proc/<pid>/task`
+    $ /proc/<pid>/task
+> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/\<pid>/task directory.
 
-> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/<pid>/task directory.
+    $ /poc/<pid>/limits
+> This file displays the soft limit, hard limit, and units of measurement for each of the process's resource limits
 
+[proc_pid_limits(5)](https://man7.org/linux/man-pages/man5/proc_pid_limits.5.html)
 
 ```
 echo "value" > /proc/sysrq-trigger
@@ -333,9 +349,17 @@ echo off > /sys/kernel/debug/kmemleak
 ```
 /dev/watchdog
 ```
+[/dev/mem](https://man7.org/linux/man-pages/man4/mem.4.html)
+> /dev/mem is a character device file that is an image of the main
+memory of the computer.  It may be used, for example, to examine
+(and even patch) the system.
+>
+>Byte addresses in /dev/mem are interpreted as physical memory
+addresses.  References to nonexistent locations cause errors to be
+returned.
 
 ## else
 ```
-$ cat /etc/shells
-$ /dev/random
+cat /etc/shells
+/dev/random
 ```
