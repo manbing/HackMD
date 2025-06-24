@@ -21,7 +21,8 @@ In order to use gdb, launch QEMU with the -s and -S options. The -s option will 
 $ qemu-system-x86_64 -s -S -kernel bzImage -hda rootdisk.img -append "root=/dev/hda"
 ```
 
-# OpenWrt, RISCV, SiFive FU540
+# Evironment
+## OpenWrt, RISCV, SiFive FU540
 [OpenWRT(5)：QEMU运行SiFive FU540(RISC-V)](https://www.cnblogs.com/arnoldlu/p/18338896)
 [qemu-ifup script](https://www.linux-kvm.org/page/Networking)
 
@@ -85,7 +86,7 @@ $ ip addr add 192.168.2.2/24 dev eth0
 $ ip link set eth0 up
 ```
 
-
+## [OpenWrt, ARM, Raspberry pi 4b](https://hackmd.io/@sss22213/S1onYkIVK)
 
 # Reference
 [Running 64- and 32-bit RISC-V Linux on QEMU](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html)
@@ -107,7 +108,8 @@ In order to use gdb, launch QEMU with the -s and -S options. The -s option will 
 $ qemu-system-x86_64 -s -S -kernel bzImage -hda rootdisk.img -append "root=/dev/hda"
 ```
 
-# OpenWrt, RISCV, SiFive FU540
+# Evironment
+## OpenWrt, RISCV, SiFive FU540
 [OpenWRT(5)：QEMU运行SiFive FU540(RISC-V)](https://www.cnblogs.com/arnoldlu/p/18338896)
 [qemu-ifup script](https://www.linux-kvm.org/page/Networking)
 
@@ -171,7 +173,7 @@ $ ip addr add 192.168.2.2/24 dev eth0
 $ ip link set eth0 up
 ```
 
-
+## [OpenWrt, ARM, Raspberry pi 4b](https://hackmd.io/@sss22213/S1onYkIVK)
 
 # Reference
 [Running 64- and 32-bit RISC-V Linux on QEMU](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html)
