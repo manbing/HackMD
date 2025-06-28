@@ -88,8 +88,64 @@ $ ip link set eth0 up
 
 ## [OpenWrt, ARM, Raspberry pi 4b](https://hackmd.io/@sss22213/S1onYkIVK)
 
+1. Get qemu-system-aarch64
+* Get source code and compile
+``` console
+$ git clone  https://gitlab.com/qemu-project/qemu.git
+$ cd qemu
+$ git switch -c v9.0.0 v9.0.0
+$ mkdir build
+$ cd build
+$ ../configure --target-list=aarch64-softmmu
+$ make
+$ make install
+```
+
+``` console
+QEMU emulator version 9.0.0 (v9.0.0)
+Copyright (c) 2003-2024 Fabrice Bellard and the QEMU Project developers
+```
+
+2. OpenWrt
+* Get source code and compile
+``` console
+$ git clone https://github.com/openwrt/openwrt.git
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+$ make menuconfig
+
+#CONFIG_TARGET_BOARD="bcm27xx"
+#CONFIG_TARGET_SUBTARGET="bcm2711"
+#CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
+#CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
+#CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+#CONFIG_CPU_TYPE="cortex-a72"
+
+$ make V=s -j$(nproc)
+```
+* Decompress image
+``` console
+$ cd bin/targets/bcm27xx/bcm2711
+$ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img.gz
+```
+
+3. Execute QEMU
+``` console
+$ qemu-system-aarch64 \
+    -M raspi4b \
+    -m 2048 \
+    -kernel ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/Image \
+    -dtb ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb \
+    -append "root=/dev/mmcblk0p2 rootfstype=ext4 console=ttyAMA0 earlycon= pl011,0xfe201000 ip=192.168.7.2::192.168.7.1:255.255.255.0:rpi4:eth0:off" \
+    -drive file=./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img,if=sd,format=raw \
+    -nographic \
+    -net nic,model=e1000 -net tap,ifname=tp0,script=no,downscript=no
+```
+
 # Reference
 [Running 64- and 32-bit RISC-V Linux on QEMU](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html)
+
+
 
 [在QEMU上執行64 bit RISC-V Linux](https://medium.com/swark/%E5%9C%A8qemu%E4%B8%8A%E5%9F%B7%E8%A1%8C64-bit-risc-v-linux-2a527a078819)QEMU is a generic and open source machine emulator and virtualizer.
 
@@ -175,7 +231,63 @@ $ ip link set eth0 up
 
 ## [OpenWrt, ARM, Raspberry pi 4b](https://hackmd.io/@sss22213/S1onYkIVK)
 
+1. Get qemu-system-aarch64
+* Get source code and compile
+``` console
+$ git clone  https://gitlab.com/qemu-project/qemu.git
+$ cd qemu
+$ git switch -c v9.0.0 v9.0.0
+$ mkdir build
+$ cd build
+$ ../configure --target-list=aarch64-softmmu
+$ make
+$ make install
+```
+
+``` console
+QEMU emulator version 9.0.0 (v9.0.0)
+Copyright (c) 2003-2024 Fabrice Bellard and the QEMU Project developers
+```
+
+2. OpenWrt
+* Get source code and compile
+``` console
+$ git clone https://github.com/openwrt/openwrt.git
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+$ make menuconfig
+
+#CONFIG_TARGET_BOARD="bcm27xx"
+#CONFIG_TARGET_SUBTARGET="bcm2711"
+#CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
+#CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
+#CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+#CONFIG_CPU_TYPE="cortex-a72"
+
+$ make V=s -j$(nproc)
+```
+* Decompress image
+``` console
+$ cd bin/targets/bcm27xx/bcm2711
+$ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img.gz
+```
+
+3. Execute QEMU
+``` console
+$ qemu-system-aarch64 \
+    -M raspi4b \
+    -m 2048 \
+    -kernel ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/Image \
+    -dtb ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb \
+    -append "root=/dev/mmcblk0p2 rootfstype=ext4 console=ttyAMA0 earlycon= pl011,0xfe201000 ip=192.168.7.2::192.168.7.1:255.255.255.0:rpi4:eth0:off" \
+    -drive file=./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img,if=sd,format=raw \
+    -nographic \
+    -net nic,model=e1000 -net tap,ifname=tp0,script=no,downscript=no
+```
+
 # Reference
 [Running 64- and 32-bit RISC-V Linux on QEMU](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html)
+
+
 
 [在QEMU上執行64 bit RISC-V Linux](https://medium.com/swark/%E5%9C%A8qemu%E4%B8%8A%E5%9F%B7%E8%A1%8C64-bit-risc-v-linux-2a527a078819)
