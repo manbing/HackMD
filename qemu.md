@@ -113,20 +113,22 @@ $ git clone https://github.com/openwrt/openwrt.git
 $ ./scripts/feeds update -a
 $ ./scripts/feeds install -a
 $ make menuconfig
-
-#CONFIG_TARGET_BOARD="bcm27xx"
-#CONFIG_TARGET_SUBTARGET="bcm2711"
-#CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
-#CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
-#CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
-#CONFIG_CPU_TYPE="cortex-a72"
-
+```
+``` vim
+CONFIG_TARGET_BOARD="bcm27xx"
+CONFIG_TARGET_SUBTARGET="bcm2711"
+CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
+CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
+CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+CONFIG_CPU_TYPE="cortex-a72"
+```
+``` console
 $ make V=s -j$(nproc)
 ```
 * Decompress image
 ``` console
 $ cd bin/targets/bcm27xx/bcm2711
-$ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img.gz
+$ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz
 ```
 
 3. Execute QEMU
@@ -137,9 +139,33 @@ $ qemu-system-aarch64 \
     -kernel ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/Image \
     -dtb ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb \
     -append "root=/dev/mmcblk0p2 rootfstype=ext4 console=ttyAMA0 earlycon= pl011,0xfe201000 ip=192.168.7.2::192.168.7.1:255.255.255.0:rpi4:eth0:off" \
-    -drive file=./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img,if=sd,format=raw \
+    -drive file=./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img,if=sd,format=raw \
     -nographic \
     -net nic,model=e1000 -net tap,ifname=tp0,script=no,downscript=no
+```
+
+
+## OpenWrt, ARM, Virt
+
+``` console
+$ make menuconfig
+```
+``` vim
+CONFIG_TARGET_BOARD="bcm27xx"
+CONFIG_TARGET_SUBTARGET="bcm2711"
+CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
+CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
+CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+CONFIG_CPU_TYPE="cortex-a72"
+CONFIG_TARGET_ROOTFS_INITRAMFS=y
+CONFIG_TARGET_INITRAMFS_COMPRESSION_NONE=
+```
+
+3. Execute QEMU
+``` console    
+$ qemu-system-aarch64 -M virt -cpu cortex-a72 -m 512 \
+    -nographic \
+    -kernel ./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-initramfs-kernel.bin
 ```
 
 # Reference
@@ -256,20 +282,22 @@ $ git clone https://github.com/openwrt/openwrt.git
 $ ./scripts/feeds update -a
 $ ./scripts/feeds install -a
 $ make menuconfig
-
-#CONFIG_TARGET_BOARD="bcm27xx"
-#CONFIG_TARGET_SUBTARGET="bcm2711"
-#CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
-#CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
-#CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
-#CONFIG_CPU_TYPE="cortex-a72"
-
+```
+``` vim
+CONFIG_TARGET_BOARD="bcm27xx"
+CONFIG_TARGET_SUBTARGET="bcm2711"
+CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
+CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
+CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+CONFIG_CPU_TYPE="cortex-a72"
+```
+``` console
 $ make V=s -j$(nproc)
 ```
 * Decompress image
 ``` console
 $ cd bin/targets/bcm27xx/bcm2711
-$ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img.gz
+$ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz
 ```
 
 3. Execute QEMU
@@ -280,9 +308,33 @@ $ qemu-system-aarch64 \
     -kernel ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/Image \
     -dtb ./build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.134/arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb \
     -append "root=/dev/mmcblk0p2 rootfstype=ext4 console=ttyAMA0 earlycon= pl011,0xfe201000 ip=192.168.7.2::192.168.7.1:255.255.255.0:rpi4:eth0:off" \
-    -drive file=./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-squashfs-factory.img,if=sd,format=raw \
+    -drive file=./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img,if=sd,format=raw \
     -nographic \
     -net nic,model=e1000 -net tap,ifname=tp0,script=no,downscript=no
+```
+
+
+## OpenWrt, ARM, Virt
+
+``` console
+$ make menuconfig
+```
+``` vim
+CONFIG_TARGET_BOARD="bcm27xx"
+CONFIG_TARGET_SUBTARGET="bcm2711"
+CONFIG_TARGET_PROFILE="DEVICE_rpi-4"
+CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a72"
+CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+CONFIG_CPU_TYPE="cortex-a72"
+CONFIG_TARGET_ROOTFS_INITRAMFS=y
+CONFIG_TARGET_INITRAMFS_COMPRESSION_NONE=
+```
+
+3. Execute QEMU
+``` console    
+$ qemu-system-aarch64 -M virt -cpu cortex-a72 -m 512 \
+    -nographic \
+    -kernel ./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-initramfs-kernel.bin
 ```
 
 # Reference
