@@ -26,6 +26,11 @@ $ qemu-system-x86_64 -s -S -kernel bzImage -hda rootdisk.img -append "root=/dev/
 [OpenWRT(5)：QEMU运行SiFive FU540(RISC-V)](https://www.cnblogs.com/arnoldlu/p/18338896)
 [qemu-ifup script](https://www.linux-kvm.org/page/Networking)
 
+Prerequest:
+<mark>qemu-system-riscv64</mark>
+<mark>OpneWrt</mark>
+
+**Generate OpenWrt image**
 1. Get source code:
 ``` shell
 $ git clon https://github.com/openwrt/openwrt.git
@@ -69,7 +74,7 @@ $ sudo ip address add dev tap0 192.168.2.1/24
 $ sudo ip link set dev tap0 up
 ```
 
-4. Execute QEMU:
+**Execute QEMU**
 ``` shell
 $ qemu-system-riscv64 -M virt \
 -bios ./build_dir/target-riscv64_riscv64_musl/opensbi-generic/opensbi-2022-12-24-6b5188ca/build/platform/generic/firmware/fw_jump.elf \
@@ -87,9 +92,12 @@ $ ip link set eth0 up
 ```
 
 ## [OpenWrt, ARM, Raspberry pi 4b](https://hackmd.io/@sss22213/S1onYkIVK)
+Prerequest:
+<mark>qemu-system-aarch64</mark>
+<mark>OpneWrt</mark>
 
-1. Get qemu-system-aarch64
-* Get source code and compile
+**qemu-system-aarch64**
+1. Get source code and compile
 ``` console
 $ git clone  https://gitlab.com/qemu-project/qemu.git
 $ cd qemu
@@ -106,8 +114,8 @@ QEMU emulator version 9.0.0 (v9.0.0)
 Copyright (c) 2003-2024 Fabrice Bellard and the QEMU Project developers
 ```
 
-2. OpenWrt
-* Get source code and compile
+**Generate OpenWrt image**
+1. Get source code and compile
 ``` console
 $ git clone https://github.com/openwrt/openwrt.git
 $ ./scripts/feeds update -a
@@ -125,13 +133,13 @@ CONFIG_CPU_TYPE="cortex-a72"
 ``` console
 $ make V=s -j$(nproc)
 ```
-* Decompress image
+2. Decompress image
 ``` console
 $ cd bin/targets/bcm27xx/bcm2711
 $ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz
 ```
 
-3. Execute QEMU
+**Execute QEMU**
 ``` console
 $ qemu-system-aarch64 \
     -M raspi4b \
@@ -147,9 +155,7 @@ $ qemu-system-aarch64 \
 
 ## OpenWrt, ARM, Virt
 
-``` console
-$ make menuconfig
-```
+**.config**
 ``` vim
 CONFIG_TARGET_BOARD="bcm27xx"
 CONFIG_TARGET_SUBTARGET="bcm2711"
@@ -161,12 +167,37 @@ CONFIG_TARGET_ROOTFS_INITRAMFS=y
 CONFIG_TARGET_INITRAMFS_COMPRESSION_NONE=
 ```
 
-3. Execute QEMU
+**Execute QEMU**
 ``` console    
 $ qemu-system-aarch64 -M virt -cpu cortex-a72 -m 512 \
     -nographic \
     -kernel ./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-initramfs-kernel.bin
 ```
+
+## OpenWrt, X86_64, Virt
+
+**.config**
+``` vim
+CONFIG_TARGET_x86_64_DEVICE_generic=y
+CONFIG_HAS_SUBTARGETS=y
+CONFIG_HAS_DEVICES=y
+CONFIG_TARGET_BOARD="x86"
+CONFIG_TARGET_SUBTARGET="64"
+CONFIG_TARGET_PROFILE="DEVICE_generic"
+CONFIG_TARGET_ARCH_PACKAGES="x86_64"
+CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+CONFIG_CPU_TYPE=" "
+CONFIG_LINUX_5_15=y
+```
+
+**Execute QEMU**
+``` console
+$ qemu-system-x86_64 -smp 2 -m 1024 \
+    -nographic \
+    -append "console=ttyS0" \
+    -kernel ./bin/targets/x86/64/openwrt-x86-64-generic-initramfs-kernel.bin
+```
+
 
 # Reference
 [Running 64- and 32-bit RISC-V Linux on QEMU](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html)
@@ -195,6 +226,11 @@ $ qemu-system-x86_64 -s -S -kernel bzImage -hda rootdisk.img -append "root=/dev/
 [OpenWRT(5)：QEMU运行SiFive FU540(RISC-V)](https://www.cnblogs.com/arnoldlu/p/18338896)
 [qemu-ifup script](https://www.linux-kvm.org/page/Networking)
 
+Prerequest:
+<mark>qemu-system-riscv64</mark>
+<mark>OpneWrt</mark>
+
+**Generate OpenWrt image**
 1. Get source code:
 ``` shell
 $ git clon https://github.com/openwrt/openwrt.git
@@ -238,7 +274,7 @@ $ sudo ip address add dev tap0 192.168.2.1/24
 $ sudo ip link set dev tap0 up
 ```
 
-4. Execute QEMU:
+**Execute QEMU**
 ``` shell
 $ qemu-system-riscv64 -M virt \
 -bios ./build_dir/target-riscv64_riscv64_musl/opensbi-generic/opensbi-2022-12-24-6b5188ca/build/platform/generic/firmware/fw_jump.elf \
@@ -256,9 +292,12 @@ $ ip link set eth0 up
 ```
 
 ## [OpenWrt, ARM, Raspberry pi 4b](https://hackmd.io/@sss22213/S1onYkIVK)
+Prerequest:
+<mark>qemu-system-aarch64</mark>
+<mark>OpneWrt</mark>
 
-1. Get qemu-system-aarch64
-* Get source code and compile
+**qemu-system-aarch64**
+1. Get source code and compile
 ``` console
 $ git clone  https://gitlab.com/qemu-project/qemu.git
 $ cd qemu
@@ -275,8 +314,8 @@ QEMU emulator version 9.0.0 (v9.0.0)
 Copyright (c) 2003-2024 Fabrice Bellard and the QEMU Project developers
 ```
 
-2. OpenWrt
-* Get source code and compile
+**Generate OpenWrt image**
+1. Get source code and compile
 ``` console
 $ git clone https://github.com/openwrt/openwrt.git
 $ ./scripts/feeds update -a
@@ -294,13 +333,13 @@ CONFIG_CPU_TYPE="cortex-a72"
 ``` console
 $ make V=s -j$(nproc)
 ```
-* Decompress image
+2. Decompress image
 ``` console
 $ cd bin/targets/bcm27xx/bcm2711
 $ gunzip -d openwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz
 ```
 
-3. Execute QEMU
+**Execute QEMU**
 ``` console
 $ qemu-system-aarch64 \
     -M raspi4b \
@@ -316,9 +355,7 @@ $ qemu-system-aarch64 \
 
 ## OpenWrt, ARM, Virt
 
-``` console
-$ make menuconfig
-```
+**.config**
 ``` vim
 CONFIG_TARGET_BOARD="bcm27xx"
 CONFIG_TARGET_SUBTARGET="bcm2711"
@@ -330,12 +367,37 @@ CONFIG_TARGET_ROOTFS_INITRAMFS=y
 CONFIG_TARGET_INITRAMFS_COMPRESSION_NONE=
 ```
 
-3. Execute QEMU
+**Execute QEMU**
 ``` console    
 $ qemu-system-aarch64 -M virt -cpu cortex-a72 -m 512 \
     -nographic \
     -kernel ./bin/targets/bcm27xx/bcm2711/openwrt-bcm27xx-bcm2711-rpi-4-initramfs-kernel.bin
 ```
+
+## OpenWrt, X86_64, Virt
+
+**.config**
+``` vim
+CONFIG_TARGET_x86_64_DEVICE_generic=y
+CONFIG_HAS_SUBTARGETS=y
+CONFIG_HAS_DEVICES=y
+CONFIG_TARGET_BOARD="x86"
+CONFIG_TARGET_SUBTARGET="64"
+CONFIG_TARGET_PROFILE="DEVICE_generic"
+CONFIG_TARGET_ARCH_PACKAGES="x86_64"
+CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe"
+CONFIG_CPU_TYPE=" "
+CONFIG_LINUX_5_15=y
+```
+
+**Execute QEMU**
+``` console
+$ qemu-system-x86_64 -smp 2 -m 1024 \
+    -nographic \
+    -append "console=ttyS0" \
+    -kernel ./bin/targets/x86/64/openwrt-x86-64-generic-initramfs-kernel.bin
+```
+
 
 # Reference
 [Running 64- and 32-bit RISC-V Linux on QEMU](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html)
