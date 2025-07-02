@@ -9,7 +9,7 @@ normal mode
 insert mode
 
 # vim.rc
-```
+``` vim
 set cursorline
 set ai
 set bg=light
@@ -121,14 +121,14 @@ b: move back by one word
 $: end of the line
     
 ## Delete
-```
-d+w
-d+i+<,(, ", }
+``` cosole
+d + w
+d + i + <,(, ", }
 ```
 
 # Replace
 
-```
+``` vim
 Replace string, IP="140.134.4.1", as string, IP="0.0.0.0"
 
 :%s/IP="[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}"/IP="0.0.0.0"/g
@@ -143,7 +143,7 @@ normal mode
 insert mode
 
 # vim.rc
-```
+``` vim
 set cursorline
 set ai
 set bg=light
@@ -255,14 +255,14 @@ b: move back by one word
 $: end of the line
     
 ## Delete
-```
-d+w
-d+i+<,(, ", }
+``` cosole
+d + w
+d + i + <,(, ", }
 ```
 
 # Replace
 
-```
+``` vim
 Replace string, IP="140.134.4.1", as string, IP="0.0.0.0"
 
 :%s/IP="[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}"/IP="0.0.0.0"/g
