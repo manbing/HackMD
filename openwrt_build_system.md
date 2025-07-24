@@ -25,7 +25,7 @@ $ make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES
 
 ## Make
 ```  shell
-$ make package/network/utils/$\lt$pkg$\gt$/compile V=s
+$ make package/network/utils/<pkg>/compile V=s
 $ make package/luci/{clean,prepare,compile}
 
 $ make package/<pkg>/compile
@@ -75,7 +75,7 @@ Prompt: Binary stripping method
 Location:
 -> Global build settings                                             
 
-re-generate .config:
+Re-generate .config:
 ```  shell
 $ rm -rf tmp/
 $ make menuconfig
@@ -83,7 +83,17 @@ $ make kernel_menuconfig
 $ make prereq
 ```
 
-    
+Create .config from diff configuration:
+``` console
+$ cp diffconfig .config
+$ make defconfig
+```
+ 
+ Create diff configuration:
+ ``` console
+ $ scripts/diffconfig.sh > diffconfig
+ ```
+ 
 ## patch
 To add a completely new patch to an existing package example start with preparing the source directory:
 > make package/example/{clean,prepare} V=s QUILT=1
@@ -202,7 +212,7 @@ $ make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES
 
 ## Make
 ```  shell
-$ make package/network/utils/$\lt$pkg$\gt$/compile V=s
+$ make package/network/utils/<pkg>/compile V=s
 $ make package/luci/{clean,prepare,compile}
 
 $ make package/<pkg>/compile
@@ -252,7 +262,7 @@ Prompt: Binary stripping method
 Location:
 -> Global build settings                                             
 
-re-generate .config:
+Re-generate .config:
 ```  shell
 $ rm -rf tmp/
 $ make menuconfig
@@ -260,7 +270,17 @@ $ make kernel_menuconfig
 $ make prereq
 ```
 
-    
+Create .config from diff configuration:
+``` console
+$ cp diffconfig .config
+$ make defconfig
+```
+ 
+ Create diff configuration:
+ ``` console
+ $ scripts/diffconfig.sh > diffconfig
+ ```
+ 
 ## patch
 To add a completely new patch to an existing package example start with preparing the source directory:
 > make package/example/{clean,prepare} V=s QUILT=1
