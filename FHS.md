@@ -115,8 +115,8 @@ $ cat /proc/meminfo
 /proc/<pid>/oom_score
 ```
 
-## sysfs
-```
+## [sysfs](https://man7.org/linux/man-pages/man5/sysfs.5.html)
+``` console
 /sys/devices/system/cpu/cpu<N>/cache/index2/shared_cpu_list
 /sys/devices/system/cpu/cpu<N>/cpufreq/
 
@@ -130,7 +130,7 @@ $ cat /proc/meminfo
 /sys/kernel/slab/kmem_cache/free_calls
 /sys/kernel/slab/kmalloc-4096/total_objects
 
-
+/sys/devices/virtual/net/<bridge>/bridge/multicast_querier
 /sys/class/net/br3/brif/<if name>/multicast_router
 /sys/class/net/br0/brif/eth0.3/port_no
 /sys/devices/virtual/net/br1/bridge/multicast_snooping
@@ -294,8 +294,8 @@ $ cat /proc/meminfo
 /proc/<pid>/oom_score
 ```
 
-## sysfs
-```
+## [sysfs](https://man7.org/linux/man-pages/man5/sysfs.5.html)
+``` console
 /sys/devices/system/cpu/cpu<N>/cache/index2/shared_cpu_list
 /sys/devices/system/cpu/cpu<N>/cpufreq/
 
@@ -309,7 +309,7 @@ $ cat /proc/meminfo
 /sys/kernel/slab/kmem_cache/free_calls
 /sys/kernel/slab/kmalloc-4096/total_objects
 
-
+/sys/devices/virtual/net/<bridge>/bridge/multicast_querier
 /sys/class/net/br3/brif/<if name>/multicast_router
 /sys/class/net/br0/brif/eth0.3/port_no
 /sys/devices/virtual/net/br1/bridge/multicast_snooping
