@@ -9,7 +9,7 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 
 
 ## [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
-```
+``` console
 $ /proc/cpuinfo
 $ /proc/kmsg
 $ /proc/mounts
@@ -32,7 +32,7 @@ I/O memory map in Linux 2.4.
 
 [proc_iomem(5)](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
 
-```
+``` console
 $ /proc/<pid>/cmdline
 $ /proc/<pid>/status
 $ /proc/<pid>/maps
@@ -44,21 +44,45 @@ $ /proc/<pid>/stack
 ```
 
     $ /proc/<pid>/task
-> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/\<pid>/task directory.
-
-    $ /poc/<pid>/limits
-> This file displays the soft limit, hard limit, and units of measurement for each of the process's resource limits
+To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/\<pid>/task directory.
 
 [proc_pid_limits(5)](https://man7.org/linux/man-pages/man5/proc_pid_limits.5.html)
+-
+    $ /poc/<pid>/limits
+This file displays the soft limit, hard limit, and units of measurement for each of the process's resource limits
 
+
+
+[proc_sysrq-trigger(5)](https://man7.org/linux/man-pages/man5/proc_sysrq-trigger.5.html)
+-
+``` console
+# /proc/sys/kernel/sysrq
+$ echo b > /proc/sysrq-trigger
 ```
-echo "value" > /proc/sysrq-trigger
-/proc/sys/kernel/sysrq
-```
+Common Command Keys:
+
+The character written to /proc/sysrq-trigger acts as the <command key> in the Alt + SysRq + <command key> combination.
+
+Some common command keys include:
+
+* b: Immediately reboots the system without syncing or unmounting disks.
+* c: Triggers a system crash by dereferencing a NULL pointer (useful for crash dump testing).
+* s: Synchronizes all mounted filesystems.
+* u: Unmounts all mounted filesystems.
+* e: Sends a SIGTERM signal to all processes except init.
+* i: Sends a SIGKILL signal to all processes except init.
+* k: Kills all processes on the current virtual console.
+* o: Powers off the system.
+* t: Dumps a list of current tasks and their states.
+* m: Dumps memory information.
+* p: Dumps current CPU registers and flags.
+* h: Displays SysRq help (list of available commands).
+
+
 
 
 ### Netwrok
-```  
+``` console
 $ /proc/net/arp
 $ /proc/net/vlan/config
 $ /proc/net/vlan/<interface>
@@ -188,7 +212,7 @@ The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hie
 
 
 ## [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
-```
+``` console
 $ /proc/cpuinfo
 $ /proc/kmsg
 $ /proc/mounts
@@ -211,7 +235,7 @@ I/O memory map in Linux 2.4.
 
 [proc_iomem(5)](https://man7.org/linux/man-pages/man5/proc_iomem.5.html)
 
-```
+``` console
 $ /proc/<pid>/cmdline
 $ /proc/<pid>/status
 $ /proc/<pid>/maps
@@ -223,21 +247,45 @@ $ /proc/<pid>/stack
 ```
 
     $ /proc/<pid>/task
-> To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/\<pid>/task directory.
-
-    $ /poc/<pid>/limits
-> This file displays the soft limit, hard limit, and units of measurement for each of the process's resource limits
+To find the number of threads for a process, there's one more method that uses the same /proc directory. Just as every process has a directory created under its PID, every thread has a directory created under its thread ID. This is found in the /proc/\<pid>/task directory.
 
 [proc_pid_limits(5)](https://man7.org/linux/man-pages/man5/proc_pid_limits.5.html)
+-
+    $ /poc/<pid>/limits
+This file displays the soft limit, hard limit, and units of measurement for each of the process's resource limits
 
+
+
+[proc_sysrq-trigger(5)](https://man7.org/linux/man-pages/man5/proc_sysrq-trigger.5.html)
+-
+``` console
+# /proc/sys/kernel/sysrq
+$ echo b > /proc/sysrq-trigger
 ```
-echo "value" > /proc/sysrq-trigger
-/proc/sys/kernel/sysrq
-```
+Common Command Keys:
+
+The character written to /proc/sysrq-trigger acts as the <command key> in the Alt + SysRq + <command key> combination.
+
+Some common command keys include:
+
+* b: Immediately reboots the system without syncing or unmounting disks.
+* c: Triggers a system crash by dereferencing a NULL pointer (useful for crash dump testing).
+* s: Synchronizes all mounted filesystems.
+* u: Unmounts all mounted filesystems.
+* e: Sends a SIGTERM signal to all processes except init.
+* i: Sends a SIGKILL signal to all processes except init.
+* k: Kills all processes on the current virtual console.
+* o: Powers off the system.
+* t: Dumps a list of current tasks and their states.
+* m: Dumps memory information.
+* p: Dumps current CPU registers and flags.
+* h: Displays SysRq help (list of available commands).
+
+
 
 
 ### Netwrok
-```  
+``` console
 $ /proc/net/arp
 $ /proc/net/vlan/config
 $ /proc/net/vlan/<interface>
