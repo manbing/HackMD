@@ -24,6 +24,15 @@ $ make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES
 ```
 
 ## Make
+`*` in menuconfig means build and include the package in firmware ('=y' in .config)
+`M` means just build the package as an installable `*.ipk` but do NOT include in firmware ('=m' in .config)
+
+``` console
+$ make menuconfig
+$ make kernel_menuconfig
+```
+
+
 ```  shell
 $ make package/network/utils/<pkg>/compile V=s
 $ make package/luci/{clean,prepare,compile}
@@ -211,6 +220,15 @@ $ make image PROFILE="wl500gp" PACKAGES="nano openvpn -ppp -ppp-mod-pppoe" FILES
 ```
 
 ## Make
+`*` in menuconfig means build and include the package in firmware ('=y' in .config)
+`M` means just build the package as an installable `*.ipk` but do NOT include in firmware ('=m' in .config)
+
+``` console
+$ make menuconfig
+$ make kernel_menuconfig
+```
+
+
 ```  shell
 $ make package/network/utils/<pkg>/compile V=s
 $ make package/luci/{clean,prepare,compile}
