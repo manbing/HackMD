@@ -5,7 +5,7 @@ title: Philosophy of life
 
 > "Good Heart"
 > 「心、平靜、明鏡止水、無我」
-> 「適可而止、中庸、適當、適量」
+> 「適可而止、中庸、適當、適量、平衡」
 > 「量才是最重要的」
 > 「方向比努力重要」
 > 「冥想」
@@ -14,9 +14,11 @@ title: Philosophy of life
 > 「不求成功，不求失敗，只求無悔」
 > 「無悔、沒有遺憾」
 > 「不要有情緒」
-> 「運氣比較好而已」
+> 「運氣好而已」
 > 「目標意識要很清楚」
-> 「意識、無意識、意念」
+> 「意識、無/前意識、意念」
+> 「圓、正向循環、負面循環」
+> 「光與影、拮抗、陰與陽」
 ― Eren
 
 ---
@@ -60,6 +62,11 @@ title: Philosophy of life
 
 > 「感謝的正拳」
 > ― HUNTER×HUNTER 第111話【攻堅×後×入侵】艾薩克·尼特羅
+
+---
+
+> 真搞不懂強大魔法使的想法
+> 葬送のフリーレン 第10話 強い魔法使い フランメ
 
 ---
 
@@ -69,7 +76,7 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 * Intensive Reading (academic reading)
 > "Good Heart"
 > 「心、平靜、明鏡止水、無我」
-> 「適可而止、中庸、適當、適量」
+> 「適可而止、中庸、適當、適量、平衡」
 > 「量才是最重要的」
 > 「方向比努力重要」
 > 「冥想」
@@ -78,9 +85,11 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 > 「不求成功，不求失敗，只求無悔」
 > 「無悔、沒有遺憾」
 > 「不要有情緒」
-> 「運氣比較好而已」
+> 「運氣好而已」
 > 「目標意識要很清楚」
-> 「意識、無意識、意念」
+> 「意識、無/前意識、意念」
+> 「圓、正向循環、負面循環」
+> 「光與影、拮抗、陰與陽」
 ― Eren
 
 ---
@@ -124,6 +133,11 @@ Extensive reading (ER) is the process of reading longer, easier texts for an ext
 
 > 「感謝的正拳」
 > ― HUNTER×HUNTER 第111話【攻堅×後×入侵】艾薩克·尼特羅
+
+---
+
+> 真搞不懂強大魔法使的想法
+> 葬送のフリーレン 第10話 強い魔法使い フランメ
 
 ---
 
