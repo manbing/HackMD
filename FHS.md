@@ -23,6 +23,7 @@ $ /proc/partitions
 $ /proc/kcore
 $ /proc/uptime
 $ /proc/modules
+$ /proc/mtd
 
 $ /proc/cmdline
 > kernel command line
@@ -226,6 +227,7 @@ $ /proc/partitions
 $ /proc/kcore
 $ /proc/uptime
 $ /proc/modules
+$ /proc/mtd
 
 $ /proc/cmdline
 > kernel command line
