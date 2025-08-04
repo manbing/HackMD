@@ -40,14 +40,51 @@ crash /usr/lib/debug/boot/vmlinux-6.11.0-28-generic /dev/mem
 
 [Linux 核心設計: Kernel Debugging(1): Kdump](https://hackmd.io/@RinHizakura/HkHacces6)
 
+# Linux Kernel Panic/Oops
+mtdoops and crashlog are for embeeding system.
+
+## [kdump](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
+
+## mtdoops
+
+
+linux/drivers/mtd/mtdoops.c
+``` c
+static char mtddev[80] = "mtdoops";
+module_param_string(mtddev, mtddev, 80, 0400);
+MODULE_PARM_DESC(mtddev,
+        "name or index number of the MTD device to use");
+```
+
+
+``` vim
+CONFIG_MTD_OOPS=y
+CONFIG_PSTORE=y
+CONFIG_PSTORE_CONSOLE=y
+CONFIG_PSTORE_PMSG=y
+CONFIG_MAGIC_SYSRQ=y
+```
+
+
+![image](https://hackmd.io/_uploads/HJQ9napvll.png)
+
+
+![image](https://hackmd.io/_uploads/ryLwhTpwxx.png)
+
+
+``` console
+$ dd if=/dev/mtdblock1 of=/tmp/mtd1.bin
+$ nanddump -f /tmp/mtd0.bin /dev/mtd17
+```
+
+
+## crashlog
+
 
 # [ftrace](https://hackmd.io/@manbing/ryfa9EKkw)
 
 
-
 # [\(c\)BPF/eBPF](https://hackmd.io/MoIbUgwzRbe-TSQ6NllufA)
-
-# [kdump](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
 
 
 # [oprofile](https://man7.org/linux/man-pages/man1/oprofile.1.html)
@@ -91,14 +128,51 @@ crash /usr/lib/debug/boot/vmlinux-6.11.0-28-generic /dev/mem
 
 [Linux 核心設計: Kernel Debugging(1): Kdump](https://hackmd.io/@RinHizakura/HkHacces6)
 
+# Linux Kernel Panic/Oops
+mtdoops and crashlog are for embeeding system.
+
+## [kdump](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
+
+## mtdoops
+
+
+linux/drivers/mtd/mtdoops.c
+``` c
+static char mtddev[80] = "mtdoops";
+module_param_string(mtddev, mtddev, 80, 0400);
+MODULE_PARM_DESC(mtddev,
+        "name or index number of the MTD device to use");
+```
+
+
+``` vim
+CONFIG_MTD_OOPS=y
+CONFIG_PSTORE=y
+CONFIG_PSTORE_CONSOLE=y
+CONFIG_PSTORE_PMSG=y
+CONFIG_MAGIC_SYSRQ=y
+```
+
+
+![image](https://hackmd.io/_uploads/HJQ9napvll.png)
+
+
+![image](https://hackmd.io/_uploads/ryLwhTpwxx.png)
+
+
+``` console
+$ dd if=/dev/mtdblock1 of=/tmp/mtd1.bin
+$ nanddump -f /tmp/mtd0.bin /dev/mtd17
+```
+
+
+## crashlog
+
 
 # [ftrace](https://hackmd.io/@manbing/ryfa9EKkw)
 
 
-
 # [\(c\)BPF/eBPF](https://hackmd.io/MoIbUgwzRbe-TSQ6NllufA)
-
-# [kdump](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
 
 
 # [oprofile](https://man7.org/linux/man-pages/man1/oprofile.1.html)
