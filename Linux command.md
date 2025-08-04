@@ -162,6 +162,9 @@ $ nft list tables
 ```
 
 
+## [dd](https://man7.org/linux/man-pages/man1/dd.1.html)
+
+
 ## [dbclient](https://linux.die.net/man/1/dbclient)
 
 
@@ -216,7 +219,16 @@ $ lxc-execute --name=lxc_container1 -- ping 8.8.8.8
 [https://linuxcontainers.org/lxd/getting-started-cli/](https://linuxcontainers.org/lxd/getting-started-cli/)
     
 [https://linuxcontainers.org/lxd/docs/master/](https://linuxcontainers.org/lxd/docs/master/)
-    
+
+## [mount](https://man7.org/linux/man-pages/man8/mount.8.html)
+mount -t <mark>*type*</mark> <mark>*device*</mark> <mark>*dir*</mark>
+umount <mark>*dir*</mark>
+
+## mtd
+``` console
+mtd erase partition_name
+```
+
 ## [runc](https://github.com/opencontainers/runc)
 ``` shell
 $ sudo runc create -b ./ cindy
@@ -636,6 +648,9 @@ $ nft list tables
 ```
 
 
+## [dd](https://man7.org/linux/man-pages/man1/dd.1.html)
+
+
 ## [dbclient](https://linux.die.net/man/1/dbclient)
 
 
@@ -690,7 +705,16 @@ $ lxc-execute --name=lxc_container1 -- ping 8.8.8.8
 [https://linuxcontainers.org/lxd/getting-started-cli/](https://linuxcontainers.org/lxd/getting-started-cli/)
     
 [https://linuxcontainers.org/lxd/docs/master/](https://linuxcontainers.org/lxd/docs/master/)
-    
+
+## [mount](https://man7.org/linux/man-pages/man8/mount.8.html)
+mount -t <mark>*type*</mark> <mark>*device*</mark> <mark>*dir*</mark>
+umount <mark>*dir*</mark>
+
+## mtd
+``` console
+mtd erase partition_name
+```
+
 ## [runc](https://github.com/opencontainers/runc)
 ``` shell
 $ sudo runc create -b ./ cindy
