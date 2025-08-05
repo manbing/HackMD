@@ -40,8 +40,8 @@ crash /usr/lib/debug/boot/vmlinux-6.11.0-28-generic /dev/mem
 
 [Linux 核心設計: Kernel Debugging(1): Kdump](https://hackmd.io/@RinHizakura/HkHacces6)
 
-# Linux Kernel Panic/Oops
-mtdoops and crashlog are for embeeding system.
+# Save Linux Kernel Panic/Oops Log
+pstore, mtdoops, crashlog, kdump
 
 ## [kdump](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
 
@@ -59,14 +59,8 @@ MODULE_PARM_DESC(mtddev,
 
 ``` vim
 CONFIG_MTD_OOPS=y
-CONFIG_PSTORE=y
-CONFIG_PSTORE_CONSOLE=y
-CONFIG_PSTORE_PMSG=y
 CONFIG_MAGIC_SYSRQ=y
 ```
-
-
-![image](https://hackmd.io/_uploads/HJQ9napvll.png)
 
 
 ![image](https://hackmd.io/_uploads/ryLwhTpwxx.png)
@@ -75,7 +69,21 @@ CONFIG_MAGIC_SYSRQ=y
 ``` console
 $ dd if=/dev/mtdblock1 of=/tmp/mtd1.bin
 $ nanddump -f /tmp/mtd0.bin /dev/mtd17
+$ mtd erase mtdoops
+$ insmod mtdoops.ko mtddev=mtdoops
 ```
+
+
+## pstore
+``` vim
+CONFIG_PSTORE=y
+CONFIG_PSTORE_CONSOLE=y
+CONFIG_PSTORE_PMSG=y
+CONFIG_MAGIC_SYSRQ=y
+```
+
+![image](https://hackmd.io/_uploads/HJQ9napvll.png)
+
 
 
 ## crashlog
@@ -128,8 +136,8 @@ crash /usr/lib/debug/boot/vmlinux-6.11.0-28-generic /dev/mem
 
 [Linux 核心設計: Kernel Debugging(1): Kdump](https://hackmd.io/@RinHizakura/HkHacces6)
 
-# Linux Kernel Panic/Oops
-mtdoops and crashlog are for embeeding system.
+# Save Linux Kernel Panic/Oops Log
+pstore, mtdoops, crashlog, kdump
 
 ## [kdump](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
 
@@ -147,14 +155,8 @@ MODULE_PARM_DESC(mtddev,
 
 ``` vim
 CONFIG_MTD_OOPS=y
-CONFIG_PSTORE=y
-CONFIG_PSTORE_CONSOLE=y
-CONFIG_PSTORE_PMSG=y
 CONFIG_MAGIC_SYSRQ=y
 ```
-
-
-![image](https://hackmd.io/_uploads/HJQ9napvll.png)
 
 
 ![image](https://hackmd.io/_uploads/ryLwhTpwxx.png)
@@ -163,7 +165,21 @@ CONFIG_MAGIC_SYSRQ=y
 ``` console
 $ dd if=/dev/mtdblock1 of=/tmp/mtd1.bin
 $ nanddump -f /tmp/mtd0.bin /dev/mtd17
+$ mtd erase mtdoops
+$ insmod mtdoops.ko mtddev=mtdoops
 ```
+
+
+## pstore
+``` vim
+CONFIG_PSTORE=y
+CONFIG_PSTORE_CONSOLE=y
+CONFIG_PSTORE_PMSG=y
+CONFIG_MAGIC_SYSRQ=y
+```
+
+![image](https://hackmd.io/_uploads/HJQ9napvll.png)
+
 
 
 ## crashlog
