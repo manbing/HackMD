@@ -173,6 +173,17 @@ $ nft list tables
 $ df -h
 ```
 
+## dtc
+To get the device tree in text from the device tree blob:
+``` console
+$ dtc -I dtb -O dts cindy.dtb
+```
+
+Compile device trees:
+``` console
+$ dtc -O dtb -o cindy.dtb cindy.dts
+```
+
 ## iwinfo
 ``` shell
 $ iwinfo
@@ -657,6 +668,17 @@ $ nft list tables
 ## df
 ``` shell
 $ df -h
+```
+
+## dtc
+To get the device tree in text from the device tree blob:
+``` console
+$ dtc -I dtb -O dts cindy.dtb
+```
+
+Compile device trees:
+``` console
+$ dtc -O dtb -o cindy.dtb cindy.dts
 ```
 
 ## iwinfo
