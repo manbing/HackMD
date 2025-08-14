@@ -34,7 +34,47 @@ block-beta
 
 
 [Pin Numbering - Raspberry Pi 4B](https://www.pi4j.com/1.4/pins/rpi-4b.html)
-[Raspberry-Pi Pinout](https://pinout.xyz/)# [Pin](https://en.wikipedia.org/wiki/Lead_(electronics))
+[Raspberry-Pi Pinout](https://pinout.xyz/)
+
+# Porting Temperature Sensor, DS18B20
+the procedure:
+1. Configure GPIO PIN action as 1-Wire protocol
+2. Add DS18B20 into Device Tree
+3. Probe Device
+
+
+
+## Configure GPIO PIN to Support the Protocol
+Enable 1-Wire interface in `/boot/config.txt`
+``` vim
+# gpio pin is 4 in default.
+dtoverlay=w1-gpio,gpiopin=21
+```
+When CPU bootup, Bootloader will read this configuration file and configure GPIO PIN 21 as 1-Wire interface.
+
+
+## Add DS18B20 into Device Tree
+
+[devicetree-specification](https://github.com/devicetree-org/devicetree-specification)
+dts, dtb, dto
+
+``` console
+$ cd /proc/device-tree/
+$ cd /sys/firmware/devicetree/base
+$ dtc -O dtb -o p4080ds.dtb p4080ds.dts
+$ dtc -I dtb -O dts p4080ds.dtb
+$ dtc -I dtb -O dts -o <output_filename.dts> <input_filename.dtbo>
+$ cd /sys/bus/w1/devices/28-00000xxxxxxx/
+```
+
+## Probe Device
+
+
+# Reference
+[Day 8：Device Tree (Part 1)](https://ithelp.ithome.com.tw/m/articles/10242811)
+
+
+# [Pin](https://en.wikipedia.org/wiki/Lead_(electronics))
 ![Raspberry-Pi-4-Pinout](https://hackmd.io/_uploads/rJY5-alDeg.png)
 
 
@@ -66,3 +106,42 @@ block-beta
 
 [Pin Numbering - Raspberry Pi 4B](https://www.pi4j.com/1.4/pins/rpi-4b.html)
 [Raspberry-Pi Pinout](https://pinout.xyz/)
+
+# Porting Temperature Sensor, DS18B20
+the procedure:
+1. Configure GPIO PIN action as 1-Wire protocol
+2. Add DS18B20 into Device Tree
+3. Probe Device
+
+
+
+## Configure GPIO PIN to Support the Protocol
+Enable 1-Wire interface in `/boot/config.txt`
+``` vim
+# gpio pin is 4 in default.
+dtoverlay=w1-gpio,gpiopin=21
+```
+When CPU bootup, Bootloader will read this configuration file and configure GPIO PIN 21 as 1-Wire interface.
+
+
+## Add DS18B20 into Device Tree
+
+[devicetree-specification](https://github.com/devicetree-org/devicetree-specification)
+dts, dtb, dto
+
+``` console
+$ cd /proc/device-tree/
+$ cd /sys/firmware/devicetree/base
+$ dtc -O dtb -o p4080ds.dtb p4080ds.dts
+$ dtc -I dtb -O dts p4080ds.dtb
+$ dtc -I dtb -O dts -o <output_filename.dts> <input_filename.dtbo>
+$ cd /sys/bus/w1/devices/28-00000xxxxxxx/
+```
+
+## Probe Device
+
+
+# Reference
+[Day 8：Device Tree (Part 1)](https://ithelp.ithome.com.tw/m/articles/10242811)
+
+
