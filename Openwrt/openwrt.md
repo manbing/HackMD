@@ -20,6 +20,8 @@ opkg list
 netifd
 > /sbin/netifd -d 15
 
+logread -f -e odhcp6c
+
 ## procd
 ### reload_config
 if configuration be modified, it will notify porcd to re-read configuration and take effect
@@ -202,6 +204,8 @@ opkg list
 
 netifd
 > /sbin/netifd -d 15
+
+logread -f -e odhcp6c
 
 ## procd
 ### reload_config
