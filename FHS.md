@@ -4,11 +4,10 @@ tags: [Linux]
 
 ---
 
-# File System Hierarchy Standard
 The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS) is a reference describing the conventions used for the layout of Unix-like systems. It has been made popular by its use in Linux distributions, but it is used by other Unix-like systems as well. It is maintained by the Linux Foundation. The latest version is 3.0, released on 3 June 2015.
 
 
-## [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
+# [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
 ``` console
 $ /proc/cpuinfo
 $ /proc/kmsg
@@ -82,7 +81,7 @@ Some common command keys include:
 
 
 
-### Netwrok
+# Netwrok
 ``` console
 $ /proc/net/arp
 $ /proc/net/vlan/config
@@ -106,13 +105,13 @@ $ /proc/sys/net/netfilter/nf_conntrack_max
 $ /proc/sys/net/netfilter/nf_conntrack_count
 ```
 
-### Interrupt
+# Interrupt
 ```
 $ /proc/interrupts
 $ /proc/irq/<IRQ_NUMBER>/smp_affinity
 ```
 
-### Kernel
+# Kernel
 ```
 $ /proc/sys/kernel/core_pattern
 $ /proc/sys/kernel/printk
@@ -120,7 +119,18 @@ $ /proc/sys/vm/oom_dump_tasks
 $ /proc/sys/vm/drop_caches
 ```
 
-### [msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
+# Bridge multicast
+``` console
+$ brctl quickleave br0 on
+$ brctl quickleave br0 off
+$ /sys/devices/virtual/net/br0/bridge/multicast_snooping
+$ /sys/devices/virtual/net/br0/bridge/multicast_querier
+$ /sys/devices/virtual/net/br0/bridge/hash_max
+$ /proc/sys/net/ipv4/conf/br0/force_igmp_version
+```
+
+# System V message queue operations 
+[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html), [mq_overview()](https://man7.org/linux/man-pages/man7/mq_overview.7.html)
 ```
 $ /proc/sys/kernel/msgmnb
 $ /proc/sys/kernel/msgmax
@@ -128,19 +138,19 @@ $ /proc/sys/fs/mqueue/queues_max
 $ /proc/sysvipc/msg
 ```
     
-### memory manage
+# memory manage
 ```
 $ cat /proc/meminfo
 ```
     
-#### overcommit & oom killer
+## overcommit & oom killer
 ```
 /proc/sys/vm/overcommit_memory
 /proc/<pid>/oom_adj
 /proc/<pid>/oom_score
 ```
 
-## [sysfs](https://man7.org/linux/man-pages/man5/sysfs.5.html)
+# [sysfs](https://man7.org/linux/man-pages/man5/sysfs.5.html)
 ``` console
 /sys/devices/system/cpu/cpu<N>/cache/index2/shared_cpu_list
 /sys/devices/system/cpu/cpu<N>/cpufreq/
@@ -161,7 +171,7 @@ $ cat /proc/meminfo
 /sys/devices/virtual/net/br1/bridge/multicast_snooping
 ``` 
     
-## debugfs
+# debugfs
 ```
 mount -t debugfs debugfs /sys/kernel/debug
 
@@ -175,7 +185,7 @@ echo off > /sys/kernel/debug/kmemleak
 /sys/kernel/debug/slab/<cache>/ 
 ```
 
-### ftrace
+## ftrace
 ```
 /sys/kernel/debug/tracing/kprobe_events
 /sys/kernel/debug/tracing/kprobe_profile
@@ -189,9 +199,9 @@ echo off > /sys/kernel/debug/kmemleak
 
 
 
-## bpf
+# bpf
     
-## dev
+# dev
 ```
 /dev/watchdog
 ```
@@ -204,15 +214,14 @@ memory of the computer.  It may be used, for example, to examine
 addresses.  References to nonexistent locations cause errors to be
 returned.
 
-## else
+# else
 ```
 cat /etc/shells
 /dev/random
-```# File System Hierarchy Standard
-The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS) is a reference describing the conventions used for the layout of Unix-like systems. It has been made popular by its use in Linux distributions, but it is used by other Unix-like systems as well. It is maintained by the Linux Foundation. The latest version is 3.0, released on 3 June 2015.
+```The [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS) is a reference describing the conventions used for the layout of Unix-like systems. It has been made popular by its use in Linux distributions, but it is used by other Unix-like systems as well. It is maintained by the Linux Foundation. The latest version is 3.0, released on 3 June 2015.
 
 
-## [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
+# [procfs](https://man7.org/linux/man-pages/man5/proc.5.html)
 ``` console
 $ /proc/cpuinfo
 $ /proc/kmsg
@@ -286,7 +295,7 @@ Some common command keys include:
 
 
 
-### Netwrok
+# Netwrok
 ``` console
 $ /proc/net/arp
 $ /proc/net/vlan/config
@@ -310,13 +319,13 @@ $ /proc/sys/net/netfilter/nf_conntrack_max
 $ /proc/sys/net/netfilter/nf_conntrack_count
 ```
 
-### Interrupt
+# Interrupt
 ```
 $ /proc/interrupts
 $ /proc/irq/<IRQ_NUMBER>/smp_affinity
 ```
 
-### Kernel
+# Kernel
 ```
 $ /proc/sys/kernel/core_pattern
 $ /proc/sys/kernel/printk
@@ -324,7 +333,18 @@ $ /proc/sys/vm/oom_dump_tasks
 $ /proc/sys/vm/drop_caches
 ```
 
-### [msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html)
+# Bridge multicast
+``` console
+$ brctl quickleave br0 on
+$ brctl quickleave br0 off
+$ /sys/devices/virtual/net/br0/bridge/multicast_snooping
+$ /sys/devices/virtual/net/br0/bridge/multicast_querier
+$ /sys/devices/virtual/net/br0/bridge/hash_max
+$ /proc/sys/net/ipv4/conf/br0/force_igmp_version
+```
+
+# System V message queue operations 
+[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html), [mq_overview()](https://man7.org/linux/man-pages/man7/mq_overview.7.html)
 ```
 $ /proc/sys/kernel/msgmnb
 $ /proc/sys/kernel/msgmax
@@ -332,19 +352,19 @@ $ /proc/sys/fs/mqueue/queues_max
 $ /proc/sysvipc/msg
 ```
     
-### memory manage
+# memory manage
 ```
 $ cat /proc/meminfo
 ```
     
-#### overcommit & oom killer
+## overcommit & oom killer
 ```
 /proc/sys/vm/overcommit_memory
 /proc/<pid>/oom_adj
 /proc/<pid>/oom_score
 ```
 
-## [sysfs](https://man7.org/linux/man-pages/man5/sysfs.5.html)
+# [sysfs](https://man7.org/linux/man-pages/man5/sysfs.5.html)
 ``` console
 /sys/devices/system/cpu/cpu<N>/cache/index2/shared_cpu_list
 /sys/devices/system/cpu/cpu<N>/cpufreq/
@@ -365,7 +385,7 @@ $ cat /proc/meminfo
 /sys/devices/virtual/net/br1/bridge/multicast_snooping
 ``` 
     
-## debugfs
+# debugfs
 ```
 mount -t debugfs debugfs /sys/kernel/debug
 
@@ -379,7 +399,7 @@ echo off > /sys/kernel/debug/kmemleak
 /sys/kernel/debug/slab/<cache>/ 
 ```
 
-### ftrace
+## ftrace
 ```
 /sys/kernel/debug/tracing/kprobe_events
 /sys/kernel/debug/tracing/kprobe_profile
@@ -393,9 +413,9 @@ echo off > /sys/kernel/debug/kmemleak
 
 
 
-## bpf
+# bpf
     
-## dev
+# dev
 ```
 /dev/watchdog
 ```
@@ -408,7 +428,7 @@ memory of the computer.  It may be used, for example, to examine
 addresses.  References to nonexistent locations cause errors to be
 returned.
 
-## else
+# else
 ```
 cat /etc/shells
 /dev/random
