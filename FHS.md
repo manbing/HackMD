@@ -129,13 +129,17 @@ $ /sys/devices/virtual/net/br0/bridge/hash_max
 $ /proc/sys/net/ipv4/conf/br0/force_igmp_version
 ```
 
-# System V message queue operations 
-[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html), [mq_overview()](https://man7.org/linux/man-pages/man7/mq_overview.7.html)
+# MeSsage Queue 
+[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html): System V message queue
+
+[mq_overview()](https://man7.org/linux/man-pages/man7/mq_overview.7.html): POSIX message queues
+
 ```
 $ /proc/sys/kernel/msgmnb
 $ /proc/sys/kernel/msgmax
-$ /proc/sys/fs/mqueue/queues_max
 $ /proc/sysvipc/msg
+
+$ /proc/sys/fs/mqueue/queues_max
 ```
     
 # memory manage
@@ -343,13 +347,17 @@ $ /sys/devices/virtual/net/br0/bridge/hash_max
 $ /proc/sys/net/ipv4/conf/br0/force_igmp_version
 ```
 
-# System V message queue operations 
-[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html), [mq_overview()](https://man7.org/linux/man-pages/man7/mq_overview.7.html)
+# MeSsage Queue 
+[msgrcv](https://manpages.ubuntu.com/manpages/trusty/man2/msgrcv.2.html): System V message queue
+
+[mq_overview()](https://man7.org/linux/man-pages/man7/mq_overview.7.html): POSIX message queues
+
 ```
 $ /proc/sys/kernel/msgmnb
 $ /proc/sys/kernel/msgmax
-$ /proc/sys/fs/mqueue/queues_max
 $ /proc/sysvipc/msg
+
+$ /proc/sys/fs/mqueue/queues_max
 ```
     
 # memory manage
