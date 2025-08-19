@@ -154,6 +154,7 @@ $ ip stats set dev *DEV* l3_stats \{ on | off \}
 $ -j MARK --set-mark <marknumber in decimal form>
 $ iptables -t mangle -A PREROUTING -i br-br1 -j MARK --set-mark 1014
 $ iptables -S
+$ ip6tables -S iface_PPP_wan_1_input
 ```
 
 ## [nft](https://manpages.debian.org/testing/nftables/nft.8.en.html)
@@ -651,6 +652,7 @@ $ ip stats set dev *DEV* l3_stats \{ on | off \}
 $ -j MARK --set-mark <marknumber in decimal form>
 $ iptables -t mangle -A PREROUTING -i br-br1 -j MARK --set-mark 1014
 $ iptables -S
+$ ip6tables -S iface_PPP_wan_1_input
 ```
 
 ## [nft](https://manpages.debian.org/testing/nftables/nft.8.en.html)
