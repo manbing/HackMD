@@ -4,8 +4,7 @@ tags: [OpenWrt]
 
 ---
 
-# OpenWrt
-###### tags: `OpenWrt`
+
 
 /etc/init.d/$\lt$config$\gt$ restart
     
@@ -22,17 +21,19 @@ netifd
 
 logread -f -e odhcp6c
 
-## procd
-### reload_config
-if configuration be modified, it will notify porcd to re-read configuration and take effect
+reload_config
+> if configuration be modified, it will notify porcd to re-read configuration and take effect
 
-### procd init script parameters (Init Scripts)
+# procd
+## procd init script parameters (Init Scripts)
 A procd init script is similiar to an old init script, but with a few differences:
 * procd expects services to run in the foreground
 * Different shebang line: #!/bin/sh /etc/rc.common
 * procd expects that shell variable (not environment variable) initscript is set to the path of the script that invoked it
 * Explicitly use procd USE_PROCD=1
-```
+
+
+``` vim
 #!/bin/sh /etc/rc.common
 
 USE_PROCD=1
@@ -41,8 +42,8 @@ USE_PROCD=1
 procd_set_param stdout 1
 procd_set_param stderr 1
 
-## ubus/ubusd
-### shell API
+# ubus/ubusd
+## shell API
 > ubus list
 ubus -v list network.wireless
 ubus call network reload
@@ -58,7 +59,7 @@ ubus call network.interface.iphost_4001 status | jsonfilter -e '@.inactive'
 ubus call network.interface.iphost_4001 status | jsonfilter -e '@["inactive"]["route"][0].nexthop'
 ubus call network.device status  '{"name":"pon.4001"}'
 
-### C API
+## C API
 > ubus_add_object()
 UBUS_OBJECT_TYPE
 UBUS_METHOD_NOARG
@@ -66,16 +67,30 @@ UBUS_METHOD
 
 > ubus_invoke()
 
-## [The UCI system](https://openwrt.org/docs/guide-user/base-system/uci)
+# [The UCI system](https://openwrt.org/docs/guide-user/base-system/uci)
 
 Different presentation
 - Human-friendly: as presented in the config files or with the command “uci export <config>”
 - Programmable: as presented with the command “uci show <config>”
 
-#### Configuration files
+    
+## Package/Configuration files
 [Configuration example](https://hackmd.io/ya8BeBw2Qgy_YslcLUl-Jg)
 
-#### C API
+### [Network](https://openwrt.org/docs/guide-user/network/ucicheatsheet)
+#### [IPv6](https://openwrt.org/docs/guide-user/network/ipv6/configuration)
+``` vim
+network.lan=interface
+network.lan.ip6assign='auto'
+network.lan.ipv6='1'
+
+# Define the IPv6 prefix-classes this interface will accept
+network.lan.ip6class='HSI_6'
+```
+
+    
+    
+## C API
 >uci_set
 uci_commit()
 uci_unload()
@@ -117,7 +132,7 @@ uci_lookup_ptr()
     
     
 
-#### shell
+## shell
 uci get prplmesh.config.enable
 uci show $\lt$SUBSYSTEM_NAME$\gt$
 uci export $\lt$SUBSYSTEM_NAME$\gt$
@@ -141,20 +156,20 @@ uci commit wireless
 /sbin/wifi up
 > issue wireless new setting
 
-### LuCI WebUI
+## LuCI WebUI
 
 
-### shell scripts
+## shell scripts
 > json_add_object
 > json_add_array
 
-### wireless
+## wireless
 >/lib/netifd/wireless/mac80211.sh
 /lib/wifi/mac80211.sh
 
 call init_wireless_driver() to add default wireless configuration
     
-### ucitrack
+## ucitrack
     
     
 ## [UCI defaults](https://openwrt.org/docs/guide-developer/uci-defaults)
@@ -170,7 +185,7 @@ In a live router you can see the existing UCI defaults scripts in `/rom/etc/uci-
 
 UCI defaults scripts can be created by packages or they can be inserted into the build manually as custom files.
     
-## The boot process
+# The boot process
     
 ```mermaid
     flowchart LR;
@@ -186,11 +201,10 @@ UCI defaults scripts can be created by packages or they can be inserted into the
     G-->J([/etc/uci-defaults/])
 ```
     
-## shell
+# shell
 > network_get_dnsserver
 procd_set_param stdout 1
-procd_set_param stderr 1# OpenWrt
-###### tags: `OpenWrt`
+procd_set_param stderr 1
 
 /etc/init.d/$\lt$config$\gt$ restart
     
@@ -207,17 +221,19 @@ netifd
 
 logread -f -e odhcp6c
 
-## procd
-### reload_config
-if configuration be modified, it will notify porcd to re-read configuration and take effect
+reload_config
+> if configuration be modified, it will notify porcd to re-read configuration and take effect
 
-### procd init script parameters (Init Scripts)
+# procd
+## procd init script parameters (Init Scripts)
 A procd init script is similiar to an old init script, but with a few differences:
 * procd expects services to run in the foreground
 * Different shebang line: #!/bin/sh /etc/rc.common
 * procd expects that shell variable (not environment variable) initscript is set to the path of the script that invoked it
 * Explicitly use procd USE_PROCD=1
-```
+
+
+``` vim
 #!/bin/sh /etc/rc.common
 
 USE_PROCD=1
@@ -226,8 +242,8 @@ USE_PROCD=1
 procd_set_param stdout 1
 procd_set_param stderr 1
 
-## ubus/ubusd
-### shell API
+# ubus/ubusd
+## shell API
 > ubus list
 ubus -v list network.wireless
 ubus call network reload
@@ -243,7 +259,7 @@ ubus call network.interface.iphost_4001 status | jsonfilter -e '@.inactive'
 ubus call network.interface.iphost_4001 status | jsonfilter -e '@["inactive"]["route"][0].nexthop'
 ubus call network.device status  '{"name":"pon.4001"}'
 
-### C API
+## C API
 > ubus_add_object()
 UBUS_OBJECT_TYPE
 UBUS_METHOD_NOARG
@@ -251,16 +267,30 @@ UBUS_METHOD
 
 > ubus_invoke()
 
-## [The UCI system](https://openwrt.org/docs/guide-user/base-system/uci)
+# [The UCI system](https://openwrt.org/docs/guide-user/base-system/uci)
 
 Different presentation
 - Human-friendly: as presented in the config files or with the command “uci export <config>”
 - Programmable: as presented with the command “uci show <config>”
 
-#### Configuration files
+    
+## Package/Configuration files
 [Configuration example](https://hackmd.io/ya8BeBw2Qgy_YslcLUl-Jg)
 
-#### C API
+### [Network](https://openwrt.org/docs/guide-user/network/ucicheatsheet)
+#### [IPv6](https://openwrt.org/docs/guide-user/network/ipv6/configuration)
+``` vim
+network.lan=interface
+network.lan.ip6assign='auto'
+network.lan.ipv6='1'
+
+# Define the IPv6 prefix-classes this interface will accept
+network.lan.ip6class='HSI_6'
+```
+
+    
+    
+## C API
 >uci_set
 uci_commit()
 uci_unload()
@@ -302,7 +332,7 @@ uci_lookup_ptr()
     
     
 
-#### shell
+## shell
 uci get prplmesh.config.enable
 uci show $\lt$SUBSYSTEM_NAME$\gt$
 uci export $\lt$SUBSYSTEM_NAME$\gt$
@@ -326,20 +356,20 @@ uci commit wireless
 /sbin/wifi up
 > issue wireless new setting
 
-### LuCI WebUI
+## LuCI WebUI
 
 
-### shell scripts
+## shell scripts
 > json_add_object
 > json_add_array
 
-### wireless
+## wireless
 >/lib/netifd/wireless/mac80211.sh
 /lib/wifi/mac80211.sh
 
 call init_wireless_driver() to add default wireless configuration
     
-### ucitrack
+## ucitrack
     
     
 ## [UCI defaults](https://openwrt.org/docs/guide-developer/uci-defaults)
@@ -355,7 +385,7 @@ In a live router you can see the existing UCI defaults scripts in `/rom/etc/uci-
 
 UCI defaults scripts can be created by packages or they can be inserted into the build manually as custom files.
     
-## The boot process
+# The boot process
     
 ```mermaid
     flowchart LR;
@@ -371,7 +401,7 @@ UCI defaults scripts can be created by packages or they can be inserted into the
     G-->J([/etc/uci-defaults/])
 ```
     
-## shell
+# shell
 > network_get_dnsserver
 procd_set_param stdout 1
 procd_set_param stderr 1
