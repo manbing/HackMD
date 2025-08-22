@@ -87,7 +87,7 @@ uci_load()
 uci_lookup_option_string()
 
 uci_lookup_ptr()
-```
+``` c
     struct uci_ptr ptr = {
         .package = "wireless",
         .section = name,
@@ -272,7 +272,7 @@ uci_load()
 uci_lookup_option_string()
 
 uci_lookup_ptr()
-```
+``` c
     struct uci_ptr ptr = {
         .package = "wireless",
         .section = name,
