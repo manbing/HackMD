@@ -85,7 +85,7 @@ $ git config --list
 
 
 ### global (~/.gitconfig)
-```
+``` vim
 $ git config --global core.editor "vim"
 $ git config --global user.email "manbing3@gmail.com"
 $ git config --global user.name "Manbing"
@@ -99,6 +99,10 @@ $ git config --global pack.threads "1"
 
 $ git config --global log.decorate auto
 $ git config --global init.defaultBranch master
+
+# ~/.git-credential
+$ git config --global credential.helper store
+$ git config --global credential.helper 'store --file ~/.my-credentials'
 ```
     
 ### local
@@ -113,6 +117,11 @@ git config --local gc.develop.reflogExpireUnreachable "never"
 ### system (/etc/gitconfig)
 ```
 git config --system core.editor "vim"
+```
+
+## [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
+``` console
+git cherry-pick -x
 ```
 
 ## git-clone
@@ -367,7 +376,7 @@ $ git config --list
 
 
 ### global (~/.gitconfig)
-```
+``` vim
 $ git config --global core.editor "vim"
 $ git config --global user.email "manbing3@gmail.com"
 $ git config --global user.name "Manbing"
@@ -381,6 +390,10 @@ $ git config --global pack.threads "1"
 
 $ git config --global log.decorate auto
 $ git config --global init.defaultBranch master
+
+# ~/.git-credential
+$ git config --global credential.helper store
+$ git config --global credential.helper 'store --file ~/.my-credentials'
 ```
     
 ### local
@@ -395,6 +408,11 @@ git config --local gc.develop.reflogExpireUnreachable "never"
 ### system (/etc/gitconfig)
 ```
 git config --system core.editor "vim"
+```
+
+## [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
+``` console
+git cherry-pick -x
 ```
 
 ## git-clone
