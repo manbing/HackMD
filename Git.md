@@ -76,7 +76,7 @@ git blame --ignore-rev commit-hash
 ```
     
 ## [git-config](https://man7.org/linux/man-pages/man1/git-config.1.html)
-```
+``` console
 $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 $ git config rebase.updateRefs true
 $ git config --list
@@ -85,7 +85,7 @@ $ git config --list
 
 
 ### global (~/.gitconfig)
-``` vim
+``` sh
 $ git config --global core.editor "vim"
 $ git config --global user.email "manbing3@gmail.com"
 $ git config --global user.name "Manbing"
@@ -103,81 +103,85 @@ $ git config --global init.defaultBranch master
 # ~/.git-credential
 $ git config --global credential.helper store
 $ git config --global credential.helper 'store --file ~/.my-credentials'
+$ git config --global credential.helper 'cache --timeout 3600'
 ```
     
 ### local
-```
-git config --local gc.master.reflogExpire "14 days"
-git config --local gc.master.reflogExpireUnreachable "14 days"
+``` sh
+$ git config --local gc.master.reflogExpire "14 days"
+$ git config --local gc.master.reflogExpireUnreachable "14 days"
 
-git config --local gc.develop.reflogExpire "never"
-git config --local gc.develop.reflogExpireUnreachable "never"
+$ git config --local gc.develop.reflogExpire "never"
+$ git config --local gc.develop.reflogExpireUnreachable "never"
 ```
 
 ### system (/etc/gitconfig)
-```
-git config --system core.editor "vim"
+``` sh
+$ git config --system core.editor "vim"
 ```
 
 ## [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
 ``` console
-git cherry-pick -x
+$ git cherry-pick -x
 ```
 
 ## git-clone
-git clone <local> <new local>
-> local clone
-    
-git clone <URL> <rpository name>
+``` console
+# local clone
+$ git clone <local> <new local>  
+$ git clone <URL> <rpository name>
+```
 
 ## git-checkout
-```
-git checkout --theirs <filename>
-git checkout --ours <filename>
-git checkout <pathspec> <filename>
-git checkout -b <branch> <remote>/<branch>
-git checkout c5f567 -- file1/to/restore file2/to/restore
+``` console
+$ git checkout --theirs <filename>
+$ git checkout --ours <filename>
+$ git checkout <pathspec> <filename>
+$ git checkout -b <branch> <remote>/<branch>
+$ git checkout c5f567 -- file1/to/restore file2/to/restore
 ```
 
 ## git-commit
-```
-git commit --amend --date="$(date -R)"
-git commit --signoff
-git commit --amend --author="Author Name <email@address.com>"
+``` console
+$ git commit --amend --date="$(date -R)"
+$ git commit --signoff
+$ git commit --amend --author="Author Name <email@address.com>"
 ```
 ## [git-describe](https://git-scm.com/docs/git-describe)
 The command finds the most recent tag that is reachable from a commit. 
-```
-git describe --contains <commit-ish>
+``` console
+$ git describe --contains <commit-ish>
 ```
 
     
 ## git-format-patch
+``` console
+$ git format-patch <start SHA>..<end SHA> -o <dir>
+$ git format-patch [-n | --numbered | -N | --no-numbered]
+$ git format-patch --root
+$ git format-patch --root <SHA> (where $SHA is that first commit)
 ```
-git format-patch <start SHA>..<end SHA> -o <dir>
-git format-patch [-n | --numbered | -N | --no-numbered]
-git format-patch --root
-git format-patch --root <SHA> (where $SHA is that first commit)
-```
+``` console
 $ git format-patch -3 -o <dir>
+```
 > * Extract three topmost commits from the current branch and
     format them as e-mailable patches:
     
 ## git-gc
-```
-git gc
-git gc --prune=now
+``` console
+$ git gc
+$ git gc --prune=now
 ```
 
 
 ## git-log
-```
+``` console
 git log --all --graph --decorate --format=fuller
 git log --name-only
 git log -g
 
 git log --follow
->Continue listing the history of a file beyond renames (works only for a single file).
+# Continue listing the history of a file beyond renames (works only for a single file).
 
     
 git log <hash>
@@ -187,36 +191,42 @@ git log <hash>...<hash2>
 ```
 
 ## git-reflog
+```
 git reflog show --all | grep <ref first 7 character>
+```
 
 
 ## git-prune
+```
 git prune
+```
   
 
 ## git-push
-```
-git push <remote> :<remote branch>
-git push <remote> --delete <remote branch>
-git push <remote> <local branch>:<remote branch>
+``` console
+$ git push <remote> :<remote branch>
+$ git push <remote> --delete <remote branch>
+$ git push <remote> <local branch>:<remote branch>
 ```
 
-gitlab merge request
-```
-git push -o merge_request.create -o merge_request.target=<my-target-branch> <remote> <my-branch>
+## gitlab merge request
+``` console
+$ git push -o merge_request.create -o merge_request.target=<my-target-branch> <remote> <my-branch>
 ```
 
 
 ## git-patch
-git apply --check <patch>
->Check if patch is ok or not
+``` console
+$ git apply --check <patch>
+# Check if patch is ok or not
 
-git am <*.patch>
->Apply a series of patches from a mailbox
+$ git am <*.patch>
+# Apply a series of patches from a mailbox
+```
 
 
 ## git-remote
-```
+``` console
 $ git remote add <name> <URL>
 $ git remote show <name>
 $ git remote update --prune
@@ -229,8 +239,7 @@ $ git rebase --update-refs
 ```
 
 ## git-switch
-```
-```
+
     
 ## git-stash
 ```
@@ -240,7 +249,7 @@ $ git stash drop <stash@{0}>
 $ git stash clear
 $ git stash save <name>
 ```
-    
+
 ## git-tagging
 ```
 $ git tag
@@ -367,7 +376,7 @@ git blame --ignore-rev commit-hash
 ```
     
 ## [git-config](https://man7.org/linux/man-pages/man1/git-config.1.html)
-```
+``` console
 $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 $ git config rebase.updateRefs true
 $ git config --list
@@ -376,7 +385,7 @@ $ git config --list
 
 
 ### global (~/.gitconfig)
-``` vim
+``` sh
 $ git config --global core.editor "vim"
 $ git config --global user.email "manbing3@gmail.com"
 $ git config --global user.name "Manbing"
@@ -394,81 +403,85 @@ $ git config --global init.defaultBranch master
 # ~/.git-credential
 $ git config --global credential.helper store
 $ git config --global credential.helper 'store --file ~/.my-credentials'
+$ git config --global credential.helper 'cache --timeout 3600'
 ```
     
 ### local
-```
-git config --local gc.master.reflogExpire "14 days"
-git config --local gc.master.reflogExpireUnreachable "14 days"
+``` sh
+$ git config --local gc.master.reflogExpire "14 days"
+$ git config --local gc.master.reflogExpireUnreachable "14 days"
 
-git config --local gc.develop.reflogExpire "never"
-git config --local gc.develop.reflogExpireUnreachable "never"
+$ git config --local gc.develop.reflogExpire "never"
+$ git config --local gc.develop.reflogExpireUnreachable "never"
 ```
 
 ### system (/etc/gitconfig)
-```
-git config --system core.editor "vim"
+``` sh
+$ git config --system core.editor "vim"
 ```
 
 ## [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
 ``` console
-git cherry-pick -x
+$ git cherry-pick -x
 ```
 
 ## git-clone
-git clone <local> <new local>
-> local clone
-    
-git clone <URL> <rpository name>
+``` console
+# local clone
+$ git clone <local> <new local>  
+$ git clone <URL> <rpository name>
+```
 
 ## git-checkout
-```
-git checkout --theirs <filename>
-git checkout --ours <filename>
-git checkout <pathspec> <filename>
-git checkout -b <branch> <remote>/<branch>
-git checkout c5f567 -- file1/to/restore file2/to/restore
+``` console
+$ git checkout --theirs <filename>
+$ git checkout --ours <filename>
+$ git checkout <pathspec> <filename>
+$ git checkout -b <branch> <remote>/<branch>
+$ git checkout c5f567 -- file1/to/restore file2/to/restore
 ```
 
 ## git-commit
-```
-git commit --amend --date="$(date -R)"
-git commit --signoff
-git commit --amend --author="Author Name <email@address.com>"
+``` console
+$ git commit --amend --date="$(date -R)"
+$ git commit --signoff
+$ git commit --amend --author="Author Name <email@address.com>"
 ```
 ## [git-describe](https://git-scm.com/docs/git-describe)
 The command finds the most recent tag that is reachable from a commit. 
-```
-git describe --contains <commit-ish>
+``` console
+$ git describe --contains <commit-ish>
 ```
 
     
 ## git-format-patch
+``` console
+$ git format-patch <start SHA>..<end SHA> -o <dir>
+$ git format-patch [-n | --numbered | -N | --no-numbered]
+$ git format-patch --root
+$ git format-patch --root <SHA> (where $SHA is that first commit)
 ```
-git format-patch <start SHA>..<end SHA> -o <dir>
-git format-patch [-n | --numbered | -N | --no-numbered]
-git format-patch --root
-git format-patch --root <SHA> (where $SHA is that first commit)
-```
+``` console
 $ git format-patch -3 -o <dir>
+```
 > * Extract three topmost commits from the current branch and
     format them as e-mailable patches:
     
 ## git-gc
-```
-git gc
-git gc --prune=now
+``` console
+$ git gc
+$ git gc --prune=now
 ```
 
 
 ## git-log
-```
+``` console
 git log --all --graph --decorate --format=fuller
 git log --name-only
 git log -g
 
 git log --follow
->Continue listing the history of a file beyond renames (works only for a single file).
+# Continue listing the history of a file beyond renames (works only for a single file).
 
     
 git log <hash>
@@ -478,36 +491,42 @@ git log <hash>...<hash2>
 ```
 
 ## git-reflog
+```
 git reflog show --all | grep <ref first 7 character>
+```
 
 
 ## git-prune
+```
 git prune
+```
   
 
 ## git-push
-```
-git push <remote> :<remote branch>
-git push <remote> --delete <remote branch>
-git push <remote> <local branch>:<remote branch>
+``` console
+$ git push <remote> :<remote branch>
+$ git push <remote> --delete <remote branch>
+$ git push <remote> <local branch>:<remote branch>
 ```
 
-gitlab merge request
-```
-git push -o merge_request.create -o merge_request.target=<my-target-branch> <remote> <my-branch>
+## gitlab merge request
+``` console
+$ git push -o merge_request.create -o merge_request.target=<my-target-branch> <remote> <my-branch>
 ```
 
 
 ## git-patch
-git apply --check <patch>
->Check if patch is ok or not
+``` console
+$ git apply --check <patch>
+# Check if patch is ok or not
 
-git am <*.patch>
->Apply a series of patches from a mailbox
+$ git am <*.patch>
+# Apply a series of patches from a mailbox
+```
 
 
 ## git-remote
-```
+``` console
 $ git remote add <name> <URL>
 $ git remote show <name>
 $ git remote update --prune
@@ -520,8 +539,7 @@ $ git rebase --update-refs
 ```
 
 ## git-switch
-```
-```
+
     
 ## git-stash
 ```
@@ -531,7 +549,7 @@ $ git stash drop <stash@{0}>
 $ git stash clear
 $ git stash save <name>
 ```
-    
+
 ## git-tagging
 ```
 $ git tag
