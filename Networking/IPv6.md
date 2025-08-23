@@ -13,8 +13,10 @@ ULA: Unique Local Address
 
 # Addressing Methods
 ## unicast
+Global Unicast Address, Unique Local Address
 ## anycast 
 ## multicast
+Link-local Address
 
 # Address Formats
 ## Global Unicast Address Format
@@ -70,8 +72,10 @@ ULA: Unique Local Address
 
 # Addressing Methods
 ## unicast
+Global Unicast Address, Unique Local Address
 ## anycast 
 ## multicast
+Link-local Address
 
 # Address Formats
 ## Global Unicast Address Format
