@@ -36,6 +36,26 @@ block-beta
 [Pin Numbering - Raspberry Pi 4B](https://www.pi4j.com/1.4/pins/rpi-4b.html)
 [Raspberry-Pi Pinout](https://pinout.xyz/)
 
+# Relpace firmware with u-boot + OpenWrt
+* u-boot
+
+
+
+``` console
+U-Boot> setenv bootargs 8250.nr_uarts=1 console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait rw
+U-Boot> setenv bootcmd 'fatload mmc 0:1 $kernel_addr_r Image; booti $kernel_addr_r - $fdt_addr'
+U-Boot> saveenv
+```
+[man page](https://hub.digi.com/dp/path=/support/asset/u-boot-reference-manual/)
+
+
+mmcblk0p2
+* mmc: 代表MultiMediaCard，一種儲存技術。
+* blk: 是"block"（區塊）的縮寫，表示這是一個區塊裝置。
+* 0: 表示儲存裝置的編號，mmcblk0 指的是第一個MMC 儲存裝置。
+* p1: 表示該儲存裝置上的第一個分割區。
+
+
 # Porting Temperature Sensor, DS18B20
 the procedure:
 1. Configure GPIO PIN action as 1-Wire protocol
@@ -106,6 +126,26 @@ block-beta
 
 [Pin Numbering - Raspberry Pi 4B](https://www.pi4j.com/1.4/pins/rpi-4b.html)
 [Raspberry-Pi Pinout](https://pinout.xyz/)
+
+# Relpace firmware with u-boot + OpenWrt
+* u-boot
+
+
+
+``` console
+U-Boot> setenv bootargs 8250.nr_uarts=1 console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait rw
+U-Boot> setenv bootcmd 'fatload mmc 0:1 $kernel_addr_r Image; booti $kernel_addr_r - $fdt_addr'
+U-Boot> saveenv
+```
+[man page](https://hub.digi.com/dp/path=/support/asset/u-boot-reference-manual/)
+
+
+mmcblk0p2
+* mmc: 代表MultiMediaCard，一種儲存技術。
+* blk: 是"block"（區塊）的縮寫，表示這是一個區塊裝置。
+* 0: 表示儲存裝置的編號，mmcblk0 指的是第一個MMC 儲存裝置。
+* p1: 表示該儲存裝置上的第一個分割區。
+
 
 # Porting Temperature Sensor, DS18B20
 the procedure:
