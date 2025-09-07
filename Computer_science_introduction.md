@@ -1,10 +1,10 @@
 ---
-title: Computer science introduction
+title: Computer Science Introduction
 tags: [Computer science]
 
 ---
 
-# Computer science introduction
+# Computer Science Introduction
 
 ## Memory hierarchy
 
@@ -92,7 +92,7 @@ Coroutines are computer program components that allow execution to be suspended 
 They have been described as "functions whose execution you can pause".[1]
 
 Melvin Conway coined the term coroutine in 1958 when he applied it to the construction of an assembly program.[2] The first published explanation of the coroutine appeared later, in 1963.[3]
-# Computer science introduction
+# Computer Science Introduction
 
 ## Memory hierarchy
 
