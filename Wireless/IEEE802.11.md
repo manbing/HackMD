@@ -25,15 +25,15 @@ All of those convoluted codenames are being changed. So instead of the current W
 
 
 
-| Column 1 | Column 2 | Column 3 |
-| -------- | -------- | -------- |
+| Column 1 | Column 2 | Column 3 | Specification|
+| -------- | -------- | -------- | -------- |
 | Wi-Fi 1     | 802.11b     |      |
 | Wi-Fi 2     | 802.11a     |      |
 | Wi-Fi 3     | 802.11g     |      |
 | Wi-Fi 4     | 802.11n     | HT     |
 | Wi-Fi 5     | 802.11ac     | VHT     |
 | Wi-Fi 6     | 802.11ax     | HE (High Efficiency)     |
-| Wi-Fi 7     | 802.11be     | EHT     |
+| Wi-Fi 7     | 802.11be     | EHT     | [IEEE 802.11be-2024](https://ieeexplore.ieee.org/document/11090080)
 
 
 ## Introduction
@@ -72,15 +72,15 @@ All of those convoluted codenames are being changed. So instead of the current W
 
 
 
-| Column 1 | Column 2 | Column 3 |
-| -------- | -------- | -------- |
+| Column 1 | Column 2 | Column 3 | Specification|
+| -------- | -------- | -------- | -------- |
 | Wi-Fi 1     | 802.11b     |      |
 | Wi-Fi 2     | 802.11a     |      |
 | Wi-Fi 3     | 802.11g     |      |
 | Wi-Fi 4     | 802.11n     | HT     |
 | Wi-Fi 5     | 802.11ac     | VHT     |
 | Wi-Fi 6     | 802.11ax     | HE (High Efficiency)     |
-| Wi-Fi 7     | 802.11be     | EHT     |
+| Wi-Fi 7     | 802.11be     | EHT     | [IEEE 802.11be-2024](https://ieeexplore.ieee.org/document/11090080)
 
 
 ## Introduction
