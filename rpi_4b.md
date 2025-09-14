@@ -3,9 +3,21 @@ title: Raspberry Pi 4B
 
 ---
 
+
+``` console
+$ mount -t configfs none /sys/kernel/config
+$ dtoverlay /boot/overlays/w1-gpio.dtbo
+```
+
+# [Datasheet](https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf)
+
+[bcm2711-peripherals](https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf)
+
 # [Pin](https://en.wikipedia.org/wiki/Lead_(electronics))
 ![Raspberry-Pi-4-Pinout](https://hackmd.io/_uploads/rJY5-alDeg.png)
 
+## Pinout (40-pin J8 Header)
+[Raspberry Pi Pinout Guide](https://randomnerdtutorials.com/raspberry-pi-pinout-gpios/)
 
 ## Protocol
 
@@ -28,15 +40,10 @@ block-beta
   end
 ```
 
-## Pinout (40-pin J8 Header)
-![pi4j-rpi-4b-pinout-small](https://hackmd.io/_uploads/H1i1f988ll.png)
-
-
-
-[Pin Numbering - Raspberry Pi 4B](https://www.pi4j.com/1.4/pins/rpi-4b.html)
-[Raspberry-Pi Pinout](https://pinout.xyz/)
-
 # Relpace firmware with u-boot + OpenWrt
+[Raspberry pi 4 Build System (64bits)](https://hackmd.io/@sss22213/rklpt-BGK)
+
+
 * u-boot
 
 
@@ -48,7 +55,6 @@ U-Boot> saveenv
 ```
 [man page](https://hub.digi.com/dp/path=/support/asset/u-boot-reference-manual/)
 
-
 mmcblk0p2
 * mmc: 代表MultiMediaCard，一種儲存技術。
 * blk: 是"block"（區塊）的縮寫，表示這是一個區塊裝置。
@@ -57,26 +63,30 @@ mmcblk0p2
 
 
 # Porting Temperature Sensor, DS18B20
-the procedure:
-1. Configure GPIO PIN action as 1-Wire protocol
-2. Add DS18B20 into Device Tree
-3. Probe Device
+The procedure:
+1. Changing GPIO PIN functionalities with Device Tree
+2. Probe Device
 
 
+## Changing GPIO PIN functionalities
+`Pin Multiplexing`. These pins have a default function and may have other functionalities (ALT0, ALT1, ALT2, ALT3, etc.). In Linux, modifying the default function of the pin multiplexing configuration, it is necessary to alter the [Devicetree](https://en.wikipedia.org/wiki/Devicetree).
 
-## Configure GPIO PIN to Support the Protocol
-Enable 1-Wire interface in `/boot/config.txt`
-``` vim
-# gpio pin is 4 in default.
-dtoverlay=w1-gpio,gpiopin=21
+``` console
+$ mount -t configfs none /sys/kernel/config
+
+# apply dtbo
+$ dtoverlay /boot/overlays/w1-gpio.dtbo
+
+# if it applies successfully, it will create a corresponding directory under the directory, /sys/kernel/config/device-tree/overlays.
+$ cd /sys/kernel/config/device-tree/overlays/0_w1-gpio
+$ cat status 
+applied
+$
 ```
-When CPU bootup, Bootloader will read this configuration file and configure GPIO PIN 21 as 1-Wire interface.
 
-
-## Add DS18B20 into Device Tree
 
 [devicetree-specification](https://github.com/devicetree-org/devicetree-specification)
-dts, dtb, dto
+dts, dtb, dtbo
 
 ``` console
 $ cd /proc/device-tree/
@@ -85,6 +95,8 @@ $ dtc -O dtb -o p4080ds.dtb p4080ds.dts
 $ dtc -I dtb -O dts p4080ds.dtb
 $ dtc -I dtb -O dts -o <output_filename.dts> <input_filename.dtbo>
 $ cd /sys/bus/w1/devices/28-00000xxxxxxx/
+$ mount -t configfs none /sys/kernel/config
+$ dtoverlay /boot/overlays/w1-gpio.dtb
 ```
 
 ## Probe Device
@@ -94,9 +106,21 @@ $ cd /sys/bus/w1/devices/28-00000xxxxxxx/
 [Day 8：Device Tree (Part 1)](https://ithelp.ithome.com.tw/m/articles/10242811)
 
 
+
+``` console
+$ mount -t configfs none /sys/kernel/config
+$ dtoverlay /boot/overlays/w1-gpio.dtbo
+```
+
+# [Datasheet](https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf)
+
+[bcm2711-peripherals](https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf)
+
 # [Pin](https://en.wikipedia.org/wiki/Lead_(electronics))
 ![Raspberry-Pi-4-Pinout](https://hackmd.io/_uploads/rJY5-alDeg.png)
 
+## Pinout (40-pin J8 Header)
+[Raspberry Pi Pinout Guide](https://randomnerdtutorials.com/raspberry-pi-pinout-gpios/)
 
 ## Protocol
 
@@ -119,15 +143,10 @@ block-beta
   end
 ```
 
-## Pinout (40-pin J8 Header)
-![pi4j-rpi-4b-pinout-small](https://hackmd.io/_uploads/H1i1f988ll.png)
-
-
-
-[Pin Numbering - Raspberry Pi 4B](https://www.pi4j.com/1.4/pins/rpi-4b.html)
-[Raspberry-Pi Pinout](https://pinout.xyz/)
-
 # Relpace firmware with u-boot + OpenWrt
+[Raspberry pi 4 Build System (64bits)](https://hackmd.io/@sss22213/rklpt-BGK)
+
+
 * u-boot
 
 
@@ -139,7 +158,6 @@ U-Boot> saveenv
 ```
 [man page](https://hub.digi.com/dp/path=/support/asset/u-boot-reference-manual/)
 
-
 mmcblk0p2
 * mmc: 代表MultiMediaCard，一種儲存技術。
 * blk: 是"block"（區塊）的縮寫，表示這是一個區塊裝置。
@@ -148,26 +166,30 @@ mmcblk0p2
 
 
 # Porting Temperature Sensor, DS18B20
-the procedure:
-1. Configure GPIO PIN action as 1-Wire protocol
-2. Add DS18B20 into Device Tree
-3. Probe Device
+The procedure:
+1. Changing GPIO PIN functionalities with Device Tree
+2. Probe Device
 
 
+## Changing GPIO PIN functionalities
+`Pin Multiplexing`. These pins have a default function and may have other functionalities (ALT0, ALT1, ALT2, ALT3, etc.). In Linux, modifying the default function of the pin multiplexing configuration, it is necessary to alter the [Devicetree](https://en.wikipedia.org/wiki/Devicetree).
 
-## Configure GPIO PIN to Support the Protocol
-Enable 1-Wire interface in `/boot/config.txt`
-``` vim
-# gpio pin is 4 in default.
-dtoverlay=w1-gpio,gpiopin=21
+``` console
+$ mount -t configfs none /sys/kernel/config
+
+# apply dtbo
+$ dtoverlay /boot/overlays/w1-gpio.dtbo
+
+# if it applies successfully, it will create a corresponding directory under the directory, /sys/kernel/config/device-tree/overlays.
+$ cd /sys/kernel/config/device-tree/overlays/0_w1-gpio
+$ cat status 
+applied
+$
 ```
-When CPU bootup, Bootloader will read this configuration file and configure GPIO PIN 21 as 1-Wire interface.
 
-
-## Add DS18B20 into Device Tree
 
 [devicetree-specification](https://github.com/devicetree-org/devicetree-specification)
-dts, dtb, dto
+dts, dtb, dtbo
 
 ``` console
 $ cd /proc/device-tree/
@@ -176,6 +198,8 @@ $ dtc -O dtb -o p4080ds.dtb p4080ds.dts
 $ dtc -I dtb -O dts p4080ds.dtb
 $ dtc -I dtb -O dts -o <output_filename.dts> <input_filename.dtbo>
 $ cd /sys/bus/w1/devices/28-00000xxxxxxx/
+$ mount -t configfs none /sys/kernel/config
+$ dtoverlay /boot/overlays/w1-gpio.dtb
 ```
 
 ## Probe Device
