@@ -1,10 +1,22 @@
 ---
 title: Cryptography
-tags: [TODO, Computer Science]
+tags: [Computer Science]
 
 ---
 
+Cryptography is intrinsically linked to the **CIA** Triad (**Confidentiality**, **Integrity**, and **Availability**) because it serves as a primary method for achieving these fundamental information security goals. Cryptography, through encryption and decryption, directly supports confidentiality by making data unreadable to unauthorized parties. It also enhances integrity by using techniques like hash functions and digital signatures to detect unauthorized modifications and ensure data authenticity. While cryptography doesn't directly address availability like network redundancy, it indirectly contributes by securing data from breaches that could render it inaccessible.
 
+**How Cryptography relates to each part of the CIA Triad:**
+* **Confidentiality (What it is):** Protecting sensitive information from unauthorized disclosure.
+**Cryptography's Role:** Cryptography, specifically encryption, transforms plain text into unreadable ciphertext. Only those with the correct decryption key can revert it back to its original form, ensuring that even if unauthorized users gain access to the data, they cannot understand it. 
+
+* **Integrity (What it is):** Ensuring data is accurate, complete, and trustworthy by preventing unauthorized modification.
+**Cryptography's Role:** Cryptographic hash functions create a unique "fingerprint" of the data. Any alteration to the data, even a minor one, will result in a different hash value, making tampering evident. Digital signatures, also a cryptographic technique, use private keys to sign data, allowing the recipient to verify the sender's identity and that the data hasn't been changed since it was signed. 
+
+* **Availability (What it is):** Ensuring that systems and data are accessible and usable by authorized individuals when needed.
+**Cryptography's Role:** While not its primary function, cryptography indirectly supports availability. By securing systems and data from breaches that could lead to denial-of-service attacks or data loss, cryptography helps maintain the necessary access and uptime for users to access information when required. 
+
+---
 
 
 | Function | Purpose |
@@ -34,7 +46,19 @@ tags: [TODO, Computer Science]
 # Hashing
 Distinct cryptographic hash functions, not encryption algorithms, that produce a unique fixed-size "fingerprint" of data, called a hash or digest.
 * MD5
-* SHA
+* SHACryptography is intrinsically linked to the **CIA** Triad (**Confidentiality**, **Integrity**, and **Availability**) because it serves as a primary method for achieving these fundamental information security goals. Cryptography, through encryption and decryption, directly supports confidentiality by making data unreadable to unauthorized parties. It also enhances integrity by using techniques like hash functions and digital signatures to detect unauthorized modifications and ensure data authenticity. While cryptography doesn't directly address availability like network redundancy, it indirectly contributes by securing data from breaches that could render it inaccessible.
+
+**How Cryptography relates to each part of the CIA Triad:**
+* **Confidentiality (What it is):** Protecting sensitive information from unauthorized disclosure.
+**Cryptography's Role:** Cryptography, specifically encryption, transforms plain text into unreadable ciphertext. Only those with the correct decryption key can revert it back to its original form, ensuring that even if unauthorized users gain access to the data, they cannot understand it. 
+
+* **Integrity (What it is):** Ensuring data is accurate, complete, and trustworthy by preventing unauthorized modification.
+**Cryptography's Role:** Cryptographic hash functions create a unique "fingerprint" of the data. Any alteration to the data, even a minor one, will result in a different hash value, making tampering evident. Digital signatures, also a cryptographic technique, use private keys to sign data, allowing the recipient to verify the sender's identity and that the data hasn't been changed since it was signed. 
+
+* **Availability (What it is):** Ensuring that systems and data are accessible and usable by authorized individuals when needed.
+**Cryptography's Role:** While not its primary function, cryptography indirectly supports availability. By securing systems and data from breaches that could lead to denial-of-service attacks or data loss, cryptography helps maintain the necessary access and uptime for users to access information when required. 
+
+---
 
 
 | Function | Purpose |
