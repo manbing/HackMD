@@ -74,10 +74,10 @@ The procedure:
 ``` console
 $ mount -t configfs none /sys/kernel/config
 
-# apply dtbo
+# Apply dtbo
 $ dtoverlay /boot/overlays/w1-gpio.dtbo
 
-# if it applies successfully, it will create a corresponding directory under the directory, /sys/kernel/config/device-tree/overlays.
+# If it applies successfully, it will create a corresponding directory under the directory, /sys/kernel/config/device-tree/overlays.
 $ cd /sys/kernel/config/device-tree/overlays/0_w1-gpio
 $ cat status 
 applied
@@ -177,10 +177,10 @@ The procedure:
 ``` console
 $ mount -t configfs none /sys/kernel/config
 
-# apply dtbo
+# Apply dtbo
 $ dtoverlay /boot/overlays/w1-gpio.dtbo
 
-# if it applies successfully, it will create a corresponding directory under the directory, /sys/kernel/config/device-tree/overlays.
+# If it applies successfully, it will create a corresponding directory under the directory, /sys/kernel/config/device-tree/overlays.
 $ cd /sys/kernel/config/device-tree/overlays/0_w1-gpio
 $ cat status 
 applied
