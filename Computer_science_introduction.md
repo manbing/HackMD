@@ -1,6 +1,6 @@
 ---
 title: Computer Science Introduction
-tags: [Computer science]
+tags: [Computer Science]
 
 ---
 
@@ -33,11 +33,17 @@ tags: [Computer science]
 >
 >So preemption will only happen after an interrupt, but an interrupt doesn't always cause preemption.
 
-## 32/64 bits central central processing unit(CPU)
-> depending on **address bus width of CPU**. 32 bits address bus can address 2^{32} memory address; 64 bits address bus can address 2^{64} memory address.
+## 32/64 Bit Architecture
+The 32/64 Bit is meaning **register size (bus size?)**. 32 bits address bus can address 2^{32} memory address; 64 bits address bus can address 2^{64} memory address.
 
-## 32/64 bits operation system(OS)
-> 32 bits system expects it can access 2^{32} memory address; 64 bits system expects it can access 2^{64} memory address.
+## 32/64 Bit System
+The 32/64 Bit is meaning **data types and sizes**. The data types and sizes are different.
+32 bits system **expects** it can access 2^{32} memory address; 64 bits system expects it can access 2^{64} memory address.
+
+Key Differences:
+* **long**: This is the most significant difference. On 32-bit systems, a long integer is typically 4 bytes, while on 64-bit systems, it expands to 8 bytes.
+* **Pointers**: Pointers, which store memory addresses, also change size. On a 32-bit system, a pointer occupies 4 bytes to address up to 4GB of memory. On a 64-bit system, a pointer occupies 8 bytes, allowing it to address a much larger memory space (up to 16 exabytes).
+* **Other types**: char, short, int, long long, float, double, and long double generally maintain the same size across both 32-bit and 64-bit architectures.
 
 
 ## Memory access and alignment
@@ -121,11 +127,17 @@ Melvin Conway coined the term coroutine in 1958 when he applied it to the constr
 >
 >So preemption will only happen after an interrupt, but an interrupt doesn't always cause preemption.
 
-## 32/64 bits central central processing unit(CPU)
-> depending on **address bus width of CPU**. 32 bits address bus can address 2^{32} memory address; 64 bits address bus can address 2^{64} memory address.
+## 32/64 Bit Architecture
+The 32/64 Bit is meaning **register size (bus size?)**. 32 bits address bus can address 2^{32} memory address; 64 bits address bus can address 2^{64} memory address.
 
-## 32/64 bits operation system(OS)
-> 32 bits system expects it can access 2^{32} memory address; 64 bits system expects it can access 2^{64} memory address.
+## 32/64 Bit System
+The 32/64 Bit is meaning **data types and sizes**. The data types and sizes are different.
+32 bits system **expects** it can access 2^{32} memory address; 64 bits system expects it can access 2^{64} memory address.
+
+Key Differences:
+* **long**: This is the most significant difference. On 32-bit systems, a long integer is typically 4 bytes, while on 64-bit systems, it expands to 8 bytes.
+* **Pointers**: Pointers, which store memory addresses, also change size. On a 32-bit system, a pointer occupies 4 bytes to address up to 4GB of memory. On a 64-bit system, a pointer occupies 8 bytes, allowing it to address a much larger memory space (up to 16 exabytes).
+* **Other types**: char, short, int, long long, float, double, and long double generally maintain the same size across both 32-bit and 64-bit architectures.
 
 
 ## Memory access and alignment
