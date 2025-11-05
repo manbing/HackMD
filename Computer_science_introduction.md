@@ -98,6 +98,11 @@ Coroutines are computer program components that allow execution to be suspended 
 They have been described as "functions whose execution you can pause".[1]
 
 Melvin Conway coined the term coroutine in 1958 when he applied it to the construction of an assembly program.[2] The first published explanation of the coroutine appeared later, in 1963.[3]
+
+## [Bit banging](https://en.wikipedia.org/wiki/Bit_banging)
+Bit banging is a term of art that describes a method of digital data transmission as using general-purpose input/output (GPIO) instead of computer hardware that is intended specifically for data communication. Controlling software is responsible for satisfying protocol requirements including timing which can be challenging due to limited host system resources and competing demands on the software.
+
+In contrast, dedicated communication hardware (e.g., UART, SPI, I²C) satisfies protocol requirements which tends to reduce the runtime load on the controlling system – software and its host processor. In particular, some communication hardware provides data buffering to lower the runtime load of the controlling system.
 # Computer Science Introduction
 
 ## Memory hierarchy
@@ -192,3 +197,8 @@ Coroutines are computer program components that allow execution to be suspended 
 They have been described as "functions whose execution you can pause".[1]
 
 Melvin Conway coined the term coroutine in 1958 when he applied it to the construction of an assembly program.[2] The first published explanation of the coroutine appeared later, in 1963.[3]
+
+## [Bit banging](https://en.wikipedia.org/wiki/Bit_banging)
+Bit banging is a term of art that describes a method of digital data transmission as using general-purpose input/output (GPIO) instead of computer hardware that is intended specifically for data communication. Controlling software is responsible for satisfying protocol requirements including timing which can be challenging due to limited host system resources and competing demands on the software.
+
+In contrast, dedicated communication hardware (e.g., UART, SPI, I²C) satisfies protocol requirements which tends to reduce the runtime load on the controlling system – software and its host processor. In particular, some communication hardware provides data buffering to lower the runtime load of the controlling system.
