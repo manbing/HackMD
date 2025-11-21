@@ -41,6 +41,7 @@ $ make package/<pkg>/compile
 $ make package/<pkg>/clean
 $ make package/<pkg>/prepare QUILT=1
 $ make package/<pkg>/refresh
+$ make package/<pkg>/update
 
 $ make package/feeds/toolbox/kexec-tools/download
 $ make package/feeds/toolbox/kexec-tools/prepare
@@ -152,8 +153,10 @@ LINUX_KERNEL_HASH-5.4.117 = 4e989b5775830092e5c76b5cca65ebff862ad0c87d0b58c3a20d
 sha256sum
 
 ## Decompress .ipk file
-mv aaa.ipk aaa.tgz
-tar zxvf aaa.tgz
+``` console
+$ mv aaa.ipk aaa.tgz
+$ tar zxvf aaa.tgz
+```
 
 ## quilt
 ``` shell
@@ -237,6 +240,7 @@ $ make package/<pkg>/compile
 $ make package/<pkg>/clean
 $ make package/<pkg>/prepare QUILT=1
 $ make package/<pkg>/refresh
+$ make package/<pkg>/update
 
 $ make package/feeds/toolbox/kexec-tools/download
 $ make package/feeds/toolbox/kexec-tools/prepare
@@ -348,8 +352,10 @@ LINUX_KERNEL_HASH-5.4.117 = 4e989b5775830092e5c76b5cca65ebff862ad0c87d0b58c3a20d
 sha256sum
 
 ## Decompress .ipk file
-mv aaa.ipk aaa.tgz
-tar zxvf aaa.tgz
+``` console
+$ mv aaa.ipk aaa.tgz
+$ tar zxvf aaa.tgz
+```
 
 ## quilt
 ``` shell
