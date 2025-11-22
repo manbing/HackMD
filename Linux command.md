@@ -1,13 +1,16 @@
 ---
-title: Linux command
-tags: [Linux]
+title: Linux Command
+tags: [Command, Linux]
 
 ---
 
-# Linux command
-###### tags: `Command` `Linux`
+# Useful command
+``` console
+$ btop
+$ slabtop
+```
 
-
+# Command Usage
 update-grub
 
 
@@ -32,11 +35,33 @@ $ brctl snoopdbg br3 on
 ```
 
 ## iw
-``` shell
+``` console
 $ iw dev wlan0 info
 $ iw wlan0 scan
 $ iw wlan0 link
 $ iw dev
+$ iw wlan0 station dump
+$ iw dev                          # 显示无线网络设备信息
+$ iw dev wlan0 info               # 显示指定无线网络设备的详细信息
+$ iw dev wlan0 scan               # 扫描周围热点信息
+$ iw dev wlan0 link               # 获得连接状态
+$ iw dev wlan0 station dump       # 列出所有STA信息
+$ iw dev wlan0 connect wifi名称   # 连接至OPEN方式的AP
+$ iw dev wlan0 connect wifi名称 2432 # 有同名热点AP时指定特定频段
+$ iw dev wlan0 connect wifi名称 key 0:密码 d:1:默认密码   # 连接至WEP加密方式的AP
+$ iw dev wlan0 disconnect         # 断开连接
+$ iw phy                          # 显示无线设备的物理特性和功能
+$ iw phy phy0 info                # 显示支持的无线标准
+$ iw phy phy0 wowlan show         # 查看wowlan状态
+$ iw phy phy0 wowlan enable       # 使能wowlan，漫游功能需要
+$ iw list
+$ iw dev ath2 info
+$ iwconfig wlan1 mode monitor
+```
+
+Get contory code
+``` console
+$ iw reg get
 ```
 
 ## inxi
@@ -66,6 +91,12 @@ $ ip link set multicast on dev {if name}
 $ ip link set <interface> promisc on
 $ ip link set <old if name> name <new if name>
 ```
+
+To check the number of received and transmitted packets for a network interface using the `ip` command in Linux, you can use the `ip -s link` command.
+``` console
+$ ip -s link show
+```
+
 
 Show running interface only
 ``` shell
@@ -270,8 +301,14 @@ $ docker run --rm -u manbing -v /home/manbing:/home/manbing -v /etc/passwd:/etc/
 ### [docker-image](https://docs.docker.com/reference/cli/docker/image/)
 ``` shell
 $ docker image ls
-$ docker image prune
+$ docker image prune -a
 $ docker save {image-name} {image-name}.tar
+$ docker pull ubuntu:latest
+$ docker pull ubuntu:24.04
+$ docker pull --all-tags ubuntu
+$ docker search ubuntu -f is-official=true
+$ docker rmi <repository_name>:<tag>
+$ docker rmi <image_id>
 
 ## docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
 $ docker import http://downloads.openwrt.org/attitude_adjustment/12.09/x86/generic/openwrt-x86-generic-rootfs.tar.gz openwrt-x86-generic-rootfs
@@ -282,6 +319,8 @@ Create image with `Dockerfile` file:
 $ docker build -t dockerenv . --no-cache
 ```
 
+#### [docker image save](https://docs.docker.com/reference/cli/docker/image/save/)
+Save one or more images to a tar archive (streamed to STDOUT by default)
     
 ### docker-container
 docker create [OPTIONS] IMAGE [COMMAND] [ARG..]
@@ -368,10 +407,28 @@ networks:
 Docker Build is one of Docker Engine's most used features. Whenever you are creating an image you are using Docker Build. Build is a key part of your software development life cycle allowing you to package and bundle your code and ship it anywhere.
 
 create image with Dockerfile
-``` shell
+``` console
 $ docker build -t <tag> .
 ```
-    
+### [docker-commit](https://docs.docker.com/reference/cli/docker/container/commit/)
+
+``` console
+$ docker commit <container_id_or_name> my-new-committed-image:latest 
+```
+### docker-export
+`docker export` only exports the container's filesystem and does not include the contents of any volumes associated with the container.
+
+``` console
+$  docker export <container_id_or_name> > my_exported_container.tar
+```
+
+### docker-pull
+``` shell
+$ docker pull ubuntu:latest
+$ docker pull ubuntu:24.04
+$ docker pull --all-tags ubuntu
+```
+
 ## samba
 ``` shell
 $ sudo smbpasswd -a {UserName} {password}
@@ -457,6 +514,8 @@ Keep user environment variable:
 $ sudo -E Command>
 ```
 
+## wpa_supplicant
+
     
 ## else
 ``` shell
@@ -491,21 +550,29 @@ $ deactivate
 [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
 [使用 pip 安裝 TensorFlow](https://www.tensorflow.org/install/pip?hl=zh-tw#virtual-environment-install)
 
-## mount net disk
+## Mount net disk
 ``` shell
 $ mkdir {dir}
 $ mount //{Ip}/{Home} {dir} -ousername={account},password={password}
 ```
 
+## Search string
+``` console
+$ grep <string> cat /proc/slabinfo
+$ grep -rin <string>
+```
 
 <style>
 .green {
   color: #2dbb29;
 }
-</style># Linux command
-###### tags: `Command` `Linux`
+</style># Useful command
+``` console
+$ btop
+$ slabtop
+```
 
-
+# Command Usage
 update-grub
 
 
@@ -530,11 +597,33 @@ $ brctl snoopdbg br3 on
 ```
 
 ## iw
-``` shell
+``` console
 $ iw dev wlan0 info
 $ iw wlan0 scan
 $ iw wlan0 link
 $ iw dev
+$ iw wlan0 station dump
+$ iw dev                          # 显示无线网络设备信息
+$ iw dev wlan0 info               # 显示指定无线网络设备的详细信息
+$ iw dev wlan0 scan               # 扫描周围热点信息
+$ iw dev wlan0 link               # 获得连接状态
+$ iw dev wlan0 station dump       # 列出所有STA信息
+$ iw dev wlan0 connect wifi名称   # 连接至OPEN方式的AP
+$ iw dev wlan0 connect wifi名称 2432 # 有同名热点AP时指定特定频段
+$ iw dev wlan0 connect wifi名称 key 0:密码 d:1:默认密码   # 连接至WEP加密方式的AP
+$ iw dev wlan0 disconnect         # 断开连接
+$ iw phy                          # 显示无线设备的物理特性和功能
+$ iw phy phy0 info                # 显示支持的无线标准
+$ iw phy phy0 wowlan show         # 查看wowlan状态
+$ iw phy phy0 wowlan enable       # 使能wowlan，漫游功能需要
+$ iw list
+$ iw dev ath2 info
+$ iwconfig wlan1 mode monitor
+```
+
+Get contory code
+``` console
+$ iw reg get
 ```
 
 ## inxi
@@ -564,6 +653,12 @@ $ ip link set multicast on dev {if name}
 $ ip link set <interface> promisc on
 $ ip link set <old if name> name <new if name>
 ```
+
+To check the number of received and transmitted packets for a network interface using the `ip` command in Linux, you can use the `ip -s link` command.
+``` console
+$ ip -s link show
+```
+
 
 Show running interface only
 ``` shell
@@ -768,8 +863,14 @@ $ docker run --rm -u manbing -v /home/manbing:/home/manbing -v /etc/passwd:/etc/
 ### [docker-image](https://docs.docker.com/reference/cli/docker/image/)
 ``` shell
 $ docker image ls
-$ docker image prune
+$ docker image prune -a
 $ docker save {image-name} {image-name}.tar
+$ docker pull ubuntu:latest
+$ docker pull ubuntu:24.04
+$ docker pull --all-tags ubuntu
+$ docker search ubuntu -f is-official=true
+$ docker rmi <repository_name>:<tag>
+$ docker rmi <image_id>
 
 ## docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
 $ docker import http://downloads.openwrt.org/attitude_adjustment/12.09/x86/generic/openwrt-x86-generic-rootfs.tar.gz openwrt-x86-generic-rootfs
@@ -780,6 +881,8 @@ Create image with `Dockerfile` file:
 $ docker build -t dockerenv . --no-cache
 ```
 
+#### [docker image save](https://docs.docker.com/reference/cli/docker/image/save/)
+Save one or more images to a tar archive (streamed to STDOUT by default)
     
 ### docker-container
 docker create [OPTIONS] IMAGE [COMMAND] [ARG..]
@@ -866,10 +969,28 @@ networks:
 Docker Build is one of Docker Engine's most used features. Whenever you are creating an image you are using Docker Build. Build is a key part of your software development life cycle allowing you to package and bundle your code and ship it anywhere.
 
 create image with Dockerfile
-``` shell
+``` console
 $ docker build -t <tag> .
 ```
-    
+### [docker-commit](https://docs.docker.com/reference/cli/docker/container/commit/)
+
+``` console
+$ docker commit <container_id_or_name> my-new-committed-image:latest 
+```
+### docker-export
+`docker export` only exports the container's filesystem and does not include the contents of any volumes associated with the container.
+
+``` console
+$  docker export <container_id_or_name> > my_exported_container.tar
+```
+
+### docker-pull
+``` shell
+$ docker pull ubuntu:latest
+$ docker pull ubuntu:24.04
+$ docker pull --all-tags ubuntu
+```
+
 ## samba
 ``` shell
 $ sudo smbpasswd -a {UserName} {password}
@@ -955,6 +1076,8 @@ Keep user environment variable:
 $ sudo -E Command>
 ```
 
+## wpa_supplicant
+
     
 ## else
 ``` shell
@@ -989,12 +1112,17 @@ $ deactivate
 [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
 [使用 pip 安裝 TensorFlow](https://www.tensorflow.org/install/pip?hl=zh-tw#virtual-environment-install)
 
-## mount net disk
+## Mount net disk
 ``` shell
 $ mkdir {dir}
 $ mount //{Ip}/{Home} {dir} -ousername={account},password={password}
 ```
 
+## Search string
+``` console
+$ grep <string> cat /proc/slabinfo
+$ grep -rin <string>
+```
 
 <style>
 .green {
