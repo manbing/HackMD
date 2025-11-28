@@ -5,13 +5,13 @@ tags: [OpenWrt]
 ---
 
 Unified Configuration Interface (UCI) is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
-- Package file is saved in configuration directory (locate in flash), `/etc/config`;
-- Change delta file is saved in save directory (locate in RAM), `/tmp/.uci`;
+- <mark>Package file</mark> is saved in configuration directory (locate in flash), `/etc/config`;
+- <mark>Change delta file</mark> is saved in save directory (locate in RAM), `/tmp/.uci`;
 
 Web GUI cache is locate in `/var/run/rpcd/uci-<sha256>`.
 
-``` vim
-# rpcd/src/include/rpcd/uci.h
+``` c
+// rpcd/src/include/rpcd/uci.h
 #define RPC_UCI_DIR_PREFIX  "/var/run/rpcd"
 #define RPC_UCI_SAVEDIR_PREFIX  RPC_UCI_DIR_PREFIX "/uci-"
 #define RPC_SNAPSHOT_FILES  RPC_UCI_DIR_PREFIX "/snapshot-files/"
@@ -92,13 +92,13 @@ $ /sbin/wifi up
 # Reference
 [Different presentation](https://openwrt.org/docs/guide-user/base-system/uci#different_presentation)
 Unified Configuration Interface (UCI) is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
-- Package file is saved in configuration directory (locate in flash), `/etc/config`;
-- Change delta file is saved in save directory (locate in RAM), `/tmp/.uci`;
+- <mark>Package file</mark> is saved in configuration directory (locate in flash), `/etc/config`;
+- <mark>Change delta file</mark> is saved in save directory (locate in RAM), `/tmp/.uci`;
 
 Web GUI cache is locate in `/var/run/rpcd/uci-<sha256>`.
 
-``` vim
-# rpcd/src/include/rpcd/uci.h
+``` c
+// rpcd/src/include/rpcd/uci.h
 #define RPC_UCI_DIR_PREFIX  "/var/run/rpcd"
 #define RPC_UCI_SAVEDIR_PREFIX  RPC_UCI_DIR_PREFIX "/uci-"
 #define RPC_SNAPSHOT_FILES  RPC_UCI_DIR_PREFIX "/snapshot-files/"
