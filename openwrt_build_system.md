@@ -192,6 +192,8 @@ $ quilt diff
 $ quilt refresh
 $ make path/to/package/update V=s -j1
 ```
+## fix conflict
+
 
 [Linux - 管理 patch 的工具 : quilt](http://kaiyhsu.blogspot.com/2018/01/quilt-patch.html)
     
@@ -203,7 +205,23 @@ Themes
 
 
 [Using the Image Builder](https://openwrt.org/docs/guide-user/additional-software/imagebuilder)
-  # OpenWrt build system
+ 
+## Package
+``` c
+BUILD_VARIANT
+```
+
+``` console
+$ IPKG_NO_SCRIPT=1 \
+IPKG_INSTROOT=/root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/build_dir/target-arm/root-ipq53xx \
+TMPDIR=/root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/build_dir/target-arm/root-ipq53xx/tmp \
+/root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/staging_dir/host/bin/opkg \
+--offline-root /root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/build_dir/target-arm/root-ipq53xx \
+--force-postinstall \
+--add-dest root:/ \
+--add-arch all:100 \
+--add-arch arm_cortex-a7_neon-vfpv4:200 install $(cat /root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/tmp/opkg_install_list)
+```# OpenWrt build system
 
 ## Quick Start
 ``` shell
@@ -391,6 +409,8 @@ $ quilt diff
 $ quilt refresh
 $ make path/to/package/update V=s -j1
 ```
+## fix conflict
+
 
 [Linux - 管理 patch 的工具 : quilt](http://kaiyhsu.blogspot.com/2018/01/quilt-patch.html)
     
@@ -402,4 +422,20 @@ Themes
 
 
 [Using the Image Builder](https://openwrt.org/docs/guide-user/additional-software/imagebuilder)
-  
+ 
+## Package
+``` c
+BUILD_VARIANT
+```
+
+``` console
+$ IPKG_NO_SCRIPT=1 \
+IPKG_INSTROOT=/root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/build_dir/target-arm/root-ipq53xx \
+TMPDIR=/root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/build_dir/target-arm/root-ipq53xx/tmp \
+/root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/staging_dir/host/bin/opkg \
+--offline-root /root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/build_dir/target-arm/root-ipq53xx \
+--force-postinstall \
+--add-dest root:/ \
+--add-arch all:100 \
+--add-arch arm_cortex-a7_neon-vfpv4:200 install $(cat /root/spf-12.5-2/MIAMI/512_0602/qca-networking-2024-spf-12-5_qca_oem/qsdk/tmp/opkg_install_list)
+```
