@@ -7,14 +7,17 @@ tags: [GNU]
 # GCC (GNU Compiler Collection)
 ###### tags: `GNU`
 
-Compilation can involve up to four stages: preprocessing, compilation proper, assembly and linking, always in that order. GCC is capable of preprocessing and compiling several files either into several assembler input files, or into one assembler input file; then each assembler input file produces an object file, and linking combines all the object files (those newly compiled, and those specified as input) into an executable file.
+Compilation can involve up to four stages: **preprocessing**, **compilation proper**, **assembly** and **linking**, always in that order. GCC is capable of preprocessing and compiling several files either into several assembler input files, or into one assembler input file; then each assembler input file produces an object file, and linking combines all the object files (those newly compiled, and those specified as input) into an executable file.
 
 gcc -Q -O3 --help=optimizers
 
 ## Compilation
 
 ### 1. Preprocessor
-cpp
+The output from the C preprocessor looks much like the input, except that all preprocessing directive lines have been replaced with blank lines and all comments with spaces. Long runs of blank lines are discarded.
+
+Program: `cpp`
+Filename extension of the output: `.i`
 
 #### option
 **-E**
@@ -25,13 +28,13 @@ cpp
 **-P**
 
 #### C89/C99
-```
+``` c
 offsetof()
 ```
 
 
 #### C11
-```
+``` c
 /**
  * _Generic()
  */
@@ -56,13 +59,17 @@ int main(void)
 }
 ```
 
-```
+``` c
  __typeof__(x)
 ```
 
 
 ### 2. Compiler
-cc1
+converts the **C code** into **assembly code**.
+
+Program: `cc1`
+Filename extension of the output: `.s`
+
 
 show include path:
 ```
@@ -86,22 +93,29 @@ $ gcc -M
 > Enabled by default at -O1 and higher.
 
 #### GNU extension
-```
+``` c
 __attribute__((naked))
 __attribute__((interrupt))
 ```
 
 ### 3. Assembler
-as
+Converts the **assembly code** into **object files**
+
+Program: `as`
+Filename extension of the output: `.o`
+
 
 ### 4. Linker
-collect2
-dynamic linker (ld)
+Collects **object files** into **executable file** or a **shared library**.
+
+Program: `collect2` `dynamic linker (ld)`
+Filename extension of the output: `.out` `.elf`
+
 > The **dynamic linker** is responsible for loading dynamically linked programs and their dependencies (in the form of shared objects). The dynamic linker in the GNU C Library also supports loading shared objects (such as plugins) later at run time. Dynamic linkers are sometimes called **dynamic loaders**.
 
 
 dump link script:
-```
+``` console
 $ gcc -Wl,-verbose main.c
 ```
 
@@ -114,13 +128,18 @@ $ gcc -Wl,-verbose main.c
 
 
 ## C Extenstions
+[6 Extensions to the C Language Family](https://gcc.gnu.org/onlinedocs/gcc/C-Extensions.html)
+
 void * __builtin_return_address (*unsigned int level*)
 > This function returns the return address of the current function, or of one of its callers. The level argument is number of frames to scan up the call stack. A value of 0 yields the return address of the current function, a value of 1 yields the return address of the caller of the current function, and so forth. When inlining the expected behavior is that the function returns the address of the function that is returned to. To work around this behavior use the noinline function attribute.
 
-[6 Extensions to the C Language Family](https://gcc.gnu.org/onlinedocs/gcc/C-Extensions.html)
+
+### 6.12 How to Use Inline Assembly Language in C Code
+
+
 
 ## Variable Attriables
-```
+``` c
 __attribute__((packed))
 
 // This attribute specifies a minimum alignment (in bytes) for variables of the specified type. 
@@ -147,14 +166,17 @@ Builtin sync. would simply translate into a **HW barrier**, probably a fence (mf
 [How A Compiler Works: GNU Toolchain](https://www.slideshare.net/jserv/how-a-compiler-works-gnu-toolchain)# GCC (GNU Compiler Collection)
 ###### tags: `GNU`
 
-Compilation can involve up to four stages: preprocessing, compilation proper, assembly and linking, always in that order. GCC is capable of preprocessing and compiling several files either into several assembler input files, or into one assembler input file; then each assembler input file produces an object file, and linking combines all the object files (those newly compiled, and those specified as input) into an executable file.
+Compilation can involve up to four stages: **preprocessing**, **compilation proper**, **assembly** and **linking**, always in that order. GCC is capable of preprocessing and compiling several files either into several assembler input files, or into one assembler input file; then each assembler input file produces an object file, and linking combines all the object files (those newly compiled, and those specified as input) into an executable file.
 
 gcc -Q -O3 --help=optimizers
 
 ## Compilation
 
 ### 1. Preprocessor
-cpp
+The output from the C preprocessor looks much like the input, except that all preprocessing directive lines have been replaced with blank lines and all comments with spaces. Long runs of blank lines are discarded.
+
+Program: `cpp`
+Filename extension of the output: `.i`
 
 #### option
 **-E**
@@ -165,13 +187,13 @@ cpp
 **-P**
 
 #### C89/C99
-```
+``` c
 offsetof()
 ```
 
 
 #### C11
-```
+``` c
 /**
  * _Generic()
  */
@@ -196,13 +218,17 @@ int main(void)
 }
 ```
 
-```
+``` c
  __typeof__(x)
 ```
 
 
 ### 2. Compiler
-cc1
+converts the **C code** into **assembly code**.
+
+Program: `cc1`
+Filename extension of the output: `.s`
+
 
 show include path:
 ```
@@ -226,22 +252,29 @@ $ gcc -M
 > Enabled by default at -O1 and higher.
 
 #### GNU extension
-```
+``` c
 __attribute__((naked))
 __attribute__((interrupt))
 ```
 
 ### 3. Assembler
-as
+Converts the **assembly code** into **object files**
+
+Program: `as`
+Filename extension of the output: `.o`
+
 
 ### 4. Linker
-collect2
-dynamic linker (ld)
+Collects **object files** into **executable file** or a **shared library**.
+
+Program: `collect2` `dynamic linker (ld)`
+Filename extension of the output: `.out` `.elf`
+
 > The **dynamic linker** is responsible for loading dynamically linked programs and their dependencies (in the form of shared objects). The dynamic linker in the GNU C Library also supports loading shared objects (such as plugins) later at run time. Dynamic linkers are sometimes called **dynamic loaders**.
 
 
 dump link script:
-```
+``` console
 $ gcc -Wl,-verbose main.c
 ```
 
@@ -254,13 +287,18 @@ $ gcc -Wl,-verbose main.c
 
 
 ## C Extenstions
+[6 Extensions to the C Language Family](https://gcc.gnu.org/onlinedocs/gcc/C-Extensions.html)
+
 void * __builtin_return_address (*unsigned int level*)
 > This function returns the return address of the current function, or of one of its callers. The level argument is number of frames to scan up the call stack. A value of 0 yields the return address of the current function, a value of 1 yields the return address of the caller of the current function, and so forth. When inlining the expected behavior is that the function returns the address of the function that is returned to. To work around this behavior use the noinline function attribute.
 
-[6 Extensions to the C Language Family](https://gcc.gnu.org/onlinedocs/gcc/C-Extensions.html)
+
+### 6.12 How to Use Inline Assembly Language in C Code
+
+
 
 ## Variable Attriables
-```
+``` c
 __attribute__((packed))
 
 // This attribute specifies a minimum alignment (in bytes) for variables of the specified type. 
