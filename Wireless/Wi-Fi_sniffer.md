@@ -28,11 +28,14 @@ $ sudo systemctl stop NetworkManger
 $ sudo airmon-ng check kill
 ```
 
-Create monitor interface, e.g., wlp4s0f0mon, with `airmon-ng`
+Create monitor interface, e.g., `wlp4s0f0mon`, with `airmon-ng`
 ``` console
 $ sudo apt install aircrack-ng
 $ sudo airmon-ng start wlp4s0f0
 ```
+
+After issuing command, the Wi-Fi interface, `wlp4s0f`, into monitro mode. Interface name will became `wlp4s0f0mon`.
+
 
 # 3. Assign channel and bandwidth
 For example, specific frequency:6.115 GHz (bnad 6, Channel 33) and bandwidth 160 MHz.
@@ -86,11 +89,14 @@ $ sudo systemctl stop NetworkManger
 $ sudo airmon-ng check kill
 ```
 
-Create monitor interface, e.g., wlp4s0f0mon, with `airmon-ng`
+Create monitor interface, e.g., `wlp4s0f0mon`, with `airmon-ng`
 ``` console
 $ sudo apt install aircrack-ng
 $ sudo airmon-ng start wlp4s0f0
 ```
+
+After issuing command, the Wi-Fi interface, `wlp4s0f`, into monitro mode. Interface name will became `wlp4s0f0mon`.
+
 
 # 3. Assign channel and bandwidth
 For example, specific frequency:6.115 GHz (bnad 6, Channel 33) and bandwidth 160 MHz.
