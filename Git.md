@@ -8,7 +8,7 @@ tags: [Linux]
 ###### tags: `Linux`
 
 ## relativing file/directory
-```
+``` console
 $ repository/.git/
 $ .gitignore
 $ ~/.gitconfig
@@ -17,7 +17,7 @@ $ source /usr/share/bash-completion/completions/git
 
 
 ## basic
-```
+``` console
 git init --bare
 git fetch <remote>
 git pull = git fetch + git merge
@@ -41,12 +41,12 @@ git ls-files
 ```
 
 ## git-archive
-```
+``` console
 $ git archive --format=tar --prefix="cindy/" <ref> > ../cindy.tar
 ```
 
 ## git-apply
-```
+``` console
 $ git apply --stat a_file.patch
 $ git apply --check a_file.patch
 
@@ -148,9 +148,11 @@ $ git commit --signoff
 $ git commit --amend --author="Author Name <email@address.com>"
 ```
 ## [git-describe](https://git-scm.com/docs/git-describe)
-The command finds the most recent tag that is reachable from a commit. 
+`$ git describe --contains <commit-ish>`
+> The command finds the most recent tag that is reachable from a commit.
+
 ``` console
-$ git describe --contains <commit-ish>
+$ git describe --tags --exact-match HEAD
 ```
 
     
@@ -164,8 +166,7 @@ $ git format-patch --root <SHA> (where $SHA is that first commit)
 ``` console
 $ git format-patch -3 -o <dir>
 ```
-> * Extract three topmost commits from the current branch and
-    format them as e-mailable patches:
+> Extract three topmost commits from the current branch and format them as e-mailable patches:
     
 ## git-gc
 ``` console
@@ -242,16 +243,17 @@ $ git rebase --update-refs
 
     
 ## git-stash
-```
+``` console
 $ git stash list
 $ git stash pop <stash@{0}>
 $ git stash drop <stash@{0}>
 $ git stash clear
 $ git stash save <name>
+$ git stash show -p <stash@{0}>
 ```
 
 ## git-tagging
-```
+``` console
 $ git tag
 (Annotated)
 $ git tag -a <tagname> -m "my version 1.4"
@@ -268,7 +270,7 @@ $ git push <remote> --delete <tagname>
 ```
 
 ## Aliases
-```
+``` console
 $ git config --global alias.co checkout
 $ git config --global alias.br branch
 $ git config --global alias.ci commit
@@ -308,7 +310,7 @@ $ patch -i patchs/001-test.patch
 ###### tags: `Linux`
 
 ## relativing file/directory
-```
+``` console
 $ repository/.git/
 $ .gitignore
 $ ~/.gitconfig
@@ -317,7 +319,7 @@ $ source /usr/share/bash-completion/completions/git
 
 
 ## basic
-```
+``` console
 git init --bare
 git fetch <remote>
 git pull = git fetch + git merge
@@ -341,12 +343,12 @@ git ls-files
 ```
 
 ## git-archive
-```
+``` console
 $ git archive --format=tar --prefix="cindy/" <ref> > ../cindy.tar
 ```
 
 ## git-apply
-```
+``` console
 $ git apply --stat a_file.patch
 $ git apply --check a_file.patch
 
@@ -448,9 +450,11 @@ $ git commit --signoff
 $ git commit --amend --author="Author Name <email@address.com>"
 ```
 ## [git-describe](https://git-scm.com/docs/git-describe)
-The command finds the most recent tag that is reachable from a commit. 
+`$ git describe --contains <commit-ish>`
+> The command finds the most recent tag that is reachable from a commit.
+
 ``` console
-$ git describe --contains <commit-ish>
+$ git describe --tags --exact-match HEAD
 ```
 
     
@@ -464,8 +468,7 @@ $ git format-patch --root <SHA> (where $SHA is that first commit)
 ``` console
 $ git format-patch -3 -o <dir>
 ```
-> * Extract three topmost commits from the current branch and
-    format them as e-mailable patches:
+> Extract three topmost commits from the current branch and format them as e-mailable patches:
     
 ## git-gc
 ``` console
@@ -542,16 +545,17 @@ $ git rebase --update-refs
 
     
 ## git-stash
-```
+``` console
 $ git stash list
 $ git stash pop <stash@{0}>
 $ git stash drop <stash@{0}>
 $ git stash clear
 $ git stash save <name>
+$ git stash show -p <stash@{0}>
 ```
 
 ## git-tagging
-```
+``` console
 $ git tag
 (Annotated)
 $ git tag -a <tagname> -m "my version 1.4"
@@ -568,7 +572,7 @@ $ git push <remote> --delete <tagname>
 ```
 
 ## Aliases
-```
+``` console
 $ git config --global alias.co checkout
 $ git config --global alias.br branch
 $ git config --global alias.ci commit
