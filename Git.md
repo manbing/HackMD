@@ -116,14 +116,16 @@ $ git config --local gc.develop.reflogExpireUnreachable "never"
 ```
 
 ### system (/etc/gitconfig)
-``` sh
+``` console
 $ git config --system core.editor "vim"
 ```
 
 ## [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
 ``` console
-$ git cherry-pick -x
+$ git cherry-pick -x <SHA>
 ```
+ -x                    append commit name
+
 
 ## git-clone
 ``` console
@@ -418,14 +420,16 @@ $ git config --local gc.develop.reflogExpireUnreachable "never"
 ```
 
 ### system (/etc/gitconfig)
-``` sh
+``` console
 $ git config --system core.editor "vim"
 ```
 
 ## [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
 ``` console
-$ git cherry-pick -x
+$ git cherry-pick -x <SHA>
 ```
+ -x                    append commit name
+
 
 ## git-clone
 ``` console
