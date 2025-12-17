@@ -4,6 +4,8 @@ tags: [Programming Language]
 
 ---
 
+[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
+
 Qualifier: const, static
 
 # Programming Language C
@@ -25,7 +27,19 @@ During expression evaluation, the order in which sub-expressions are evaluated i
 `&` AND 
 `|` OR
 `^` XOR
-`~` NOT Qualifier: const, static
+`~` NOT
+
+# Terms, definitions, and symbols
+## behavior
+* **implementation-defined behavior**
+unspecified behavior where each implementation documents how the choice is made.
+EXAMPLE: An example of implementation-defined behavior is the propagation of the high-order bit when a signed integer is shifted right.
+
+* **undefined behavior**
+behavior, upon use of a nonportable or erroneous program construct or of erroneous data, for which this document imposes no requirements.
+EXAMPLE: An example of undefined behavior is the behavior on dereferencing a null pointer[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
+
+Qualifier: const, static
 
 # Programming Language C
 
@@ -46,4 +60,14 @@ During expression evaluation, the order in which sub-expressions are evaluated i
 `&` AND 
 `|` OR
 `^` XOR
-`~` NOT 
+`~` NOT
+
+# Terms, definitions, and symbols
+## behavior
+* **implementation-defined behavior**
+unspecified behavior where each implementation documents how the choice is made.
+EXAMPLE: An example of implementation-defined behavior is the propagation of the high-order bit when a signed integer is shifted right.
+
+* **undefined behavior**
+behavior, upon use of a nonportable or erroneous program construct or of erroneous data, for which this document imposes no requirements.
+EXAMPLE: An example of undefined behavior is the behavior on dereferencing a null pointer
