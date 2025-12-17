@@ -241,6 +241,41 @@ $ git remote set-url <name> <url>
 $ git rebase --update-refs
 ```
 
+## [git-revert](https://git-scm.com/docs/git-revert)
+
+Revert Merge:
+
+``` console
+commit 8bebb4ad370dac102ed37d06a0266255667f3205
+Merge: a6f1fb1 f790f3e
+Author: Ben James <ben@example.com>
+Date:   Wed Aug 17 22:49:41 2011 +0100
+
+Merge branch 'gh-pages'
+
+Conflicts:
+    README
+```
+
+
+``` console
+$ git revert 8bebb4a -m 1
+```
+`a6f1fb1` is parent-number 1;`f790f3e` is is parent-number 2
+
+
+``` console
+commit 4ffcb7e680a818bf2af9a947452199f7ed9529b7
+Author: Ben James <ben@example.com>
+Date:   Wed Aug 17 22:49:41 2011 +0100
+
+    Revert "Merge remote-tracking branch 'origin/gh-pages'"
+
+    This reverts commit 8bebb4ad370dac102ed37d06a0266255667f3205, reversing
+    changes made to a6f1fb11af0cfc417e139ecead22c2e4ec4ec674.
+```
+
+
 ## git-switch
 
     
@@ -544,6 +579,41 @@ $ git remote set-url <name> <url>
 ```
 $ git rebase --update-refs
 ```
+
+## [git-revert](https://git-scm.com/docs/git-revert)
+
+Revert Merge:
+
+``` console
+commit 8bebb4ad370dac102ed37d06a0266255667f3205
+Merge: a6f1fb1 f790f3e
+Author: Ben James <ben@example.com>
+Date:   Wed Aug 17 22:49:41 2011 +0100
+
+Merge branch 'gh-pages'
+
+Conflicts:
+    README
+```
+
+
+``` console
+$ git revert 8bebb4a -m 1
+```
+`a6f1fb1` is parent-number 1;`f790f3e` is is parent-number 2
+
+
+``` console
+commit 4ffcb7e680a818bf2af9a947452199f7ed9529b7
+Author: Ben James <ben@example.com>
+Date:   Wed Aug 17 22:49:41 2011 +0100
+
+    Revert "Merge remote-tracking branch 'origin/gh-pages'"
+
+    This reverts commit 8bebb4ad370dac102ed37d06a0266255667f3205, reversing
+    changes made to a6f1fb11af0cfc417e139ecead22c2e4ec4ec674.
+```
+
 
 ## git-switch
 
