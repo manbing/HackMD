@@ -30,8 +30,14 @@ $ apt-get source linux-image-unsigned-$(uname -r)
 ```
 
 ## brctl (DEPRECATED)
-``` shell
+``` console
 $ brctl snoopdbg br3 on
+```
+
+## grep
+``` console
+$ grep -rin -E "include .*INNDA_CONFIG" ./test
+1:include ./INNDA_CONFIG
 ```
 
 ## iw
@@ -284,6 +290,8 @@ $ sudo runc kill cindy KILL
     
 ``` shell
 $ docker container create -t -i -v /home/manbing/GitHub/RaspberryPi/docker/work:/root/work ubuntu bash
+
+$ docker run --rm -v /home/manbing/Sandbox:/home/manbing/Sandbox -it ubuntu:20.04 /bin/bash
 
 $ docker cp /path/to/file1 DOCKER_ID:/path/to/file2
 $ docker export ubuntu > ubuntu_export.tar
@@ -592,8 +600,14 @@ $ apt-get source linux-image-unsigned-$(uname -r)
 ```
 
 ## brctl (DEPRECATED)
-``` shell
+``` console
 $ brctl snoopdbg br3 on
+```
+
+## grep
+``` console
+$ grep -rin -E "include .*INNDA_CONFIG" ./test
+1:include ./INNDA_CONFIG
 ```
 
 ## iw
@@ -846,6 +860,8 @@ $ sudo runc kill cindy KILL
     
 ``` shell
 $ docker container create -t -i -v /home/manbing/GitHub/RaspberryPi/docker/work:/root/work ubuntu bash
+
+$ docker run --rm -v /home/manbing/Sandbox:/home/manbing/Sandbox -it ubuntu:20.04 /bin/bash
 
 $ docker cp /path/to/file1 DOCKER_ID:/path/to/file2
 $ docker export ubuntu > ubuntu_export.tar
