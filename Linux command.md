@@ -193,6 +193,7 @@ $ iptables -t mangle -A PREROUTING -i br-br1 -j MARK --set-mark 1014
 $ iptables -S
 $ ip6tables -S iface_PPP_wan_1_input
 ```
+[List of IP protocol numbers](https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
 
 ## [nft](https://manpages.debian.org/testing/nftables/nft.8.en.html)
 ``` shell
@@ -763,6 +764,7 @@ $ iptables -t mangle -A PREROUTING -i br-br1 -j MARK --set-mark 1014
 $ iptables -S
 $ ip6tables -S iface_PPP_wan_1_input
 ```
+[List of IP protocol numbers](https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
 
 ## [nft](https://manpages.debian.org/testing/nftables/nft.8.en.html)
 ``` shell
