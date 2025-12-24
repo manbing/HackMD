@@ -29,6 +29,11 @@ During expression evaluation, the order in which sub-expressions are evaluated i
 `^` XOR
 `~` NOT
 
+# Logic Operator
+`&&`
+`||`
+`!`
+
 # Terms, definitions, and symbols
 ## behavior
 * **implementation-defined behavior**
@@ -61,6 +66,11 @@ During expression evaluation, the order in which sub-expressions are evaluated i
 `|` OR
 `^` XOR
 `~` NOT
+
+# Logic Operator
+`&&`
+`||`
+`!`
 
 # Terms, definitions, and symbols
 ## behavior
