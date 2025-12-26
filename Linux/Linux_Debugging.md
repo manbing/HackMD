@@ -127,9 +127,18 @@ CONFIG_MAGIC_SYSRQ=y
 -fprofile
 -pg
 ```
-Generate extra code to write profile information suitable for the analysis program prof (for -p, --profile, and -fprofile) or gprof (for -pg). You must use this option when compiling the source files you want data about, and you must also use it when linking.
+Generate extra code to write profile information suitable for the analysis program prof (for `-p`, `--profile`, and `-fprofile`) or gprof (for `-pg`). You must use this option when compiling the source files you want data about, and you must also use it when linking.
 
-You can use the function attribute no_instrument_function to suppress profiling of individual functions when compiling with these options.
+You can use the function attribute no_instrument_function to suppress profiling of individual functions when compiling with these options.    
+
+Pseudo File:
+--
+``` console
+$ /sys/kernel/tracing/instances/
+$ sudo cat /sys/kernel/tracing/README
+$ cat /sys/kernel/tracing/available_filter_functions
+```
+
 
 # [\(c\)BPF/eBPF](https://hackmd.io/MoIbUgwzRbe-TSQ6NllufA)
 
@@ -293,9 +302,18 @@ CONFIG_MAGIC_SYSRQ=y
 -fprofile
 -pg
 ```
-Generate extra code to write profile information suitable for the analysis program prof (for -p, --profile, and -fprofile) or gprof (for -pg). You must use this option when compiling the source files you want data about, and you must also use it when linking.
+Generate extra code to write profile information suitable for the analysis program prof (for `-p`, `--profile`, and `-fprofile`) or gprof (for `-pg`). You must use this option when compiling the source files you want data about, and you must also use it when linking.
 
-You can use the function attribute no_instrument_function to suppress profiling of individual functions when compiling with these options.
+You can use the function attribute no_instrument_function to suppress profiling of individual functions when compiling with these options.    
+
+Pseudo File:
+--
+``` console
+$ /sys/kernel/tracing/instances/
+$ sudo cat /sys/kernel/tracing/README
+$ cat /sys/kernel/tracing/available_filter_functions
+```
+
 
 # [\(c\)BPF/eBPF](https://hackmd.io/MoIbUgwzRbe-TSQ6NllufA)
 
