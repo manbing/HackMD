@@ -8,6 +8,7 @@ tags: [Command, Linux]
 ``` console
 $ btop
 $ slabtop
+$ wc -l available_filter_functions
 ```
 
 # Command Usage
@@ -205,6 +206,12 @@ $ nft list tables
 
 
 ## [dbclient](https://linux.die.net/man/1/dbclient)
+
+SSH client
+``` console
+$ dbclient user@hostname_or_ip
+$ dbclient -p 2222 user@hostname_or_ip
+```
 
 
 ## df
@@ -569,6 +576,11 @@ $ mount //{Ip}/{Home} {dir} -ousername={account},password={password}
 ``` console
 $ grep <string> cat /proc/slabinfo
 $ grep -rin <string>
+```
+
+## Search the PID and VID of PCI devices
+``` console
+$ grep PCI_ID /sys/bus/pci/devices/*/uevent
 ```
 
 <style>
@@ -579,6 +591,7 @@ $ grep -rin <string>
 ``` console
 $ btop
 $ slabtop
+$ wc -l available_filter_functions
 ```
 
 # Command Usage
@@ -776,6 +789,12 @@ $ nft list tables
 
 
 ## [dbclient](https://linux.die.net/man/1/dbclient)
+
+SSH client
+``` console
+$ dbclient user@hostname_or_ip
+$ dbclient -p 2222 user@hostname_or_ip
+```
 
 
 ## df
@@ -1140,6 +1159,11 @@ $ mount //{Ip}/{Home} {dir} -ousername={account},password={password}
 ``` console
 $ grep <string> cat /proc/slabinfo
 $ grep -rin <string>
+```
+
+## Search the PID and VID of PCI devices
+``` console
+$ grep PCI_ID /sys/bus/pci/devices/*/uevent
 ```
 
 <style>
