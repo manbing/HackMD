@@ -84,8 +84,8 @@ $ git config --list
 
 
 
-### global (~/.gitconfig)
-``` sh
+### Global (~/.gitconfig):
+``` console
 $ git config --global core.editor "vim"
 $ git config --global user.email "manbing3@gmail.com"
 $ git config --global user.name "Manbing"
@@ -104,10 +104,12 @@ $ git config --global init.defaultBranch master
 $ git config --global credential.helper store
 $ git config --global credential.helper 'store --file ~/.my-credentials'
 $ git config --global credential.helper 'cache --timeout 3600'
+
+$ git config --global commit.template ~/.gitmessage.txt
 ```
     
-### local
-``` sh
+### Local (Current Repo Only):
+``` console
 $ git config --local gc.master.reflogExpire "14 days"
 $ git config --local gc.master.reflogExpireUnreachable "14 days"
 
@@ -423,8 +425,8 @@ $ git config --list
 
 
 
-### global (~/.gitconfig)
-``` sh
+### Global (~/.gitconfig):
+``` console
 $ git config --global core.editor "vim"
 $ git config --global user.email "manbing3@gmail.com"
 $ git config --global user.name "Manbing"
@@ -443,10 +445,12 @@ $ git config --global init.defaultBranch master
 $ git config --global credential.helper store
 $ git config --global credential.helper 'store --file ~/.my-credentials'
 $ git config --global credential.helper 'cache --timeout 3600'
+
+$ git config --global commit.template ~/.gitmessage.txt
 ```
     
-### local
-``` sh
+### Local (Current Repo Only):
+``` console
 $ git config --local gc.master.reflogExpire "14 days"
 $ git config --local gc.master.reflogExpireUnreachable "14 days"
 
