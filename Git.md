@@ -105,7 +105,11 @@ $ git config --global credential.helper store
 $ git config --global credential.helper 'store --file ~/.my-credentials'
 $ git config --global credential.helper 'cache --timeout 3600'
 
+# Commit message template
 $ git config --global commit.template ~/.gitmessage.txt
+
+# Commit editor
+$ git config --global core.editor "vim"
 ```
     
 ### Local (Current Repo Only):
@@ -446,7 +450,11 @@ $ git config --global credential.helper store
 $ git config --global credential.helper 'store --file ~/.my-credentials'
 $ git config --global credential.helper 'cache --timeout 3600'
 
+# Commit message template
 $ git config --global commit.template ~/.gitmessage.txt
+
+# Commit editor
+$ git config --global core.editor "vim"
 ```
     
 ### Local (Current Repo Only):
