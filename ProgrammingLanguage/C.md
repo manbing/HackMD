@@ -45,17 +45,22 @@ behavior, upon use of a nonportable or erroneous program construct or of erroneo
 EXAMPLE: An example of undefined behavior is the behavior on dereferencing a null pointer
 
 
-# Header Guards
+# Include Guards (Header Guards)
+> Classic include guards take three lines of preprocessor directives, work identically across all C compiler implementations, and do not inject any non-portable source code into your project. On the other hand, the use of “#pragma once” instantly makes your header file non-portable. Writing three lines of preprocessor code instead of one in a header file is a very small price to pay for source code portability.
+> 
+> Classic include guards are not archaic, any more than source code portability is archaic. And source code portability is not archaic at all. It’s very important in modern software development.
+
+
 ``` c
-#ifndef __HEADER_GUARDS_H
-#define __HEADER_GUARDS_H
+#ifndef __INCLUDE_GUARDS_H
+#define __INCLUDE_GUARDS_H
 
 void api_function(void);
 struct api_struct {
     ....
 };
 
-#endif /* !__HEADER_GUARDS_H */
+#endif /* !__INCLUDE_GUARDS_H */
 ```[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
 
 Qualifier: const, static
@@ -97,15 +102,20 @@ behavior, upon use of a nonportable or erroneous program construct or of erroneo
 EXAMPLE: An example of undefined behavior is the behavior on dereferencing a null pointer
 
 
-# Header Guards
+# Include Guards (Header Guards)
+> Classic include guards take three lines of preprocessor directives, work identically across all C compiler implementations, and do not inject any non-portable source code into your project. On the other hand, the use of “#pragma once” instantly makes your header file non-portable. Writing three lines of preprocessor code instead of one in a header file is a very small price to pay for source code portability.
+> 
+> Classic include guards are not archaic, any more than source code portability is archaic. And source code portability is not archaic at all. It’s very important in modern software development.
+
+
 ``` c
-#ifndef __HEADER_GUARDS_H
-#define __HEADER_GUARDS_H
+#ifndef __INCLUDE_GUARDS_H
+#define __INCLUDE_GUARDS_H
 
 void api_function(void);
 struct api_struct {
     ....
 };
 
-#endif /* !__HEADER_GUARDS_H */
+#endif /* !__INCLUDE_GUARDS_H */
 ```
