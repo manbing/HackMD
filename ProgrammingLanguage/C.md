@@ -42,7 +42,21 @@ EXAMPLE: An example of implementation-defined behavior is the propagation of the
 
 * **undefined behavior**
 behavior, upon use of a nonportable or erroneous program construct or of erroneous data, for which this document imposes no requirements.
-EXAMPLE: An example of undefined behavior is the behavior on dereferencing a null pointer[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
+EXAMPLE: An example of undefined behavior is the behavior on dereferencing a null pointer
+
+
+# Header Guards
+``` c
+#ifndef __HEADER_GUARDS_H
+#define __HEADER_GUARDS_H
+
+void api_function(void);
+struct api_struct {
+    ....
+};
+
+#endif /* !__HEADER_GUARDS_H */
+```[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
 
 Qualifier: const, static
 
@@ -81,3 +95,17 @@ EXAMPLE: An example of implementation-defined behavior is the propagation of the
 * **undefined behavior**
 behavior, upon use of a nonportable or erroneous program construct or of erroneous data, for which this document imposes no requirements.
 EXAMPLE: An example of undefined behavior is the behavior on dereferencing a null pointer
+
+
+# Header Guards
+``` c
+#ifndef __HEADER_GUARDS_H
+#define __HEADER_GUARDS_H
+
+void api_function(void);
+struct api_struct {
+    ....
+};
+
+#endif /* !__HEADER_GUARDS_H */
+```
