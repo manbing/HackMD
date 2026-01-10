@@ -160,6 +160,20 @@ How to prove X is NP-complete?
 [Big-O cheat sheet](https://www.bigocheatsheet.com/)
 [16. Complexity: P, NP, NP-completeness, Reductions](https://www.youtube.com/watch?v=eHZifpgyH_4)
 
+# Leetcode
+* Hashtable
+380. Insert Delete GetRandom O(1)
+811. Subdomain Visit Count
+
+* Heap Tree
+692. Top K Frequent Words
+253. Meeting Rooms II
+
+* Recursive
+437. Path Sum III
+T: O(n)
+S: O(n)
+
 # Reference
 
 
@@ -318,6 +332,20 @@ How to prove X is NP-complete?
 [asymptotic-notation](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
 [Big-O cheat sheet](https://www.bigocheatsheet.com/)
 [16. Complexity: P, NP, NP-completeness, Reductions](https://www.youtube.com/watch?v=eHZifpgyH_4)
+
+# Leetcode
+* Hashtable
+380. Insert Delete GetRandom O(1)
+811. Subdomain Visit Count
+
+* Heap Tree
+692. Top K Frequent Words
+253. Meeting Rooms II
+
+* Recursive
+437. Path Sum III
+T: O(n)
+S: O(n)
 
 # Reference
 
