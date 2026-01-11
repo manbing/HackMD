@@ -6,6 +6,29 @@ tags: [Google]
 
 # Data
 Data type -> Data structure -> Abstract data type
+## [Data type](https://en.wikipedia.org/wiki/Data_type)
+basic data types of integer numbers, floating-point numbers, characters and Booleans.
+
+
+
+## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
+### Array
+### Linked list
+
+### Heap
+Max heap
+Min heap
+
+### [Hash tables](https://en.wikipedia.org/wiki/Hash_table)
+hash set
+>stores unique elements without any associated values
+
+hash map
+>stores key-value pairs where the keys are unique identifiers and the values are associated data
+
+
+
+
 
 ## [Abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type)
 In computer science, an abstract data type (ADT) is a mathematical model for data types, defined by its behavior (semantics) from the point of view of a user of the data, specifically in terms of possible values, possible operations on data of this type, and the behavior of these operations.
@@ -17,6 +40,9 @@ In a priority queue, each element has an associated priority, which determines i
 last in, first out
 ### Queues
 first in, first out
+
+### Ring Buffer
+[並行程式設計: Ring buffer](https://hackmd.io/@sysprog/concurrency-ringbuffer)
 
 ### Trees
 Tree traversal: DFS, BFS
@@ -57,24 +83,6 @@ Left < Root < Right
 #### [Trie](https://en.wikipedia.org/wiki/Trie)
 * Dictionary tree
 In computer science, a trie, also known as a digital tree or prefix tree, is a specialized search tree data structure used to store and retrieve strings from a dictionary or set. 
-
-## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
-### Array
-### Linked list
-
-### Heap
-Max heap
-Min heap
-
-### [Hash tables](https://en.wikipedia.org/wiki/Hash_table)
-hash set
->stores unique elements without any associated values
-
-hash map
->stores key-value pairs where the keys are unique identifiers and the values are associated data
-
-## [Data type](https://en.wikipedia.org/wiki/Data_type)
-basic data types of integer numbers, floating-point numbers, characters and Booleans.
 
 # Algorithms
 ## Sort
@@ -179,6 +187,29 @@ S: O(n)
 
 # Data
 Data type -> Data structure -> Abstract data type
+## [Data type](https://en.wikipedia.org/wiki/Data_type)
+basic data types of integer numbers, floating-point numbers, characters and Booleans.
+
+
+
+## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
+### Array
+### Linked list
+
+### Heap
+Max heap
+Min heap
+
+### [Hash tables](https://en.wikipedia.org/wiki/Hash_table)
+hash set
+>stores unique elements without any associated values
+
+hash map
+>stores key-value pairs where the keys are unique identifiers and the values are associated data
+
+
+
+
 
 ## [Abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type)
 In computer science, an abstract data type (ADT) is a mathematical model for data types, defined by its behavior (semantics) from the point of view of a user of the data, specifically in terms of possible values, possible operations on data of this type, and the behavior of these operations.
@@ -190,6 +221,9 @@ In a priority queue, each element has an associated priority, which determines i
 last in, first out
 ### Queues
 first in, first out
+
+### Ring Buffer
+[並行程式設計: Ring buffer](https://hackmd.io/@sysprog/concurrency-ringbuffer)
 
 ### Trees
 Tree traversal: DFS, BFS
@@ -230,24 +264,6 @@ Left < Root < Right
 #### [Trie](https://en.wikipedia.org/wiki/Trie)
 * Dictionary tree
 In computer science, a trie, also known as a digital tree or prefix tree, is a specialized search tree data structure used to store and retrieve strings from a dictionary or set. 
-
-## [Data structure](https://en.wikipedia.org/wiki/Data_structure)
-### Array
-### Linked list
-
-### Heap
-Max heap
-Min heap
-
-### [Hash tables](https://en.wikipedia.org/wiki/Hash_table)
-hash set
->stores unique elements without any associated values
-
-hash map
->stores key-value pairs where the keys are unique identifiers and the values are associated data
-
-## [Data type](https://en.wikipedia.org/wiki/Data_type)
-basic data types of integer numbers, floating-point numbers, characters and Booleans.
 
 # Algorithms
 ## Sort
