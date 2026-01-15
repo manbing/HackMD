@@ -8,13 +8,6 @@ tags: [GNU]
 ###### tags: `GNU`
 
 
-## GDBserver
-``` shell
-$ gdbserver <ip>:<port> --attach <pid>
-$ gdbserver <ip>:<port> <program>
-```
-
-## GDB
 ``` shell
 (gdb) si (execute single instruction)
 (gdb) stepi
@@ -39,13 +32,13 @@ $ gdbserver <ip>:<port> <program>
 (gdb) core-file <file name>
 ```
 
-### shortcuts
+## shortcuts
 * typing `Ctrl-C` will stop the program, and continue will resume it without sending any signal to it.
 
 * typing `Ctrl-Z` will stop the program, and continue will resume it accompanied by a SIGTSTP signal, so it will immediately stop again. If you type continue again, it should resume.
 
     
-### break
+## break
 ``` shell
 (gdb) info breakpoints
 (gdb) delete breakpoints
@@ -58,7 +51,7 @@ $ gdbserver <ip>:<port> <program>
 `(gdb) break x:20 if strcmp(y, "hello") == 0`
 > 20 is line number, `x` can be any filename and `y` can be any variable.
 
-### info
+## info
 ``` shell
 (gdb) info line [File]:[Line]
 (gdb) info line [Function]
@@ -66,21 +59,22 @@ $ gdbserver <ip>:<port> <program>
 (gdb) info line *[Address]
 ```
 
-### Print
+## Print
 ``` shell
 (gdb) print &((struct irene *)0x7ab2d8)->irene
 ```
 
-### Examining Memory
+## Examining Memory
 ``` shell
 (gdb) x/nfu <addr>
 (gdb) x/i $pc
 (gdb) set *0xff800000=0x87
 (gdb) x/b 0xff800000
 (gdb) dump memory <file name> <start address> <end address>
+(gdb) set print pretty
 ```
 
-### Register
+## Register
 ``` shell
 (gdb) info registers <register name>
 (gdb) set $sstatus = 0xFFFFFFFF
@@ -88,12 +82,12 @@ $ gdbserver <ip>:<port> <program>
 (gdb) info all-registers
 ```
 
-### Variabler
+## Variabler
 ``` shell
 (gdb) set var value = 2148294706
 ```
 
-### stack frame
+## stack frame
 the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not trace able sometime, depend on microarchitecture.
 
 ``` shell
@@ -104,21 +98,48 @@ the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not 
 (gdb) frame <id>
 ```
 
-### thread
+## thread
 ``` shell
 (gdb) info thread
 (gdb) thread <id>
 ```
 
-### Share library
-``` shell
+## Share library
+``` console
 (gdb) info sharedlibrary
 (gdb) set solib-absolute-prefix <Path>
 (gdb) set solib-search-path <Path>
 (gdb) add-symbol-file <File> <Memmory address>
 ```
 
-### Reference
+## add-symbol-file
+Load library or kernel module
+
+* Get virtual address
+``` console
+$ ls -a /sys/module/<module-name>/sections/
+$ cd /sys/module/<module-name>/sections/
+$ cat .text .rodata .data .bss
+0xffffffffc033b000   0xffffffffc0348060 0xffffffffc034e000
+0xffffffffc0354f00
+```
+
+* Load it into GDB
+``` console
+(gdb) add-symbol-file </path/to/>usbhid.ko 0xffffffffc033b000
+\
+      -s .rodata 0xffffffffc0348060 \
+      -s .data 0xffffffffc034e000 \ [...]
+```
+
+GDBserver
+--
+``` shell
+$ gdbserver <ip>:<port> --attach <pid>
+$ gdbserver <ip>:<port> <program>
+```
+
+## Reference
 <style>
 .green {
   color: #7FFF00;
@@ -127,13 +148,6 @@ the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not 
 ###### tags: `GNU`
 
 
-## GDBserver
-``` shell
-$ gdbserver <ip>:<port> --attach <pid>
-$ gdbserver <ip>:<port> <program>
-```
-
-## GDB
 ``` shell
 (gdb) si (execute single instruction)
 (gdb) stepi
@@ -158,13 +172,13 @@ $ gdbserver <ip>:<port> <program>
 (gdb) core-file <file name>
 ```
 
-### shortcuts
+## shortcuts
 * typing `Ctrl-C` will stop the program, and continue will resume it without sending any signal to it.
 
 * typing `Ctrl-Z` will stop the program, and continue will resume it accompanied by a SIGTSTP signal, so it will immediately stop again. If you type continue again, it should resume.
 
     
-### break
+## break
 ``` shell
 (gdb) info breakpoints
 (gdb) delete breakpoints
@@ -177,7 +191,7 @@ $ gdbserver <ip>:<port> <program>
 `(gdb) break x:20 if strcmp(y, "hello") == 0`
 > 20 is line number, `x` can be any filename and `y` can be any variable.
 
-### info
+## info
 ``` shell
 (gdb) info line [File]:[Line]
 (gdb) info line [Function]
@@ -185,21 +199,22 @@ $ gdbserver <ip>:<port> <program>
 (gdb) info line *[Address]
 ```
 
-### Print
+## Print
 ``` shell
 (gdb) print &((struct irene *)0x7ab2d8)->irene
 ```
 
-### Examining Memory
+## Examining Memory
 ``` shell
 (gdb) x/nfu <addr>
 (gdb) x/i $pc
 (gdb) set *0xff800000=0x87
 (gdb) x/b 0xff800000
 (gdb) dump memory <file name> <start address> <end address>
+(gdb) set print pretty
 ```
 
-### Register
+## Register
 ``` shell
 (gdb) info registers <register name>
 (gdb) set $sstatus = 0xFFFFFFFF
@@ -207,12 +222,12 @@ $ gdbserver <ip>:<port> <program>
 (gdb) info all-registers
 ```
 
-### Variabler
+## Variabler
 ``` shell
 (gdb) set var value = 2148294706
 ```
 
-### stack frame
+## stack frame
 the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not trace able sometime, depend on microarchitecture.
 
 ``` shell
@@ -223,21 +238,48 @@ the compile flags(CFLAGS), -fomit-frame-pointer, will cause stack frame can not 
 (gdb) frame <id>
 ```
 
-### thread
+## thread
 ``` shell
 (gdb) info thread
 (gdb) thread <id>
 ```
 
-### Share library
-``` shell
+## Share library
+``` console
 (gdb) info sharedlibrary
 (gdb) set solib-absolute-prefix <Path>
 (gdb) set solib-search-path <Path>
 (gdb) add-symbol-file <File> <Memmory address>
 ```
 
-### Reference
+## add-symbol-file
+Load library or kernel module
+
+* Get virtual address
+``` console
+$ ls -a /sys/module/<module-name>/sections/
+$ cd /sys/module/<module-name>/sections/
+$ cat .text .rodata .data .bss
+0xffffffffc033b000   0xffffffffc0348060 0xffffffffc034e000
+0xffffffffc0354f00
+```
+
+* Load it into GDB
+``` console
+(gdb) add-symbol-file </path/to/>usbhid.ko 0xffffffffc033b000
+\
+      -s .rodata 0xffffffffc0348060 \
+      -s .data 0xffffffffc034e000 \ [...]
+```
+
+GDBserver
+--
+``` shell
+$ gdbserver <ip>:<port> --attach <pid>
+$ gdbserver <ip>:<port> <program>
+```
+
+## Reference
 <style>
 .green {
   color: #7FFF00;
