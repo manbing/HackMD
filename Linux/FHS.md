@@ -111,7 +111,7 @@ Some common command keys include:
 /sys/devices/virtual/net/br1/bridge/multicast_snooping
 ``` 
 
-Check network interface link status:
+* Check network interface link status:
 ``` console
 $ cat /sys/class/net/eth0/operstate
 up
@@ -119,11 +119,16 @@ $ cat /sys/class/net/eth0/carrier
 1
 ```
 
-Check PID and VID of PCI's device
+* Check PID and VID of PCI's device
 ``` console
 $ /sys/bus/pci/devices/0000:00:00.0/vendor
 $ /sys/bus/pci/devices/0000:00:00.0/device
 $ grep PCI_ID /sys/bus/pci/devices/*/uevent
+```
+
+* The kernel makes the ELF section information of every kernel module available under sysfs here
+``` console
+$ ls -a /sys/module/<module-name>/sections/
 ```
     
 # debugfs
@@ -367,7 +372,7 @@ Some common command keys include:
 /sys/devices/virtual/net/br1/bridge/multicast_snooping
 ``` 
 
-Check network interface link status:
+* Check network interface link status:
 ``` console
 $ cat /sys/class/net/eth0/operstate
 up
@@ -375,11 +380,16 @@ $ cat /sys/class/net/eth0/carrier
 1
 ```
 
-Check PID and VID of PCI's device
+* Check PID and VID of PCI's device
 ``` console
 $ /sys/bus/pci/devices/0000:00:00.0/vendor
 $ /sys/bus/pci/devices/0000:00:00.0/device
 $ grep PCI_ID /sys/bus/pci/devices/*/uevent
+```
+
+* The kernel makes the ELF section information of every kernel module available under sysfs here
+``` console
+$ ls -a /sys/module/<module-name>/sections/
 ```
     
 # debugfs
