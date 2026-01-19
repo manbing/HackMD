@@ -67,7 +67,13 @@ int main() {
     // Your application code follows...
     return 0;
 }
-```To run 32-bit ELF binaries on 64-bit platform, install `lib32z1` package.
+```
+
+Edge Trigger / Level Trigger
+---
+`epoll` V.S. `poll`, `select` 
+
+[边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)To run 32-bit ELF binaries on 64-bit platform, install `lib32z1` package.
 --
 ``` console
 $ sudo apt update
@@ -131,3 +137,9 @@ int main() {
     return 0;
 }
 ```
+
+Edge Trigger / Level Trigger
+---
+`epoll` V.S. `poll`, `select` 
+
+[边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)
