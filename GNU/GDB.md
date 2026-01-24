@@ -7,10 +7,9 @@ tags: [GNU]
 # GDB (GNU DeBug)
 ###### tags: `GNU`
 
+ GDB initialization/startup file `~/.gdbinit`
 
 ``` shell
-(gdb) si (execute single instruction)
-(gdb) stepi
 (gdb) next
 (gdb) step
 (gdb) list <line|function>
@@ -38,8 +37,12 @@ tags: [GNU]
 * typing `Ctrl-Z` will stop the program, and continue will resume it accompanied by a SIGTSTP signal, so it will immediately stop again. If you type continue again, it should resume.
 
     
-## break
-``` shell
+## breakpointer
+In most common debugging scenarios, you can simply use the break command, and GDB will automatically select the appropriate method. You only need to explicitly use hbreak if you encounter issues with standard breakpoints (e.g., when debugging embedded systems or kernels where memory regions are read-only). 
+
+* Software Breakpoint (break):
+* Hardware breakpoints (hbreak):
+``` console
 (gdb) info breakpoints
 (gdb) delete breakpoints
 (gdb) disable <index>
@@ -48,8 +51,21 @@ tags: [GNU]
 (gdb) break iter.c:6 if i == 5
 ```
 
+* Temporary breakpoints:
+The `tbreak` command sets up a breakpoint that will work only once. After that, it's automatically cleaned up. You don't have to remember to use the disable N or delete N GDB commands – useful when in a hurry.
+
+``` console
+(gdb) tbreak
+```
+
+* Conditional breakpoints:
 `(gdb) break x:20 if strcmp(y, "hello") == 0`
-> 20 is line number, `x` can be any filename and `y` can be any variable.
+20 is line number, `x` can be any filename and `y` can be any variable.
+
+* Hardware watchpoints:
+```
+(gdb) watch jiffies_64
+```
 
 ## info
 ``` shell
@@ -132,12 +148,44 @@ $ cat .text .rodata .data .bss
       -s .data 0xffffffffc034e000 \ [...]
 ```
 
-GDBserver
+* show all modules currently loaded
+``` console
+(gdb) lx-lsmod
+Address            Module                  Size  Used by
+0xffffffffc004a000 kgdb_try               20480  0
+(gdb)
+```
+
+## GDBserver
 --
 ``` shell
 $ gdbserver <ip>:<port> --attach <pid>
 $ gdbserver <ip>:<port> <program>
 ```
+
+## Embedded System
+``` console
+(gdb) set sysroot <the root path of the filesystem>
+(gdb) set solib-search-path <the libaray path of the filesystem>
+```
+
+## Text User Interface (TUI)
+> GDB has a Text User Interface (TUI) mode, where, instead of just the usual command- line interface, the terminal window is split into two or three horizontally tiled panes
+(it internally uses curses-based libraries and APIs to achieve its somewhat graphic-like capabilities).
+
+``` console
+$ gdb –tui –q linux-5.10.53/vmlinux
+[...]
+```
+## Assembly-level Debug
+single-step exactly one machine instruction! (You can also specify si N to tell GDB to step through N assembly-level instructions.)
+
+``` console
+(gdb) si (execute single instruction)
+(gdb) stepi
+(gdb) disas
+```
+
 
 ## Reference
 <style>
@@ -147,10 +195,9 @@ $ gdbserver <ip>:<port> <program>
 </style># GDB (GNU DeBug)
 ###### tags: `GNU`
 
+ GDB initialization/startup file `~/.gdbinit`
 
 ``` shell
-(gdb) si (execute single instruction)
-(gdb) stepi
 (gdb) next
 (gdb) step
 (gdb) list <line|function>
@@ -178,8 +225,12 @@ $ gdbserver <ip>:<port> <program>
 * typing `Ctrl-Z` will stop the program, and continue will resume it accompanied by a SIGTSTP signal, so it will immediately stop again. If you type continue again, it should resume.
 
     
-## break
-``` shell
+## breakpointer
+In most common debugging scenarios, you can simply use the break command, and GDB will automatically select the appropriate method. You only need to explicitly use hbreak if you encounter issues with standard breakpoints (e.g., when debugging embedded systems or kernels where memory regions are read-only). 
+
+* Software Breakpoint (break):
+* Hardware breakpoints (hbreak):
+``` console
 (gdb) info breakpoints
 (gdb) delete breakpoints
 (gdb) disable <index>
@@ -188,8 +239,21 @@ $ gdbserver <ip>:<port> <program>
 (gdb) break iter.c:6 if i == 5
 ```
 
+* Temporary breakpoints:
+The `tbreak` command sets up a breakpoint that will work only once. After that, it's automatically cleaned up. You don't have to remember to use the disable N or delete N GDB commands – useful when in a hurry.
+
+``` console
+(gdb) tbreak
+```
+
+* Conditional breakpoints:
 `(gdb) break x:20 if strcmp(y, "hello") == 0`
-> 20 is line number, `x` can be any filename and `y` can be any variable.
+20 is line number, `x` can be any filename and `y` can be any variable.
+
+* Hardware watchpoints:
+```
+(gdb) watch jiffies_64
+```
 
 ## info
 ``` shell
@@ -272,12 +336,44 @@ $ cat .text .rodata .data .bss
       -s .data 0xffffffffc034e000 \ [...]
 ```
 
-GDBserver
+* show all modules currently loaded
+``` console
+(gdb) lx-lsmod
+Address            Module                  Size  Used by
+0xffffffffc004a000 kgdb_try               20480  0
+(gdb)
+```
+
+## GDBserver
 --
 ``` shell
 $ gdbserver <ip>:<port> --attach <pid>
 $ gdbserver <ip>:<port> <program>
 ```
+
+## Embedded System
+``` console
+(gdb) set sysroot <the root path of the filesystem>
+(gdb) set solib-search-path <the libaray path of the filesystem>
+```
+
+## Text User Interface (TUI)
+> GDB has a Text User Interface (TUI) mode, where, instead of just the usual command- line interface, the terminal window is split into two or three horizontally tiled panes
+(it internally uses curses-based libraries and APIs to achieve its somewhat graphic-like capabilities).
+
+``` console
+$ gdb –tui –q linux-5.10.53/vmlinux
+[...]
+```
+## Assembly-level Debug
+single-step exactly one machine instruction! (You can also specify si N to tell GDB to step through N assembly-level instructions.)
+
+``` console
+(gdb) si (execute single instruction)
+(gdb) stepi
+(gdb) disas
+```
+
 
 ## Reference
 <style>
