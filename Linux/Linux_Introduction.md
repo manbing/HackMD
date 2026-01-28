@@ -214,6 +214,77 @@ mem=nn[KMG]
 | Process Context     | ❍     | ❍     |
 | Atomic Context     | ✕   | ✕     |
 
+``` c
+/* ./include/linux/preempt.h */
+
+/*
+ * We put the hardirq and softirq counter into the preemption
+ * counter. The bitmask has the following meaning:
+ *
+ * - bits 0-7 are the preemption count (max preemption depth: 256)
+ * - bits 8-15 are the softirq count (max # of softirqs: 256)
+ *
+ * The hardirq count could in theory be the same as the number of
+ * interrupts in the system, but we run all interrupt handlers with
+ * interrupts disabled, so we cannot have nesting interrupts. Though
+ * there are a few palaeontologic drivers which reenable interrupts in
+ * the handler, so we need more than one bit here.
+ *
+ *         PREEMPT_MASK:    0x000000ff
+ *         SOFTIRQ_MASK:    0x0000ff00
+ *         HARDIRQ_MASK:    0x000f0000
+ *             NMI_MASK:    0x00f00000
+ * PREEMPT_NEED_RESCHED:    0x80000000
+ */
+#define PREEMPT_BITS    8
+#define SOFTIRQ_BITS    8
+#define HARDIRQ_BITS    4
+#define NMI_BITS    4
+
+/*
+ * Macros to retrieve the current execution context:
+ *
+ * in_nmi()     - We're in NMI context
+ * in_hardirq()     - We're in hard IRQ context
+ * in_serving_softirq() - We're in softirq context
+ * in_task()        - We're in task context
+ */
+#define in_nmi()        (nmi_count())
+#define in_hardirq()        (hardirq_count())
+#define in_serving_softirq()    (softirq_count() & SOFTIRQ_OFFSET)
+#ifdef CONFIG_PREEMPT_RT
+# define in_task()      (!((preempt_count() & (NMI_MASK | HARDIRQ_MASK)) | in_serving_softirq()))
+#else
+# define in_task()      (!(preempt_count() & (NMI_MASK | HARDIRQ_MASK | SOFTIRQ_OFFSET)))
+#endif
+
+/*
+ * Are we running in atomic context?  WARNING: this macro cannot
+ * always detect atomic context; in particular, it cannot know about
+ * held spinlocks in non-preemptible kernels.  Thus it should not be
+ * used in the general case to determine whether sleeping is possible.
+ * Do not use in_atomic() in driver code.
+ */
+#define in_atomic() (preempt_count() != 0)
+
+
+
+/*
+ * These macro definitions avoid redundant invocations of preempt_count()
+ * because such invocations would result in redundant loads given that
+ * preempt_count() is commonly implemented with READ_ONCE().
+ */
+
+#define nmi_count() (preempt_count() & NMI_MASK)
+#define hardirq_count() (preempt_count() & HARDIRQ_MASK)
+#ifdef CONFIG_PREEMPT_RT
+# define softirq_count()    (current->softirq_disable_cnt & SOFTIRQ_MASK)
+# define irq_count()        ((preempt_count() & (NMI_MASK | HARDIRQ_MASK)) | softirq_count())
+#else
+# define softirq_count()    (preempt_count() & SOFTIRQ_MASK)
+# define irq_count()        (preempt_count() & (NMI_MASK | HARDIRQ_MASK | SOFTIRQ_MASK))
+#endif
+```
 
 # DMA
 [Linux DMA Engine framework(1)_概述](http://www.wowotech.net/linux_kenrel/dma_engine_overview.html)
@@ -431,6 +502,77 @@ mem=nn[KMG]
 | Process Context     | ❍     | ❍     |
 | Atomic Context     | ✕   | ✕     |
 
+``` c
+/* ./include/linux/preempt.h */
+
+/*
+ * We put the hardirq and softirq counter into the preemption
+ * counter. The bitmask has the following meaning:
+ *
+ * - bits 0-7 are the preemption count (max preemption depth: 256)
+ * - bits 8-15 are the softirq count (max # of softirqs: 256)
+ *
+ * The hardirq count could in theory be the same as the number of
+ * interrupts in the system, but we run all interrupt handlers with
+ * interrupts disabled, so we cannot have nesting interrupts. Though
+ * there are a few palaeontologic drivers which reenable interrupts in
+ * the handler, so we need more than one bit here.
+ *
+ *         PREEMPT_MASK:    0x000000ff
+ *         SOFTIRQ_MASK:    0x0000ff00
+ *         HARDIRQ_MASK:    0x000f0000
+ *             NMI_MASK:    0x00f00000
+ * PREEMPT_NEED_RESCHED:    0x80000000
+ */
+#define PREEMPT_BITS    8
+#define SOFTIRQ_BITS    8
+#define HARDIRQ_BITS    4
+#define NMI_BITS    4
+
+/*
+ * Macros to retrieve the current execution context:
+ *
+ * in_nmi()     - We're in NMI context
+ * in_hardirq()     - We're in hard IRQ context
+ * in_serving_softirq() - We're in softirq context
+ * in_task()        - We're in task context
+ */
+#define in_nmi()        (nmi_count())
+#define in_hardirq()        (hardirq_count())
+#define in_serving_softirq()    (softirq_count() & SOFTIRQ_OFFSET)
+#ifdef CONFIG_PREEMPT_RT
+# define in_task()      (!((preempt_count() & (NMI_MASK | HARDIRQ_MASK)) | in_serving_softirq()))
+#else
+# define in_task()      (!(preempt_count() & (NMI_MASK | HARDIRQ_MASK | SOFTIRQ_OFFSET)))
+#endif
+
+/*
+ * Are we running in atomic context?  WARNING: this macro cannot
+ * always detect atomic context; in particular, it cannot know about
+ * held spinlocks in non-preemptible kernels.  Thus it should not be
+ * used in the general case to determine whether sleeping is possible.
+ * Do not use in_atomic() in driver code.
+ */
+#define in_atomic() (preempt_count() != 0)
+
+
+
+/*
+ * These macro definitions avoid redundant invocations of preempt_count()
+ * because such invocations would result in redundant loads given that
+ * preempt_count() is commonly implemented with READ_ONCE().
+ */
+
+#define nmi_count() (preempt_count() & NMI_MASK)
+#define hardirq_count() (preempt_count() & HARDIRQ_MASK)
+#ifdef CONFIG_PREEMPT_RT
+# define softirq_count()    (current->softirq_disable_cnt & SOFTIRQ_MASK)
+# define irq_count()        ((preempt_count() & (NMI_MASK | HARDIRQ_MASK)) | softirq_count())
+#else
+# define softirq_count()    (preempt_count() & SOFTIRQ_MASK)
+# define irq_count()        (preempt_count() & (NMI_MASK | HARDIRQ_MASK | SOFTIRQ_MASK))
+#endif
+```
 
 # DMA
 [Linux DMA Engine framework(1)_概述](http://www.wowotech.net/linux_kenrel/dma_engine_overview.html)
