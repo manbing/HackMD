@@ -136,7 +136,22 @@ void * __builtin_return_address (*unsigned int level*)
 
 
 ### 6.12 How to Use Inline Assembly Language in C Code
+GCC provides two forms of inline asm statements, both using the `asm` or `__asm__` keyword:
+* Basic Asm:
+``` c
+asm("nop"); // A do-nothing instruction
+```
 
+
+* Extended Asm:
+``` c
+asm volatile(
+    "add %[Rd], %[Rm], %[Rn]" // Assembler template
+    : [Rd] "=r" (result)      // Output operands
+    : [Rm] "r" (x), [Rn] "r" (y) // Input operands
+    :                          // Clobbers (optional)
+);
+```
 
 
 ## Variable Attriables
@@ -302,7 +317,22 @@ void * __builtin_return_address (*unsigned int level*)
 
 
 ### 6.12 How to Use Inline Assembly Language in C Code
+GCC provides two forms of inline asm statements, both using the `asm` or `__asm__` keyword:
+* Basic Asm:
+``` c
+asm("nop"); // A do-nothing instruction
+```
 
+
+* Extended Asm:
+``` c
+asm volatile(
+    "add %[Rd], %[Rm], %[Rn]" // Assembler template
+    : [Rd] "=r" (result)      // Output operands
+    : [Rm] "r" (x), [Rn] "r" (y) // Input operands
+    :                          // Clobbers (optional)
+);
+```
 
 
 ## Variable Attriables
