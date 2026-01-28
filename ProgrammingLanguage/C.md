@@ -61,6 +61,30 @@ struct api_struct {
 };
 
 #endif /* !__INCLUDE_GUARDS_H */
+```
+
+# Bit Fields
+``` c
+#include <stdio.h>
+
+struct CarFeatures {
+    unsigned int hasAC : 1;            // 1 bit for true/false
+    unsigned int hasSunroof : 1;       // 1 bit
+    unsigned int hasAutoTransmission : 1; // 1 bit
+    unsigned int hasLeatherSeats : 1;  // 1 bit
+};
+
+int main() {
+    struct CarFeatures car;
+    car.hasAC = 1;
+    car.hasSunroof = 0;
+    
+    // The total size of 'car' on a typical system will be 4 bytes (size of an unsigned int), 
+    // but only 4 bits are used in total for the fields.
+    printf("Size of struct CarFeatures: %zu bytes\n", sizeof(car));
+
+    return 0;
+}
 ```[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
 
 Qualifier: const, static
@@ -118,4 +142,28 @@ struct api_struct {
 };
 
 #endif /* !__INCLUDE_GUARDS_H */
+```
+
+# Bit Fields
+``` c
+#include <stdio.h>
+
+struct CarFeatures {
+    unsigned int hasAC : 1;            // 1 bit for true/false
+    unsigned int hasSunroof : 1;       // 1 bit
+    unsigned int hasAutoTransmission : 1; // 1 bit
+    unsigned int hasLeatherSeats : 1;  // 1 bit
+};
+
+int main() {
+    struct CarFeatures car;
+    car.hasAC = 1;
+    car.hasSunroof = 0;
+    
+    // The total size of 'car' on a typical system will be 4 bytes (size of an unsigned int), 
+    // but only 4 bits are used in total for the fields.
+    printf("Size of struct CarFeatures: %zu bytes\n", sizeof(car));
+
+    return 0;
+}
 ```
