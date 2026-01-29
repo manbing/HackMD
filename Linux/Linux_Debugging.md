@@ -5,13 +5,13 @@ tags: [Linux]
 ---
 
 # Tools
-1. addressToLine
+* addressToLine
 ``` console
 $ addr2line -e ./oops_tryv2.o -p -f 0x124
 do_the_work at <...>/ch7/oops_tryv2/oops_tryv2.c:62
 ```
 
-2. scripts/checkstack.pl
+* scripts/checkstack.pl
 ``` console
 $ objdump -d <...>/linux-5.10.60/vmlinux | <...>/linux-5.10.60/
 scripts/checkstack.pl
@@ -19,6 +19,11 @@ scripts/checkstack.pl
 0xffffffff81a554300 od_set_powersave_bias [vmlinux]:  2064
 0xffffffff817b24100 update_balloon_stats [vmlinux]:   1776
 [...]
+```
+# Static Analysis
+* cppcheck
+``` console
+$ cppcheck -v --force --enable=all -i .tmp_versions/ -i *.mod.c -i bkp/ --suppress=missingIncludeSystem .
 ```
 
 ## Compile Option
@@ -137,6 +142,7 @@ Pseudo File:
 $ /sys/kernel/tracing/instances/
 $ sudo cat /sys/kernel/tracing/README
 $ cat /sys/kernel/tracing/available_filter_functions
+$ echo 1 > /proc/sys/kernel/stack_tracer_enabled
 ```
 
 
@@ -177,16 +183,25 @@ KCSAN makes the `/sys/kernel/debug/kcsan` pseudofile available (under debugfs).
 
 ``` console
  /sys/kernel/debug/kcsan
+```
+
+# NetConsole
+``` console
+# netconsole=[+][src-port]@[src-ip]/[<dev>],[tgt-port]@<tgt-ip>/[tgt-macaddr]
+
+$ sudo modprobe netconsole netconsole=@192.168.1.20/ enp0s8,@192.168.1.101/
+
+$ netcat -d -u -l 6666 | tee -a klog_from_vm.txt
 ```
 
 # [Tracing](https://hackmd.io/xKfbS2JkQmeZ7t_ywyloSw?view)# Tools
-1. addressToLine
+* addressToLine
 ``` console
 $ addr2line -e ./oops_tryv2.o -p -f 0x124
 do_the_work at <...>/ch7/oops_tryv2/oops_tryv2.c:62
 ```
 
-2. scripts/checkstack.pl
+* scripts/checkstack.pl
 ``` console
 $ objdump -d <...>/linux-5.10.60/vmlinux | <...>/linux-5.10.60/
 scripts/checkstack.pl
@@ -194,6 +209,11 @@ scripts/checkstack.pl
 0xffffffff81a554300 od_set_powersave_bias [vmlinux]:  2064
 0xffffffff817b24100 update_balloon_stats [vmlinux]:   1776
 [...]
+```
+# Static Analysis
+* cppcheck
+``` console
+$ cppcheck -v --force --enable=all -i .tmp_versions/ -i *.mod.c -i bkp/ --suppress=missingIncludeSystem .
 ```
 
 ## Compile Option
@@ -312,6 +332,7 @@ Pseudo File:
 $ /sys/kernel/tracing/instances/
 $ sudo cat /sys/kernel/tracing/README
 $ cat /sys/kernel/tracing/available_filter_functions
+$ echo 1 > /proc/sys/kernel/stack_tracer_enabled
 ```
 
 
@@ -352,6 +373,15 @@ KCSAN makes the `/sys/kernel/debug/kcsan` pseudofile available (under debugfs).
 
 ``` console
  /sys/kernel/debug/kcsan
+```
+
+# NetConsole
+``` console
+# netconsole=[+][src-port]@[src-ip]/[<dev>],[tgt-port]@<tgt-ip>/[tgt-macaddr]
+
+$ sudo modprobe netconsole netconsole=@192.168.1.20/ enp0s8,@192.168.1.101/
+
+$ netcat -d -u -l 6666 | tee -a klog_from_vm.txt
 ```
 
 # [Tracing](https://hackmd.io/xKfbS2JkQmeZ7t_ywyloSw?view)
