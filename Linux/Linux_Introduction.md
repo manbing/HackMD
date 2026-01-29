@@ -37,6 +37,25 @@ $ scripts/kernel-doc -man \
 Printk:
 > Extending printk() in this manner allowed Torvalds—who authored the patch—to add two new types to printk(): **%pS** for symbolic pointers and **%pF** for symbolic function pointers. In both cases, the code uses kallsyms to turn the pointer value into a symbol name. Instead of a kernel developer having to read long address strings and then trying to find them in the system map, the kernel will do that work for them.
 
+# Coding Style
+[coding-style](https://docs.kernel.org/process/coding-style.html)
+[clang-format](https://docs.kernel.org/dev-tools/clang-format.html)
+
+* Check conding style
+``` console
+$ ./scripts/checkpatch.pl --no-tree -f --max-line-length=95 *.[ch]
+```
+
+``` console
+# Make sure your working directory is clean!
+$ clang-format -i kernel/*.[ch]
+```
+
+* check indent
+``` c
+$ indent -linux --line-length95 *.[chsS]
+```
+
 
 # image
 **vmlinux**:
@@ -293,6 +312,11 @@ mem=nn[KMG]
 
 # Interrupt
 [Interrupt](https://en.wikipedia.org/wiki/Interrupt)
+
+# Edge Trigger / Level Trigger
+`epoll` V.S. `poll`, `select` 
+
+[边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)
 # Documentation
 
 [The Linux Kernel documentation](https://docs.kernel.org/)
@@ -325,6 +349,25 @@ $ scripts/kernel-doc -man \
 Printk:
 > Extending printk() in this manner allowed Torvalds—who authored the patch—to add two new types to printk(): **%pS** for symbolic pointers and **%pF** for symbolic function pointers. In both cases, the code uses kallsyms to turn the pointer value into a symbol name. Instead of a kernel developer having to read long address strings and then trying to find them in the system map, the kernel will do that work for them.
 
+# Coding Style
+[coding-style](https://docs.kernel.org/process/coding-style.html)
+[clang-format](https://docs.kernel.org/dev-tools/clang-format.html)
+
+* Check conding style
+``` console
+$ ./scripts/checkpatch.pl --no-tree -f --max-line-length=95 *.[ch]
+```
+
+``` console
+# Make sure your working directory is clean!
+$ clang-format -i kernel/*.[ch]
+```
+
+* check indent
+``` c
+$ indent -linux --line-length95 *.[chsS]
+```
+
 
 # image
 **vmlinux**:
@@ -581,3 +624,8 @@ mem=nn[KMG]
 
 # Interrupt
 [Interrupt](https://en.wikipedia.org/wiki/Interrupt)
+
+# Edge Trigger / Level Trigger
+`epoll` V.S. `poll`, `select` 
+
+[边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)
