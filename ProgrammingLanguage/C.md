@@ -11,14 +11,35 @@ Qualifier: const, static
 # Programming Language C
 
 # Data type
+## Basic
+* `int`
 
-## Character
-Strings are arrays of char(ASCII) whose last element is a null character '\0' with an ASCII value of 0. C has no native string data type, so strings must always be treated as character(ASCII) arrays.
+* `Character`
+Strings are arrays of char(ASCII) whose last element is a null character ``'\0'`` with an ASCII value of 0. C has no native string data type, so strings must always be treated as character(ASCII) arrays.
+
+## [Array](https://en.wikipedia.org/wiki/C_data_types#Arrays)
+For every type `T`, except void and function types, there exist the types "array of `N` elements of type `T`". An array is a collection of values, all of the same type, stored contiguously in memory. An array of size `N` is indexed by integers from `0` up to and including `N − 1`.
+
+The data type of `int *dummy` is equal `int dummy[]`. But, it is differnet with `int dummy[3]`, becuast it declares size is `3`. 
+
+**Array Decay :**
+In ISO C, array decay (more formally, "array-to-pointer conversion") is an implicit conversion where an expression of an array type is converted into an expression of a pointer type. The resulting pointer points to the first element of the original array. 
+
+In C, the array decays to pointers. It means that array decay is the process in which an array gets converted to a pointer. This leads to the loss of the type and dimension of the array.
+
+Array decay generally happens when the array is passed to the function as the parameters
+
+## Compound Types
+* `struct`
+
+* `enum`
+
+* `union`
 
 # Memory
 
 ## Dereference `*`
-`[]`(Array subscripting) is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
+`[]`(Array subscripting) is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (pointer to int array whose size is 3). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
 
 # [Operators in C](https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B)
 During expression evaluation, the order in which sub-expressions are evaluated is determined by **recedence** and **associativity**. An operator with higher precedence is evaluated before a operator of lower precedence and the operands of an operator are evaluated based on associativity.
@@ -87,26 +108,42 @@ int main() {
 }
 ```
 
-# Array Decay
-In ISO C, array decay (more formally, "array-to-pointer conversion") is an implicit conversion where an expression of an array type is converted into an expression of a pointer type. The resulting pointer points to the first element of the original array. 
-
-In C, the array decays to pointers. It means that array decay is the process in which an array gets converted to a pointer. This leads to the loss of the type and dimension of the array.
-
-Array decay generally happens when the array is passed to the function as the parameters[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
+[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
 
 Qualifier: const, static
 
 # Programming Language C
 
 # Data type
+## Basic
+* `int`
 
-## Character
-Strings are arrays of char(ASCII) whose last element is a null character '\0' with an ASCII value of 0. C has no native string data type, so strings must always be treated as character(ASCII) arrays.
+* `Character`
+Strings are arrays of char(ASCII) whose last element is a null character ``'\0'`` with an ASCII value of 0. C has no native string data type, so strings must always be treated as character(ASCII) arrays.
+
+## [Array](https://en.wikipedia.org/wiki/C_data_types#Arrays)
+For every type `T`, except void and function types, there exist the types "array of `N` elements of type `T`". An array is a collection of values, all of the same type, stored contiguously in memory. An array of size `N` is indexed by integers from `0` up to and including `N − 1`.
+
+The data type of `int *dummy` is equal `int dummy[]`. But, it is differnet with `int dummy[3]`, becuast it declares size is `3`. 
+
+**Array Decay :**
+In ISO C, array decay (more formally, "array-to-pointer conversion") is an implicit conversion where an expression of an array type is converted into an expression of a pointer type. The resulting pointer points to the first element of the original array. 
+
+In C, the array decays to pointers. It means that array decay is the process in which an array gets converted to a pointer. This leads to the loss of the type and dimension of the array.
+
+Array decay generally happens when the array is passed to the function as the parameters
+
+## Compound Types
+* `struct`
+
+* `enum`
+
+* `union`
 
 # Memory
 
 ## Dereference `*`
-`[]`(Array subscripting) is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (vector of pointer to int). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
+`[]`(Array subscripting) is syntax sugar. it can uses on some data type. e.g., `int **` (pointer to pointer to int) or `int (*)[3]` (pointer to int array whose size is 3). `[]` will do differnet operation, according to the data type of object, but the efficiency is same.
 
 # [Operators in C](https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B)
 During expression evaluation, the order in which sub-expressions are evaluated is determined by **recedence** and **associativity**. An operator with higher precedence is evaluated before a operator of lower precedence and the operands of an operator are evaluated based on associativity.
@@ -175,9 +212,3 @@ int main() {
 }
 ```
 
-# Array Decay
-In ISO C, array decay (more formally, "array-to-pointer conversion") is an implicit conversion where an expression of an array type is converted into an expression of a pointer type. The resulting pointer points to the first element of the original array. 
-
-In C, the array decays to pointers. It means that array decay is the process in which an array gets converted to a pointer. This leads to the loss of the type and dimension of the array.
-
-Array decay generally happens when the array is passed to the function as the parameters
