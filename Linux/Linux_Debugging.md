@@ -200,7 +200,9 @@ $ netcat -d -u -l 6666 | tee -a klog_from_vm.txt
 
 # SLUB debug
 
-# Kmemleak# Tools
+# Kmemleak
+
+# gcov# Tools
 * addressToLine
 ``` console
 $ addr2line -e ./oops_tryv2.o -p -f 0x124
