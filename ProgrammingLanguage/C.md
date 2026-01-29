@@ -85,7 +85,14 @@ int main() {
 
     return 0;
 }
-```[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
+```
+
+# Array Decay
+In ISO C, array decay (more formally, "array-to-pointer conversion") is an implicit conversion where an expression of an array type is converted into an expression of a pointer type. The resulting pointer points to the first element of the original array. 
+
+In C, the array decays to pointers. It means that array decay is the process in which an array gets converted to a pointer. This leads to the loss of the type and dimension of the array.
+
+Array decay generally happens when the array is passed to the function as the parameters[ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
 
 Qualifier: const, static
 
@@ -167,3 +174,10 @@ int main() {
     return 0;
 }
 ```
+
+# Array Decay
+In ISO C, array decay (more formally, "array-to-pointer conversion") is an implicit conversion where an expression of an array type is converted into an expression of a pointer type. The resulting pointer points to the first element of the original array. 
+
+In C, the array decays to pointers. It means that array decay is the process in which an array gets converted to a pointer. This leads to the loss of the type and dimension of the array.
+
+Array decay generally happens when the array is passed to the function as the parameters
