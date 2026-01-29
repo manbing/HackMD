@@ -33,7 +33,7 @@ Prerequest:
 **Generate OpenWrt image**
 1. Get source code:
 ``` shell
-$ git clon https://github.com/openwrt/openwrt.git
+$ git clone https://github.com/openwrt/openwrt.git
 ```
 
 2. Configure and Compile
@@ -233,7 +233,7 @@ Prerequest:
 **Generate OpenWrt image**
 1. Get source code:
 ``` shell
-$ git clon https://github.com/openwrt/openwrt.git
+$ git clone https://github.com/openwrt/openwrt.git
 ```
 
 2. Configure and Compile
