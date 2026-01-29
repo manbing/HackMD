@@ -69,11 +69,17 @@ int main() {
 }
 ```
 
-Edge Trigger / Level Trigger
----
+# Edge Trigger / Level Trigger
 `epoll` V.S. `poll`, `select` 
 
-[边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)To run 32-bit ELF binaries on 64-bit platform, install `lib32z1` package.
+[边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)
+
+# CPPCHECK
+``` c
+cppcheck -v --force --enable=all -i .tmp_versions/ -i *.mod.c -i bkp/ --suppress=missingIncludeSystem .
+```
+
+To run 32-bit ELF binaries on 64-bit platform, install `lib32z1` package.
 --
 ``` console
 $ sudo apt update
@@ -138,8 +144,13 @@ int main() {
 }
 ```
 
-Edge Trigger / Level Trigger
----
+# Edge Trigger / Level Trigger
 `epoll` V.S. `poll`, `select` 
 
 [边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)
+
+# CPPCHECK
+``` c
+cppcheck -v --force --enable=all -i .tmp_versions/ -i *.mod.c -i bkp/ --suppress=missingIncludeSystem .
+```
+
