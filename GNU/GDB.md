@@ -38,7 +38,7 @@ tags: [GNU]
 
     
 ## breakpointer
-In most common debugging scenarios, you can simply use the break command, and GDB will automatically select the appropriate method. You only need to explicitly use hbreak if you encounter issues with standard breakpoints (e.g., when debugging embedded systems or kernels where memory regions are read-only). 
+In most common debugging scenarios, you can simply use the `break` command, and GDB will automatically select the appropriate method. You only need to explicitly use `hbreak` if you encounter issues with standard breakpoints (e.g., when debugging embedded systems or kernels where memory regions are read-only). 
 
 * Software Breakpoint (break):
 * Hardware breakpoints (hbreak):
@@ -89,6 +89,13 @@ The `tbreak` command sets up a breakpoint that will work only once. After that, 
 (gdb) dump memory <file name> <start address> <end address>
 (gdb) set print pretty
 ```
+
+## Examining the Symbol Table
+* `whatis *expr*`
+Print the data type of expression expr. expr is not actually evaluated, and any side-effecting operations (such as assignments or function calls) inside it do not take place. See section Expressions.
+* `whatis`
+Print the data type of `$`, the last value in the value history.
+
 
 ## Register
 ``` shell
@@ -226,7 +233,7 @@ single-step exactly one machine instruction! (You can also specify si N to tell 
 
     
 ## breakpointer
-In most common debugging scenarios, you can simply use the break command, and GDB will automatically select the appropriate method. You only need to explicitly use hbreak if you encounter issues with standard breakpoints (e.g., when debugging embedded systems or kernels where memory regions are read-only). 
+In most common debugging scenarios, you can simply use the `break` command, and GDB will automatically select the appropriate method. You only need to explicitly use `hbreak` if you encounter issues with standard breakpoints (e.g., when debugging embedded systems or kernels where memory regions are read-only). 
 
 * Software Breakpoint (break):
 * Hardware breakpoints (hbreak):
@@ -277,6 +284,13 @@ The `tbreak` command sets up a breakpoint that will work only once. After that, 
 (gdb) dump memory <file name> <start address> <end address>
 (gdb) set print pretty
 ```
+
+## Examining the Symbol Table
+* `whatis *expr*`
+Print the data type of expression expr. expr is not actually evaluated, and any side-effecting operations (such as assignments or function calls) inside it do not take place. See section Expressions.
+* `whatis`
+Print the data type of `$`, the last value in the value history.
+
 
 ## Register
 ``` shell
