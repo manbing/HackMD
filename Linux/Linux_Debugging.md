@@ -194,7 +194,13 @@ $ sudo modprobe netconsole netconsole=@192.168.1.20/ enp0s8,@192.168.1.101/
 $ netcat -d -u -l 6666 | tee -a klog_from_vm.txt
 ```
 
-# [Tracing](https://hackmd.io/xKfbS2JkQmeZ7t_ywyloSw?view)# Tools
+# [Tracing](https://hackmd.io/xKfbS2JkQmeZ7t_ywyloSw?view)
+
+# KASAN
+
+# SLUB debug
+
+# Kmemleak# Tools
 * addressToLine
 ``` console
 $ addr2line -e ./oops_tryv2.o -p -f 0x124
@@ -385,3 +391,9 @@ $ netcat -d -u -l 6666 | tee -a klog_from_vm.txt
 ```
 
 # [Tracing](https://hackmd.io/xKfbS2JkQmeZ7t_ywyloSw?view)
+
+# KASAN
+
+# SLUB debug
+
+# Kmemleak
