@@ -180,6 +180,23 @@ Builtin sync. would simply translate into a **HW barrier**, probably a fence (mf
 
 ## Pragmas
 
+## Qualifiers
+* `volatile`
+
+What constitutes an access to an object that has volatile-qualified type (C90 6.5.3, C99 6.7.3). [4.10 Qualifiers](https://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Qualifiers-implementation.html#Qualifiers-implementation)
+Such an object is normally accessed by pointers and used for accessing hardware. In most expressions, it is intuitively obvious what is a read and what is a write. For example:
+``` c
+volatile int *dst = somevalue;
+volatile int *src = someothervalue;
+*dst = *src;
+```
+will cause a read of the volatile object pointed to by src and store the value into the volatile object pointed to by dst. There is no guarantee that these reads and writes are atomic, especially for objects larger than int.
+
+* `static`
+
+
+* `const`
+
 ## Reference
 [How A Compiler Works: GNU Toolchain](https://www.slideshare.net/jserv/how-a-compiler-works-gnu-toolchain)
 
@@ -360,6 +377,23 @@ Inline asm. actually does nothing at runtime, there's no command performed there
 Builtin sync. would simply translate into a **HW barrier**, probably a fence (mfence/sfence) operations if you're on x86, or its equivalents in other architectures. The CPU may also do various optimizations at runtime, the most important one is actually performing operations out-of-order - this instruction tells it to make sure that loads or stores can't pass this point and must be observed in the correct side of the sync point.
 
 ## Pragmas
+
+## Qualifiers
+* `volatile`
+
+What constitutes an access to an object that has volatile-qualified type (C90 6.5.3, C99 6.7.3). [4.10 Qualifiers](https://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Qualifiers-implementation.html#Qualifiers-implementation)
+Such an object is normally accessed by pointers and used for accessing hardware. In most expressions, it is intuitively obvious what is a read and what is a write. For example:
+``` c
+volatile int *dst = somevalue;
+volatile int *src = someothervalue;
+*dst = *src;
+```
+will cause a read of the volatile object pointed to by src and store the value into the volatile object pointed to by dst. There is no guarantee that these reads and writes are atomic, especially for objects larger than int.
+
+* `static`
+
+
+* `const`
 
 ## Reference
 [How A Compiler Works: GNU Toolchain](https://www.slideshare.net/jserv/how-a-compiler-works-gnu-toolchain)
