@@ -12,11 +12,22 @@ addr2line -e <span class="green">*filename*</span> [addr addr ...]
 ## ar
 ## objcopy
 ## objdump
+
+The compile flag be placed in the section, .debug_str.
 ```
-# the compile flag be placed in the section, .debug_str.
 $ objdump -s --section .debug_str path/to/file.o
 ```
+
+Show involved shared library
+```
+$ objdump -p /bin/ls
+```
+
 ## readelf
+Show involved shared library
+```
+readelf -d /bin/ls
+```
 ## strings
 ## strip
 ## nm
@@ -27,8 +38,10 @@ Display the version number for ld and list the linker emulations supported. Disp
 
 [Linker Scripts](https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_chapter/ld_3.html#SEC6)
 
-## ldd (print shared object dependencies)
+## ldd
+Print shared object dependencies
 
+## gcov
 
 <style>
 .green {
@@ -44,11 +57,22 @@ addr2line -e <span class="green">*filename*</span> [addr addr ...]
 ## ar
 ## objcopy
 ## objdump
+
+The compile flag be placed in the section, .debug_str.
 ```
-# the compile flag be placed in the section, .debug_str.
 $ objdump -s --section .debug_str path/to/file.o
 ```
+
+Show involved shared library
+```
+$ objdump -p /bin/ls
+```
+
 ## readelf
+Show involved shared library
+```
+readelf -d /bin/ls
+```
 ## strings
 ## strip
 ## nm
@@ -59,8 +83,10 @@ Display the version number for ld and list the linker emulations supported. Disp
 
 [Linker Scripts](https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_chapter/ld_3.html#SEC6)
 
-## ldd (print shared object dependencies)
+## ldd
+Print shared object dependencies
 
+## gcov
 
 <style>
 .green {
