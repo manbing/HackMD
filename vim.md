@@ -12,11 +12,11 @@ insert mode
 
 # vim.rc
 ``` vim
-set cursorline
 set ai
+"set cursorline
 set bg=light
-set shiftwidth=8
-set tabstop=8
+color desert
+
 set mouse=a
 set number
 set cindent
@@ -24,17 +24,26 @@ set autoindent
 set smartindent
 set nocompatible
 set nopaste
+set noignorecase
+
+" \t 會以 4個空格代替
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+
+" 游標移動後, 一樣可以用 backsapce, del 等刪除動作
 set bs=2
 set ic
 
 syntax on
 filetype on
 
+" /usr/share/vim/vim63/colors/desert.vim
 highlight Search term=reverse ctermbg=4 ctermfg=7
 highlight Normal ctermbg=black ctermfg=white
 highlight Folded ctermbg=black ctermfg=darkcyan
 hi Comment ctermbg=black ctermfg=darkcyan
-color desert
+colorscheme darkblue
 
 " 下面出現一列 bar.
 set ls=2
@@ -43,8 +52,6 @@ highlight StatusLine ctermfg=blue ctermbg=white
 
 " 搜尋到的字加 hilight
 set hlsearch
-
-
 
 " :sp 開檔時, 上面會列出所有檔案
 set wildmenu
@@ -136,7 +143,7 @@ Replace string, IP="140.134.4.1", as string, IP="0.0.0.0"
 :%s/IP="[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}"/IP="0.0.0.0"/g
 ```
 
-## Reference
+# Reference
 [Lecture 3: Editors (vim) (2020)](https://www.youtube.com/watch?v=a6Q8Na575qc)
 
 
@@ -149,11 +156,11 @@ insert mode
 
 # vim.rc
 ``` vim
-set cursorline
 set ai
+"set cursorline
 set bg=light
-set shiftwidth=8
-set tabstop=8
+color desert
+
 set mouse=a
 set number
 set cindent
@@ -161,17 +168,26 @@ set autoindent
 set smartindent
 set nocompatible
 set nopaste
+set noignorecase
+
+" \t 會以 4個空格代替
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+
+" 游標移動後, 一樣可以用 backsapce, del 等刪除動作
 set bs=2
 set ic
 
 syntax on
 filetype on
 
+" /usr/share/vim/vim63/colors/desert.vim
 highlight Search term=reverse ctermbg=4 ctermfg=7
 highlight Normal ctermbg=black ctermfg=white
 highlight Folded ctermbg=black ctermfg=darkcyan
 hi Comment ctermbg=black ctermfg=darkcyan
-color desert
+colorscheme darkblue
 
 " 下面出現一列 bar.
 set ls=2
@@ -180,8 +196,6 @@ highlight StatusLine ctermfg=blue ctermbg=white
 
 " 搜尋到的字加 hilight
 set hlsearch
-
-
 
 " :sp 開檔時, 上面會列出所有檔案
 set wildmenu
@@ -273,7 +287,7 @@ Replace string, IP="140.134.4.1", as string, IP="0.0.0.0"
 :%s/IP="[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}"/IP="0.0.0.0"/g
 ```
 
-## Reference
+# Reference
 [Lecture 3: Editors (vim) (2020)](https://www.youtube.com/watch?v=a6Q8Na575qc)
 
 
