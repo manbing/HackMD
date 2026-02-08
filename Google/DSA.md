@@ -1,6 +1,6 @@
 ---
 title: Data Structures and Algorithms
-tags: [Google]
+tags: [Computer Science, Google]
 
 ---
 
@@ -147,6 +147,8 @@ Dynamic programming
 
 
 # Runtime analysis
+
+<mark>TODO: define terminology</mark>
 
 X is NP-complete if only if X $\in$ NP $\&$ X is NP-hard.
 X is NP-hard if only if every problem y $\in$ NP can be reduces to X.
@@ -328,6 +330,8 @@ Dynamic programming
 
 
 # Runtime analysis
+
+<mark>TODO: define terminology</mark>
 
 X is NP-complete if only if X $\in$ NP $\&$ X is NP-hard.
 X is NP-hard if only if every problem y $\in$ NP can be reduces to X.
