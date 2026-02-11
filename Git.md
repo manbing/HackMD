@@ -155,6 +155,14 @@ $ git commit --amend --date="$(date -R)"
 $ git commit --signoff
 $ git commit --amend --author="Author Name <email@address.com>"
 ```
+
+## [git-cat-file](https://git-scm.com/docs/git-cat-file)
+git-cat-file - Provide contents or details of repository objects
+
+``` console
+git cat-file -p <SHA>
+```
+
 ## [git-describe](https://git-scm.com/docs/git-describe)
 `$ git describe --contains <commit-ish>`
 > The command finds the most recent tag that is reachable from a commit.
@@ -500,6 +508,14 @@ $ git commit --amend --date="$(date -R)"
 $ git commit --signoff
 $ git commit --amend --author="Author Name <email@address.com>"
 ```
+
+## [git-cat-file](https://git-scm.com/docs/git-cat-file)
+git-cat-file - Provide contents or details of repository objects
+
+``` console
+git cat-file -p <SHA>
+```
+
 ## [git-describe](https://git-scm.com/docs/git-describe)
 `$ git describe --contains <commit-ish>`
 > The command finds the most recent tag that is reachable from a commit.
