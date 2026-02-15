@@ -317,6 +317,22 @@ mem=nn[KMG]
 `epoll` V.S. `poll`, `select` 
 
 [边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)
+
+# ID
+Tgid:
+Ngid:
+Pid:
+PPid:
+TracerPid:
+Uid:
+Gid:
+
+# SYSTEM CALL
+{%preview https://sourceware.org/glibc/manual/2.43/html_mono/libc.html#System-Calls %}
+
+{%preview https://man7.org/linux/man-pages/man2/syscalls.2.html %}
+
+
 # Documentation
 
 [The Linux Kernel documentation](https://docs.kernel.org/)
@@ -629,3 +645,18 @@ mem=nn[KMG]
 `epoll` V.S. `poll`, `select` 
 
 [边缘触发(Edge Trigger)和条件触发(Level Trigger)](https://blog.csdn.net/josunna/article/details/6269235)
+
+# ID
+Tgid:
+Ngid:
+Pid:
+PPid:
+TracerPid:
+Uid:
+Gid:
+
+# SYSTEM CALL
+{%preview https://sourceware.org/glibc/manual/2.43/html_mono/libc.html#System-Calls %}
+
+{%preview https://man7.org/linux/man-pages/man2/syscalls.2.html %}
+
