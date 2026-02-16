@@ -108,6 +108,14 @@ int main() {
 }
 ```
 
+
+# Memory Alignment
+
+[Why is the struct aligned to 4-bytes (32-bit) on 64-bit machine?](https://stackoverflow.com/questions/67841002/why-is-the-struct-aligned-to-4-bytes-32-bit-on-64-bit-machine)
+
+For the most part, an object of length n bytes only needs to have an n-byte alignment in order to perform well with the hardware (supposing n is a power of two). That alignment will allow them to fit neatly into the bus and memory operations, whatever width they are.
+
+Further, if the bus width is b and the object size is n, the alignment requirement may just be the lesser of b or n. Once an object is larger than the bus width, we are going to need multiple transfers to get it, and often nothing is gained by requiring more alignment than the bus width.
 [ISO C](https://www.open-std.org/jtc1/sc22/wg14/www/projects#9899)
 
 Qualifier: const, static
@@ -212,3 +220,11 @@ int main() {
 }
 ```
 
+
+# Memory Alignment
+
+[Why is the struct aligned to 4-bytes (32-bit) on 64-bit machine?](https://stackoverflow.com/questions/67841002/why-is-the-struct-aligned-to-4-bytes-32-bit-on-64-bit-machine)
+
+For the most part, an object of length n bytes only needs to have an n-byte alignment in order to perform well with the hardware (supposing n is a power of two). That alignment will allow them to fit neatly into the bus and memory operations, whatever width they are.
+
+Further, if the bus width is b and the object size is n, the alignment requirement may just be the lesser of b or n. Once an object is larger than the bus width, we are going to need multiple transfers to get it, and often nothing is gained by requiring more alignment than the bus width.
