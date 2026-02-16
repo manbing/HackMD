@@ -75,7 +75,7 @@ enum
 You cannot sleep in an interrupt handler because interrupts do not have a backing process context, and thus there is nothing to reschedule back into. In other words, interrupt handlers are not associated with a task, so there is nothing to "put to sleep" and (more importantly) "nothing to wake up". They must run atomically. 
 Stepping back a bit, hardware interrupts come along and interrupt whatever task happened to be running. When the hardware IRQ stack gets back down to the task level again (i.e. all nested HW IRQs are processed, then it enabled interrupts and starts any queued tasklets. So tasklets are really still "interrupt" context, but with interrupts enabled.) [4]
 
-the known blockable/sleepable API:
+The known blockable/sleepable API:
 
 | API Name |
 | -------- |
@@ -90,6 +90,40 @@ the known blockable/sleepable API:
 2. 控制interrupt controller，关闭某个IRQ number对应的中断。更准确的术语是mask或者unmask一个 IRQ。 e.x., disable_irq()
 
 和硬件中断一样，软中断也可以disable，接口函数是local_bh_disable和local_bh_enable。
+
+
+## Interrupt Latency
+
+[Measuring Interrupt Latency](https://www.nxp.com/docs/en/application-note/AN12078.pdf)
+
+> the delay between a hardware device generating an `interrupt request (IRQ)` and the Linux kernel starting the corresponding `interrupt service routine (ISR)`.
+> 
+>The interrupt latency is usually affected by a lot of factors.
+For a narrow sense of the interrupt latency, there are these typical influence factors:
+>* For most processor architectures, the processor usually completes the current instruction, which may be a multi-cycle instruction.
+>
+>* To save the current scene to restore the states when returning from the ISR, the processor pushes various necessary core registers (usually the program counter, flag registers, linker register, and so on) to the stack.
+>
+>* Some processor architectures need additional software statements to select the right ISR.
+>
+>* Time to fetch and decode the ISR instructions to fill the pipeline.
+>
+>* Most memory systems that store the code (such as flash) usually have wait states because the
+memory system clock frequency is usually much slower than the CPU clock.
+>
+>* The interrupt may be preempted by other higher-priority interrupts anytime, including before the
+first ISR instruction is executed.
+>
+> For a broad-sense definition of the interrupt latency, there are other additional factors:
+>* The interrupt request signal must be synchronized to the CPU clock timing, which may take several cycles for the interrupt signal source to trigger the interrupt request.
+>
+>* If the interrupt request signal comes from outside of the processor device, the signal must be firstly synchronized to the bus/peripheral clock.
+>
+>* The RTOS may temporarily disable the interrupts when accessing critical resources. The latency is longer if the interrupt request asserts during the interrupt is disabled.
+>
+>* The response point may be defined as another event triggered by the ISR rather than the first instruction in the ISR, such as the response of an RTOS task which is blocked before and woken up by the interrupt. It may take many cycles for the software to complete the process before the
+defined response point.
+
 
 
 ## Reference
@@ -168,7 +202,7 @@ enum
 You cannot sleep in an interrupt handler because interrupts do not have a backing process context, and thus there is nothing to reschedule back into. In other words, interrupt handlers are not associated with a task, so there is nothing to "put to sleep" and (more importantly) "nothing to wake up". They must run atomically. 
 Stepping back a bit, hardware interrupts come along and interrupt whatever task happened to be running. When the hardware IRQ stack gets back down to the task level again (i.e. all nested HW IRQs are processed, then it enabled interrupts and starts any queued tasklets. So tasklets are really still "interrupt" context, but with interrupts enabled.) [4]
 
-the known blockable/sleepable API:
+The known blockable/sleepable API:
 
 | API Name |
 | -------- |
@@ -183,6 +217,40 @@ the known blockable/sleepable API:
 2. 控制interrupt controller，关闭某个IRQ number对应的中断。更准确的术语是mask或者unmask一个 IRQ。 e.x., disable_irq()
 
 和硬件中断一样，软中断也可以disable，接口函数是local_bh_disable和local_bh_enable。
+
+
+## Interrupt Latency
+
+[Measuring Interrupt Latency](https://www.nxp.com/docs/en/application-note/AN12078.pdf)
+
+> the delay between a hardware device generating an `interrupt request (IRQ)` and the Linux kernel starting the corresponding `interrupt service routine (ISR)`.
+> 
+>The interrupt latency is usually affected by a lot of factors.
+For a narrow sense of the interrupt latency, there are these typical influence factors:
+>* For most processor architectures, the processor usually completes the current instruction, which may be a multi-cycle instruction.
+>
+>* To save the current scene to restore the states when returning from the ISR, the processor pushes various necessary core registers (usually the program counter, flag registers, linker register, and so on) to the stack.
+>
+>* Some processor architectures need additional software statements to select the right ISR.
+>
+>* Time to fetch and decode the ISR instructions to fill the pipeline.
+>
+>* Most memory systems that store the code (such as flash) usually have wait states because the
+memory system clock frequency is usually much slower than the CPU clock.
+>
+>* The interrupt may be preempted by other higher-priority interrupts anytime, including before the
+first ISR instruction is executed.
+>
+> For a broad-sense definition of the interrupt latency, there are other additional factors:
+>* The interrupt request signal must be synchronized to the CPU clock timing, which may take several cycles for the interrupt signal source to trigger the interrupt request.
+>
+>* If the interrupt request signal comes from outside of the processor device, the signal must be firstly synchronized to the bus/peripheral clock.
+>
+>* The RTOS may temporarily disable the interrupts when accessing critical resources. The latency is longer if the interrupt request asserts during the interrupt is disabled.
+>
+>* The response point may be defined as another event triggered by the ISR rather than the first instruction in the ISR, such as the response of an RTOS task which is blocked before and woken up by the interrupt. It may take many cycles for the software to complete the process before the
+defined response point.
+
 
 
 ## Reference
