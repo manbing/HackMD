@@ -34,6 +34,12 @@ tags: [Computer Science]
 # 32/64 Bit Architecture
 The 32/64 Bit is meaning **register size (bus size?)**. 32 bits address bus can address 2^{32} memory address; 64 bits address bus can address 2^{64} memory address.
 
+The term “64-bit machine” is vague. Computers processors and systems have several features which may have sizes different from each other on the same machine, including:
+* The width of most processor registers.
+* The width of addresses.
+* The width of the data bus.
+* The width of the arithmetic logic units.
+
 # 32/64 Bit System
 The 32/64 Bit is meaning **data types and sizes**. The data types and sizes are different.
 32 bits system **expects** it can access 2^{32} memory address; 64 bits system expects it can access 2^{64} memory address.
@@ -80,15 +86,18 @@ RISC-V: Machine mode, kernel mode, and user mode
 
 # Virtualization
 ## Containers V.S. Virtual Machines
-`Virtual Machines`(VMs) include the guest operating system (OS) along with all the code for their applications and application dependencies that formerly ran on a single server or from a server pool. The size of VM images is generally measured in gigabytes. Multiple VMs can exist on a single physical server even if they are running on different operating systems. VMs abstract servers from the underlying hardware and typically persist throughout their useful life.
+`Virtual Machines`(VMs) include the guest operating system (OS) along with all the code for their applications and application dependencies that formerly ran on a single server or from a server pool. The size of VM images is generally measured in gigabytes. Multiple VMs can exist on a single physical server even if they are running on different operating systems. VMs abstract servers from the underlying hardware and typically persist throughout their useful life. I.e, `qemu`, `vmware`
 
-`Containers` share the host OS and include only the applications and their dependencies. The size of container images is generally measured in megabytes. Every container running on a single server shares the same underlying OS. Containers thus can spin up in milliseconds and are more efficient for ephemeral use cases where instances must be spun up and down with changes in demand.
+`Containers` share the host OS and include only the applications and their dependencies. The size of container images is generally measured in megabytes. Every container running on a single server shares the same underlying OS. Containers thus can spin up in milliseconds and are more efficient for ephemeral use cases where instances must be spun up and down with changes in demand. I.e, `docker`
+
+
 
 [VMs vs Containers](https://www.vmware.com/topics/vms-vs-containers)
 
 
+
 # Physical Addresses (Memory Map)
-Real hardware places ==RAM== and devices at unpredictable ==physical addresses==.
+Real hardware places ==RAM== and ==devices== at unpredictable ==physical addresses==.
 
 # [Coroutine](https://en.wikipedia.org/wiki/Coroutine)
 Coroutines are computer program components that allow execution to be suspended and resumed, generalizing subroutines for cooperative multitasking. Coroutines are well-suited for implementing familiar program components such as cooperative tasks, exceptions, event loops, iterators, infinite lists and pipes.
@@ -149,6 +158,12 @@ Buses are categorized based on their role, such as system buses (also known as i
 # 32/64 Bit Architecture
 The 32/64 Bit is meaning **register size (bus size?)**. 32 bits address bus can address 2^{32} memory address; 64 bits address bus can address 2^{64} memory address.
 
+The term “64-bit machine” is vague. Computers processors and systems have several features which may have sizes different from each other on the same machine, including:
+* The width of most processor registers.
+* The width of addresses.
+* The width of the data bus.
+* The width of the arithmetic logic units.
+
 # 32/64 Bit System
 The 32/64 Bit is meaning **data types and sizes**. The data types and sizes are different.
 32 bits system **expects** it can access 2^{32} memory address; 64 bits system expects it can access 2^{64} memory address.
@@ -195,15 +210,18 @@ RISC-V: Machine mode, kernel mode, and user mode
 
 # Virtualization
 ## Containers V.S. Virtual Machines
-`Virtual Machines`(VMs) include the guest operating system (OS) along with all the code for their applications and application dependencies that formerly ran on a single server or from a server pool. The size of VM images is generally measured in gigabytes. Multiple VMs can exist on a single physical server even if they are running on different operating systems. VMs abstract servers from the underlying hardware and typically persist throughout their useful life.
+`Virtual Machines`(VMs) include the guest operating system (OS) along with all the code for their applications and application dependencies that formerly ran on a single server or from a server pool. The size of VM images is generally measured in gigabytes. Multiple VMs can exist on a single physical server even if they are running on different operating systems. VMs abstract servers from the underlying hardware and typically persist throughout their useful life. I.e, `qemu`, `vmware`
 
-`Containers` share the host OS and include only the applications and their dependencies. The size of container images is generally measured in megabytes. Every container running on a single server shares the same underlying OS. Containers thus can spin up in milliseconds and are more efficient for ephemeral use cases where instances must be spun up and down with changes in demand.
+`Containers` share the host OS and include only the applications and their dependencies. The size of container images is generally measured in megabytes. Every container running on a single server shares the same underlying OS. Containers thus can spin up in milliseconds and are more efficient for ephemeral use cases where instances must be spun up and down with changes in demand. I.e, `docker`
+
+
 
 [VMs vs Containers](https://www.vmware.com/topics/vms-vs-containers)
 
 
+
 # Physical Addresses (Memory Map)
-Real hardware places ==RAM== and devices at unpredictable ==physical addresses==.
+Real hardware places ==RAM== and ==devices== at unpredictable ==physical addresses==.
 
 # [Coroutine](https://en.wikipedia.org/wiki/Coroutine)
 Coroutines are computer program components that allow execution to be suspended and resumed, generalizing subroutines for cooperative multitasking. Coroutines are well-suited for implementing familiar program components such as cooperative tasks, exceptions, event loops, iterators, infinite lists and pipes.
