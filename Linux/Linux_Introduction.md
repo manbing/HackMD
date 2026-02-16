@@ -332,6 +332,15 @@ Gid:
 
 {%preview https://man7.org/linux/man-pages/man2/syscalls.2.html %}
 
+## Real-Time
+<mark>High deterministic and low-latency behavior</mark>, ensuring critical tasks execute within strict, predictable time constraints.
+
+* Hard real-time
+Strict, guaranteed timing; a missed deadline is considered a system fatal failure.
+
+
+* Soft real-time
+The system strives to meet deadlines, but missing them doesn't cause system fatal failure.
 
 # Documentation
 
@@ -660,3 +669,12 @@ Gid:
 
 {%preview https://man7.org/linux/man-pages/man2/syscalls.2.html %}
 
+## Real-Time
+<mark>High deterministic and low-latency behavior</mark>, ensuring critical tasks execute within strict, predictable time constraints.
+
+* Hard real-time
+Strict, guaranteed timing; a missed deadline is considered a system fatal failure.
+
+
+* Soft real-time
+The system strives to meet deadlines, but missing them doesn't cause system fatal failure.
