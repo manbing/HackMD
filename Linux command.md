@@ -35,6 +35,114 @@ $ apt-get source linux-image-unsigned-$(uname -r)
 $ brctl snoopdbg br3 on
 ```
 
+## bridge
+``` shell
+$ bridge fdb show dev eth0.1
+$ bridge mdb
+```
+
+### bridge-vlan
+The `vlan` object from the bridge command will allow you to create ingress/egress filters on bridges.
+
+To show if there is any vlan ingress/egress filters:
+``` shell
+$ bridge vlan show
+```
+
+To add rules to a given interface:
+``` shell
+$ bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
+```
+
+To remove rules. Use the same parameters as vlan add at the end of the command to delete a specific rule.
+``` shell
+$ bridge vlan delete dev eth1
+```
+
+## compare
+``` shell
+$ cmp
+```
+    
+## diff
+``` shell
+$ diff -u -p
+$ colordiff
+```
+
+## [dmidecode](https://linux.die.net/man/8/dmidecode)
+``` console
+$ dmidecode
+```
+
+* Check the numbers of memory module and capability. The following information shows this PC has 4 sockets. Plugging 2 * 16 GB memory module only.
+``` console
+$ sudo dmidecode -t memory | grep -A16 'Memory Device' | grep 'Size'
+
+        Size: No Module Installed
+        Size: 16 GB
+        Size: No Module Installed
+        Size: 16 GB
+
+```
+
+Check the clock rate of memory module. `MT/s` indicates how much data is moved per second, while `MHz` indicates how many times the clock cycles in that second.
+``` console
+$ sudo dmidecode -t memory | grep -A16 'Memory Device' | grep 'Speed'
+
+        Speed: 6000 MT/s
+        Speed: 6000 MT/s
+```
+
+* Check channel they are assigned to. 
+``` console
+$ sudo dmidecode -t memory | grep Channel
+```
+
+* Interpret the output:
+**Dual Channel**: You will likely see output listing different channels for different DIMMs, such as `ChannelA-DIMM0` and `ChannelB-DIMM0`.
+**Single Channel**: If all installed modules list the same channel (e.g., all list `ChannelA-DIMM0` or no channel information appears), the system is likely running in single-channel mode, or the information is not exposed via the DMI table in that specific configuration.
+**Quad Channel**: A quad-channel system would show four distinct channels (A, B, C, D). 
+
+
+* Check bus width
+``` console
+$ sudo dmidecode -t memory | grep -A16 'Memory Device' | grep 'Data Width'
+        Data Width: Unknown
+        Data Width: 64 bits
+        Data Width: Unknown
+        Data Width: 64 bits
+```
+
+
+
+## [dd](https://man7.org/linux/man-pages/man1/dd.1.html)
+
+
+## [dbclient](https://linux.die.net/man/1/dbclient)
+
+SSH client
+``` console
+$ dbclient user@hostname_or_ip
+$ dbclient -p 2222 user@hostname_or_ip
+```
+
+## df
+``` shell
+$ df -h
+```
+
+## dtc
+To get the device tree in text from the device tree blob:
+``` console
+$ dtc -I dtb -O dts cindy.dtb
+```
+
+Compile device trees:
+``` console
+$ dtc -O dtb -o cindy.dtb cindy.dts
+```
+
 ## grep
 ``` console
 $ grep -rin -E "include .*INNDA_CONFIG" ./test
@@ -202,34 +310,6 @@ $ nft list tables
 ```
 
 
-## [dd](https://man7.org/linux/man-pages/man1/dd.1.html)
-
-
-## [dbclient](https://linux.die.net/man/1/dbclient)
-
-SSH client
-``` console
-$ dbclient user@hostname_or_ip
-$ dbclient -p 2222 user@hostname_or_ip
-```
-
-
-## df
-``` shell
-$ df -h
-```
-
-## dtc
-To get the device tree in text from the device tree blob:
-``` console
-$ dtc -I dtb -O dts cindy.dtb
-```
-
-Compile device trees:
-``` console
-$ dtc -O dtb -o cindy.dtb cindy.dts
-```
-
 ## iwinfo
 ``` shell
 $ iwinfo
@@ -379,6 +459,17 @@ Copy files/folders between a container and the local filesystem:
 ``` shell
 $ docker cp ./some_file CONTAINER:/work
 ```
+
+Run the RISC-V container: Now you can use the --platform flag to specify the desired architecture:
+``` console
+$ docker run --platform linux/riscv64 -it [image_name]:[tag]
+```
+
+To run an Ubuntu container built for RISC-V:
+``` console
+$ docker run --platform linux/riscv64 -it riscv64/ubuntu:22.04 /bin/bash
+```
+
 ### docker-volume
 ``` shell
 $ docker volume ls
@@ -450,41 +541,6 @@ $ docker pull --all-tags ubuntu
 $ sudo smbpasswd -a {UserName} {password}
 $ sudo apt install samba
 $ service smbd restart
-```
-
-## bridge
-``` shell
-$ bridge fdb show dev eth0.1
-$ bridge mdb
-```
-
-### bridge-vlan
-The `vlan` object from the bridge command will allow you to create ingress/egress filters on bridges.
-
-To show if there is any vlan ingress/egress filters:
-``` shell
-$ bridge vlan show
-```
-
-To add rules to a given interface:
-``` shell
-$ bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
-```
-
-To remove rules. Use the same parameters as vlan add at the end of the command to delete a specific rule.
-``` shell
-$ bridge vlan delete dev eth1
-```
-    
-## diff
-``` shell
-$ diff -u -p
-$ colordiff
-```
-
-## compare
-``` shell
-$ cmp
 ```
 
 ## [tc-ct](https://man7.org/linux/man-pages/man8/tc-ct.8.html)
@@ -618,6 +674,114 @@ $ apt-get source linux-image-unsigned-$(uname -r)
 $ brctl snoopdbg br3 on
 ```
 
+## bridge
+``` shell
+$ bridge fdb show dev eth0.1
+$ bridge mdb
+```
+
+### bridge-vlan
+The `vlan` object from the bridge command will allow you to create ingress/egress filters on bridges.
+
+To show if there is any vlan ingress/egress filters:
+``` shell
+$ bridge vlan show
+```
+
+To add rules to a given interface:
+``` shell
+$ bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
+```
+
+To remove rules. Use the same parameters as vlan add at the end of the command to delete a specific rule.
+``` shell
+$ bridge vlan delete dev eth1
+```
+
+## compare
+``` shell
+$ cmp
+```
+    
+## diff
+``` shell
+$ diff -u -p
+$ colordiff
+```
+
+## [dmidecode](https://linux.die.net/man/8/dmidecode)
+``` console
+$ dmidecode
+```
+
+* Check the numbers of memory module and capability. The following information shows this PC has 4 sockets. Plugging 2 * 16 GB memory module only.
+``` console
+$ sudo dmidecode -t memory | grep -A16 'Memory Device' | grep 'Size'
+
+        Size: No Module Installed
+        Size: 16 GB
+        Size: No Module Installed
+        Size: 16 GB
+
+```
+
+Check the clock rate of memory module. `MT/s` indicates how much data is moved per second, while `MHz` indicates how many times the clock cycles in that second.
+``` console
+$ sudo dmidecode -t memory | grep -A16 'Memory Device' | grep 'Speed'
+
+        Speed: 6000 MT/s
+        Speed: 6000 MT/s
+```
+
+* Check channel they are assigned to. 
+``` console
+$ sudo dmidecode -t memory | grep Channel
+```
+
+* Interpret the output:
+**Dual Channel**: You will likely see output listing different channels for different DIMMs, such as `ChannelA-DIMM0` and `ChannelB-DIMM0`.
+**Single Channel**: If all installed modules list the same channel (e.g., all list `ChannelA-DIMM0` or no channel information appears), the system is likely running in single-channel mode, or the information is not exposed via the DMI table in that specific configuration.
+**Quad Channel**: A quad-channel system would show four distinct channels (A, B, C, D). 
+
+
+* Check bus width
+``` console
+$ sudo dmidecode -t memory | grep -A16 'Memory Device' | grep 'Data Width'
+        Data Width: Unknown
+        Data Width: 64 bits
+        Data Width: Unknown
+        Data Width: 64 bits
+```
+
+
+
+## [dd](https://man7.org/linux/man-pages/man1/dd.1.html)
+
+
+## [dbclient](https://linux.die.net/man/1/dbclient)
+
+SSH client
+``` console
+$ dbclient user@hostname_or_ip
+$ dbclient -p 2222 user@hostname_or_ip
+```
+
+## df
+``` shell
+$ df -h
+```
+
+## dtc
+To get the device tree in text from the device tree blob:
+``` console
+$ dtc -I dtb -O dts cindy.dtb
+```
+
+Compile device trees:
+``` console
+$ dtc -O dtb -o cindy.dtb cindy.dts
+```
+
 ## grep
 ``` console
 $ grep -rin -E "include .*INNDA_CONFIG" ./test
@@ -785,34 +949,6 @@ $ nft list tables
 ```
 
 
-## [dd](https://man7.org/linux/man-pages/man1/dd.1.html)
-
-
-## [dbclient](https://linux.die.net/man/1/dbclient)
-
-SSH client
-``` console
-$ dbclient user@hostname_or_ip
-$ dbclient -p 2222 user@hostname_or_ip
-```
-
-
-## df
-``` shell
-$ df -h
-```
-
-## dtc
-To get the device tree in text from the device tree blob:
-``` console
-$ dtc -I dtb -O dts cindy.dtb
-```
-
-Compile device trees:
-``` console
-$ dtc -O dtb -o cindy.dtb cindy.dts
-```
-
 ## iwinfo
 ``` shell
 $ iwinfo
@@ -962,6 +1098,17 @@ Copy files/folders between a container and the local filesystem:
 ``` shell
 $ docker cp ./some_file CONTAINER:/work
 ```
+
+Run the RISC-V container: Now you can use the --platform flag to specify the desired architecture:
+``` console
+$ docker run --platform linux/riscv64 -it [image_name]:[tag]
+```
+
+To run an Ubuntu container built for RISC-V:
+``` console
+$ docker run --platform linux/riscv64 -it riscv64/ubuntu:22.04 /bin/bash
+```
+
 ### docker-volume
 ``` shell
 $ docker volume ls
@@ -1033,41 +1180,6 @@ $ docker pull --all-tags ubuntu
 $ sudo smbpasswd -a {UserName} {password}
 $ sudo apt install samba
 $ service smbd restart
-```
-
-## bridge
-``` shell
-$ bridge fdb show dev eth0.1
-$ bridge mdb
-```
-
-### bridge-vlan
-The `vlan` object from the bridge command will allow you to create ingress/egress filters on bridges.
-
-To show if there is any vlan ingress/egress filters:
-``` shell
-$ bridge vlan show
-```
-
-To add rules to a given interface:
-``` shell
-$ bridge vlan add dev eth1 <vid, pvid, untagged, self, master>
-```
-
-To remove rules. Use the same parameters as vlan add at the end of the command to delete a specific rule.
-``` shell
-$ bridge vlan delete dev eth1
-```
-    
-## diff
-``` shell
-$ diff -u -p
-$ colordiff
-```
-
-## compare
-``` shell
-$ cmp
 ```
 
 ## [tc-ct](https://man7.org/linux/man-pages/man8/tc-ct.8.html)
