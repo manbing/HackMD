@@ -128,7 +128,11 @@ In computer architecture, a bus (historically also called a data highway[1] or d
 
 Buses are categorized based on their role, such as system buses (also known as internal buses, internal data buses, or memory buses) connecting the CPU and memory. Expansion buses, also called peripheral buses, extend the system to connect additional devices, including peripherals. Examples of widely used buses include PCI Express (PCIe) for high-speed internal connections and Universal Serial Bus (USB) for connecting external devices.
 
-# Memory hierarchy
+# Memory latency
+[Memory latency](https://en.wikipedia.org/wiki/Memory_latency)
+> Memory latency is the time (the latency) between initiating a request for a byte or word in memory until it is retrieved by a processor. If the data are not in the processor's cache, it takes longer to obtain them, as the processor will have to communicate with the external memory cells. Latency is therefore a fundamental measure of the speed of memory: the less the latency, the faster the reading operation.
+>
+> Latency should not be confused with memory bandwidth, which measures the throughput of memory. Latency can be expressed in clock cycles or in time measured in nanoseconds. Over time, memory latencies expressed in clock cycles have been fairly stable, but they have improved in time.# Memory hierarchy
 
 * **Cache line** is the unit of data transfer between CPU and main memory. The cache line of your PC is most likely 64 bytes, meaning that the main memory is divided into blocks of 64 bytes, and whenever you request a byte, you are also fetching its cache line neighbours regardless whether your want it or not. Fetching a cache line is like grabbing a 6-pack.
 
@@ -252,3 +256,8 @@ In computer architecture, a bus (historically also called a data highway[1] or d
 
 Buses are categorized based on their role, such as system buses (also known as internal buses, internal data buses, or memory buses) connecting the CPU and memory. Expansion buses, also called peripheral buses, extend the system to connect additional devices, including peripherals. Examples of widely used buses include PCI Express (PCIe) for high-speed internal connections and Universal Serial Bus (USB) for connecting external devices.
 
+# Memory latency
+[Memory latency](https://en.wikipedia.org/wiki/Memory_latency)
+> Memory latency is the time (the latency) between initiating a request for a byte or word in memory until it is retrieved by a processor. If the data are not in the processor's cache, it takes longer to obtain them, as the processor will have to communicate with the external memory cells. Latency is therefore a fundamental measure of the speed of memory: the less the latency, the faster the reading operation.
+>
+> Latency should not be confused with memory bandwidth, which measures the throughput of memory. Latency can be expressed in clock cycles or in time measured in nanoseconds. Over time, memory latencies expressed in clock cycles have been fairly stable, but they have improved in time.
