@@ -130,7 +130,11 @@ $ grep PCI_ID /sys/bus/pci/devices/*/uevent
 ``` console
 $ ls -a /sys/module/<module-name>/sections/
 ```
-    
+
+* the minimum amount of data in bytes that gets transferred from memory to cache
+``` console
+$ cat /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size
+``` 
 # debugfs
 ```
 mount -t debugfs debugfs /sys/kernel/debug
@@ -391,7 +395,11 @@ $ grep PCI_ID /sys/bus/pci/devices/*/uevent
 ``` console
 $ ls -a /sys/module/<module-name>/sections/
 ```
-    
+
+* the minimum amount of data in bytes that gets transferred from memory to cache
+``` console
+$ cat /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size
+``` 
 # debugfs
 ```
 mount -t debugfs debugfs /sys/kernel/debug
