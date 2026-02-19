@@ -128,11 +128,44 @@ In computer architecture, a bus (historically also called a data highway[1] or d
 
 Buses are categorized based on their role, such as system buses (also known as internal buses, internal data buses, or memory buses) connecting the CPU and memory. Expansion buses, also called peripheral buses, extend the system to connect additional devices, including peripherals. Examples of widely used buses include PCI Express (PCIe) for high-speed internal connections and Universal Serial Bus (USB) for connecting external devices.
 
-# Memory latency
+# Memory
+## Memory latency
 [Memory latency](https://en.wikipedia.org/wiki/Memory_latency)
 > Memory latency is the time (the latency) between initiating a request for a byte or word in memory until it is retrieved by a processor. If the data are not in the processor's cache, it takes longer to obtain them, as the processor will have to communicate with the external memory cells. Latency is therefore a fundamental measure of the speed of memory: the less the latency, the faster the reading operation.
 >
-> Latency should not be confused with memory bandwidth, which measures the throughput of memory. Latency can be expressed in clock cycles or in time measured in nanoseconds. Over time, memory latencies expressed in clock cycles have been fairly stable, but they have improved in time.# Memory hierarchy
+> Latency should not be confused with memory bandwidth, which measures the throughput of memory. Latency can be expressed in clock cycles or in time measured in nanoseconds. Over time, memory latencies expressed in clock cycles have been fairly stable, but they have improved in time.
+
+# Cache
+* Outstanding Misses:
+
+data requests that have resulted in a cache miss (data not found in cache) but have not yet been serviced by the lower-level memory system.
+
+* Little's Law:
+
+$$
+L = \lambda \times W
+$$
+
+在 Cache 的情境下，我們可以將參數對應如下：
+1. $L$ (Concurrency/Parallelism)：Represents the number of concurrent requests, active connections, or cache occupancy.
+2. $\lambda$ (Arrival Rate): The throughput or rate at which requests arrive at the cache (e.g., requests per second).
+3. $W$  (Wait Time): The latency or average time a request spends being processed (e.g., Round Trip Time).
+
+> 我們無法提供足夠的 $L$ (並行資源) 來覆蓋 $W$ (比對延遲)，導致 $\lambda$ (吞吐量) 低於處理器的需求。
+
+
+## Cache Concurrency
+managing simultaneous read/write access to cached data by multiple threads or processes.
+
+Cache 硬體並行度不足主要發生在 Set Associative Cache 中，當 Way（路）數過多但缺乏足夠的比較器（Comparator）同時比對 Tag 時。高組相聯（High-way）雖能減少衝突缺失，但會增加硬體複雜度與查找延遲。若並行比對能力不足，查找效能將大幅下降，甚至不如直接映射快取。 
+
+關鍵點分析：
+* Set Associative 的原理：資料映射到特定 Set，但可在該 Set 內任意 Way 存放，這減少了衝突。
+* 硬體並行度限制：查找時，Set 內所有 Way 的 Tag 必須同時比對。如果一個 4-way Cache 只有 2 個比較器，就無法在一個週期內完成查找，導致並行度不足。
+* 效能與功耗取捨：增加 Way 數雖可降低衝突，但硬體實現成本（比較器數量、多工器複雜度）會上升，若無法優化並行比對能力，將成為效能瓶頸。 
+
+
+解決方案通常是在高相聯度與硬體查找速度（Latency）之間尋找平衡，例如使用更高速的比較器或採用更優化的分組策略。# Memory hierarchy
 
 * **Cache line** is the unit of data transfer between CPU and main memory. The cache line of your PC is most likely 64 bytes, meaning that the main memory is divided into blocks of 64 bytes, and whenever you request a byte, you are also fetching its cache line neighbours regardless whether your want it or not. Fetching a cache line is like grabbing a 6-pack.
 
@@ -256,8 +289,41 @@ In computer architecture, a bus (historically also called a data highway[1] or d
 
 Buses are categorized based on their role, such as system buses (also known as internal buses, internal data buses, or memory buses) connecting the CPU and memory. Expansion buses, also called peripheral buses, extend the system to connect additional devices, including peripherals. Examples of widely used buses include PCI Express (PCIe) for high-speed internal connections and Universal Serial Bus (USB) for connecting external devices.
 
-# Memory latency
+# Memory
+## Memory latency
 [Memory latency](https://en.wikipedia.org/wiki/Memory_latency)
 > Memory latency is the time (the latency) between initiating a request for a byte or word in memory until it is retrieved by a processor. If the data are not in the processor's cache, it takes longer to obtain them, as the processor will have to communicate with the external memory cells. Latency is therefore a fundamental measure of the speed of memory: the less the latency, the faster the reading operation.
 >
 > Latency should not be confused with memory bandwidth, which measures the throughput of memory. Latency can be expressed in clock cycles or in time measured in nanoseconds. Over time, memory latencies expressed in clock cycles have been fairly stable, but they have improved in time.
+
+# Cache
+* Outstanding Misses:
+
+data requests that have resulted in a cache miss (data not found in cache) but have not yet been serviced by the lower-level memory system.
+
+* Little's Law:
+
+$$
+L = \lambda \times W
+$$
+
+在 Cache 的情境下，我們可以將參數對應如下：
+1. $L$ (Concurrency/Parallelism)：Represents the number of concurrent requests, active connections, or cache occupancy.
+2. $\lambda$ (Arrival Rate): The throughput or rate at which requests arrive at the cache (e.g., requests per second).
+3. $W$  (Wait Time): The latency or average time a request spends being processed (e.g., Round Trip Time).
+
+> 我們無法提供足夠的 $L$ (並行資源) 來覆蓋 $W$ (比對延遲)，導致 $\lambda$ (吞吐量) 低於處理器的需求。
+
+
+## Cache Concurrency
+managing simultaneous read/write access to cached data by multiple threads or processes.
+
+Cache 硬體並行度不足主要發生在 Set Associative Cache 中，當 Way（路）數過多但缺乏足夠的比較器（Comparator）同時比對 Tag 時。高組相聯（High-way）雖能減少衝突缺失，但會增加硬體複雜度與查找延遲。若並行比對能力不足，查找效能將大幅下降，甚至不如直接映射快取。 
+
+關鍵點分析：
+* Set Associative 的原理：資料映射到特定 Set，但可在該 Set 內任意 Way 存放，這減少了衝突。
+* 硬體並行度限制：查找時，Set 內所有 Way 的 Tag 必須同時比對。如果一個 4-way Cache 只有 2 個比較器，就無法在一個週期內完成查找，導致並行度不足。
+* 效能與功耗取捨：增加 Way 數雖可降低衝突，但硬體實現成本（比較器數量、多工器複雜度）會上升，若無法優化並行比對能力，將成為效能瓶頸。 
+
+
+解決方案通常是在高相聯度與硬體查找速度（Latency）之間尋找平衡，例如使用更高速的比較器或採用更優化的分組策略。
