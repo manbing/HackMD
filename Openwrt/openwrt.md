@@ -88,6 +88,7 @@ network.lan.ipv6='1'
 network.lan.ip6class='HSI_6'
 ```
 
+### [wireless](https://openwrt.org/docs/guide-user/network/wifi/basic)
     
     
 ## C API
@@ -205,6 +206,18 @@ UCI defaults scripts can be created by packages or they can be inserted into the
 > network_get_dnsserver
 procd_set_param stdout 1
 procd_set_param stderr 1
+    
+# Console login
+If `system.@system[0].ttylogin` is 1, system will request password to authenticate. If it is not, system gives root privilige.
+
+/usr/libexec/login.sh:
+``` sh
+#!/bin/sh
+
+[ "$(uci -q get system.@system[0].ttylogin)" = 1 ] || exec /bin/ash --login
+
+exec /bin/login
+```
 
 /etc/init.d/$\lt$config$\gt$ restart
     
@@ -288,6 +301,7 @@ network.lan.ipv6='1'
 network.lan.ip6class='HSI_6'
 ```
 
+### [wireless](https://openwrt.org/docs/guide-user/network/wifi/basic)
     
     
 ## C API
@@ -405,3 +419,15 @@ UCI defaults scripts can be created by packages or they can be inserted into the
 > network_get_dnsserver
 procd_set_param stdout 1
 procd_set_param stderr 1
+    
+# Console login
+If `system.@system[0].ttylogin` is 1, system will request password to authenticate. If it is not, system gives root privilige.
+
+/usr/libexec/login.sh:
+``` sh
+#!/bin/sh
+
+[ "$(uci -q get system.@system[0].ttylogin)" = 1 ] || exec /bin/ash --login
+
+exec /bin/login
+```
