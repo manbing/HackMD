@@ -101,18 +101,70 @@ The term “64-bit machine” is vague. Computers processors and systems have se
 ## Dual In-line Memory Module (DIMM)
 [DIMM](https://en.wikipedia.org/wiki/DIMM)
 
-# Core Bandwidth
+## Memory Read
+資料流動過程 (Data Flow)
+1. Core 發出讀取請求，L1 Cache 沒中 (Miss)。
+2. 請求被掛載到一個空的 Line Full Buffer (LFB)。
+3. LFB 詢問 L2/L3，若都沒中，請求轉發給 Integrated Memory Controller (IMC)。
+3. IMC 從 RAM 搬回 64 Bytes 的資料片段。
+4. LFB 接收碎片並湊齊一個完整 Line。
+5. LFB 將資料寫入 L1 並通知 Core：資料準備好了！
+
+# Core
+## Core Bandwidth
 ## 單核心記憶體頻寬 (受限於延遲)
 雖然 DDR5-6000 的總頻寬可達 48 GB/s，但單個核心通常無法跑滿這個數值。這是因為單核心受限於「未完成請求」(Concurrency) 的硬體緩衝區限制（Little's Law）。 
 
 參數（典型值）：
 * Memory Latency (DDR4)：around 15 ns
 * Cache Line Size：64 Bytes
-* 最大並行請求數 (L1D Miss Buffers)：約 10–12 個
-* 公式：(並行請求數 × 快取行大小) / 延遲
+* Line Fill Buffer (LFB)（Little's Law）：約 10–12 個
+* 公式：(Line Fill Buffer × Cache Line Size) / Memory Latency
 * 計算：$(12 \times 64 Bytes) \div 15 ns \approx 47.6 GB/s$
  
 Yes! It needs **two** core to saturate Memory bandwidth.
+
+這是一個非常深刻的觀察！在計算記憶體頻寬或延遲時，我們似乎「忽略」了 CPU 的時脈（例如 5.0 GHz），這背後有幾個關鍵的原因：
+
+**CPU 和記憶體運行在完全不同的時鐘域（Clock Domains）中。**
+
+* CPU： 運行速度極快（週期約 0.2 ns）。
+* 記憶體總線： 運行速度相對慢得多。
+* 緩衝區的作用： 當 CPU 需要資料時，它會將請求丟入 LFB (Line Fill Buffers)。一旦請求離開了 CPU 核心進入記憶體控制器（IMC），它就進入了「等待物理傳輸」的階段。此時，CPU 的時脈再快，也無法加速電子在 PCB 板上的傳輸速度或 DRAM 電容的充放電。
+
+
+# Chip V.S. Processor V.s Core
+[Multi-core processor](https://en.wikipedia.org/wiki/Multi-core_processor)
+
+One **System on a Chip (SoC)** be composed of Multiple **Processor** and **Memory**.
+One **Processor (Processor Chip) (CPU)** be composed of Multiple **Core** and **L2 and L3 cache**.
+**Core** is the Smallest unit of execution and be composed of **L1 cache**.
+
+* **System on a Chip (SoC)**: Combines a processor (CPU), main memory (RAM), input/output controllers, and sometimes graphics (GPU) onto one chip.
+
+* **Processor Chip (CPU)**: Primarily designed for logic and arithmetic, though they often contain small, fast "cache" memory on-die, rather than the large capacity "main" memory.
+
+* **Traditional PC Architecture**: In many desktop computers, the CPU and main memory are physically separate chips on the motherboard, connected via a bus. 
+
+
+$$
+Chip > Processor > Core
+$$
+
+# Cache
+## Cache Concurrency
+managing simultaneous read/write access to cached data by multiple threads or processes.
+
+Cache 硬體並行度不足主要發生在 Set Associative Cache 中，當 Way（路）數過多但缺乏足夠的比較器（Comparator）同時比對 Tag 時。高組相聯（High-way）雖能減少衝突缺失，但會增加硬體複雜度與查找延遲。若並行比對能力不足，查找效能將大幅下降，甚至不如直接映射快取。 
+
+關鍵點分析：
+* Set Associative 的原理：資料映射到特定 Set，但可在該 Set 內任意 Way 存放，這減少了衝突。
+* 硬體並行度限制：查找時，Set 內所有 Way 的 Tag 必須同時比對。如果一個 4-way Cache 只有 2 個比較器，就無法在一個週期內完成查找，導致並行度不足。
+* 效能與功耗取捨：增加 Way 數雖可降低衝突，但硬體實現成本（比較器數量、多工器複雜度）會上升，若無法優化並行比對能力，將成為效能瓶頸。 
+
+
+解決方案通常是在高相聯度與硬體查找速度（Latency）之間尋找平衡，例如使用更高速的比較器或採用更優化的分組策略。
+
 # [Bus (computing)](https://en.wikipedia.org/wiki/Bus_(computing))
 In computer architecture, a bus (historically also called a data highway[1] or databus) is a communication system that transfers data between components inside a computer or between computers.[2] It encompasses both hardware (e.g., wires, optical fiber) and software, including communication protocols.[3] At its core, a bus is a shared physical pathway, typically composed of wires, traces on a circuit board, or busbars, that allows multiple devices to communicate. To prevent conflicts and ensure orderly data exchange, buses rely on a communication protocol to manage which device can transmit data at a given time.
 
@@ -210,15 +262,67 @@ The term “64-bit machine” is vague. Computers processors and systems have se
 ## Dual In-line Memory Module (DIMM)
 [DIMM](https://en.wikipedia.org/wiki/DIMM)
 
-# Core Bandwidth
+## Memory Read
+資料流動過程 (Data Flow)
+1. Core 發出讀取請求，L1 Cache 沒中 (Miss)。
+2. 請求被掛載到一個空的 Line Full Buffer (LFB)。
+3. LFB 詢問 L2/L3，若都沒中，請求轉發給 Integrated Memory Controller (IMC)。
+3. IMC 從 RAM 搬回 64 Bytes 的資料片段。
+4. LFB 接收碎片並湊齊一個完整 Line。
+5. LFB 將資料寫入 L1 並通知 Core：資料準備好了！
+
+# Core
+## Core Bandwidth
 ## 單核心記憶體頻寬 (受限於延遲)
 雖然 DDR5-6000 的總頻寬可達 48 GB/s，但單個核心通常無法跑滿這個數值。這是因為單核心受限於「未完成請求」(Concurrency) 的硬體緩衝區限制（Little's Law）。 
 
 參數（典型值）：
 * Memory Latency (DDR4)：around 15 ns
 * Cache Line Size：64 Bytes
-* 最大並行請求數 (L1D Miss Buffers)：約 10–12 個
-* 公式：(並行請求數 × 快取行大小) / 延遲
+* Line Fill Buffer (LFB)（Little's Law）：約 10–12 個
+* 公式：(Line Fill Buffer × Cache Line Size) / Memory Latency
 * 計算：$(12 \times 64 Bytes) \div 15 ns \approx 47.6 GB/s$
  
 Yes! It needs **two** core to saturate Memory bandwidth.
+
+這是一個非常深刻的觀察！在計算記憶體頻寬或延遲時，我們似乎「忽略」了 CPU 的時脈（例如 5.0 GHz），這背後有幾個關鍵的原因：
+
+**CPU 和記憶體運行在完全不同的時鐘域（Clock Domains）中。**
+
+* CPU： 運行速度極快（週期約 0.2 ns）。
+* 記憶體總線： 運行速度相對慢得多。
+* 緩衝區的作用： 當 CPU 需要資料時，它會將請求丟入 LFB (Line Fill Buffers)。一旦請求離開了 CPU 核心進入記憶體控制器（IMC），它就進入了「等待物理傳輸」的階段。此時，CPU 的時脈再快，也無法加速電子在 PCB 板上的傳輸速度或 DRAM 電容的充放電。
+
+
+# Chip V.S. Processor V.s Core
+[Multi-core processor](https://en.wikipedia.org/wiki/Multi-core_processor)
+
+One **System on a Chip (SoC)** be composed of Multiple **Processor** and **Memory**.
+One **Processor (Processor Chip) (CPU)** be composed of Multiple **Core** and **L2 and L3 cache**.
+**Core** is the Smallest unit of execution and be composed of **L1 cache**.
+
+* **System on a Chip (SoC)**: Combines a processor (CPU), main memory (RAM), input/output controllers, and sometimes graphics (GPU) onto one chip.
+
+* **Processor Chip (CPU)**: Primarily designed for logic and arithmetic, though they often contain small, fast "cache" memory on-die, rather than the large capacity "main" memory.
+
+* **Traditional PC Architecture**: In many desktop computers, the CPU and main memory are physically separate chips on the motherboard, connected via a bus. 
+
+
+$$
+Chip > Processor > Core
+$$
+
+# Cache
+## Cache Concurrency
+managing simultaneous read/write access to cached data by multiple threads or processes.
+
+Cache 硬體並行度不足主要發生在 Set Associative Cache 中，當 Way（路）數過多但缺乏足夠的比較器（Comparator）同時比對 Tag 時。高組相聯（High-way）雖能減少衝突缺失，但會增加硬體複雜度與查找延遲。若並行比對能力不足，查找效能將大幅下降，甚至不如直接映射快取。 
+
+關鍵點分析：
+* Set Associative 的原理：資料映射到特定 Set，但可在該 Set 內任意 Way 存放，這減少了衝突。
+* 硬體並行度限制：查找時，Set 內所有 Way 的 Tag 必須同時比對。如果一個 4-way Cache 只有 2 個比較器，就無法在一個週期內完成查找，導致並行度不足。
+* 效能與功耗取捨：增加 Way 數雖可降低衝突，但硬體實現成本（比較器數量、多工器複雜度）會上升，若無法優化並行比對能力，將成為效能瓶頸。 
+
+
+解決方案通常是在高相聯度與硬體查找速度（Latency）之間尋找平衡，例如使用更高速的比較器或採用更優化的分組策略。
+
