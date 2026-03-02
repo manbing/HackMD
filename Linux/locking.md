@@ -10,7 +10,7 @@ tags: [Linux]
 Can not sleep in spinlock is not precisely
 ---
 In fact, sytem can not sleep in atomic context.
-Like, Interruput context, holding spinlock and so one. 
+Like, Interruput context, holding spinlock and so one.
 
 
 ## Spinlock
@@ -26,7 +26,7 @@ The contender which firstly get lock be owner.
 | API | preempt_disable() | local_irq_disable() | couple API |
 | -------- | -------- | -------- | -------- |
 | spin_lock() |    y  |   n   | spin_unlock() |
-| spin_lock_bh() |   y   |   n   | spin_unlock_bh() |
+| spin_lock_bh() |   n   |   n   | spin_unlock_bh() |
 | spin_lock_irq() |   y   |   y   | spin_unlock_irq() |
 | spin_lock_irqsave() |   y   |   y   | spin_unlock_irqrestore() |
 
@@ -117,13 +117,22 @@ using Spinlock, Mutex or Semaphore
 
 ## Debug
 KCSAN
-# Locking (Synchronization)
+
+## Documentation
+[Documentation/kernel-hacking/locking.rst](https://www.kernel.org/doc/Documentation/kernel-hacking/locking.rst)
+
+> But how does Read Copy Update know when the readers are finished? The method is this: firstly, the readers always traverse the list inside rcu_read_lock()/rcu_read_unlock() pairs: <mark>these simply disable preemption so the reader won't go to sleep while reading the list</mark>.
+
+> <mark>Many functions in the kernel sleep (ie. call schedule()) directly or indirectly</mark>: you can never call them while holding a spinlock, or with preemption disabled. This also means you need to be in user context: calling them from an interrupt is illegal.
+
+
+[Documentation/core-api/real-time/differences.rst](https://www.kernel.org/doc/Documentation/core-api/real-time/differences.rst)# Locking (Synchronization)
 ###### tags: `Linux`
 
 Can not sleep in spinlock is not precisely
 ---
 In fact, sytem can not sleep in atomic context.
-Like, Interruput context, holding spinlock and so one. 
+Like, Interruput context, holding spinlock and so one.
 
 
 ## Spinlock
@@ -139,7 +148,7 @@ The contender which firstly get lock be owner.
 | API | preempt_disable() | local_irq_disable() | couple API |
 | -------- | -------- | -------- | -------- |
 | spin_lock() |    y  |   n   | spin_unlock() |
-| spin_lock_bh() |   y   |   n   | spin_unlock_bh() |
+| spin_lock_bh() |   n   |   n   | spin_unlock_bh() |
 | spin_lock_irq() |   y   |   y   | spin_unlock_irq() |
 | spin_lock_irqsave() |   y   |   y   | spin_unlock_irqrestore() |
 
@@ -230,3 +239,13 @@ using Spinlock, Mutex or Semaphore
 
 ## Debug
 KCSAN
+
+## Documentation
+[Documentation/kernel-hacking/locking.rst](https://www.kernel.org/doc/Documentation/kernel-hacking/locking.rst)
+
+> But how does Read Copy Update know when the readers are finished? The method is this: firstly, the readers always traverse the list inside rcu_read_lock()/rcu_read_unlock() pairs: <mark>these simply disable preemption so the reader won't go to sleep while reading the list</mark>.
+
+> <mark>Many functions in the kernel sleep (ie. call schedule()) directly or indirectly</mark>: you can never call them while holding a spinlock, or with preemption disabled. This also means you need to be in user context: calling them from an interrupt is illegal.
+
+
+[Documentation/core-api/real-time/differences.rst](https://www.kernel.org/doc/Documentation/core-api/real-time/differences.rst)
