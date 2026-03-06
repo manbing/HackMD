@@ -181,7 +181,14 @@ memory of the computer.  It may be used, for example, to examine
 addresses.  References to nonexistent locations cause errors to be
 returned.
 
-# Function
+# Use Case
+## Bridge packet flood
+
+controls whether IPv4 packets traversing a network bridge are processed by the host's iptables
+``` console
+$cat /proc/sys/net/bridge/bridge-nf-call-iptables
+1
+```
 
 
 ## Netwrok
@@ -446,7 +453,14 @@ memory of the computer.  It may be used, for example, to examine
 addresses.  References to nonexistent locations cause errors to be
 returned.
 
-# Function
+# Use Case
+## Bridge packet flood
+
+controls whether IPv4 packets traversing a network bridge are processed by the host's iptables
+``` console
+$cat /proc/sys/net/bridge/bridge-nf-call-iptables
+1
+```
 
 
 ## Netwrok
