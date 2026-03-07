@@ -182,8 +182,7 @@ addresses.  References to nonexistent locations cause errors to be
 returned.
 
 # Use Case
-## Bridge packet flood
-
+## Bridge Packet Flood
 controls whether IPv4 packets traversing a network bridge are processed by the host's iptables
 ``` console
 $cat /proc/sys/net/bridge/bridge-nf-call-iptables
@@ -271,6 +270,8 @@ $ echo 1 > /proc/sys/kernel/panic_on_oops
 $ echo 1 > /proc/sys/kernel/sysrq
 $ echo c > /proc/sysrq-trigger
 ```
+
+## Check loaded module
 
 # else
 ```
@@ -454,8 +455,7 @@ addresses.  References to nonexistent locations cause errors to be
 returned.
 
 # Use Case
-## Bridge packet flood
-
+## Bridge Packet Flood
 controls whether IPv4 packets traversing a network bridge are processed by the host's iptables
 ``` console
 $cat /proc/sys/net/bridge/bridge-nf-call-iptables
@@ -543,6 +543,8 @@ $ echo 1 > /proc/sys/kernel/panic_on_oops
 $ echo 1 > /proc/sys/kernel/sysrq
 $ echo c > /proc/sysrq-trigger
 ```
+
+## Check loaded module
 
 # else
 ```
