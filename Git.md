@@ -1,6 +1,6 @@
 ---
 title: 'Git, Version Control'
-tags: [Linux]
+tags: [Linux, Open Source, Command]
 
 ---
 
@@ -356,12 +356,12 @@ $ patch -i patchs/001-test.patch
 ```
  
 # Use case
-tabwidth
+## Identation
 ``` console
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
    
-## Reference
+# Reference
 [Lecture 6: Version Control (git) (2020)](https://www.youtube.com/watch?v=2sjqTHE0zok&t=1329s)
 # Git, Version Control 
 ###### tags: `Linux`
@@ -715,10 +715,10 @@ $ patch -i patchs/001-test.patch
 ```
  
 # Use case
-tabwidth
+## Identation
 ``` console
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
    
-## Reference
+# Reference
 [Lecture 6: Version Control (git) (2020)](https://www.youtube.com/watch?v=2sjqTHE0zok&t=1329s)
