@@ -1,16 +1,28 @@
 ---
 title: TCPDump/Wireshark
-tags: [Networking]
+tags: [Open Source, Networking, Command]
 
 ---
 
+[tcpdump(1) — Linux manual page](https://man7.org/linux/man-pages/man1/tcpdump.1.html)
+
+`-A`
+> Print each packet (minus its link level header) in ASCII. Handy for capturing web pages.  No effect when -x[x] or -X[X] options are used.
+
+`-v`, `-vv`, `-vvv`
+> Increase the verbosity level of the packet output. Using more v flags provides more detailed protocol information.
 
 # TCPDump
-## Filter ICMPv6 Router Advertisement.
+Filter ICMPv6 Router Advertisement.
+``` console
 tcpdump -i eth0.1 -nn -e -vv "ip6[0]=134"
+```
 
+
+filter DHCP packet
+``` console
 tcpdump -i eth0.4 -nn -e \( port 67 or port 68\)
-> filter DHCP packet
+```
 
 tcpdump -i ra0 -nn -e \(\(ether src 80:a5:89:65:4e:a6 or ether dst 80:a5:89:65:4e:a6\) and \(port 67 or port 68\)\)
 
@@ -37,12 +49,26 @@ eth.src[0:3]==00:06:5B
 # 802.11 Filter
 
 [Wireshark 802.11 Filters - Reference Sheet PDF size](https://semfionetworks.com/wp-content/uploads/2021/04/wireshark_802.11_filters_-_reference_sheet.pdf)
-# TCPDump
-## Filter ICMPv6 Router Advertisement.
-tcpdump -i eth0.1 -nn -e -vv "ip6[0]=134"
 
+# VLAN[tcpdump(1) — Linux manual page](https://man7.org/linux/man-pages/man1/tcpdump.1.html)
+
+`-A`
+> Print each packet (minus its link level header) in ASCII. Handy for capturing web pages.  No effect when -x[x] or -X[X] options are used.
+
+`-v`, `-vv`, `-vvv`
+> Increase the verbosity level of the packet output. Using more v flags provides more detailed protocol information.
+
+# TCPDump
+Filter ICMPv6 Router Advertisement.
+``` console
+tcpdump -i eth0.1 -nn -e -vv "ip6[0]=134"
+```
+
+
+filter DHCP packet
+``` console
 tcpdump -i eth0.4 -nn -e \( port 67 or port 68\)
-> filter DHCP packet
+```
 
 tcpdump -i ra0 -nn -e \(\(ether src 80:a5:89:65:4e:a6 or ether dst 80:a5:89:65:4e:a6\) and \(port 67 or port 68\)\)
 
@@ -69,3 +95,5 @@ eth.src[0:3]==00:06:5B
 # 802.11 Filter
 
 [Wireshark 802.11 Filters - Reference Sheet PDF size](https://semfionetworks.com/wp-content/uploads/2021/04/wireshark_802.11_filters_-_reference_sheet.pdf)
+
+# VLAN
