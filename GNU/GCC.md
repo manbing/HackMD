@@ -19,6 +19,9 @@ The output from the C preprocessor looks much like the input, except that all pr
 
 Program: `cpp`
 Filename extension of the output: `.i`
+``` console
+$ gcc $(CFLAGS) -E main.c > main.c.i
+```
 
 #### option
 **-E**
@@ -217,6 +220,9 @@ The output from the C preprocessor looks much like the input, except that all pr
 
 Program: `cpp`
 Filename extension of the output: `.i`
+``` console
+$ gcc $(CFLAGS) -E main.c > main.c.i
+```
 
 #### option
 **-E**
