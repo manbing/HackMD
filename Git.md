@@ -81,7 +81,13 @@ $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 $ git config rebase.updateRefs true
 $ git config --list
 ```
-
+* Email
+``` console
+$ git config --global sendemail.smtpserver smtp.gmail.com
+$ git config --global sendemail.smtpuser you@gmail.com
+$ git config --global sendemail.smtpencryption tls
+$ git config --global sendemail.smtpserverport 587
+```
 
 
 ### Global (~/.gitconfig):
@@ -164,10 +170,9 @@ git cat-file -p <SHA>
 ```
 
 ## [git-describe](https://git-scm.com/docs/git-describe)
-`$ git describe --contains <commit-ish>`
-> The command finds the most recent tag that is reachable from a commit.
-
+The command finds the most recent tag that is reachable from a commit.
 ``` console
+$ git describe --contains <commit-ish>
 $ git describe --tags --exact-match HEAD
 ```
 
@@ -360,7 +365,7 @@ $ patch -i patchs/001-test.patch
 ``` console
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
-   
+ 
 # Reference
 [Lecture 6: Version Control (git) (2020)](https://www.youtube.com/watch?v=2sjqTHE0zok&t=1329s)
 # Git, Version Control 
@@ -440,7 +445,13 @@ $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 $ git config rebase.updateRefs true
 $ git config --list
 ```
-
+* Email
+``` console
+$ git config --global sendemail.smtpserver smtp.gmail.com
+$ git config --global sendemail.smtpuser you@gmail.com
+$ git config --global sendemail.smtpencryption tls
+$ git config --global sendemail.smtpserverport 587
+```
 
 
 ### Global (~/.gitconfig):
@@ -523,10 +534,9 @@ git cat-file -p <SHA>
 ```
 
 ## [git-describe](https://git-scm.com/docs/git-describe)
-`$ git describe --contains <commit-ish>`
-> The command finds the most recent tag that is reachable from a commit.
-
+The command finds the most recent tag that is reachable from a commit.
 ``` console
+$ git describe --contains <commit-ish>
 $ git describe --tags --exact-match HEAD
 ```
 
@@ -719,6 +729,6 @@ $ patch -i patchs/001-test.patch
 ``` console
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
-   
+ 
 # Reference
 [Lecture 6: Version Control (git) (2020)](https://www.youtube.com/watch?v=2sjqTHE0zok&t=1329s)
