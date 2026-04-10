@@ -1,6 +1,6 @@
 ---
 title: 'Git, Version Control'
-tags: [Linux, Open Source, Command]
+tags: [Linux]
 
 ---
 
@@ -366,6 +366,27 @@ $ patch -i patchs/001-test.patch
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
  
+## Get from Another Branch or Commit 
+``` console
+$ git restore --source <branch-or-commit> <file-path>
+$ git checkout <branch-or-commit> -- <file-path>
+```
+
+## Extract file from a stash
+``` console
+$ git checkout stash@{0} -- <file>
+```
+
+## Get from a Remote Repository (Without Full Clone)
+Sparse Checkout (Most Reliable):
+``` console
+$ git clone --filter=blob:none --no-checkout <repo-url>
+$ cd <repo-name>
+$ git sparse-checkout set <path/to/file>
+$ git checkout
+```
+
+
 # Reference
 [Lecture 6: Version Control (git) (2020)](https://www.youtube.com/watch?v=2sjqTHE0zok&t=1329s)
 # Git, Version Control 
@@ -730,5 +751,26 @@ $ patch -i patchs/001-test.patch
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
  
+## Get from Another Branch or Commit 
+``` console
+$ git restore --source <branch-or-commit> <file-path>
+$ git checkout <branch-or-commit> -- <file-path>
+```
+
+## Extract file from a stash
+``` console
+$ git checkout stash@{0} -- <file>
+```
+
+## Get from a Remote Repository (Without Full Clone)
+Sparse Checkout (Most Reliable):
+``` console
+$ git clone --filter=blob:none --no-checkout <repo-url>
+$ cd <repo-name>
+$ git sparse-checkout set <path/to/file>
+$ git checkout
+```
+
+
 # Reference
 [Lecture 6: Version Control (git) (2020)](https://www.youtube.com/watch?v=2sjqTHE0zok&t=1329s)
