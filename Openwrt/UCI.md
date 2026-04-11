@@ -1,17 +1,27 @@
 ---
-title: UCI (Unified Configuration Interface)
+title: Unified Configuration Interface (UCI)
 tags: [OpenWrt]
 
 ---
 
+# Description
 Unified Configuration Interface (UCI) is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
-- <mark>Package file</mark> is saved in configuration directory (locate in flash), `/etc/config`;
-- <mark>Change delta file</mark> is saved in save directory (locate in RAM), `/tmp/.uci`;
-
-Web GUI cache is locate in `/var/run/rpcd/uci-<sha256>`.
+- <mark>Package file</mark>
+In default, it is saved in configuration directory (locate in flash), `/etc/config/`.
+- <mark>Change delta file</mark>
+In default, it is saved in save directory (locate in RAM), `/tmp/.uci/`.
+On Web GUI, RPCD save change delta in `/var/run/rpcd/uci-<sha256>/`.
 
 ``` c
-// rpcd/src/include/rpcd/uci.h
+/* uci-2023-08-10-5781664d/uci.h */
+#define UCI_CONFDIR "/etc/config"
+#define UCI_SAVEDIR "/tmp/.uci"
+#define UCI_DIRMODE 0700
+#define UCI_FILEMODE 0600
+```
+
+``` c
+/* rpcd/src/include/rpcd/uci.h */
 #define RPC_UCI_DIR_PREFIX  "/var/run/rpcd"
 #define RPC_UCI_SAVEDIR_PREFIX  RPC_UCI_DIR_PREFIX "/uci-"
 #define RPC_SNAPSHOT_FILES  RPC_UCI_DIR_PREFIX "/snapshot-files/"
@@ -20,9 +30,51 @@ Web GUI cache is locate in `/var/run/rpcd/uci-<sha256>`.
 #define RPC_APPLY_TIMEOUT   60
 ```
 
-
 UCI system provide a lot of shell command and API to manipulate configuration files. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
 
+## `uci_import()`
+Load package file into process memory.
+
+## `uci_load_delta`
+Load delta file into process memory.
+
+## `uci_load()`
+`uci_import()` + `uci_load_delta`
+
+## `uci_commit()`
+* if it does not have change delta, `uci` will not write vlaue into flash. It means `uci_commit()` will not do anything, if process only call `uci_set()`, and does not call `uci_save()` following.
+
+* if `overwrite` is 0, it will reload package before commit value. Because the package maybe be modified by others process.
+
+* if `overwrite` is 0, Commited Value = Existing Package + Change Delta
+
+* if `overwrite` is 1, Commited Value = Process memory + Change Delta
+
+``` c
+/**
+ * uci_commit: commit changes to a package
+ * @ctx: uci context
+ * @p: uci_package struct pointer
+ * @overwrite: overwrite existing config data and flush delta
+ *
+ * committing may reload the whole uci_package data,
+ * the supplied pointer is updated accordingly
+ */
+extern int uci_commit(struct uci_context *ctx, struct uci_package **p, bool overwrite);
+
+```
+## `uci_save()`
+``` c
+/**
+ * uci_save: save change delta for a package
+ * @ctx: uci context
+ * @p: uci_package struct
+ */
+extern int uci_save(struct uci_context *ctx, struct uci_package *p);
+
+```
+
+## Save and Commit
 UCI is system-level program. Many process will call it simultaneously. It is important to guarantee the synchronization of configuration files; It involves synchronization problem here. However, synchronization is speed's opposite. it needs do some trade-off on that.
 
 `uci_save()` has charge of the chagne delta file. `uci_save()` protect the chagne delta file with `flock()` fine-grained. Therefore, it is synchronization. `uci_commit()` is reponsible for the package file. However, `uci_commit()` has readers-writers problems. It is not synchornization. Therefore, developer should use UCI commit very carefully. If the request is changing setting and take effect, UCI save is enough.
@@ -91,14 +143,24 @@ $ /sbin/wifi up
 
 # Reference
 [Different presentation](https://openwrt.org/docs/guide-user/base-system/uci#different_presentation)
+# Description
 Unified Configuration Interface (UCI) is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
-- <mark>Package file</mark> is saved in configuration directory (locate in flash), `/etc/config`;
-- <mark>Change delta file</mark> is saved in save directory (locate in RAM), `/tmp/.uci`;
-
-Web GUI cache is locate in `/var/run/rpcd/uci-<sha256>`.
+- <mark>Package file</mark>
+In default, it is saved in configuration directory (locate in flash), `/etc/config/`.
+- <mark>Change delta file</mark>
+In default, it is saved in save directory (locate in RAM), `/tmp/.uci/`.
+On Web GUI, RPCD save change delta in `/var/run/rpcd/uci-<sha256>/`.
 
 ``` c
-// rpcd/src/include/rpcd/uci.h
+/* uci-2023-08-10-5781664d/uci.h */
+#define UCI_CONFDIR "/etc/config"
+#define UCI_SAVEDIR "/tmp/.uci"
+#define UCI_DIRMODE 0700
+#define UCI_FILEMODE 0600
+```
+
+``` c
+/* rpcd/src/include/rpcd/uci.h */
 #define RPC_UCI_DIR_PREFIX  "/var/run/rpcd"
 #define RPC_UCI_SAVEDIR_PREFIX  RPC_UCI_DIR_PREFIX "/uci-"
 #define RPC_SNAPSHOT_FILES  RPC_UCI_DIR_PREFIX "/snapshot-files/"
@@ -107,9 +169,51 @@ Web GUI cache is locate in `/var/run/rpcd/uci-<sha256>`.
 #define RPC_APPLY_TIMEOUT   60
 ```
 
-
 UCI system provide a lot of shell command and API to manipulate configuration files. e.g., `uci_set()`, `uci_commit()`, `uci_save()`, `uci_load()`, `uci get`, `uci show`, `uci changes`, `uci revert` and so on.
 
+## `uci_import()`
+Load package file into process memory.
+
+## `uci_load_delta`
+Load delta file into process memory.
+
+## `uci_load()`
+`uci_import()` + `uci_load_delta`
+
+## `uci_commit()`
+* if it does not have change delta, `uci` will not write vlaue into flash. It means `uci_commit()` will not do anything, if process only call `uci_set()`, and does not call `uci_save()` following.
+
+* if `overwrite` is 0, it will reload package before commit value. Because the package maybe be modified by others process.
+
+* if `overwrite` is 0, Commited Value = Existing Package + Change Delta
+
+* if `overwrite` is 1, Commited Value = Process memory + Change Delta
+
+``` c
+/**
+ * uci_commit: commit changes to a package
+ * @ctx: uci context
+ * @p: uci_package struct pointer
+ * @overwrite: overwrite existing config data and flush delta
+ *
+ * committing may reload the whole uci_package data,
+ * the supplied pointer is updated accordingly
+ */
+extern int uci_commit(struct uci_context *ctx, struct uci_package **p, bool overwrite);
+
+```
+## `uci_save()`
+``` c
+/**
+ * uci_save: save change delta for a package
+ * @ctx: uci context
+ * @p: uci_package struct
+ */
+extern int uci_save(struct uci_context *ctx, struct uci_package *p);
+
+```
+
+## Save and Commit
 UCI is system-level program. Many process will call it simultaneously. It is important to guarantee the synchronization of configuration files; It involves synchronization problem here. However, synchronization is speed's opposite. it needs do some trade-off on that.
 
 `uci_save()` has charge of the chagne delta file. `uci_save()` protect the chagne delta file with `flock()` fine-grained. Therefore, it is synchronization. `uci_commit()` is reponsible for the package file. However, `uci_commit()` has readers-writers problems. It is not synchornization. Therefore, developer should use UCI commit very carefully. If the request is changing setting and take effect, UCI save is enough.
