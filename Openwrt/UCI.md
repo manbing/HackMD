@@ -4,6 +4,7 @@ tags: [OpenWrt]
 
 ---
 
+# Unified Configuration Interface (UCI)
 # Description
 Unified Configuration Interface (UCI) is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
 - <mark>Package file</mark>
@@ -42,14 +43,7 @@ Load delta file into process memory.
 `uci_import()` + `uci_load_delta`
 
 ## `uci_commit()`
-* if it does not have change delta, `uci` will not write vlaue into flash. It means `uci_commit()` will not do anything, if process only call `uci_set()`, and does not call `uci_save()` following.
-
-* if `overwrite` is 0, it will reload package before commit value. Because the package maybe be modified by others process.
-
-* if `overwrite` is 0, Commited Value = Existing Package + Change Delta
-
-* if `overwrite` is 1, Commited Value = Process memory + Change Delta
-
+Dpend on `overwrite`, it will reload package before commit value. Because the package maybe be modified by others process.
 ``` c
 /**
  * uci_commit: commit changes to a package
@@ -61,8 +55,21 @@ Load delta file into process memory.
  * the supplied pointer is updated accordingly
  */
 extern int uci_commit(struct uci_context *ctx, struct uci_package **p, bool overwrite);
-
 ```
+
+`overwrite` is 0:
+The event sequence:
+1. Chagned delta (Process)
+2. Save chagned delta (Process) to tmpfs
+3. Load existing package from flash
+4. Load chagned delta (tmpfs) to Process
+5. Write package to flash
+---
+if `overwrite` is 1:
+1. Chagned delta (Process)
+2. Load chagned delta (tmpfs) to Process
+3. Write package to flash
+
 ## `uci_save()`
 ``` c
 /**
@@ -143,6 +150,7 @@ $ /sbin/wifi up
 
 # Reference
 [Different presentation](https://openwrt.org/docs/guide-user/base-system/uci#different_presentation)
+# Unified Configuration Interface (UCI)
 # Description
 Unified Configuration Interface (UCI) is OpenWRT configuration system. UCI configuration consist of two files, package and change delta.
 - <mark>Package file</mark>
@@ -181,14 +189,7 @@ Load delta file into process memory.
 `uci_import()` + `uci_load_delta`
 
 ## `uci_commit()`
-* if it does not have change delta, `uci` will not write vlaue into flash. It means `uci_commit()` will not do anything, if process only call `uci_set()`, and does not call `uci_save()` following.
-
-* if `overwrite` is 0, it will reload package before commit value. Because the package maybe be modified by others process.
-
-* if `overwrite` is 0, Commited Value = Existing Package + Change Delta
-
-* if `overwrite` is 1, Commited Value = Process memory + Change Delta
-
+Dpend on `overwrite`, it will reload package before commit value. Because the package maybe be modified by others process.
 ``` c
 /**
  * uci_commit: commit changes to a package
@@ -200,8 +201,21 @@ Load delta file into process memory.
  * the supplied pointer is updated accordingly
  */
 extern int uci_commit(struct uci_context *ctx, struct uci_package **p, bool overwrite);
-
 ```
+
+`overwrite` is 0:
+The event sequence:
+1. Chagned delta (Process)
+2. Save chagned delta (Process) to tmpfs
+3. Load existing package from flash
+4. Load chagned delta (tmpfs) to Process
+5. Write package to flash
+---
+if `overwrite` is 1:
+1. Chagned delta (Process)
+2. Load chagned delta (tmpfs) to Process
+3. Write package to flash
+
 ## `uci_save()`
 ``` c
 /**
