@@ -4,6 +4,8 @@ tags: [Command, Linux]
 
 ---
 
+# Linux Command
+
 # Useful command
 ``` console
 $ btop
@@ -143,6 +145,10 @@ Compile device trees:
 $ dtc -O dtb -o cindy.dtb cindy.dts
 ```
 
+## find
+``` console
+$ find ./drivers/staging/rtl8723bs -iname "*.[ch]"
+```
 ## grep
 ``` console
 $ grep -rin -E "include .*INNDA_CONFIG" ./test
@@ -186,14 +192,14 @@ $ inxi -Fxz
 ```
 
 ## ip
-``` shell
+``` console
 $ ip tuntap add dev tap0 mode tap
 $ ip address add dev tap0 192.168.2.1/24
 $ ip link set dev tap0 up
 ```
 
 ### ip-link
-``` shell
+``` console
 $ ip link show wlan0
 $ ip link set dev {interface} up
 $ ip link set dev {interface} down
@@ -210,6 +216,11 @@ $ ip link set <old if name> name <new if name>
 To check the number of received and transmitted packets for a network interface using the `ip` command in Linux, you can use the `ip -s link` command.
 ``` console
 $ ip -s link show
+```
+
+Check inteface's proeperty
+``` console
+$ ip -d link show
 ```
 
 
@@ -253,7 +264,16 @@ $ ip link show master <bridge>
 ```
 
 ### ip-route
-``` shell
+``` console
+$ ip route show table <number>
+```
+Protocol Differences:
+* **proto kernel**: These routes are automatically installed by the **operating system** kernel during network autoconfiguration. They typically represent "connected" routes—networks directly reachable through a local interface (e.g., when an IP address is assigned to an interface, the kernel creates a route for that subnet).
+* **proto static**: These routes are manually installed by a **network administrator** or a configuration script to override or supplement dynamic routing. They represent fixed paths that do not change unless manually modified
+
+In Linux, the `proto` field in `ip route` shows which agent added the route, such as `static` (manually added), `kernel` (automatically by system), or a dynamic protocol like `zebra` or `bird`.
+
+``` console
 $ ip route flush cache
 $ ip route add default via 10.0.1.1 dev pon.3900 table 100
 ```
@@ -390,6 +410,7 @@ $ docker run -it --init --net=host ubuntu:latest bash
 $ docker run -it -v /home/manbing/dockerenv:/home/ubuntu/tmp --init james:latest bash
 $ docker pull ubuntu:24.04
 $ docker run --rm -u manbing -v /home/manbing:/home/manbing -v /etc/passwd:/etc/passwd -it innda:all /bin/bash
+$ docker run -u $(id -u):$(id -g) -v /home/manbing:/home/manbing -v /etc/passwd:/etc/passwd -it ubuntu:latest /bin/bash
 ```
 ### /etc/docker/daemon.json
 [--data-root](https://docs.docker.com/engine/deprecated/#-g-and---graph-flags-on-dockerd)
@@ -470,6 +491,10 @@ To run an Ubuntu container built for RISC-V:
 $ docker run --platform linux/riscv64 -it riscv64/ubuntu:22.04 /bin/bash
 ```
 
+Rename:
+``` console
+$ docker rename 81cd77539b81 james
+```
 ### docker-volume
 ``` shell
 $ docker volume ls
@@ -643,7 +668,9 @@ $ grep PCI_ID /sys/bus/pci/devices/*/uevent
 .green {
   color: #2dbb29;
 }
-</style># Useful command
+</style># Linux Command
+
+# Useful command
 ``` console
 $ btop
 $ slabtop
@@ -782,6 +809,10 @@ Compile device trees:
 $ dtc -O dtb -o cindy.dtb cindy.dts
 ```
 
+## find
+``` console
+$ find ./drivers/staging/rtl8723bs -iname "*.[ch]"
+```
 ## grep
 ``` console
 $ grep -rin -E "include .*INNDA_CONFIG" ./test
@@ -825,14 +856,14 @@ $ inxi -Fxz
 ```
 
 ## ip
-``` shell
+``` console
 $ ip tuntap add dev tap0 mode tap
 $ ip address add dev tap0 192.168.2.1/24
 $ ip link set dev tap0 up
 ```
 
 ### ip-link
-``` shell
+``` console
 $ ip link show wlan0
 $ ip link set dev {interface} up
 $ ip link set dev {interface} down
@@ -849,6 +880,11 @@ $ ip link set <old if name> name <new if name>
 To check the number of received and transmitted packets for a network interface using the `ip` command in Linux, you can use the `ip -s link` command.
 ``` console
 $ ip -s link show
+```
+
+Check inteface's proeperty
+``` console
+$ ip -d link show
 ```
 
 
@@ -892,7 +928,16 @@ $ ip link show master <bridge>
 ```
 
 ### ip-route
-``` shell
+``` console
+$ ip route show table <number>
+```
+Protocol Differences:
+* **proto kernel**: These routes are automatically installed by the **operating system** kernel during network autoconfiguration. They typically represent "connected" routes—networks directly reachable through a local interface (e.g., when an IP address is assigned to an interface, the kernel creates a route for that subnet).
+* **proto static**: These routes are manually installed by a **network administrator** or a configuration script to override or supplement dynamic routing. They represent fixed paths that do not change unless manually modified
+
+In Linux, the `proto` field in `ip route` shows which agent added the route, such as `static` (manually added), `kernel` (automatically by system), or a dynamic protocol like `zebra` or `bird`.
+
+``` console
 $ ip route flush cache
 $ ip route add default via 10.0.1.1 dev pon.3900 table 100
 ```
@@ -1029,6 +1074,7 @@ $ docker run -it --init --net=host ubuntu:latest bash
 $ docker run -it -v /home/manbing/dockerenv:/home/ubuntu/tmp --init james:latest bash
 $ docker pull ubuntu:24.04
 $ docker run --rm -u manbing -v /home/manbing:/home/manbing -v /etc/passwd:/etc/passwd -it innda:all /bin/bash
+$ docker run -u $(id -u):$(id -g) -v /home/manbing:/home/manbing -v /etc/passwd:/etc/passwd -it ubuntu:latest /bin/bash
 ```
 ### /etc/docker/daemon.json
 [--data-root](https://docs.docker.com/engine/deprecated/#-g-and---graph-flags-on-dockerd)
@@ -1109,6 +1155,10 @@ To run an Ubuntu container built for RISC-V:
 $ docker run --platform linux/riscv64 -it riscv64/ubuntu:22.04 /bin/bash
 ```
 
+Rename:
+``` console
+$ docker rename 81cd77539b81 james
+```
 ### docker-volume
 ``` shell
 $ docker volume ls
