@@ -53,25 +53,60 @@ $ git apply --check a_file.patch
 ```
 
 ## [git-am](https://man7.org/linux/man-pages/man1/git-am.1.html)
-> Apply a series of patches from a mailbox
-
-git am <*.patch>
-
-git am -3 <001.patch>
-> When the patch does not apply cleanly, fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally.
+Apply a series of patches from a mailbox:
+``` console
+$ git am <*.patch>
+```
+When the patch does not apply cleanly, fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally:
+``` console
+$ git am -3 <001.patch>
+```
     
 ## git-branch
-```
-git branch -a --contains <ref>
-git branch <new branch> <exist branch>
+
+Search which branch contain the specified commit:
+``` console
+$ git branch -a --contains <ref>
 ```
 
-## git-bisect
-> Use binary search to find the commit that introduced a bug
-    
+``` console
+$ git branch <new branch> <exist branch>
+```
+
+## [git-bisect](https://git-scm.com/docs/git-bisect)
+Use binary search to find the commit that introduced a bug.
+
+1. Start
+``` console
+$　git bisect start
+```
+
+2. Set range
+``` console
+$ git bisect bad                # 標記當前版本為壞
+$ git bisect good <commit_hash> # 標記已知的最後一個好版本
+```
+
+3. Search and test
+``` console
+$ git bisect good # 如果這版本是好的
+$ # 或者
+$ git bisect bad  # 如果這版本是壞的
+```
+
+4. Narrow down
+
+Repeat `Step 3`.
+
+5. Finish
+``` console
+$ git bisect reset
+```
+
+
 ## git-blame
 Show what revision and author last modified each line of a file 
-```
+``` branch
 git blame --ignore-rev commit-hash
 ```
     
@@ -81,7 +116,7 @@ $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 $ git config rebase.updateRefs true
 $ git config --list
 ```
-* Email
+### Email
 ``` console
 $ git config --global sendemail.smtpserver smtp.gmail.com
 $ git config --global sendemail.smtpuser you@gmail.com
@@ -136,13 +171,16 @@ $ git config --system core.editor "vim"
 ``` console
 $ git cherry-pick -x <SHA>
 ```
- -x                    append commit name
+ `-x`                    append commit name
 
 
 ## git-clone
+local clone
 ``` console
-# local clone
-$ git clone <local> <new local>  
+$ git clone <local> <new local>
+```
+
+``` console
 $ git clone <URL> <rpository name>
 ```
 
@@ -184,32 +222,39 @@ $ git format-patch [-n | --numbered | -N | --no-numbered]
 $ git format-patch --root
 $ git format-patch --root <SHA> (where $SHA is that first commit)
 ```
+
+Extract three topmost commits from the current branch and format them as e-mailable patches:
 ``` console
 $ git format-patch -3 -o <dir>
 ```
-> Extract three topmost commits from the current branch and format them as e-mailable patches:
     
-## git-gc
+## [git-gc](https://git-scm.com/docs/git-gc)
 ``` console
 $ git gc
 $ git gc --prune=now
 ```
 
 
-## git-log
+## [git-log](https://git-scm.com/docs/git-log)
+[`-g`](https://git-scm.com/docs/git-log#Documentation/git-log.txt--g)
+
 ``` console
-git log --all --graph --decorate --format=fuller
-git log --name-only
-git log -g
+$ git log --all --graph --decorate --format=fuller
+$ git log --name-only
+$ git log -g
+```
 
-git log --follow
-# Continue listing the history of a file beyond renames (works only for a single file).
 
-    
-git log <hash>
-git log <hash>..
-git log <old hash>..<new hash2>
-git log <hash>...<hash2>
+Continue listing the history of a file beyond renames (works only for a single file).
+``` console
+$ git log --follow
+```
+
+``` console
+$ git log <hash>
+$ git log <hash>..
+$ git log <old hash>..<new hash>
+$ git log <hash>...<hash2>
 ```
 
 ## git-reflog
@@ -240,10 +285,10 @@ $ git push -o merge_request.create -o merge_request.target=<my-target-branch> <r
 ## git-patch
 ``` console
 $ git apply --check <patch>
-# Check if patch is ok or not
+$ # Check if patch is ok or not
 
 $ git am <*.patch>
-# Apply a series of patches from a mailbox
+$ # Apply a series of patches from a mailbox
 ```
 
 
@@ -334,8 +379,10 @@ $ git config --global alias.st status
 $ git config --global alias.visual '!gitk'
 ```
 
-## git hooks
+## [git hooks](https://git-scm.com/book/zh-tw/v2/Customizing-Git-Git-Hooks)
+``` console
 git commit --no-verify
+```
 
 ## git send-email
 
@@ -438,25 +485,60 @@ $ git apply --check a_file.patch
 ```
 
 ## [git-am](https://man7.org/linux/man-pages/man1/git-am.1.html)
-> Apply a series of patches from a mailbox
-
-git am <*.patch>
-
-git am -3 <001.patch>
-> When the patch does not apply cleanly, fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally.
+Apply a series of patches from a mailbox:
+``` console
+$ git am <*.patch>
+```
+When the patch does not apply cleanly, fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally:
+``` console
+$ git am -3 <001.patch>
+```
     
 ## git-branch
-```
-git branch -a --contains <ref>
-git branch <new branch> <exist branch>
+
+Search which branch contain the specified commit:
+``` console
+$ git branch -a --contains <ref>
 ```
 
-## git-bisect
-> Use binary search to find the commit that introduced a bug
-    
+``` console
+$ git branch <new branch> <exist branch>
+```
+
+## [git-bisect](https://git-scm.com/docs/git-bisect)
+Use binary search to find the commit that introduced a bug.
+
+1. Start
+``` console
+$　git bisect start
+```
+
+2. Set range
+``` console
+$ git bisect bad                # 標記當前版本為壞
+$ git bisect good <commit_hash> # 標記已知的最後一個好版本
+```
+
+3. Search and test
+``` console
+$ git bisect good # 如果這版本是好的
+$ # 或者
+$ git bisect bad  # 如果這版本是壞的
+```
+
+4. Narrow down
+
+Repeat `Step 3`.
+
+5. Finish
+``` console
+$ git bisect reset
+```
+
+
 ## git-blame
 Show what revision and author last modified each line of a file 
-```
+``` branch
 git blame --ignore-rev commit-hash
 ```
     
@@ -466,7 +548,7 @@ $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 $ git config rebase.updateRefs true
 $ git config --list
 ```
-* Email
+### Email
 ``` console
 $ git config --global sendemail.smtpserver smtp.gmail.com
 $ git config --global sendemail.smtpuser you@gmail.com
@@ -521,13 +603,16 @@ $ git config --system core.editor "vim"
 ``` console
 $ git cherry-pick -x <SHA>
 ```
- -x                    append commit name
+ `-x`                    append commit name
 
 
 ## git-clone
+local clone
 ``` console
-# local clone
-$ git clone <local> <new local>  
+$ git clone <local> <new local>
+```
+
+``` console
 $ git clone <URL> <rpository name>
 ```
 
@@ -569,32 +654,39 @@ $ git format-patch [-n | --numbered | -N | --no-numbered]
 $ git format-patch --root
 $ git format-patch --root <SHA> (where $SHA is that first commit)
 ```
+
+Extract three topmost commits from the current branch and format them as e-mailable patches:
 ``` console
 $ git format-patch -3 -o <dir>
 ```
-> Extract three topmost commits from the current branch and format them as e-mailable patches:
     
-## git-gc
+## [git-gc](https://git-scm.com/docs/git-gc)
 ``` console
 $ git gc
 $ git gc --prune=now
 ```
 
 
-## git-log
+## [git-log](https://git-scm.com/docs/git-log)
+[`-g`](https://git-scm.com/docs/git-log#Documentation/git-log.txt--g)
+
 ``` console
-git log --all --graph --decorate --format=fuller
-git log --name-only
-git log -g
+$ git log --all --graph --decorate --format=fuller
+$ git log --name-only
+$ git log -g
+```
 
-git log --follow
-# Continue listing the history of a file beyond renames (works only for a single file).
 
-    
-git log <hash>
-git log <hash>..
-git log <old hash>..<new hash2>
-git log <hash>...<hash2>
+Continue listing the history of a file beyond renames (works only for a single file).
+``` console
+$ git log --follow
+```
+
+``` console
+$ git log <hash>
+$ git log <hash>..
+$ git log <old hash>..<new hash>
+$ git log <hash>...<hash2>
 ```
 
 ## git-reflog
@@ -625,10 +717,10 @@ $ git push -o merge_request.create -o merge_request.target=<my-target-branch> <r
 ## git-patch
 ``` console
 $ git apply --check <patch>
-# Check if patch is ok or not
+$ # Check if patch is ok or not
 
 $ git am <*.patch>
-# Apply a series of patches from a mailbox
+$ # Apply a series of patches from a mailbox
 ```
 
 
@@ -719,8 +811,10 @@ $ git config --global alias.st status
 $ git config --global alias.visual '!gitk'
 ```
 
-## git hooks
+## [git hooks](https://git-scm.com/book/zh-tw/v2/Customizing-Git-Git-Hooks)
+``` console
 git commit --no-verify
+```
 
 ## git send-email
 
