@@ -140,7 +140,7 @@ $ uci show <SUBSYSTEM_NAME>
 $ uci export <SUBSYSTEM_NAME>
 ```
 
-Do not use extended syntax on 'show':
+Do not use extended syntax on 'show' for unnamed section:
 ``` console
 $ uci show -X network
 network.4001_ipoe_3_1=wan_vlan
@@ -378,7 +378,7 @@ $ uci show <SUBSYSTEM_NAME>
 $ uci export <SUBSYSTEM_NAME>
 ```
 
-Do not use extended syntax on 'show':
+Do not use extended syntax on 'show' for unnamed section:
 ``` console
 $ uci show -X network
 network.4001_ipoe_3_1=wan_vlan
