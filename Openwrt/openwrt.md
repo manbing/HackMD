@@ -133,29 +133,54 @@ uci_lookup_ptr()
     
     
 
-## shell
-uci get prplmesh.config.enable
-uci show $\lt$SUBSYSTEM_NAME$\gt$
-uci export $\lt$SUBSYSTEM_NAME$\gt$
+## SHELL
+``` console
+$ uci get prplmesh.config.enable
+$ uci show <SUBSYSTEM_NAME>
+$ uci export <SUBSYSTEM_NAME>
+```
 
-uci validate
-> find corrupted configs
+Do not use extended syntax on 'show':
+``` console
+$ uci show -X network
+network.4001_ipoe_3_1=wan_vlan
+network.4001_ipoe_3_1.payload='routed'
+network.4001_ipoe_3_1.type='ipoe'
+network.cfg140f15=device
+network.cfg140f15.type='bridge'
+```
 
-uci changes
-> Showing the not-yet-saved modified values
+Find corrupted configs:
+``` console
+$ uci validate
+```
 
-uci set network.lan.ipaddr=192.168.2.2
-uci commit $\lt$config$\gt$
+Showing the not-yet-saved modified values:
+``` console
+$ uci changes
+```  
 
-uci set wireless.wifinet1.disabled=0
-> change wireless confiuration
+``` console
+$ uci set network.lan.ipaddr=192.168.2.2
+$ uci commit <config>
+```
 
-uci commit wireless
-> save wireless configuration
+Change wireless confiuration:
+``` console
+$ uci set wireless.wifinet1.disabled=0
+```
 
-/sbin/wifi down
-/sbin/wifi up
-> issue wireless new setting
+Save wireless configuration:
+``` console
+$ uci commit wireless
+```
+
+Issue wireless new setting:
+``` console
+$ /sbin/wifi down
+$ /sbin/wifi up
+```
+
 
 ## LuCI WebUI
 
@@ -346,29 +371,54 @@ uci_lookup_ptr()
     
     
 
-## shell
-uci get prplmesh.config.enable
-uci show $\lt$SUBSYSTEM_NAME$\gt$
-uci export $\lt$SUBSYSTEM_NAME$\gt$
+## SHELL
+``` console
+$ uci get prplmesh.config.enable
+$ uci show <SUBSYSTEM_NAME>
+$ uci export <SUBSYSTEM_NAME>
+```
 
-uci validate
-> find corrupted configs
+Do not use extended syntax on 'show':
+``` console
+$ uci show -X network
+network.4001_ipoe_3_1=wan_vlan
+network.4001_ipoe_3_1.payload='routed'
+network.4001_ipoe_3_1.type='ipoe'
+network.cfg140f15=device
+network.cfg140f15.type='bridge'
+```
 
-uci changes
-> Showing the not-yet-saved modified values
+Find corrupted configs:
+``` console
+$ uci validate
+```
 
-uci set network.lan.ipaddr=192.168.2.2
-uci commit $\lt$config$\gt$
+Showing the not-yet-saved modified values:
+``` console
+$ uci changes
+```  
 
-uci set wireless.wifinet1.disabled=0
-> change wireless confiuration
+``` console
+$ uci set network.lan.ipaddr=192.168.2.2
+$ uci commit <config>
+```
 
-uci commit wireless
-> save wireless configuration
+Change wireless confiuration:
+``` console
+$ uci set wireless.wifinet1.disabled=0
+```
 
-/sbin/wifi down
-/sbin/wifi up
-> issue wireless new setting
+Save wireless configuration:
+``` console
+$ uci commit wireless
+```
+
+Issue wireless new setting:
+``` console
+$ /sbin/wifi down
+$ /sbin/wifi up
+```
+
 
 ## LuCI WebUI
 
