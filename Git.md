@@ -386,9 +386,9 @@ git commit --no-verify
 
 ## git send-email
 
-## appendices
-### Case: fix or improve a previous commit
-```
+## Appendices: Use Case
+### fix or improve a previous commit
+``` console
 # Create a fixup commit targeting a specific commit
 $ git commit --fixup=<commit-hash>
 
@@ -396,8 +396,8 @@ $ git commit --fixup=<commit-hash>
 $ git rebase -i --autosquash <base-branch>
 ```
 
-### Case: patch commit to specific file
-```
+### patch commit to specific file
+``` console
 # Commit modification on GIT
 
 # Generate patch files
@@ -406,25 +406,23 @@ $ git format-patch HEAD^ -o patchs/
 # Patch to specific file
 $ patch -i patchs/001-test.patch
 ```
- 
-# Use case
-## Identation
+### Identation
 ``` console
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
  
-## Get from Another Branch or Commit 
+### Get from Another Branch or Commit 
 ``` console
 $ git restore --source <branch-or-commit> <file-path>
 $ git checkout <branch-or-commit> -- <file-path>
 ```
 
-## Extract file from a stash
+### Extract file from a stash
 ``` console
 $ git checkout stash@{0} -- <file>
 ```
 
-## Get from a Remote Repository (Without Full Clone)
+### Get from a Remote Repository (Without Full Clone)
 Sparse Checkout (Most Reliable):
 ``` console
 $ git clone --filter=blob:none --no-checkout <repo-url>
@@ -818,9 +816,9 @@ git commit --no-verify
 
 ## git send-email
 
-## appendices
-### Case: fix or improve a previous commit
-```
+## Appendices: Use Case
+### fix or improve a previous commit
+``` console
 # Create a fixup commit targeting a specific commit
 $ git commit --fixup=<commit-hash>
 
@@ -828,8 +826,8 @@ $ git commit --fixup=<commit-hash>
 $ git rebase -i --autosquash <base-branch>
 ```
 
-### Case: patch commit to specific file
-```
+### patch commit to specific file
+``` console
 # Commit modification on GIT
 
 # Generate patch files
@@ -838,25 +836,23 @@ $ git format-patch HEAD^ -o patchs/
 # Patch to specific file
 $ patch -i patchs/001-test.patch
 ```
- 
-# Use case
-## Identation
+### Identation
 ``` console
 $ git config --global core.whitespace "trailing-space,space-before-tab,indent-with-non-tab,tabwidth=4"
 ```
  
-## Get from Another Branch or Commit 
+### Get from Another Branch or Commit 
 ``` console
 $ git restore --source <branch-or-commit> <file-path>
 $ git checkout <branch-or-commit> -- <file-path>
 ```
 
-## Extract file from a stash
+### Extract file from a stash
 ``` console
 $ git checkout stash@{0} -- <file>
 ```
 
-## Get from a Remote Repository (Without Full Clone)
+### Get from a Remote Repository (Without Full Clone)
 Sparse Checkout (Most Reliable):
 ``` console
 $ git clone --filter=blob:none --no-checkout <repo-url>
