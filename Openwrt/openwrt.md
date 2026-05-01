@@ -4,25 +4,40 @@ tags: [OpenWrt]
 
 ---
 
+# OpenWrt
 
-
-/etc/init.d/$\lt$config$\gt$ restart
+``` console
+$ /etc/init.d/<config> restart
+```
     
-factory reset
-> umount /overlay ; sleep 1; mtd -r erase rootfs_data
-firstboot && reboot now
+factory reset:
+``` console
+$ umount /overlay ; sleep 1; mtd -r erase rootfs_data
+$ firstboot && reboot now
+$ fitstboot -r -y
+```
 
 opkg/ipkg
-> opkg install $\lt$pkg$\gt$
-opkg list
+``` console
+$ opkg install <pkg>
+$ opkg list
+```
 
-netifd
-> /sbin/netifd -d 15
+Enable netifd debug:
+``` console
+$ /sbin/netifd -d 15
+```
 
-logread -f -e odhcp6c
+Extract `odhcp6c` log only from `syslog`:
+``` console
+$ logread -e odhcp6c -f &
+```
 
-reload_config
-> if configuration be modified, it will notify porcd to re-read configuration and take effect
+
+If configuration be modified, it will notify porcd to re-read configuration and take effect:
+``` console
+$ reload_config
+```
 
 # procd
 ## procd init script parameters (Init Scripts)
@@ -44,28 +59,59 @@ procd_set_param stderr 1
 
 # ubus/ubusd
 ## shell API
-> ubus list
-ubus -v list network.wireless
-ubus call network reload
-ubus list network.interface.*
+``` console
+$ ubus list
+$ ubus -v list network.wireless
+$ ubus call network reload
+$ ubus list network.interface.*
 
-> ubus list
-ubus -v list testbed.girl
-ubus call testbed.girl restart
-ubus call testbed.girl reload
+$ ubus list
+$ ubus -v list testbed.girl
+$ ubus call testbed.girl restart
+$ ubus call testbed.girl reload
 
-> ubus call network.interface.iphost_4001 status | jsonfilter -e '@["ipv4-address"][0].address'
-ubus call network.interface.iphost_4001 status | jsonfilter -e '@.inactive'
-ubus call network.interface.iphost_4001 status | jsonfilter -e '@["inactive"]["route"][0].nexthop'
-ubus call network.device status  '{"name":"pon.4001"}'
+$ ubus call network.interface.iphost_4001 status | jsonfilter -e '@["ipv4-address"][0].address'
+$ ubus call network.interface.iphost_4001 status | jsonfilter -e '@.inactive'
+$ ubus call network.interface.iphost_4001 status | jsonfilter -e '@["inactive"]["route"][0].nexthop'
+$ ubus call network.device status  '{"name":"pon.4001"}'
+```
+
+shell scripts:
+``` vim
+json_add_object
+json_add_array
+```
 
 ## C API
-> ubus_add_object()
+``` c
+ubus_add_object()
 UBUS_OBJECT_TYPE
 UBUS_METHOD_NOARG
 UBUS_METHOD
 
-> ubus_invoke()
+ubus_invoke()
+```
+
+Ubus call the RPC of "uci commit":
+``` c
+static inline void example(const char *package)
+{
+    uint32_t id = 0;
+    struct blob_buf b = {NULL, NULL, 0, NULL};
+    struct ubus_context *ubus_ctx = ubus_connect(NULL);
+
+    if (ubus_lookup_id(ubus_ctx, "uci", &id) != UBUS_STATUS_OK) {
+        ubus_free(ubus_ctx);
+        return;
+    }
+
+    blob_buf_init(&b, 0);
+    blobmsg_add_string(&b, "config", package);
+    ubus_invoke(ubus_ctx, id, "commit", b.head, NULL, 0, 1000);
+    ubus_free(ubus_ctx);
+}
+```
+
 
 # [The UCI system](https://openwrt.org/docs/guide-user/base-system/uci)
 
@@ -92,7 +138,8 @@ network.lan.ip6class='HSI_6'
     
     
 ## C API
->uci_set
+``` c
+uci_set()
 uci_commit()
 uci_unload()
 uci_free_context()
@@ -101,8 +148,9 @@ uci_foreach_element()
 load_config()
 uci_load()
 uci_lookup_option_string()
+```
 
-uci_lookup_ptr()
+`uci_lookup_ptr()`
 ``` c
     struct uci_ptr ptr = {
         .package = "wireless",
@@ -185,15 +233,12 @@ $ /sbin/wifi up
 ## LuCI WebUI
 
 
-## shell scripts
-> json_add_object
-> json_add_array
-
 ## wireless
->/lib/netifd/wireless/mac80211.sh
-/lib/wifi/mac80211.sh
-
-call init_wireless_driver() to add default wireless configuration
+Call init_wireless_driver() to add default wireless configuration:
+``` console
+$ /lib/netifd/wireless/mac80211.sh
+$ /lib/wifi/mac80211.sh
+```
     
 ## ucitrack
     
@@ -213,7 +258,7 @@ UCI defaults scripts can be created by packages or they can be inserted into the
     
 # The boot process
     
-```mermaid
+``` mermaid
     flowchart LR;
     
     A((linux))-->B(init)
@@ -228,39 +273,56 @@ UCI defaults scripts can be created by packages or they can be inserted into the
 ```
     
 # shell
-> network_get_dnsserver
+``` sh
+network_get_dnsserver
 procd_set_param stdout 1
 procd_set_param stderr 1
+```
     
 # Console login
 If `system.@system[0].ttylogin` is 1, system will request password to authenticate. If it is not, system gives root privilige.
 
-/usr/libexec/login.sh:
+`/usr/libexec/login.sh`:
 ``` sh
 #!/bin/sh
 
 [ "$(uci -q get system.@system[0].ttylogin)" = 1 ] || exec /bin/ash --login
 
 exec /bin/login
+```# OpenWrt
+
+``` console
+$ /etc/init.d/<config> restart
+```
+    
+factory reset:
+``` console
+$ umount /overlay ; sleep 1; mtd -r erase rootfs_data
+$ firstboot && reboot now
+$ fitstboot -r -y
 ```
 
-/etc/init.d/$\lt$config$\gt$ restart
-    
-factory reset
-> umount /overlay ; sleep 1; mtd -r erase rootfs_data
-firstboot && reboot now
-
 opkg/ipkg
-> opkg install $\lt$pkg$\gt$
-opkg list
+``` console
+$ opkg install <pkg>
+$ opkg list
+```
 
-netifd
-> /sbin/netifd -d 15
+Enable netifd debug:
+``` console
+$ /sbin/netifd -d 15
+```
 
-logread -f -e odhcp6c
+Extract `odhcp6c` log only from `syslog`:
+``` console
+$ logread -e odhcp6c -f &
+```
 
-reload_config
-> if configuration be modified, it will notify porcd to re-read configuration and take effect
+
+If configuration be modified, it will notify porcd to re-read configuration and take effect:
+``` console
+$ reload_config
+```
 
 # procd
 ## procd init script parameters (Init Scripts)
@@ -282,28 +344,59 @@ procd_set_param stderr 1
 
 # ubus/ubusd
 ## shell API
-> ubus list
-ubus -v list network.wireless
-ubus call network reload
-ubus list network.interface.*
+``` console
+$ ubus list
+$ ubus -v list network.wireless
+$ ubus call network reload
+$ ubus list network.interface.*
 
-> ubus list
-ubus -v list testbed.girl
-ubus call testbed.girl restart
-ubus call testbed.girl reload
+$ ubus list
+$ ubus -v list testbed.girl
+$ ubus call testbed.girl restart
+$ ubus call testbed.girl reload
 
-> ubus call network.interface.iphost_4001 status | jsonfilter -e '@["ipv4-address"][0].address'
-ubus call network.interface.iphost_4001 status | jsonfilter -e '@.inactive'
-ubus call network.interface.iphost_4001 status | jsonfilter -e '@["inactive"]["route"][0].nexthop'
-ubus call network.device status  '{"name":"pon.4001"}'
+$ ubus call network.interface.iphost_4001 status | jsonfilter -e '@["ipv4-address"][0].address'
+$ ubus call network.interface.iphost_4001 status | jsonfilter -e '@.inactive'
+$ ubus call network.interface.iphost_4001 status | jsonfilter -e '@["inactive"]["route"][0].nexthop'
+$ ubus call network.device status  '{"name":"pon.4001"}'
+```
+
+shell scripts:
+``` vim
+json_add_object
+json_add_array
+```
 
 ## C API
-> ubus_add_object()
+``` c
+ubus_add_object()
 UBUS_OBJECT_TYPE
 UBUS_METHOD_NOARG
 UBUS_METHOD
 
-> ubus_invoke()
+ubus_invoke()
+```
+
+Ubus call the RPC of "uci commit":
+``` c
+static inline void example(const char *package)
+{
+    uint32_t id = 0;
+    struct blob_buf b = {NULL, NULL, 0, NULL};
+    struct ubus_context *ubus_ctx = ubus_connect(NULL);
+
+    if (ubus_lookup_id(ubus_ctx, "uci", &id) != UBUS_STATUS_OK) {
+        ubus_free(ubus_ctx);
+        return;
+    }
+
+    blob_buf_init(&b, 0);
+    blobmsg_add_string(&b, "config", package);
+    ubus_invoke(ubus_ctx, id, "commit", b.head, NULL, 0, 1000);
+    ubus_free(ubus_ctx);
+}
+```
+
 
 # [The UCI system](https://openwrt.org/docs/guide-user/base-system/uci)
 
@@ -330,7 +423,8 @@ network.lan.ip6class='HSI_6'
     
     
 ## C API
->uci_set
+``` c
+uci_set()
 uci_commit()
 uci_unload()
 uci_free_context()
@@ -339,8 +433,9 @@ uci_foreach_element()
 load_config()
 uci_load()
 uci_lookup_option_string()
+```
 
-uci_lookup_ptr()
+`uci_lookup_ptr()`
 ``` c
     struct uci_ptr ptr = {
         .package = "wireless",
@@ -423,15 +518,12 @@ $ /sbin/wifi up
 ## LuCI WebUI
 
 
-## shell scripts
-> json_add_object
-> json_add_array
-
 ## wireless
->/lib/netifd/wireless/mac80211.sh
-/lib/wifi/mac80211.sh
-
-call init_wireless_driver() to add default wireless configuration
+Call init_wireless_driver() to add default wireless configuration:
+``` console
+$ /lib/netifd/wireless/mac80211.sh
+$ /lib/wifi/mac80211.sh
+```
     
 ## ucitrack
     
@@ -451,7 +543,7 @@ UCI defaults scripts can be created by packages or they can be inserted into the
     
 # The boot process
     
-```mermaid
+``` mermaid
     flowchart LR;
     
     A((linux))-->B(init)
@@ -466,14 +558,16 @@ UCI defaults scripts can be created by packages or they can be inserted into the
 ```
     
 # shell
-> network_get_dnsserver
+``` sh
+network_get_dnsserver
 procd_set_param stdout 1
 procd_set_param stderr 1
+```
     
 # Console login
 If `system.@system[0].ttylogin` is 1, system will request password to authenticate. If it is not, system gives root privilige.
 
-/usr/libexec/login.sh:
+`/usr/libexec/login.sh`:
 ``` sh
 #!/bin/sh
 
