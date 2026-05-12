@@ -90,12 +90,12 @@ $ mkimage -l uImage
 ### Qualcomm
 * Generate `u-boot.mbn`
 
-* Generate `root.ubi`
+* Generate UBI image, `root.ubi`
 include `kernel`, `rootfs`
 `kernel` is `openwrt-ipq53xx-ipq53xx_32-qcom_mixx-fit-uImage.itb`
 `rootfs` is `openwrt-ipq53xx-ipq53xx_32-squashfs-root.img`
 
-* Generate `fitImage.itb`
+* Generate FIT image, `fitImage.itb`
 include `u-boot.mbn`, `root.ubi`# U-Boot
 
 [Das U-boot](https://docs.u-boot.org/en/latest/)
@@ -182,10 +182,10 @@ $ mkimage -l uImage
 ### Qualcomm
 * Generate `u-boot.mbn`
 
-* Generate `root.ubi`
+* Generate UBI image, `root.ubi`
 include `kernel`, `rootfs`
 `kernel` is `openwrt-ipq53xx-ipq53xx_32-qcom_mixx-fit-uImage.itb`
 `rootfs` is `openwrt-ipq53xx-ipq53xx_32-squashfs-root.img`
 
-* Generate `fitImage.itb`
+* Generate FIT image, `fitImage.itb`
 include `u-boot.mbn`, `root.ubi`
